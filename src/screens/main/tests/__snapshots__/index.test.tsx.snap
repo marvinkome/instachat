@@ -113,7 +113,7 @@ exports[`main screen tests renders correctly with defaults 1`] = `
               ]
             }
           >
-            
+            
           </Text>
         </View>
       </View>
@@ -144,7 +144,7 @@ exports[`main screen tests renders correctly with defaults 1`] = `
             }
           }
         >
-          Main Page
+          Chats
         </Text>
       </View>
       <View
@@ -165,7 +165,7 @@ exports[`main screen tests renders correctly with defaults 1`] = `
     contentContainerStyle={
       Array [
         Object {
-          "padding": 10,
+          "padding": undefined,
         },
         undefined,
       ]
@@ -186,7 +186,6 @@ exports[`main screen tests renders correctly with defaults 1`] = `
     keyboardShouldPersistTaps="handled"
     keyboardSpace={0}
     onScroll={[Function]}
-    padder={true}
     resetKeyboardSpace={[Function]}
     resetScrollToCoords={
       Object {
@@ -235,57 +234,42 @@ exports[`main screen tests renders correctly with defaults 1`] = `
           style={null}
         >
           <View
-            avatar={true}
             style={
               Object {
                 "alignItems": "center",
                 "backgroundColor": "transparent",
-                "borderBottomWidth": null,
+                "borderBottomWidth": 0.5,
                 "borderColor": "#c9c9c9",
                 "flexDirection": "row",
                 "marginLeft": 16,
-                "paddingBottom": null,
-                "paddingRight": null,
-                "paddingTop": null,
+                "paddingBottom": 13,
+                "paddingRight": 16,
+                "paddingTop": 13,
               }
             }
           >
-            <View
-              style={
+            <Image
+              size={80}
+              source={
                 Object {
-                  "alignItems": "flex-start",
-                  "alignSelf": "center",
-                  "flex": 0,
-                  "flexDirection": "row",
+                  "testUri": "../../../static/default-pic.png",
                 }
               }
-            >
-              <Image
-                source={
-                  Object {
-                    "testUri": "../../../static/default-pic.png",
-                  }
+              square={true}
+              style={
+                Object {
+                  "borderRadius": 0,
+                  "height": 56,
+                  "width": 56,
                 }
-                style={
-                  Object {
-                    "borderRadius": 28,
-                    "height": 56,
-                    "width": 56,
-                  }
-                }
-              />
-            </View>
+              }
+            />
             <View
               style={
                 Object {
                   "alignItems": null,
                   "alignSelf": null,
-                  "borderBottomWidth": 0.5,
-                  "borderColor": "#c9c9c9",
                   "flex": 1,
-                  "marginLeft": 15,
-                  "paddingBottom": 10,
-                  "paddingTop": 10,
                 }
               }
             >
@@ -293,12 +277,13 @@ exports[`main screen tests renders correctly with defaults 1`] = `
                 accessible={true}
                 allowFontScaling={true}
                 ellipsizeMode="tail"
+                numberOfLines={1}
                 style={
                   Object {
                     "color": "#000",
                     "fontFamily": "System",
                     "fontSize": 16,
-                    "marginLeft": null,
+                    "marginLeft": 10,
                     "marginRight": 10,
                   }
                 }
@@ -311,55 +296,45 @@ exports[`main screen tests renders correctly with defaults 1`] = `
                 allowFontScaling={true}
                 ellipsizeMode="tail"
                 note={true}
+                numberOfLines={1}
                 style={
                   Object {
                     "color": "#808080",
                     "fontFamily": "System",
                     "fontSize": 14,
                     "fontWeight": "200",
-                    "marginLeft": null,
+                    "marginLeft": 10,
                     "marginRight": 10,
                   }
                 }
                 uppercase={false}
               >
-                Doing what you like will always keep you happy..
+                Doing what you like..
               </Text>
             </View>
-            <View
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              note={true}
               style={
-                Object {
-                  "alignItems": "flex-end",
-                  "alignSelf": "stretch",
-                  "borderBottomWidth": 0.5,
-                  "borderColor": "#c9c9c9",
-                  "flex": 0,
-                  "paddingBottom": 10,
-                  "paddingLeft": null,
-                  "paddingRight": 15,
-                  "paddingTop": 10,
-                }
-              }
-            >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                note={true}
-                style={
+                Array [
                   Object {
-                    "alignSelf": null,
+                    "alignSelf": "center",
                     "color": "#808080",
                     "fontFamily": "System",
-                    "fontSize": 12,
+                    "fontSize": 14,
                     "fontWeight": "200",
-                  }
-                }
-                uppercase={false}
-              >
-                0
-              </Text>
-            </View>
+                  },
+                  Object {
+                    "fontSize": 13,
+                  },
+                ]
+              }
+              uppercase={false}
+            >
+              13:47pm
+            </Text>
           </View>
         </View>
         <View
@@ -374,57 +349,42 @@ exports[`main screen tests renders correctly with defaults 1`] = `
           style={null}
         >
           <View
-            avatar={true}
             style={
               Object {
                 "alignItems": "center",
                 "backgroundColor": "transparent",
-                "borderBottomWidth": null,
+                "borderBottomWidth": 0.5,
                 "borderColor": "#c9c9c9",
                 "flexDirection": "row",
                 "marginLeft": 16,
-                "paddingBottom": null,
-                "paddingRight": null,
-                "paddingTop": null,
+                "paddingBottom": 13,
+                "paddingRight": 16,
+                "paddingTop": 13,
               }
             }
           >
-            <View
-              style={
+            <Image
+              size={80}
+              source={
                 Object {
-                  "alignItems": "flex-start",
-                  "alignSelf": "center",
-                  "flex": 0,
-                  "flexDirection": "row",
+                  "testUri": "../../../static/default-pic.png",
                 }
               }
-            >
-              <Image
-                source={
-                  Object {
-                    "testUri": "../../../static/default-pic.png",
-                  }
+              square={true}
+              style={
+                Object {
+                  "borderRadius": 0,
+                  "height": 56,
+                  "width": 56,
                 }
-                style={
-                  Object {
-                    "borderRadius": 28,
-                    "height": 56,
-                    "width": 56,
-                  }
-                }
-              />
-            </View>
+              }
+            />
             <View
               style={
                 Object {
                   "alignItems": null,
                   "alignSelf": null,
-                  "borderBottomWidth": 0.5,
-                  "borderColor": "#c9c9c9",
                   "flex": 1,
-                  "marginLeft": 15,
-                  "paddingBottom": 10,
-                  "paddingTop": 10,
                 }
               }
             >
@@ -432,12 +392,13 @@ exports[`main screen tests renders correctly with defaults 1`] = `
                 accessible={true}
                 allowFontScaling={true}
                 ellipsizeMode="tail"
+                numberOfLines={1}
                 style={
                   Object {
                     "color": "#000",
                     "fontFamily": "System",
                     "fontSize": 16,
-                    "marginLeft": null,
+                    "marginLeft": 10,
                     "marginRight": 10,
                   }
                 }
@@ -450,55 +411,45 @@ exports[`main screen tests renders correctly with defaults 1`] = `
                 allowFontScaling={true}
                 ellipsizeMode="tail"
                 note={true}
+                numberOfLines={1}
                 style={
                   Object {
                     "color": "#808080",
                     "fontFamily": "System",
                     "fontSize": 14,
                     "fontWeight": "200",
-                    "marginLeft": null,
+                    "marginLeft": 10,
                     "marginRight": 10,
                   }
                 }
                 uppercase={false}
               >
-                Doing what you like will always keep you happy..
+                Doing what you like when you like
               </Text>
             </View>
-            <View
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              note={true}
               style={
-                Object {
-                  "alignItems": "flex-end",
-                  "alignSelf": "stretch",
-                  "borderBottomWidth": 0.5,
-                  "borderColor": "#c9c9c9",
-                  "flex": 0,
-                  "paddingBottom": 10,
-                  "paddingLeft": null,
-                  "paddingRight": 15,
-                  "paddingTop": 10,
-                }
-              }
-            >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                note={true}
-                style={
+                Array [
                   Object {
-                    "alignSelf": null,
+                    "alignSelf": "center",
                     "color": "#808080",
                     "fontFamily": "System",
-                    "fontSize": 12,
+                    "fontSize": 14,
                     "fontWeight": "200",
-                  }
-                }
-                uppercase={false}
-              >
-                2
-              </Text>
-            </View>
+                  },
+                  Object {
+                    "fontSize": 13,
+                  },
+                ]
+              }
+              uppercase={false}
+            >
+              17/06/2017
+            </Text>
           </View>
         </View>
       </View>
@@ -513,7 +464,7 @@ exports[`main screen tests renders view correctly with defaults 1`] = `
   contentContainerStyle={
     Array [
       Object {
-        "padding": 10,
+        "padding": undefined,
       },
       undefined,
     ]
@@ -534,7 +485,6 @@ exports[`main screen tests renders view correctly with defaults 1`] = `
   keyboardShouldPersistTaps="handled"
   keyboardSpace={0}
   onScroll={[Function]}
-  padder={true}
   resetKeyboardSpace={[Function]}
   resetScrollToCoords={
     Object {
@@ -583,57 +533,42 @@ exports[`main screen tests renders view correctly with defaults 1`] = `
         style={null}
       >
         <View
-          avatar={true}
           style={
             Object {
               "alignItems": "center",
               "backgroundColor": "transparent",
-              "borderBottomWidth": null,
+              "borderBottomWidth": 0.5,
               "borderColor": "#c9c9c9",
               "flexDirection": "row",
               "marginLeft": 16,
-              "paddingBottom": null,
-              "paddingRight": null,
-              "paddingTop": null,
+              "paddingBottom": 13,
+              "paddingRight": 16,
+              "paddingTop": 13,
             }
           }
         >
-          <View
-            style={
+          <Image
+            size={80}
+            source={
               Object {
-                "alignItems": "flex-start",
-                "alignSelf": "center",
-                "flex": 0,
-                "flexDirection": "row",
+                "testUri": "../../../static/default-pic.png",
               }
             }
-          >
-            <Image
-              source={
-                Object {
-                  "testUri": "../../../static/default-pic.png",
-                }
+            square={true}
+            style={
+              Object {
+                "borderRadius": 0,
+                "height": 56,
+                "width": 56,
               }
-              style={
-                Object {
-                  "borderRadius": 28,
-                  "height": 56,
-                  "width": 56,
-                }
-              }
-            />
-          </View>
+            }
+          />
           <View
             style={
               Object {
                 "alignItems": null,
                 "alignSelf": null,
-                "borderBottomWidth": 0.5,
-                "borderColor": "#c9c9c9",
                 "flex": 1,
-                "marginLeft": 15,
-                "paddingBottom": 10,
-                "paddingTop": 10,
               }
             }
           >
@@ -641,12 +576,13 @@ exports[`main screen tests renders view correctly with defaults 1`] = `
               accessible={true}
               allowFontScaling={true}
               ellipsizeMode="tail"
+              numberOfLines={1}
               style={
                 Object {
                   "color": "#000",
                   "fontFamily": "System",
                   "fontSize": 16,
-                  "marginLeft": null,
+                  "marginLeft": 10,
                   "marginRight": 10,
                 }
               }
@@ -659,55 +595,45 @@ exports[`main screen tests renders view correctly with defaults 1`] = `
               allowFontScaling={true}
               ellipsizeMode="tail"
               note={true}
+              numberOfLines={1}
               style={
                 Object {
                   "color": "#808080",
                   "fontFamily": "System",
                   "fontSize": 14,
                   "fontWeight": "200",
-                  "marginLeft": null,
+                  "marginLeft": 10,
                   "marginRight": 10,
                 }
               }
               uppercase={false}
             >
-              Doing what you like will always keep you happy..
+              Doing what you like..
             </Text>
           </View>
-          <View
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            note={true}
             style={
-              Object {
-                "alignItems": "flex-end",
-                "alignSelf": "stretch",
-                "borderBottomWidth": 0.5,
-                "borderColor": "#c9c9c9",
-                "flex": 0,
-                "paddingBottom": 10,
-                "paddingLeft": null,
-                "paddingRight": 15,
-                "paddingTop": 10,
-              }
-            }
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              note={true}
-              style={
+              Array [
                 Object {
-                  "alignSelf": null,
+                  "alignSelf": "center",
                   "color": "#808080",
                   "fontFamily": "System",
-                  "fontSize": 12,
+                  "fontSize": 14,
                   "fontWeight": "200",
-                }
-              }
-              uppercase={false}
-            >
-              0
-            </Text>
-          </View>
+                },
+                Object {
+                  "fontSize": 13,
+                },
+              ]
+            }
+            uppercase={false}
+          >
+            13:47pm
+          </Text>
         </View>
       </View>
       <View
@@ -722,57 +648,42 @@ exports[`main screen tests renders view correctly with defaults 1`] = `
         style={null}
       >
         <View
-          avatar={true}
           style={
             Object {
               "alignItems": "center",
               "backgroundColor": "transparent",
-              "borderBottomWidth": null,
+              "borderBottomWidth": 0.5,
               "borderColor": "#c9c9c9",
               "flexDirection": "row",
               "marginLeft": 16,
-              "paddingBottom": null,
-              "paddingRight": null,
-              "paddingTop": null,
+              "paddingBottom": 13,
+              "paddingRight": 16,
+              "paddingTop": 13,
             }
           }
         >
-          <View
-            style={
+          <Image
+            size={80}
+            source={
               Object {
-                "alignItems": "flex-start",
-                "alignSelf": "center",
-                "flex": 0,
-                "flexDirection": "row",
+                "testUri": "../../../static/default-pic.png",
               }
             }
-          >
-            <Image
-              source={
-                Object {
-                  "testUri": "../../../static/default-pic.png",
-                }
+            square={true}
+            style={
+              Object {
+                "borderRadius": 0,
+                "height": 56,
+                "width": 56,
               }
-              style={
-                Object {
-                  "borderRadius": 28,
-                  "height": 56,
-                  "width": 56,
-                }
-              }
-            />
-          </View>
+            }
+          />
           <View
             style={
               Object {
                 "alignItems": null,
                 "alignSelf": null,
-                "borderBottomWidth": 0.5,
-                "borderColor": "#c9c9c9",
                 "flex": 1,
-                "marginLeft": 15,
-                "paddingBottom": 10,
-                "paddingTop": 10,
               }
             }
           >
@@ -780,12 +691,13 @@ exports[`main screen tests renders view correctly with defaults 1`] = `
               accessible={true}
               allowFontScaling={true}
               ellipsizeMode="tail"
+              numberOfLines={1}
               style={
                 Object {
                   "color": "#000",
                   "fontFamily": "System",
                   "fontSize": 16,
-                  "marginLeft": null,
+                  "marginLeft": 10,
                   "marginRight": 10,
                 }
               }
@@ -798,55 +710,45 @@ exports[`main screen tests renders view correctly with defaults 1`] = `
               allowFontScaling={true}
               ellipsizeMode="tail"
               note={true}
+              numberOfLines={1}
               style={
                 Object {
                   "color": "#808080",
                   "fontFamily": "System",
                   "fontSize": 14,
                   "fontWeight": "200",
-                  "marginLeft": null,
+                  "marginLeft": 10,
                   "marginRight": 10,
                 }
               }
               uppercase={false}
             >
-              Doing what you like will always keep you happy..
+              Doing what you like when you like
             </Text>
           </View>
-          <View
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            note={true}
             style={
-              Object {
-                "alignItems": "flex-end",
-                "alignSelf": "stretch",
-                "borderBottomWidth": 0.5,
-                "borderColor": "#c9c9c9",
-                "flex": 0,
-                "paddingBottom": 10,
-                "paddingLeft": null,
-                "paddingRight": 15,
-                "paddingTop": 10,
-              }
-            }
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              note={true}
-              style={
+              Array [
                 Object {
-                  "alignSelf": null,
+                  "alignSelf": "center",
                   "color": "#808080",
                   "fontFamily": "System",
-                  "fontSize": 12,
+                  "fontSize": 14,
                   "fontWeight": "200",
-                }
-              }
-              uppercase={false}
-            >
-              2
-            </Text>
-          </View>
+                },
+                Object {
+                  "fontSize": 13,
+                },
+              ]
+            }
+            uppercase={false}
+          >
+            17/06/2017
+          </Text>
         </View>
       </View>
     </View>

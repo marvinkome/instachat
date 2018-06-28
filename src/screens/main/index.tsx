@@ -4,8 +4,6 @@ import View from './view';
 
 export default class Main extends React.Component {
     render() {
-        return (
-            <ScreenWrapper render={() => <View />} screenHeader="Main Page" />
-        );
+        return <ScreenWrapper render={() => <View />} screenHeader="Chats" />;
     }
 }

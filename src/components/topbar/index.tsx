@@ -11,7 +11,7 @@ export default class Topbar extends React.Component<Props> {
             <Header>
                 <Left>
                     <Button transparent>
-                        <Icon name="arrow-back" />
+                        <Icon name="menu" />
                     </Button>
                 </Left>
                 <Body>
