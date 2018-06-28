@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Lists tests renders correctly with defaults 1`] = `
+<View
+  closeOnRowBeginSwipe={false}
+  closeOnRowPress={true}
+  closeOnScroll={true}
+  directionalDistanceChangeThreshold={2}
+  disableLeftSwipe={false}
+  disableRightSwipe={false}
+  leftOpenValue={0}
+  previewFirstRow={false}
+  recalculateHiddenLayout={false}
+  rightOpenValue={0}
+  style={Object {}}
+  swipeToOpenPercent={50}
+/>
+`;
