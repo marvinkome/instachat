@@ -507,251 +507,335 @@ exports[`main screen tests renders view correctly with defaults 1`] = `
   viewIsInsideTabBar={false}
 >
   <View>
-    <View
+    <RCTScrollView
       closeOnRowBeginSwipe={false}
       closeOnRowPress={true}
       closeOnScroll={true}
+      dataArray={
+        Array [
+          <React.Fragment>
+            <Styled(Thumbnail)
+              size={80}
+              source={
+                Object {
+                  "testUri": "../../../static/default-pic.png",
+                }
+              }
+              square={true}
+            />
+            <Styled(Body)>
+              <Styled(Text)
+                numberOfLines={1}
+              >
+                James Bond
+              </Styled(Text)>
+              <Styled(Text)
+                note={true}
+                numberOfLines={1}
+              >
+                Doing what you like..
+              </Styled(Text)>
+            </Styled(Body)>
+            <Styled(Text)
+              note={true}
+              style={
+                Object {
+                  "fontSize": 13,
+                }
+              }
+            >
+              13:47pm
+            </Styled(Text)>
+          </React.Fragment>,
+          <React.Fragment>
+            <Styled(Thumbnail)
+              size={80}
+              source={
+                Object {
+                  "testUri": "../../../static/default-pic.png",
+                }
+              }
+              square={true}
+            />
+            <Styled(Body)>
+              <Styled(Text)
+                numberOfLines={1}
+              >
+                James Cameroon
+              </Styled(Text)>
+              <Styled(Text)
+                note={true}
+                numberOfLines={1}
+              >
+                Doing what you like when you like
+              </Styled(Text)>
+            </Styled(Body)>
+            <Styled(Text)
+              note={true}
+              style={
+                Object {
+                  "fontSize": 13,
+                }
+              }
+            >
+              17/06/2017
+            </Styled(Text)>
+          </React.Fragment>,
+        ]
+      }
+      dataSource={
+        ListViewDataSource {
+          "items": 2,
+        }
+      }
       directionalDistanceChangeThreshold={2}
       disableLeftSwipe={false}
       disableRightSwipe={false}
+      enableEmptySections={true}
       leftOpenValue={0}
       previewFirstRow={false}
       recalculateHiddenLayout={false}
+      renderRow={[Function]}
+      renderScrollComponent={[Function]}
       rightOpenValue={0}
       style={Object {}}
       swipeToOpenPercent={50}
     >
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={null}
-      >
+      <View>
         <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "transparent",
-              "borderBottomWidth": 0.5,
-              "borderColor": "#c9c9c9",
-              "flexDirection": "row",
-              "marginLeft": 16,
-              "paddingBottom": 13,
-              "paddingRight": 16,
-              "paddingTop": 13,
-            }
-          }
+          accessible={true}
+          isTVSelectable={true}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={null}
         >
-          <Image
-            size={80}
-            source={
-              Object {
-                "testUri": "../../../static/default-pic.png",
-              }
-            }
-            square={true}
-            style={
-              Object {
-                "borderRadius": 0,
-                "height": 56,
-                "width": 56,
-              }
-            }
-          />
           <View
+            onPress={[Function]}
             style={
               Object {
-                "alignItems": null,
-                "alignSelf": null,
-                "flex": 1,
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "borderBottomWidth": 0.5,
+                "borderColor": "#c9c9c9",
+                "flexDirection": "row",
+                "marginLeft": 16,
+                "paddingBottom": 13,
+                "paddingRight": 16,
+                "paddingTop": 13,
               }
             }
           >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              numberOfLines={1}
-              style={
+            <Image
+              size={80}
+              source={
                 Object {
-                  "color": "#000",
-                  "fontFamily": "System",
-                  "fontSize": 16,
-                  "marginLeft": 10,
-                  "marginRight": 10,
+                  "testUri": "../../../static/default-pic.png",
                 }
               }
-              uppercase={false}
+              square={true}
+              style={
+                Object {
+                  "borderRadius": 0,
+                  "height": 56,
+                  "width": 56,
+                }
+              }
+            />
+            <View
+              style={
+                Object {
+                  "alignItems": null,
+                  "alignSelf": null,
+                  "flex": 1,
+                }
+              }
             >
-              James Bond
-            </Text>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                numberOfLines={1}
+                style={
+                  Object {
+                    "color": "#000",
+                    "fontFamily": "System",
+                    "fontSize": 16,
+                    "marginLeft": 10,
+                    "marginRight": 10,
+                  }
+                }
+                uppercase={false}
+              >
+                James Bond
+              </Text>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                note={true}
+                numberOfLines={1}
+                style={
+                  Object {
+                    "color": "#808080",
+                    "fontFamily": "System",
+                    "fontSize": 14,
+                    "fontWeight": "200",
+                    "marginLeft": 10,
+                    "marginRight": 10,
+                  }
+                }
+                uppercase={false}
+              >
+                Doing what you like..
+              </Text>
+            </View>
             <Text
               accessible={true}
               allowFontScaling={true}
               ellipsizeMode="tail"
               note={true}
-              numberOfLines={1}
               style={
-                Object {
-                  "color": "#808080",
-                  "fontFamily": "System",
-                  "fontSize": 14,
-                  "fontWeight": "200",
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                }
+                Array [
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#808080",
+                    "fontFamily": "System",
+                    "fontSize": 14,
+                    "fontWeight": "200",
+                  },
+                  Object {
+                    "fontSize": 13,
+                  },
+                ]
               }
               uppercase={false}
             >
-              Doing what you like..
+              13:47pm
             </Text>
           </View>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            note={true}
-            style={
-              Array [
-                Object {
-                  "alignSelf": "center",
-                  "color": "#808080",
-                  "fontFamily": "System",
-                  "fontSize": 14,
-                  "fontWeight": "200",
-                },
-                Object {
-                  "fontSize": 13,
-                },
-              ]
-            }
-            uppercase={false}
-          >
-            13:47pm
-          </Text>
         </View>
-      </View>
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={null}
-      >
         <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "transparent",
-              "borderBottomWidth": 0.5,
-              "borderColor": "#c9c9c9",
-              "flexDirection": "row",
-              "marginLeft": 16,
-              "paddingBottom": 13,
-              "paddingRight": 16,
-              "paddingTop": 13,
-            }
-          }
+          accessible={true}
+          isTVSelectable={true}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={null}
         >
-          <Image
-            size={80}
-            source={
-              Object {
-                "testUri": "../../../static/default-pic.png",
-              }
-            }
-            square={true}
-            style={
-              Object {
-                "borderRadius": 0,
-                "height": 56,
-                "width": 56,
-              }
-            }
-          />
           <View
+            onPress={[Function]}
             style={
               Object {
-                "alignItems": null,
-                "alignSelf": null,
-                "flex": 1,
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "borderBottomWidth": 0.5,
+                "borderColor": "#c9c9c9",
+                "flexDirection": "row",
+                "marginLeft": 16,
+                "paddingBottom": 13,
+                "paddingRight": 16,
+                "paddingTop": 13,
               }
             }
           >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              numberOfLines={1}
-              style={
+            <Image
+              size={80}
+              source={
                 Object {
-                  "color": "#000",
-                  "fontFamily": "System",
-                  "fontSize": 16,
-                  "marginLeft": 10,
-                  "marginRight": 10,
+                  "testUri": "../../../static/default-pic.png",
                 }
               }
-              uppercase={false}
+              square={true}
+              style={
+                Object {
+                  "borderRadius": 0,
+                  "height": 56,
+                  "width": 56,
+                }
+              }
+            />
+            <View
+              style={
+                Object {
+                  "alignItems": null,
+                  "alignSelf": null,
+                  "flex": 1,
+                }
+              }
             >
-              James Cameroon
-            </Text>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                numberOfLines={1}
+                style={
+                  Object {
+                    "color": "#000",
+                    "fontFamily": "System",
+                    "fontSize": 16,
+                    "marginLeft": 10,
+                    "marginRight": 10,
+                  }
+                }
+                uppercase={false}
+              >
+                James Cameroon
+              </Text>
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                note={true}
+                numberOfLines={1}
+                style={
+                  Object {
+                    "color": "#808080",
+                    "fontFamily": "System",
+                    "fontSize": 14,
+                    "fontWeight": "200",
+                    "marginLeft": 10,
+                    "marginRight": 10,
+                  }
+                }
+                uppercase={false}
+              >
+                Doing what you like when you like
+              </Text>
+            </View>
             <Text
               accessible={true}
               allowFontScaling={true}
               ellipsizeMode="tail"
               note={true}
-              numberOfLines={1}
               style={
-                Object {
-                  "color": "#808080",
-                  "fontFamily": "System",
-                  "fontSize": 14,
-                  "fontWeight": "200",
-                  "marginLeft": 10,
-                  "marginRight": 10,
-                }
+                Array [
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#808080",
+                    "fontFamily": "System",
+                    "fontSize": 14,
+                    "fontWeight": "200",
+                  },
+                  Object {
+                    "fontSize": 13,
+                  },
+                ]
               }
               uppercase={false}
             >
-              Doing what you like when you like
+              17/06/2017
             </Text>
           </View>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            ellipsizeMode="tail"
-            note={true}
-            style={
-              Array [
-                Object {
-                  "alignSelf": "center",
-                  "color": "#808080",
-                  "fontFamily": "System",
-                  "fontSize": 14,
-                  "fontWeight": "200",
-                },
-                Object {
-                  "fontSize": 13,
-                },
-              ]
-            }
-            uppercase={false}
-          >
-            17/06/2017
-          </Text>
         </View>
       </View>
-    </View>
+    </RCTScrollView>
   </View>
 </RCTScrollView>
 `;

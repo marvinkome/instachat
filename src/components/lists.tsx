@@ -10,13 +10,13 @@ type Props = {
 export default class Lists extends React.Component<Props> {
     render() {
         return (
-            <List {...this.props.listProps}>
-                {this.props.renderItems.map((element, index) => (
-                    <ListItem key={index} {...this.props.listItemProps}>
-                        {element}
-                    </ListItem>
-                ))}
-            </List>
+            <List
+                {...this.props.listProps}
+                dataArray={this.props.renderItems}
+                renderRow={(element) => (
+                    <ListItem {...this.props.listItemProps}>{element}</ListItem>
+                )}
+            />
         );
     }
 }

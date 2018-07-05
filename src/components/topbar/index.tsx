@@ -1,23 +1,28 @@
 import * as React from 'react';
-import { Header, Left, Body, Right, Title, Icon, Button } from 'native-base';
+import { Header, Left, Body, Right, Icon, Button } from 'native-base';
 
 type Props = {
-    headerText: string;
+    renderBody: JSX.Element;
+    renderLeftIcon?: JSX.Element;
+    renderRightIcon?: JSX.Element;
+    showLeftIcon?: boolean;
 };
 
 export default class Topbar extends React.Component<Props> {
     render() {
         return (
             <Header>
-                <Left>
-                    <Button transparent>
-                        <Icon name="menu" />
-                    </Button>
-                </Left>
-                <Body>
-                    <Title>{this.props.headerText}</Title>
-                </Body>
-                <Right />
+                {this.props.showLeftIcon && (
+                    <Left>
+                        {this.props.renderLeftIcon || (
+                            <Button transparent>
+                                <Icon name="menu" />
+                            </Button>
+                        )}
+                    </Left>
+                )}
+                <Body>{this.props.renderBody}</Body>
+                <Right>{this.props.renderRightIcon}</Right>
             </Header>
         );
     }

@@ -1,19 +1,19 @@
 import * as React from 'react';
 import Topbar from './topbar';
-import { Container } from 'native-base';
+import { Title, Icon, Button } from 'native-base';
 
-type Prop = {
-    render: () => JSX.Element;
-    screenHeader: string;
-};
-
-export default class screenWrapper extends React.Component<Prop, {}> {
-    render() {
+export const navOptions = ({ navigation }: any) => ({
+    header: (props: any) => {
         return (
-            <Container>
-                <Topbar headerText={this.props.screenHeader} />
-                {this.props.render()}
-            </Container>
+            <Topbar
+                renderBody={<Title>{navigation.state.routeName}</Title>}
+                renderLeftIcon={
+                    <Button transparent onPress={() => navigation.goBack()}>
+                        <Icon name="arrow-back" />
+                    </Button>
+                }
+                showLeftIcon={props.navigation.state.routes.length > 1}
+            />
         );
     }
-}
+});
