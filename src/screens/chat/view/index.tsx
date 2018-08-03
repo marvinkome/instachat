@@ -7,7 +7,12 @@ const ChatView = () => {
     const listItems = [
         {
             name: 'James Bond',
-            text: 'Doing what you like..',
+            text:
+                'Lorem ipsum dolor sit amet consectetur,\
+                adipisicing elit. Facere, ad minima voluptas \
+                temporibus voluptatem sequi autem expedita obcaecati \
+                voluptates, mollitia nemo doloribus quae laboriosam \
+                dolores eos fuga quam accusantium esse.',
             time: '27/06/2018'
         },
         {
@@ -29,7 +34,7 @@ const ChatView = () => {
 
     return (
         <React.Fragment>
-            <Content>
+            <Content style={{ backgroundColor: '#9a9a9a' }}>
                 {listItems.map((item, index) => (
                     <ChatCard item={item} key={index} />
                 ))}

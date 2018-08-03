@@ -21,7 +21,7 @@ export const ChatCard = ({ item }: Props) => {
 
     return (
         <Card style={[styles.card, cardStyle]} transparent>
-            <CardItem style={styles.cardItemHeader} header bordered>
+            <CardItem style={styles.cardItemHeader} header>
                 <Text numberOfLines={1}>{item.name}</Text>
             </CardItem>
             <CardItem style={styles.cardItemBody}>
@@ -29,7 +29,7 @@ export const ChatCard = ({ item }: Props) => {
                     <Text>{item.text}</Text>
                 </Body>
             </CardItem>
-            <CardItem style={styles.cardItemTime} footer bordered>
+            <CardItem style={styles.cardItemTime} footer>
                 <Text style={styles.time}>{item.time}</Text>
             </CardItem>
         </Card>

@@ -46,7 +46,7 @@ export const chatFormStyles = StyleSheet.create({
         backgroundColor: 'white'
     },
     footer: {
-        backgroundColor: 'transparent',
+        backgroundColor: '#9a9a9a',
         height: 65
     },
     button: {
