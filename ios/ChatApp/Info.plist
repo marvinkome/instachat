@@ -70,6 +70,10 @@
 		<string>FontAwesome5_Brands.ttf</string>
 		<string>FontAwesome5_Regular.ttf</string>
 		<string>FontAwesome5_Solid.ttf</string>
+		<string>Karla_Bold.ttf</string>
+		<string>Karla_BoldItalic.ttf</string>
+		<string>Karla_Italic.ttf</string>
+		<string>Karla_Regular.ttf</string>
 	</array>
 </dict>
 </plist>

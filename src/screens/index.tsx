@@ -1,26 +1,35 @@
-// import * as React from 'react';
 import {
     createMaterialTopTabNavigator,
-    createStackNavigator,
-    createDrawerNavigator
+    createStackNavigator
 } from 'react-navigation';
 
-import AllChats from './main';
-import Chats from './chat';
-// import Login from './login';
+import { stackStyles, tabStyles } from '../styles';
+import { Chats } from './home/chats';
+import { Groups } from './home/groups';
 
-// Home tab and drawer navigation
-const HomeTabNavigator = createMaterialTopTabNavigator({
-    HomeChats: AllChats,
-    HomeGroups: Chats
-});
-
-const HomeDrawerNavigator = createDrawerNavigator({
-    Profile: HomeTabNavigator
-});
+const HomeTabNavigator = createMaterialTopTabNavigator(
+    {
+        HomeChats: Chats,
+        HomeGroups: Groups
+    },
+    {
+        tabBarOptions: {
+            style: tabStyles.background,
+            labelStyle: tabStyles.label
+        }
+    }
+);
 
 const RootStackNavigator = createStackNavigator({
-    Home: HomeDrawerNavigator
+    Home: {
+        screen: HomeTabNavigator,
+        navigationOptions: {
+            title: 'Messages'.toUpperCase(),
+            headerStyle: stackStyles.header,
+            headerTitleStyle: stackStyles.title
+        }
+    },
+    Chats
 });
 
 export default RootStackNavigator;
