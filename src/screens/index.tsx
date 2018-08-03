@@ -5,18 +5,24 @@ import {
 
 import { stackStyles, tabStyles } from '../styles';
 import { Chats } from './home/chats';
-import { Groups } from './home/groups';
+import { Contacts } from './home/contacts';
+import { Profile } from './home/profile';
 
 const HomeTabNavigator = createMaterialTopTabNavigator(
     {
-        HomeChats: Chats,
-        HomeGroups: Groups
+        Contacts,
+        Chats,
+        Profile
     },
     {
         tabBarOptions: {
             style: tabStyles.background,
-            labelStyle: tabStyles.label
-        }
+            labelStyle: tabStyles.label,
+            indicatorStyle: tabStyles.indicator,
+            activeTintColor: '#42ED86',
+            inactiveTintColor: 'hsl(0, 0%, 25%)'
+        },
+        initialRouteName: 'Chats'
     }
 );
 

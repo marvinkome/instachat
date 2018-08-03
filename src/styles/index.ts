@@ -7,7 +7,7 @@ export const stackStyles = StyleSheet.create({
     title: {
         flex: 1,
         textAlign: 'center',
-        color: 'hsl(0, 0%, 25%)',
+        color: 'hsl(0, 0%, 20%)',
         fontSize: 19,
         fontWeight: 'normal',
         fontFamily: 'Karla'
@@ -18,7 +18,11 @@ export const tabStyles = StyleSheet.create({
     background: {
         backgroundColor: '#fff'
     },
+    indicator: {
+        backgroundColor: '#42ED86'
+    },
     label: {
-        color: '#0f0'
+        fontFamily: 'Karla',
+        fontSize: 16
     }
 });

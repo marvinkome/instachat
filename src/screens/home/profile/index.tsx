@@ -2,15 +2,15 @@ import * as React from 'react';
 import { NavigationTabScreenOptions } from 'react-navigation';
 import { View, Text } from 'react-native';
 
-export class Chats extends React.Component {
+export class Profile extends React.Component {
     static navigationOptions: NavigationTabScreenOptions = {
-        tabBarLabel: 'Chats'
+        tabBarLabel: 'Profile'
     };
 
     render() {
         return (
             <View>
-                <Text>Hello Chatsqg</Text>
+                <Text>Hello profle</Text>
             </View>
         );
     }
