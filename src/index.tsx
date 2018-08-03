@@ -1,13 +1,14 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
-// import Screens from './screens';
+import { YellowBox } from 'react-native';
+import Screen from './screens';
+
+YellowBox.ignoreWarnings([
+    'Warning: isMounted(...) is deprecated',
+    'Module RCTImageLoader'
+]);
 
 export default class App extends React.Component {
     render() {
-        return (
-            <View>
-                <Text>Hello World</Text>
-            </View>
-        );
+        return <Screen />;
     }
 }

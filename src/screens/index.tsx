@@ -1,26 +1,26 @@
-import * as React from 'react';
-import { createStackNavigator } from 'react-navigation';
+// import * as React from 'react';
+import {
+    createMaterialTopTabNavigator,
+    createStackNavigator,
+    createDrawerNavigator
+} from 'react-navigation';
 
 import AllChats from './main';
 import Chats from './chat';
-import Login from './login';
-import { Container } from 'native-base';
+// import Login from './login';
 
-const Navigator = createStackNavigator(
-    {
-        Home: AllChats,
-        Chat: Chats,
-        Login: Login
-    },
-    {
-        cardStyle: { backgroundColor: '#fafafa' }
-    }
-);
+// Home tab and drawer navigation
+const HomeTabNavigator = createMaterialTopTabNavigator({
+    HomeChats: AllChats,
+    HomeGroups: Chats
+});
 
-const Screens = () => (
-    <Container>
-        <Navigator />
-    </Container>
-);
+const HomeDrawerNavigator = createDrawerNavigator({
+    Profile: HomeTabNavigator
+});
 
-export default Screens;
+const RootStackNavigator = createStackNavigator({
+    Home: HomeDrawerNavigator
+});
+
+export default RootStackNavigator;
