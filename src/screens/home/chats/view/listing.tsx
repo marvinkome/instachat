@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
-import { ListItem, Badge, Avatar } from 'react-native-elements';
-import { ViewStyles as styles } from './styles';
+import List from '../../../../components/listing';
 import color from '../../../../lib/colors';
 
 type Props = {
@@ -13,34 +11,20 @@ type Props = {
         timestamp: string;
     };
 };
-const MainListItem = ({ listItem: item, typing }: Props) => {
-    const subtitleStyle = typing
-        ? [{ color: color.primary }, styles.message]
-        : styles.message;
 
+const Listing = ({ listItem, typing }: Props) => {
+    const subtitleStyle = typing ? { color: color.primary } : {};
     return (
-        <ListItem
-            containerStyle={styles.listItemContainer}
-            avatar={<Avatar small rounded source={item.image} />}
-            title={item.name}
-            titleStyle={styles.name}
-            subtitle={typing ? 'typing...' : item.text}
+        <List
+            avatar={listItem.image}
+            title={listItem.name}
+            subtitle={typing ? 'typing...' : listItem.text}
             subtitleStyle={subtitleStyle}
-            hideChevron
-            badge={{
-                element: (
-                    <View style={styles.rightContainer}>
-                        <Text style={styles.time}>{item.timestamp}</Text>
-                        <Badge
-                            value={3}
-                            containerStyle={styles.badgeContainer}
-                            textStyle={styles.badgeText}
-                        />
-                    </View>
-                )
-            }}
+            badgeText={listItem.timestamp}
+            badgeValue={3}
+            showBadge
         />
     );
 };
 
-export default MainListItem;
+export default Listing;

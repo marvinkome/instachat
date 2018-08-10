@@ -1,57 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Chat/> listing tab <ListItem/> shows the number of unread messages 1`] = `
-<Component
-  style={
-    Object {
-      "paddingLeft": 15,
-    }
-  }
->
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
-    style={
-      Object {
-        "alignSelf": "flex-end",
-        "color": "hsl(0, 0%, 45%)",
-        "fontFamily": "Karla",
-        "fontSize": 13,
-        "marginRight": 10,
-        "paddingBottom": 4,
-      }
-    }
-  >
-    12:47 AM
-  </Text>
-  <Badge
-    containerStyle={
-      Object {
-        "alignSelf": "flex-end",
-        "backgroundColor": "#42ED86",
-        "marginRight": 15,
-        "padding": 7,
-      }
-    }
-    textStyle={
-      Object {
-        "alignSelf": "center",
-        "color": "#fff",
-        "fontFamily": "Karla",
-        "fontSize": 13,
-      }
-    }
-    value={3}
-  />
-</Component>
-`;
-
-exports[`<Chat/> listing tab renders correctly 1`] = `
+exports[`<Contacts/> listing tab renders correctly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Chats />,
+  Symbol(enzyme.__unrendered__): <Contacts />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -63,26 +16,7 @@ ShallowWrapper {
     "instance": null,
     "key": undefined,
     "nodeType": "class",
-    "props": Object {
-      "lists": Array [
-        Object {
-          "image": Object {
-            "testUri": "../../../static/pp.jpg",
-          },
-          "name": "Larry John",
-          "text": "You should be here by now, whats up?",
-          "timestamp": "12:47 AM",
-        },
-        Object {
-          "image": Object {
-            "testUri": "../../../static/yuna.jpg",
-          },
-          "name": "Jane Doe",
-          "text": "Ive been trying to reach you all day                        and youre not picking up, is everything all right?",
-          "timestamp": "Yesterday",
-        },
-      ],
-    },
+    "props": Object {},
     "ref": null,
     "rendered": null,
     "type": [Function],
@@ -92,26 +26,7 @@ ShallowWrapper {
       "instance": null,
       "key": undefined,
       "nodeType": "class",
-      "props": Object {
-        "lists": Array [
-          Object {
-            "image": Object {
-              "testUri": "../../../static/pp.jpg",
-            },
-            "name": "Larry John",
-            "text": "You should be here by now, whats up?",
-            "timestamp": "12:47 AM",
-          },
-          Object {
-            "image": Object {
-              "testUri": "../../../static/yuna.jpg",
-            },
-            "name": "Jane Doe",
-            "text": "Ive been trying to reach you all day                        and youre not picking up, is everything all right?",
-            "timestamp": "Yesterday",
-          },
-        ],
-      },
+      "props": Object {},
       "ref": null,
       "rendered": null,
       "type": [Function],
@@ -127,24 +42,13 @@ ShallowWrapper {
 }
 `;
 
-exports[`<Chat/> listing tab should list all chats 1`] = `
+exports[`<Contacts/> listing tab should list all chats 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): ShallowWrapper {
     "length": 1,
     Symbol(enzyme.__root__): [Circular],
-    Symbol(enzyme.__unrendered__): <MainView
-      lists={
-        Array [
-          Object {
-            "image": "",
-            "name": "Larry John",
-            "text": "I am mocked :)",
-            "timestamp": "12:47 AM",
-          },
-        ]
-      }
-    />,
+    Symbol(enzyme.__unrendered__): <ScreenView />,
     Symbol(enzyme.__renderer__): Object {
       "batchedUpdates": [Function],
       "getNode": [Function],
@@ -168,13 +72,24 @@ ShallowWrapper {
           <Listing
             listItem={
               Object {
-                "image": "",
+                "about": "Just a cool guy",
+                "image": Object {
+                  "testUri": "../../../static/pp.jpg",
+                },
                 "name": "Larry John",
-                "text": "I am mocked :)",
-                "timestamp": "12:47 AM",
               }
             }
-            typing={false}
+          />
+          <Listing
+            listItem={
+              Object {
+                "about": "Currently coding",
+                "image": Object {
+                  "testUri": "../../../static/yuna.jpg",
+                },
+                "name": "Jane Doe",
+              }
+            }
           />
         </List>,
         "style": Object {
@@ -192,13 +107,24 @@ ShallowWrapper {
             <Listing
               listItem={
                 Object {
-                  "image": "",
+                  "about": "Just a cool guy",
+                  "image": Object {
+                    "testUri": "../../../static/pp.jpg",
+                  },
                   "name": "Larry John",
-                  "text": "I am mocked :)",
-                  "timestamp": "12:47 AM",
                 }
               }
-              typing={false}
+            />,
+            <Listing
+              listItem={
+                Object {
+                  "about": "Currently coding",
+                  "image": Object {
+                    "testUri": "../../../static/yuna.jpg",
+                  },
+                  "name": "Jane Doe",
+                }
+              }
             />,
           ],
           "containerStyle": Object {
@@ -214,12 +140,29 @@ ShallowWrapper {
             "nodeType": "function",
             "props": Object {
               "listItem": Object {
-                "image": "",
+                "about": "Just a cool guy",
+                "image": Object {
+                  "testUri": "../../../static/pp.jpg",
+                },
                 "name": "Larry John",
-                "text": "I am mocked :)",
-                "timestamp": "12:47 AM",
               },
-              "typing": false,
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "1",
+            "nodeType": "function",
+            "props": Object {
+              "listItem": Object {
+                "about": "Currently coding",
+                "image": Object {
+                  "testUri": "../../../static/yuna.jpg",
+                },
+                "name": "Jane Doe",
+              },
             },
             "ref": null,
             "rendered": null,
@@ -247,13 +190,24 @@ ShallowWrapper {
             <Listing
               listItem={
                 Object {
-                  "image": "",
+                  "about": "Just a cool guy",
+                  "image": Object {
+                    "testUri": "../../../static/pp.jpg",
+                  },
                   "name": "Larry John",
-                  "text": "I am mocked :)",
-                  "timestamp": "12:47 AM",
                 }
               }
-              typing={false}
+            />
+            <Listing
+              listItem={
+                Object {
+                  "about": "Currently coding",
+                  "image": Object {
+                    "testUri": "../../../static/yuna.jpg",
+                  },
+                  "name": "Jane Doe",
+                }
+              }
             />
           </List>,
           "style": Object {
@@ -271,13 +225,24 @@ ShallowWrapper {
               <Listing
                 listItem={
                   Object {
-                    "image": "",
+                    "about": "Just a cool guy",
+                    "image": Object {
+                      "testUri": "../../../static/pp.jpg",
+                    },
                     "name": "Larry John",
-                    "text": "I am mocked :)",
-                    "timestamp": "12:47 AM",
                   }
                 }
-                typing={false}
+              />,
+              <Listing
+                listItem={
+                  Object {
+                    "about": "Currently coding",
+                    "image": Object {
+                      "testUri": "../../../static/yuna.jpg",
+                    },
+                    "name": "Jane Doe",
+                  }
+                }
               />,
             ],
             "containerStyle": Object {
@@ -293,12 +258,29 @@ ShallowWrapper {
               "nodeType": "function",
               "props": Object {
                 "listItem": Object {
-                  "image": "",
+                  "about": "Just a cool guy",
+                  "image": Object {
+                    "testUri": "../../../static/pp.jpg",
+                  },
                   "name": "Larry John",
-                  "text": "I am mocked :)",
-                  "timestamp": "12:47 AM",
                 },
-                "typing": false,
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "1",
+              "nodeType": "function",
+              "props": Object {
+                "listItem": Object {
+                  "about": "Currently coding",
+                  "image": Object {
+                    "testUri": "../../../static/yuna.jpg",
+                  },
+                  "name": "Jane Doe",
+                },
               },
               "ref": null,
               "rendered": null,
@@ -335,13 +317,24 @@ ShallowWrapper {
         <Listing
           listItem={
             Object {
-              "image": "",
+              "about": "Just a cool guy",
+              "image": Object {
+                "testUri": "../../../static/pp.jpg",
+              },
               "name": "Larry John",
-              "text": "I am mocked :)",
-              "timestamp": "12:47 AM",
             }
           }
-          typing={false}
+        />,
+        <Listing
+          listItem={
+            Object {
+              "about": "Currently coding",
+              "image": Object {
+                "testUri": "../../../static/yuna.jpg",
+              },
+              "name": "Jane Doe",
+            }
+          }
         />,
       ],
       "containerStyle": Object {
@@ -357,12 +350,29 @@ ShallowWrapper {
         "nodeType": "function",
         "props": Object {
           "listItem": Object {
-            "image": "",
+            "about": "Just a cool guy",
+            "image": Object {
+              "testUri": "../../../static/pp.jpg",
+            },
             "name": "Larry John",
-            "text": "I am mocked :)",
-            "timestamp": "12:47 AM",
           },
-          "typing": false,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": "1",
+        "nodeType": "function",
+        "props": Object {
+          "listItem": Object {
+            "about": "Currently coding",
+            "image": Object {
+              "testUri": "../../../static/yuna.jpg",
+            },
+            "name": "Jane Doe",
+          },
         },
         "ref": null,
         "rendered": null,
@@ -381,13 +391,24 @@ ShallowWrapper {
           <Listing
             listItem={
               Object {
-                "image": "",
+                "about": "Just a cool guy",
+                "image": Object {
+                  "testUri": "../../../static/pp.jpg",
+                },
                 "name": "Larry John",
-                "text": "I am mocked :)",
-                "timestamp": "12:47 AM",
               }
             }
-            typing={false}
+          />,
+          <Listing
+            listItem={
+              Object {
+                "about": "Currently coding",
+                "image": Object {
+                  "testUri": "../../../static/yuna.jpg",
+                },
+                "name": "Jane Doe",
+              }
+            }
           />,
         ],
         "containerStyle": Object {
@@ -403,12 +424,29 @@ ShallowWrapper {
           "nodeType": "function",
           "props": Object {
             "listItem": Object {
-              "image": "",
+              "about": "Just a cool guy",
+              "image": Object {
+                "testUri": "../../../static/pp.jpg",
+              },
               "name": "Larry John",
-              "text": "I am mocked :)",
-              "timestamp": "12:47 AM",
             },
-            "typing": false,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": "1",
+          "nodeType": "function",
+          "props": Object {
+            "listItem": Object {
+              "about": "Currently coding",
+              "image": Object {
+                "testUri": "../../../static/yuna.jpg",
+              },
+              "name": "Jane Doe",
+            },
           },
           "ref": null,
           "rendered": null,

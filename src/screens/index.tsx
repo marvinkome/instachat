@@ -23,7 +23,7 @@ const HomeTabNavigator = createMaterialTopTabNavigator(
             activeTintColor: color.primary,
             inactiveTintColor: color.text_title
         },
-        initialRouteName: 'Chats'
+        initialRouteName: 'Contacts'
     }
 );
 
@@ -31,7 +31,7 @@ const RootStackNavigator = createStackNavigator({
     Home: {
         screen: HomeTabNavigator,
         navigationOptions: {
-            title: 'Messages'.toUpperCase(),
+            title: 'Chat App'.toUpperCase(),
             headerStyle: stackStyles.header,
             headerTitleStyle: stackStyles.title
         }

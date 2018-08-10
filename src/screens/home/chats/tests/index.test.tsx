@@ -33,10 +33,10 @@ describe('<Chat/> listing tab', () => {
     describe('<ListItem/>', () => {
         // a list item should show the number of unread post
         it('shows the number of unread messages', () => {
-            const wrapper = shallow(<ListItem listItem={lists[0]} typing={false} />);
-            const badgeProp: { element: any } = wrapper
-                .find('ListItem')
-                .prop('badge');
+            const wrapper = shallow(
+                <ListItem listItem={lists[0]} typing={false} />
+            );
+            const badgeProp: { element: any } = wrapper.shallow().prop('badge');
 
             expect(badgeProp.element).toMatchSnapshot();
             expect(badgeProp.element.props.children[1].props.value).toBe(3);
@@ -44,8 +44,10 @@ describe('<Chat/> listing tab', () => {
 
         // when user is typing change the text
         it('should show typing message when some user is typing', () => {
-            const wrapper = shallow(<ListItem listItem={lists[0]} typing />);
-            const text = wrapper.find('ListItem').prop('subtitle');
+            const wrapper = shallow(
+                <ListItem listItem={lists[0]} typing={true} />
+            );
+            const text = wrapper.shallow().prop('subtitle');
 
             expect(text).toBe('typing...');
         });
