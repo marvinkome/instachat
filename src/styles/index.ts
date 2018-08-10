@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import color from '../lib/colors';
 
 export const stackStyles = StyleSheet.create({
     header: {
@@ -7,7 +8,7 @@ export const stackStyles = StyleSheet.create({
     title: {
         flex: 1,
         textAlign: 'center',
-        color: 'hsl(0, 0%, 20%)',
+        color: color.text_title,
         fontSize: 19,
         fontWeight: 'normal',
         fontFamily: 'Karla'
@@ -19,10 +20,9 @@ export const tabStyles = StyleSheet.create({
         backgroundColor: '#fff'
     },
     indicator: {
-        backgroundColor: '#42ED86'
+        backgroundColor: color.primary
     },
     label: {
-        fontFamily: 'Karla',
-        fontSize: 16
+        fontFamily: 'Karla'
     }
 });

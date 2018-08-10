@@ -3,6 +3,7 @@ import {
     createStackNavigator
 } from 'react-navigation';
 
+import color from '../lib/colors';
 import { stackStyles, tabStyles } from '../styles';
 import { Chats } from './home/chats';
 import { Contacts } from './home/contacts';
@@ -19,8 +20,8 @@ const HomeTabNavigator = createMaterialTopTabNavigator(
             style: tabStyles.background,
             labelStyle: tabStyles.label,
             indicatorStyle: tabStyles.indicator,
-            activeTintColor: '#42ED86',
-            inactiveTintColor: 'hsl(0, 0%, 25%)'
+            activeTintColor: color.primary,
+            inactiveTintColor: color.text_title
         },
         initialRouteName: 'Chats'
     }

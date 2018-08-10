@@ -74,6 +74,10 @@
 		<string>Karla_BoldItalic.ttf</string>
 		<string>Karla_Italic.ttf</string>
 		<string>Karla_Regular.ttf</string>
+		<string>Karla_bold_italic.ttf</string>
+		<string>Karla_bold.ttf</string>
+		<string>Karla_italic.ttf</string>
+		<string>Karla.ttf</string>
 	</array>
 </dict>
 </plist>
