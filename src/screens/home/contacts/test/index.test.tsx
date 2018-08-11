@@ -2,6 +2,7 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 import { Contacts } from '../index';
 import View from '../view';
+import Listing from '../view/listing';
 
 describe('<Contacts/> listing tab', () => {
     const lists = [
@@ -26,5 +27,11 @@ describe('<Contacts/> listing tab', () => {
 
         expect(list).toMatchSnapshot();
         expect(list.props().children).toHaveLength(2);
+    });
+
+    // listing snapshot
+    it('renders a contact', () => {
+        const wrapper = shallow(<Listing listItem={lists[0]} />);
+        expect(wrapper).toMatchSnapshot();
     });
 });

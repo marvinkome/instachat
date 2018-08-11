@@ -23,7 +23,7 @@ const HomeTabNavigator = createMaterialTopTabNavigator(
             activeTintColor: color.primary,
             inactiveTintColor: color.text_title
         },
-        initialRouteName: 'Contacts'
+        initialRouteName: 'Profile'
     }
 );
 

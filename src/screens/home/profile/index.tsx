@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NavigationTabScreenOptions } from 'react-navigation';
-import { View, Text } from 'react-native';
+import View from './view';
 
 export class Profile extends React.Component {
     static navigationOptions: NavigationTabScreenOptions = {
@@ -8,10 +8,6 @@ export class Profile extends React.Component {
     };
 
     render() {
-        return (
-            <View>
-                <Text>Hello profle</Text>
-            </View>
-        );
+        return <View />;
     }
 }
