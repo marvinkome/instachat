@@ -1,56 +1,137 @@
 import { StyleSheet } from 'react-native';
+import colors from '../../../lib/colors';
 
-export const chatCardStyles = StyleSheet.create({
-    card: {
-        alignSelf: 'flex-start',
-        maxWidth: '75%',
-        marginLeft: 7,
-        marginRight: 7
+export const viewStyles = StyleSheet.create({
+    container: {
+        backgroundColor: 'hsl(0, 0%, 96%)',
+        flex: 1
+    }
+});
+
+export const chatHeaderStyles = StyleSheet.create({
+    container: {
+        backgroundColor: '#fff'
     },
-    cardItemHeader: {
-        paddingTop: 4,
-        paddingBottom: 0,
-        paddingLeft: 10
+    icon: {
+        fontSize: 37,
+        color: colors.primary
     },
-    cardItemTime: {
-        paddingTop: 0,
-        paddingBottom: 4,
-        paddingLeft: 10,
-        alignItems: 'flex-end'
+    title: {
+        fontSize: 19,
+        fontFamily: 'Karla',
+        textAlign: 'center',
+        color: colors.text_title,
+        fontWeight: 'bold'
     },
-    cardItemBody: {
-        paddingLeft: 10,
-        alignSelf: 'flex-start'
+    subtitle: {
+        fontSize: 14,
+        fontFamily: 'Karla',
+        textAlign: 'center',
+        color: colors.text_light
+    }
+});
+
+export const chatBodyStyles = StyleSheet.create({
+    container: {
+        flex: 1,
+        padding: 16
+    },
+    chatContainer: {
+        marginBottom: 15,
+        width: '75%'
+    },
+    item: {
+        backgroundColor: colors.primary,
+        borderRadius: 10,
+        padding: 10
+    },
+    header: {
+        flexDirection: 'row',
+        marginBottom: 5
+    },
+    sender: {
+        color: '#fff',
+        marginRight: 7,
+        fontSize: 16,
+        fontWeight: '600'
     },
     time: {
-        textAlign: 'right'
+        color: '#fff',
+        fontSize: 12,
+        opacity: 0.8,
+        alignSelf: 'flex-end'
+    },
+    text: {
+        color: '#fff',
+        fontFamily: 'PT_Sans',
+        fontSize: 16,
+        letterSpacing: -0.25
+    },
+    newMsg: {
+        alignItems: 'center'
+    },
+    newMsgText: {
+        backgroundColor: colors.primary,
+        borderRadius: 10,
+        margin: 15,
+        marginTop: 0,
+        padding: 7,
+        color: '#fff',
+        fontFamily: 'PT_Sans',
+        elevation: 5
+    }
+});
+
+export const chatBodyExtra = StyleSheet.create({
+    chatContainerElse: {
+        flexDirection: 'row'
+    },
+    itemElse: {
+        marginLeft: 13,
+        borderTopLeftRadius: 0
+    },
+    chatContainerMe: {
+        flexDirection: 'row-reverse',
+        alignSelf: 'flex-end'
+    },
+    itemMe: {
+        marginRight: 13,
+        borderTopRightRadius: 0
+    },
+    withNextCont: {
+        marginBottom: 5
+    },
+    withNextItemElse: {
+        borderBottomLeftRadius: 0
+    },
+    withNextItemMe: {
+        borderBottomRightRadius: 0
     }
 });
 
 export const chatFormStyles = StyleSheet.create({
-    textArea: {
+    container: {
+        flexDirection: 'row'
+    },
+    formContainer: {
         flex: 4,
-        alignSelf: 'stretch',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: undefined
+        backgroundColor: '#fff'
     },
-    footerTab: {
-        marginTop: 12,
-        marginBottom: 12,
-        marginLeft: 7,
-        marginRight: 7,
-        borderRadius: 20,
-        paddingLeft: 7,
-        paddingRight: 7,
-        backgroundColor: 'white'
-    },
-    footer: {
-        backgroundColor: '#9a9a9a',
+    input: {
         height: 65
     },
-    button: {
-        flex: 1,
-        height: 50
+    btnCont: {
+        flex: 1
+    },
+    btn: {
+        marginLeft: 0,
+        marginRight: 0
+    },
+    btnStyle: {
+        paddingLeft: 7,
+        backgroundColor: colors.primary
+    },
+    btnText: {
+        display: 'none'
     }
 });

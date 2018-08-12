@@ -78,6 +78,10 @@
 		<string>Karla_bold.ttf</string>
 		<string>Karla_italic.ttf</string>
 		<string>Karla.ttf</string>
+		<string>PT_Sans_bold_italic.ttf</string>
+		<string>PT_Sans_bold.ttf</string>
+		<string>PT_Sans_italic.ttf</string>
+		<string>PT_Sans.ttf</string>
 	</array>
 </dict>
 </plist>

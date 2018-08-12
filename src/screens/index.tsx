@@ -5,9 +5,14 @@ import {
 
 import color from '../lib/colors';
 import { stackStyles, tabStyles } from '../styles';
+
+// home tabs
 import { Chats } from './home/chats';
 import { Contacts } from './home/contacts';
 import { Profile } from './home/profile';
+
+// chat screen
+import Chat from './chat';
 
 const HomeTabNavigator = createMaterialTopTabNavigator(
     {
@@ -22,21 +27,25 @@ const HomeTabNavigator = createMaterialTopTabNavigator(
             indicatorStyle: tabStyles.indicator,
             activeTintColor: color.primary,
             inactiveTintColor: color.text_title
-        },
-        initialRouteName: 'Profile'
+        }
     }
 );
 
-const RootStackNavigator = createStackNavigator({
-    Home: {
-        screen: HomeTabNavigator,
-        navigationOptions: {
-            title: 'Chat App'.toUpperCase(),
-            headerStyle: stackStyles.header,
-            headerTitleStyle: stackStyles.title
-        }
+const RootStackNavigator = createStackNavigator(
+    {
+        Home: {
+            screen: HomeTabNavigator,
+            navigationOptions: {
+                title: 'Chat App'.toUpperCase(),
+                headerStyle: stackStyles.header,
+                headerTitleStyle: stackStyles.title
+            }
+        },
+        Chat
     },
-    Chats
-});
+    {
+        initialRouteName: 'Chat'
+    }
+);
 
 export default RootStackNavigator;

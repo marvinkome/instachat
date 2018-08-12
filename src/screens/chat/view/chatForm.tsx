@@ -1,20 +1,30 @@
 import * as React from 'react';
-import { Textarea, Footer, FooterTab, Button, Icon } from 'native-base';
+import { View } from 'react-native';
+import { FormInput, Button } from 'react-native-elements';
 import { chatFormStyles as styles } from './styles';
 
 export const ChatForm = () => {
     return (
-        <Footer style={styles.footer}>
-            <FooterTab style={styles.footerTab}>
-                <Textarea
-                    rowSpan={2}
-                    placeholder="Type a message"
-                    style={styles.textArea}
+        <View style={styles.container}>
+            <View style={styles.formContainer}>
+                <FormInput
+                    placeholder="Write a message..."
+                    underlineColorAndroid="transparent"
+                    inputStyle={styles.input}
+                    multiline
                 />
-                <Button style={styles.button} transparent>
-                    <Icon name="send" />
-                </Button>
-            </FooterTab>
-        </Footer>
+            </View>
+            <View style={styles.btnCont}>
+                <Button
+                    iconRight={{ name: 'md-send', type: 'ionicon' }}
+                    title="BTN"
+                    onPress={() => null}
+                    containerViewStyle={styles.btn}
+                    buttonStyle={styles.btnStyle}
+                    textStyle={styles.btnText}
+                    large
+                />
+            </View>
+        </View>
     );
 };

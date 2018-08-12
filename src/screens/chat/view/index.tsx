@@ -1,46 +1,41 @@
 import * as React from 'react';
-import { Content } from 'native-base';
-import { ChatCard } from './chatCard';
+import { View } from 'react-native';
+import { ChatHeader } from './chatHeader';
+import { ChatBody } from './chatBody';
 import { ChatForm } from './chatForm';
+import { viewStyles as styles } from './styles';
 
 const ChatView = () => {
     const listItems = [
         {
-            name: 'James Bond',
+            name: 'jamesbond',
             text:
-                'Lorem ipsum dolor sit amet consectetur,\
-                adipisicing elit. Facere, ad minima voluptas \
-                temporibus voluptatem sequi autem expedita obcaecati \
-                voluptates, mollitia nemo doloribus quae laboriosam \
-                dolores eos fuga quam accusantium esse.',
-            time: '27/06/2018'
+                'Lorem ipsum dolor sit amet consectetur,  adipisicing elit. Facere, ad minima voluptas.',
+            time: '9 Aug 2018 23:00'
+        },
+        {
+            name: 'jamesbond',
+            text: 'Lorem ipsum dolor sit amet consectetur',
+            time: '9 Aug 2018 23:00'
         },
         {
             name: 'you',
             text: 'Doing?',
-            time: '13:45'
+            time: 'Today at 13:45'
         },
         {
-            name: 'Gary Collen',
-            text: 'Hello',
-            time: '13:57'
-        },
-        {
-            name: 'James Bond',
-            text: 'yeah',
-            time: '14:17'
+            name: 'you',
+            text: 'Lorem ipsum dolor sit amet consectetur',
+            time: 'Today at 13:45'
         }
     ];
 
     return (
-        <React.Fragment>
-            <Content style={{ backgroundColor: '#9a9a9a' }}>
-                {listItems.map((item, index) => (
-                    <ChatCard item={item} key={index} />
-                ))}
-            </Content>
+        <View style={styles.container}>
+            <ChatHeader data-testId="chat-header" />
+            <ChatBody data-testId="chat-body" items={listItems} />
             <ChatForm />
-        </React.Fragment>
+        </View>
     );
 };
 

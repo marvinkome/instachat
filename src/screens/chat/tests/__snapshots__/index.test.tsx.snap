@@ -1,0 +1,2835 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`chat screen chat view chat body renders 4 chats 1`] = `
+<RCTScrollView
+  onContentSizeChange={[Function]}
+  style={
+    Object {
+      "flex": 1,
+      "padding": 16,
+    }
+  }
+>
+  <View>
+    <View
+      style={
+        Array [
+          Object {
+            "marginBottom": 15,
+            "width": "75%",
+          },
+          Object {
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <View
+        data-testId="avatar"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "height": 34,
+              "paddingBottom": 10,
+              "paddingRight": 10,
+              "paddingTop": 10,
+              "width": 34,
+            },
+            Object {
+              "borderRadius": 17,
+            },
+            undefined,
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "alignSelf": "stretch",
+                "backgroundColor": "rgba(0,0,0,0.2)",
+                "bottom": 0,
+                "flex": 1,
+                "justifyContent": "center",
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+              Object {
+                "borderRadius": 17,
+              },
+              undefined,
+            ]
+          }
+        >
+          <Image
+            source={
+              Object {
+                "testUri": "../../../static/pp.jpg",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "height": 34,
+                  "width": 34,
+                },
+                Object {
+                  "borderRadius": 17,
+                },
+                undefined,
+              ]
+            }
+          />
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#42ED86",
+              "borderRadius": 10,
+              "padding": 10,
+            },
+            Object {
+              "borderTopLeftRadius": 0,
+              "marginLeft": 13,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#fff",
+              "fontFamily": "PT_Sans",
+              "fontSize": 16,
+              "letterSpacing": -0.25,
+            }
+          }
+        >
+          Lorem ipsum dolor sit amet consectetur
+        </Text>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "alignSelf": "flex-end",
+              "color": "#fff",
+              "fontSize": 12,
+              "opacity": 0.8,
+            }
+          }
+        >
+          9 Aug 2018 23:00
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "marginBottom": 15,
+            "width": "75%",
+          },
+          Object {
+            "alignSelf": "flex-end",
+            "flexDirection": "row-reverse",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#42ED86",
+              "borderRadius": 10,
+              "padding": 10,
+            },
+            Object {
+              "borderTopRightRadius": 0,
+              "marginRight": 13,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#fff",
+              "fontFamily": "PT_Sans",
+              "fontSize": 16,
+              "letterSpacing": -0.25,
+            }
+          }
+        >
+          Doing?
+        </Text>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "alignSelf": "flex-end",
+              "color": "#fff",
+              "fontSize": 12,
+              "opacity": 0.8,
+            }
+          }
+        >
+          Today at 13:45
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "backgroundColor": "#42ED86",
+            "borderRadius": 10,
+            "color": "#fff",
+            "elevation": 5,
+            "fontFamily": "PT_Sans",
+            "margin": 15,
+            "marginTop": 0,
+            "padding": 7,
+          }
+        }
+      >
+        New Message
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "marginBottom": 15,
+            "width": "75%",
+          },
+          Object {
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <View
+        data-testId="avatar"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+              "height": 34,
+              "paddingBottom": 10,
+              "paddingRight": 10,
+              "paddingTop": 10,
+              "width": 34,
+            },
+            Object {
+              "borderRadius": 17,
+            },
+            undefined,
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "alignSelf": "stretch",
+                "backgroundColor": "rgba(0,0,0,0.2)",
+                "bottom": 0,
+                "flex": 1,
+                "justifyContent": "center",
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+              Object {
+                "borderRadius": 17,
+              },
+              undefined,
+            ]
+          }
+        >
+          <Image
+            source={
+              Object {
+                "testUri": "../../../static/pp.jpg",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "height": 34,
+                  "width": 34,
+                },
+                Object {
+                  "borderRadius": 17,
+                },
+                undefined,
+              ]
+            }
+          />
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#42ED86",
+              "borderRadius": 10,
+              "padding": 10,
+            },
+            Object {
+              "borderTopLeftRadius": 0,
+              "marginLeft": 13,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#fff",
+              "fontFamily": "PT_Sans",
+              "fontSize": 16,
+              "letterSpacing": -0.25,
+            }
+          }
+        >
+          Lorem ipsum dolor sit amet consectetur
+        </Text>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "alignSelf": "flex-end",
+              "color": "#fff",
+              "fontSize": 12,
+              "opacity": 0.8,
+            }
+          }
+        >
+          9 Aug 2018 23:00
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "marginBottom": 15,
+            "width": "75%",
+          },
+          Object {
+            "alignSelf": "flex-end",
+            "flexDirection": "row-reverse",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#42ED86",
+              "borderRadius": 10,
+              "padding": 10,
+            },
+            Object {
+              "borderTopRightRadius": 0,
+              "marginRight": 13,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#fff",
+              "fontFamily": "PT_Sans",
+              "fontSize": 16,
+              "letterSpacing": -0.25,
+            }
+          }
+        >
+          Doing?
+        </Text>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "alignSelf": "flex-end",
+              "color": "#fff",
+              "fontSize": 12,
+              "opacity": 0.8,
+            }
+          }
+        >
+          Today at 13:45
+        </Text>
+      </View>
+    </View>
+  </View>
+</RCTScrollView>
+`;
+
+exports[`chat screen chat view chat form should render correctly 1`] = `
+<View
+  style={
+    Object {
+      "flexDirection": "row",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#fff",
+        "flex": 4,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "borderBottomColor": "#bdc6cf",
+          "borderBottomWidth": 1,
+          "marginLeft": 20,
+          "marginRight": 20,
+          "transform": Array [
+            Object {
+              "translateX": 0,
+            },
+          ],
+        }
+      }
+    >
+      <TextInput
+        allowFontScaling={true}
+        multiline={true}
+        placeholder="Write a message..."
+        style={
+          Array [
+            Object {
+              "color": "#86939e",
+              "minHeight": 36,
+              "width": 750,
+            },
+            Object {
+              "fontSize": 17.5,
+            },
+            Object {
+              "height": 65,
+            },
+          ]
+        }
+        underlineColorAndroid="transparent"
+      />
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "marginLeft": 15,
+            "marginRight": 15,
+          },
+          undefined,
+          Object {
+            "marginLeft": 0,
+            "marginRight": 0,
+          },
+          undefined,
+        ]
+      }
+    >
+      <View
+        accessible={true}
+        isTVSelectable={true}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={null}
+      >
+        <View
+          pointerEvents="box-only"
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#9E9E9E",
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "padding": 19,
+              },
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              false,
+              undefined,
+              undefined,
+              undefined,
+              Object {
+                "backgroundColor": "#42ED86",
+                "paddingLeft": 7,
+              },
+              undefined,
+              undefined,
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Array [
+                Object {},
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                Array [
+                  Object {
+                    "color": "white",
+                    "fontSize": 20,
+                  },
+                  undefined,
+                  false,
+                  undefined,
+                  Object {
+                    "display": "none",
+                  },
+                  undefined,
+                  undefined,
+                  undefined,
+                ],
+              ]
+            }
+          >
+            BTN
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={false}
+            ellipsizeMode="tail"
+            style={
+              Array [
+                Object {
+                  "color": "white",
+                  "fontSize": 26,
+                },
+                Array [
+                  Object {
+                    "marginLeft": 10,
+                  },
+                  undefined,
+                ],
+                Object {
+                  "fontFamily": "Ionicons",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                Object {},
+              ]
+            }
+            type="ionicon"
+          >
+            
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`chat screen chat view renders (snapshot) 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "hsl(0, 0%, 96%)",
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#476DC5",
+          "borderBottomColor": "#f2f2f2",
+          "borderBottomWidth": 1,
+          "height": 70,
+          "padding": 15,
+        },
+        undefined,
+        Object {
+          "backgroundColor": "#fff",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "flex-end",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          undefined,
+        ]
+      }
+    >
+      <View>
+        <View
+          style={
+            Array [
+              false,
+              false,
+              false,
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "justifyContent": "center",
+              },
+              undefined,
+            ]
+          }
+          underlayColor="white"
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={false}
+            ellipsizeMode="tail"
+            style={
+              Array [
+                Object {
+                  "color": "black",
+                  "fontSize": 24,
+                },
+                Array [
+                  Object {
+                    "backgroundColor": "transparent",
+                  },
+                  Object {
+                    "color": "#42ED86",
+                    "fontSize": 37,
+                  },
+                ],
+                Object {
+                  "fontFamily": "Ionicons",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                Object {},
+              ]
+            }
+          >
+            
+          </Text>
+        </View>
+      </View>
+      <View>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          data-testID="username"
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "hsl(0, 0%, 20%)",
+              "fontFamily": "Karla",
+              "fontSize": 19,
+              "fontWeight": "bold",
+              "textAlign": "center",
+            }
+          }
+        >
+          Larry Doe
+        </Text>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          data-testID="last-seen"
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "hsl(0, 0%, 45%)",
+              "fontFamily": "Karla",
+              "fontSize": 14,
+              "textAlign": "center",
+            }
+          }
+        >
+          Last seen: 12/12/17
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "height": 24,
+            "width": 24,
+          }
+        }
+      />
+    </View>
+  </View>
+  <RCTScrollView
+    onContentSizeChange={[Function]}
+    style={
+      Object {
+        "flex": 1,
+        "padding": 16,
+      }
+    }
+  >
+    <View>
+      <View
+        style={
+          Array [
+            Object {
+              "marginBottom": 15,
+              "width": "75%",
+            },
+            Object {
+              "flexDirection": "row",
+            },
+            Object {
+              "marginBottom": 5,
+            },
+          ]
+        }
+      >
+        <View
+          data-testId="avatar"
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "height": 34,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+                "width": 34,
+              },
+              Object {
+                "borderRadius": 17,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "alignSelf": "stretch",
+                  "backgroundColor": "rgba(0,0,0,0.2)",
+                  "bottom": 0,
+                  "flex": 1,
+                  "justifyContent": "center",
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                Object {
+                  "borderRadius": 17,
+                },
+                undefined,
+              ]
+            }
+          >
+            <Image
+              source={
+                Object {
+                  "testUri": "../../../static/pp.jpg",
+                }
+              }
+              style={
+                Array [
+                  Object {
+                    "height": 34,
+                    "width": 34,
+                  },
+                  Object {
+                    "borderRadius": 17,
+                  },
+                  undefined,
+                ]
+              }
+            />
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#42ED86",
+                "borderRadius": 10,
+                "padding": 10,
+              },
+              Object {
+                "borderTopLeftRadius": 0,
+                "marginLeft": 13,
+              },
+              Object {
+                "borderBottomLeftRadius": 0,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#fff",
+                "fontFamily": "PT_Sans",
+                "fontSize": 16,
+                "letterSpacing": -0.25,
+              }
+            }
+          >
+            Lorem ipsum dolor sit amet consectetur,  adipisicing elit. Facere, ad minima voluptas.
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "alignSelf": "flex-end",
+                "color": "#fff",
+                "fontSize": 12,
+                "opacity": 0.8,
+              }
+            }
+          >
+            9 Aug 2018 23:00
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "marginBottom": 15,
+              "width": "75%",
+            },
+            Object {
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <View
+          data-testId="avatar"
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "height": 34,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+                "width": 34,
+              },
+              Object {
+                "borderRadius": 17,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "alignSelf": "stretch",
+                  "backgroundColor": "rgba(0,0,0,0.2)",
+                  "bottom": 0,
+                  "flex": 1,
+                  "justifyContent": "center",
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                Object {
+                  "borderRadius": 17,
+                },
+                undefined,
+              ]
+            }
+          >
+            <Image
+              source={
+                Object {
+                  "testUri": "../../../static/pp.jpg",
+                }
+              }
+              style={
+                Array [
+                  Object {
+                    "height": 34,
+                    "width": 34,
+                  },
+                  Object {
+                    "borderRadius": 17,
+                  },
+                  undefined,
+                ]
+              }
+            />
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#42ED86",
+                "borderRadius": 10,
+                "padding": 10,
+              },
+              Object {
+                "borderTopLeftRadius": 0,
+                "marginLeft": 13,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#fff",
+                "fontFamily": "PT_Sans",
+                "fontSize": 16,
+                "letterSpacing": -0.25,
+              }
+            }
+          >
+            Lorem ipsum dolor sit amet consectetur
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "alignSelf": "flex-end",
+                "color": "#fff",
+                "fontSize": 12,
+                "opacity": 0.8,
+              }
+            }
+          >
+            9 Aug 2018 23:00
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "marginBottom": 15,
+              "width": "75%",
+            },
+            Object {
+              "alignSelf": "flex-end",
+              "flexDirection": "row-reverse",
+            },
+            Object {
+              "marginBottom": 5,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#42ED86",
+                "borderRadius": 10,
+                "padding": 10,
+              },
+              Object {
+                "borderTopRightRadius": 0,
+                "marginRight": 13,
+              },
+              Object {
+                "borderBottomRightRadius": 0,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#fff",
+                "fontFamily": "PT_Sans",
+                "fontSize": 16,
+                "letterSpacing": -0.25,
+              }
+            }
+          >
+            Doing?
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "alignSelf": "flex-end",
+                "color": "#fff",
+                "fontSize": 12,
+                "opacity": 0.8,
+              }
+            }
+          >
+            Today at 13:45
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "marginBottom": 15,
+              "width": "75%",
+            },
+            Object {
+              "alignSelf": "flex-end",
+              "flexDirection": "row-reverse",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#42ED86",
+                "borderRadius": 10,
+                "padding": 10,
+              },
+              Object {
+                "borderTopRightRadius": 0,
+                "marginRight": 13,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#fff",
+                "fontFamily": "PT_Sans",
+                "fontSize": 16,
+                "letterSpacing": -0.25,
+              }
+            }
+          >
+            Lorem ipsum dolor sit amet consectetur
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "alignSelf": "flex-end",
+                "color": "#fff",
+                "fontSize": 12,
+                "opacity": 0.8,
+              }
+            }
+          >
+            Today at 13:45
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+          }
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "backgroundColor": "#42ED86",
+              "borderRadius": 10,
+              "color": "#fff",
+              "elevation": 5,
+              "fontFamily": "PT_Sans",
+              "margin": 15,
+              "marginTop": 0,
+              "padding": 7,
+            }
+          }
+        >
+          New Message
+        </Text>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "marginBottom": 15,
+              "width": "75%",
+            },
+            Object {
+              "flexDirection": "row",
+            },
+            Object {
+              "marginBottom": 5,
+            },
+          ]
+        }
+      >
+        <View
+          data-testId="avatar"
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "height": 34,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+                "width": 34,
+              },
+              Object {
+                "borderRadius": 17,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "alignSelf": "stretch",
+                  "backgroundColor": "rgba(0,0,0,0.2)",
+                  "bottom": 0,
+                  "flex": 1,
+                  "justifyContent": "center",
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                Object {
+                  "borderRadius": 17,
+                },
+                undefined,
+              ]
+            }
+          >
+            <Image
+              source={
+                Object {
+                  "testUri": "../../../static/pp.jpg",
+                }
+              }
+              style={
+                Array [
+                  Object {
+                    "height": 34,
+                    "width": 34,
+                  },
+                  Object {
+                    "borderRadius": 17,
+                  },
+                  undefined,
+                ]
+              }
+            />
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#42ED86",
+                "borderRadius": 10,
+                "padding": 10,
+              },
+              Object {
+                "borderTopLeftRadius": 0,
+                "marginLeft": 13,
+              },
+              Object {
+                "borderBottomLeftRadius": 0,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#fff",
+                "fontFamily": "PT_Sans",
+                "fontSize": 16,
+                "letterSpacing": -0.25,
+              }
+            }
+          >
+            Lorem ipsum dolor sit amet consectetur,  adipisicing elit. Facere, ad minima voluptas.
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "alignSelf": "flex-end",
+                "color": "#fff",
+                "fontSize": 12,
+                "opacity": 0.8,
+              }
+            }
+          >
+            9 Aug 2018 23:00
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "marginBottom": 15,
+              "width": "75%",
+            },
+            Object {
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <View
+          data-testId="avatar"
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "height": 34,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+                "width": 34,
+              },
+              Object {
+                "borderRadius": 17,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "alignSelf": "stretch",
+                  "backgroundColor": "rgba(0,0,0,0.2)",
+                  "bottom": 0,
+                  "flex": 1,
+                  "justifyContent": "center",
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                Object {
+                  "borderRadius": 17,
+                },
+                undefined,
+              ]
+            }
+          >
+            <Image
+              source={
+                Object {
+                  "testUri": "../../../static/pp.jpg",
+                }
+              }
+              style={
+                Array [
+                  Object {
+                    "height": 34,
+                    "width": 34,
+                  },
+                  Object {
+                    "borderRadius": 17,
+                  },
+                  undefined,
+                ]
+              }
+            />
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#42ED86",
+                "borderRadius": 10,
+                "padding": 10,
+              },
+              Object {
+                "borderTopLeftRadius": 0,
+                "marginLeft": 13,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#fff",
+                "fontFamily": "PT_Sans",
+                "fontSize": 16,
+                "letterSpacing": -0.25,
+              }
+            }
+          >
+            Lorem ipsum dolor sit amet consectetur
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "alignSelf": "flex-end",
+                "color": "#fff",
+                "fontSize": 12,
+                "opacity": 0.8,
+              }
+            }
+          >
+            9 Aug 2018 23:00
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "marginBottom": 15,
+              "width": "75%",
+            },
+            Object {
+              "alignSelf": "flex-end",
+              "flexDirection": "row-reverse",
+            },
+            Object {
+              "marginBottom": 5,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#42ED86",
+                "borderRadius": 10,
+                "padding": 10,
+              },
+              Object {
+                "borderTopRightRadius": 0,
+                "marginRight": 13,
+              },
+              Object {
+                "borderBottomRightRadius": 0,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#fff",
+                "fontFamily": "PT_Sans",
+                "fontSize": 16,
+                "letterSpacing": -0.25,
+              }
+            }
+          >
+            Doing?
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "alignSelf": "flex-end",
+                "color": "#fff",
+                "fontSize": 12,
+                "opacity": 0.8,
+              }
+            }
+          >
+            Today at 13:45
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "marginBottom": 15,
+              "width": "75%",
+            },
+            Object {
+              "alignSelf": "flex-end",
+              "flexDirection": "row-reverse",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#42ED86",
+                "borderRadius": 10,
+                "padding": 10,
+              },
+              Object {
+                "borderTopRightRadius": 0,
+                "marginRight": 13,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#fff",
+                "fontFamily": "PT_Sans",
+                "fontSize": 16,
+                "letterSpacing": -0.25,
+              }
+            }
+          >
+            Lorem ipsum dolor sit amet consectetur
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "alignSelf": "flex-end",
+                "color": "#fff",
+                "fontSize": 12,
+                "opacity": 0.8,
+              }
+            }
+          >
+            Today at 13:45
+          </Text>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#fff",
+          "flex": 4,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "borderBottomColor": "#bdc6cf",
+            "borderBottomWidth": 1,
+            "marginLeft": 20,
+            "marginRight": 20,
+            "transform": Array [
+              Object {
+                "translateX": 0,
+              },
+            ],
+          }
+        }
+      >
+        <TextInput
+          allowFontScaling={true}
+          multiline={true}
+          placeholder="Write a message..."
+          style={
+            Array [
+              Object {
+                "color": "#86939e",
+                "minHeight": 36,
+                "width": 750,
+              },
+              Object {
+                "fontSize": 17.5,
+              },
+              Object {
+                "height": 65,
+              },
+            ]
+          }
+          underlineColorAndroid="transparent"
+        />
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "marginLeft": 15,
+              "marginRight": 15,
+            },
+            undefined,
+            Object {
+              "marginLeft": 0,
+              "marginRight": 0,
+            },
+            undefined,
+          ]
+        }
+      >
+        <View
+          accessible={true}
+          isTVSelectable={true}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={null}
+        >
+          <View
+            pointerEvents="box-only"
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#9E9E9E",
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "padding": 19,
+                },
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                false,
+                undefined,
+                undefined,
+                undefined,
+                Object {
+                  "backgroundColor": "#42ED86",
+                  "paddingLeft": 7,
+                },
+                undefined,
+                undefined,
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {},
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  Array [
+                    Object {
+                      "color": "white",
+                      "fontSize": 20,
+                    },
+                    undefined,
+                    false,
+                    undefined,
+                    Object {
+                      "display": "none",
+                    },
+                    undefined,
+                    undefined,
+                    undefined,
+                  ],
+                ]
+              }
+            >
+              BTN
+            </Text>
+            <Text
+              accessible={true}
+              allowFontScaling={false}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "color": "white",
+                    "fontSize": 26,
+                  },
+                  Array [
+                    Object {
+                      "marginLeft": 10,
+                    },
+                    undefined,
+                  ],
+                  Object {
+                    "fontFamily": "Ionicons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
+              }
+              type="ionicon"
+            >
+              
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`chat screen renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "hsl(0, 0%, 96%)",
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#476DC5",
+          "borderBottomColor": "#f2f2f2",
+          "borderBottomWidth": 1,
+          "height": 70,
+          "padding": 15,
+        },
+        undefined,
+        Object {
+          "backgroundColor": "#fff",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "flex-end",
+            "flex": 1,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+          undefined,
+        ]
+      }
+    >
+      <View>
+        <View
+          style={
+            Array [
+              false,
+              false,
+              false,
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "justifyContent": "center",
+              },
+              undefined,
+            ]
+          }
+          underlayColor="white"
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={false}
+            ellipsizeMode="tail"
+            style={
+              Array [
+                Object {
+                  "color": "black",
+                  "fontSize": 24,
+                },
+                Array [
+                  Object {
+                    "backgroundColor": "transparent",
+                  },
+                  Object {
+                    "color": "#42ED86",
+                    "fontSize": 37,
+                  },
+                ],
+                Object {
+                  "fontFamily": "Ionicons",
+                  "fontStyle": "normal",
+                  "fontWeight": "normal",
+                },
+                Object {},
+              ]
+            }
+          >
+            
+          </Text>
+        </View>
+      </View>
+      <View>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          data-testID="username"
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "hsl(0, 0%, 20%)",
+              "fontFamily": "Karla",
+              "fontSize": 19,
+              "fontWeight": "bold",
+              "textAlign": "center",
+            }
+          }
+        >
+          Larry Doe
+        </Text>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          data-testID="last-seen"
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "hsl(0, 0%, 45%)",
+              "fontFamily": "Karla",
+              "fontSize": 14,
+              "textAlign": "center",
+            }
+          }
+        >
+          Last seen: 12/12/17
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "height": 24,
+            "width": 24,
+          }
+        }
+      />
+    </View>
+  </View>
+  <RCTScrollView
+    onContentSizeChange={[Function]}
+    style={
+      Object {
+        "flex": 1,
+        "padding": 16,
+      }
+    }
+  >
+    <View>
+      <View
+        style={
+          Array [
+            Object {
+              "marginBottom": 15,
+              "width": "75%",
+            },
+            Object {
+              "flexDirection": "row",
+            },
+            Object {
+              "marginBottom": 5,
+            },
+          ]
+        }
+      >
+        <View
+          data-testId="avatar"
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "height": 34,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+                "width": 34,
+              },
+              Object {
+                "borderRadius": 17,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "alignSelf": "stretch",
+                  "backgroundColor": "rgba(0,0,0,0.2)",
+                  "bottom": 0,
+                  "flex": 1,
+                  "justifyContent": "center",
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                Object {
+                  "borderRadius": 17,
+                },
+                undefined,
+              ]
+            }
+          >
+            <Image
+              source={
+                Object {
+                  "testUri": "../../../static/pp.jpg",
+                }
+              }
+              style={
+                Array [
+                  Object {
+                    "height": 34,
+                    "width": 34,
+                  },
+                  Object {
+                    "borderRadius": 17,
+                  },
+                  undefined,
+                ]
+              }
+            />
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#42ED86",
+                "borderRadius": 10,
+                "padding": 10,
+              },
+              Object {
+                "borderTopLeftRadius": 0,
+                "marginLeft": 13,
+              },
+              Object {
+                "borderBottomLeftRadius": 0,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#fff",
+                "fontFamily": "PT_Sans",
+                "fontSize": 16,
+                "letterSpacing": -0.25,
+              }
+            }
+          >
+            Lorem ipsum dolor sit amet consectetur,  adipisicing elit. Facere, ad minima voluptas.
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "alignSelf": "flex-end",
+                "color": "#fff",
+                "fontSize": 12,
+                "opacity": 0.8,
+              }
+            }
+          >
+            9 Aug 2018 23:00
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "marginBottom": 15,
+              "width": "75%",
+            },
+            Object {
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <View
+          data-testId="avatar"
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "height": 34,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+                "width": 34,
+              },
+              Object {
+                "borderRadius": 17,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "alignSelf": "stretch",
+                  "backgroundColor": "rgba(0,0,0,0.2)",
+                  "bottom": 0,
+                  "flex": 1,
+                  "justifyContent": "center",
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                Object {
+                  "borderRadius": 17,
+                },
+                undefined,
+              ]
+            }
+          >
+            <Image
+              source={
+                Object {
+                  "testUri": "../../../static/pp.jpg",
+                }
+              }
+              style={
+                Array [
+                  Object {
+                    "height": 34,
+                    "width": 34,
+                  },
+                  Object {
+                    "borderRadius": 17,
+                  },
+                  undefined,
+                ]
+              }
+            />
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#42ED86",
+                "borderRadius": 10,
+                "padding": 10,
+              },
+              Object {
+                "borderTopLeftRadius": 0,
+                "marginLeft": 13,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#fff",
+                "fontFamily": "PT_Sans",
+                "fontSize": 16,
+                "letterSpacing": -0.25,
+              }
+            }
+          >
+            Lorem ipsum dolor sit amet consectetur
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "alignSelf": "flex-end",
+                "color": "#fff",
+                "fontSize": 12,
+                "opacity": 0.8,
+              }
+            }
+          >
+            9 Aug 2018 23:00
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "marginBottom": 15,
+              "width": "75%",
+            },
+            Object {
+              "alignSelf": "flex-end",
+              "flexDirection": "row-reverse",
+            },
+            Object {
+              "marginBottom": 5,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#42ED86",
+                "borderRadius": 10,
+                "padding": 10,
+              },
+              Object {
+                "borderTopRightRadius": 0,
+                "marginRight": 13,
+              },
+              Object {
+                "borderBottomRightRadius": 0,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#fff",
+                "fontFamily": "PT_Sans",
+                "fontSize": 16,
+                "letterSpacing": -0.25,
+              }
+            }
+          >
+            Doing?
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "alignSelf": "flex-end",
+                "color": "#fff",
+                "fontSize": 12,
+                "opacity": 0.8,
+              }
+            }
+          >
+            Today at 13:45
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "marginBottom": 15,
+              "width": "75%",
+            },
+            Object {
+              "alignSelf": "flex-end",
+              "flexDirection": "row-reverse",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#42ED86",
+                "borderRadius": 10,
+                "padding": 10,
+              },
+              Object {
+                "borderTopRightRadius": 0,
+                "marginRight": 13,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#fff",
+                "fontFamily": "PT_Sans",
+                "fontSize": 16,
+                "letterSpacing": -0.25,
+              }
+            }
+          >
+            Lorem ipsum dolor sit amet consectetur
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "alignSelf": "flex-end",
+                "color": "#fff",
+                "fontSize": 12,
+                "opacity": 0.8,
+              }
+            }
+          >
+            Today at 13:45
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+          }
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "backgroundColor": "#42ED86",
+              "borderRadius": 10,
+              "color": "#fff",
+              "elevation": 5,
+              "fontFamily": "PT_Sans",
+              "margin": 15,
+              "marginTop": 0,
+              "padding": 7,
+            }
+          }
+        >
+          New Message
+        </Text>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "marginBottom": 15,
+              "width": "75%",
+            },
+            Object {
+              "flexDirection": "row",
+            },
+            Object {
+              "marginBottom": 5,
+            },
+          ]
+        }
+      >
+        <View
+          data-testId="avatar"
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "height": 34,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+                "width": 34,
+              },
+              Object {
+                "borderRadius": 17,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "alignSelf": "stretch",
+                  "backgroundColor": "rgba(0,0,0,0.2)",
+                  "bottom": 0,
+                  "flex": 1,
+                  "justifyContent": "center",
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                Object {
+                  "borderRadius": 17,
+                },
+                undefined,
+              ]
+            }
+          >
+            <Image
+              source={
+                Object {
+                  "testUri": "../../../static/pp.jpg",
+                }
+              }
+              style={
+                Array [
+                  Object {
+                    "height": 34,
+                    "width": 34,
+                  },
+                  Object {
+                    "borderRadius": 17,
+                  },
+                  undefined,
+                ]
+              }
+            />
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#42ED86",
+                "borderRadius": 10,
+                "padding": 10,
+              },
+              Object {
+                "borderTopLeftRadius": 0,
+                "marginLeft": 13,
+              },
+              Object {
+                "borderBottomLeftRadius": 0,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#fff",
+                "fontFamily": "PT_Sans",
+                "fontSize": 16,
+                "letterSpacing": -0.25,
+              }
+            }
+          >
+            Lorem ipsum dolor sit amet consectetur,  adipisicing elit. Facere, ad minima voluptas.
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "alignSelf": "flex-end",
+                "color": "#fff",
+                "fontSize": 12,
+                "opacity": 0.8,
+              }
+            }
+          >
+            9 Aug 2018 23:00
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "marginBottom": 15,
+              "width": "75%",
+            },
+            Object {
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <View
+          data-testId="avatar"
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "height": 34,
+                "paddingBottom": 10,
+                "paddingRight": 10,
+                "paddingTop": 10,
+                "width": 34,
+              },
+              Object {
+                "borderRadius": 17,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "alignSelf": "stretch",
+                  "backgroundColor": "rgba(0,0,0,0.2)",
+                  "bottom": 0,
+                  "flex": 1,
+                  "justifyContent": "center",
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+                Object {
+                  "borderRadius": 17,
+                },
+                undefined,
+              ]
+            }
+          >
+            <Image
+              source={
+                Object {
+                  "testUri": "../../../static/pp.jpg",
+                }
+              }
+              style={
+                Array [
+                  Object {
+                    "height": 34,
+                    "width": 34,
+                  },
+                  Object {
+                    "borderRadius": 17,
+                  },
+                  undefined,
+                ]
+              }
+            />
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#42ED86",
+                "borderRadius": 10,
+                "padding": 10,
+              },
+              Object {
+                "borderTopLeftRadius": 0,
+                "marginLeft": 13,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#fff",
+                "fontFamily": "PT_Sans",
+                "fontSize": 16,
+                "letterSpacing": -0.25,
+              }
+            }
+          >
+            Lorem ipsum dolor sit amet consectetur
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "alignSelf": "flex-end",
+                "color": "#fff",
+                "fontSize": 12,
+                "opacity": 0.8,
+              }
+            }
+          >
+            9 Aug 2018 23:00
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "marginBottom": 15,
+              "width": "75%",
+            },
+            Object {
+              "alignSelf": "flex-end",
+              "flexDirection": "row-reverse",
+            },
+            Object {
+              "marginBottom": 5,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#42ED86",
+                "borderRadius": 10,
+                "padding": 10,
+              },
+              Object {
+                "borderTopRightRadius": 0,
+                "marginRight": 13,
+              },
+              Object {
+                "borderBottomRightRadius": 0,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#fff",
+                "fontFamily": "PT_Sans",
+                "fontSize": 16,
+                "letterSpacing": -0.25,
+              }
+            }
+          >
+            Doing?
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "alignSelf": "flex-end",
+                "color": "#fff",
+                "fontSize": 12,
+                "opacity": 0.8,
+              }
+            }
+          >
+            Today at 13:45
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "marginBottom": 15,
+              "width": "75%",
+            },
+            Object {
+              "alignSelf": "flex-end",
+              "flexDirection": "row-reverse",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#42ED86",
+                "borderRadius": 10,
+                "padding": 10,
+              },
+              Object {
+                "borderTopRightRadius": 0,
+                "marginRight": 13,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#fff",
+                "fontFamily": "PT_Sans",
+                "fontSize": 16,
+                "letterSpacing": -0.25,
+              }
+            }
+          >
+            Lorem ipsum dolor sit amet consectetur
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "alignSelf": "flex-end",
+                "color": "#fff",
+                "fontSize": 12,
+                "opacity": 0.8,
+              }
+            }
+          >
+            Today at 13:45
+          </Text>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#fff",
+          "flex": 4,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "borderBottomColor": "#bdc6cf",
+            "borderBottomWidth": 1,
+            "marginLeft": 20,
+            "marginRight": 20,
+            "transform": Array [
+              Object {
+                "translateX": 0,
+              },
+            ],
+          }
+        }
+      >
+        <TextInput
+          allowFontScaling={true}
+          multiline={true}
+          placeholder="Write a message..."
+          style={
+            Array [
+              Object {
+                "color": "#86939e",
+                "minHeight": 36,
+                "width": 750,
+              },
+              Object {
+                "fontSize": 17.5,
+              },
+              Object {
+                "height": 65,
+              },
+            ]
+          }
+          underlineColorAndroid="transparent"
+        />
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "marginLeft": 15,
+              "marginRight": 15,
+            },
+            undefined,
+            Object {
+              "marginLeft": 0,
+              "marginRight": 0,
+            },
+            undefined,
+          ]
+        }
+      >
+        <View
+          accessible={true}
+          isTVSelectable={true}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={null}
+        >
+          <View
+            pointerEvents="box-only"
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#9E9E9E",
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "padding": 19,
+                },
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                false,
+                undefined,
+                undefined,
+                undefined,
+                Object {
+                  "backgroundColor": "#42ED86",
+                  "paddingLeft": 7,
+                },
+                undefined,
+                undefined,
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {},
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  undefined,
+                  Array [
+                    Object {
+                      "color": "white",
+                      "fontSize": 20,
+                    },
+                    undefined,
+                    false,
+                    undefined,
+                    Object {
+                      "display": "none",
+                    },
+                    undefined,
+                    undefined,
+                    undefined,
+                  ],
+                ]
+              }
+            >
+              BTN
+            </Text>
+            <Text
+              accessible={true}
+              allowFontScaling={false}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "color": "white",
+                    "fontSize": 26,
+                  },
+                  Array [
+                    Object {
+                      "marginLeft": 10,
+                    },
+                    undefined,
+                  ],
+                  Object {
+                    "fontFamily": "Ionicons",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
+              }
+              type="ionicon"
+            >
+              
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

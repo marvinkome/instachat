@@ -77,6 +77,10 @@
 		019F04E6DEF342A9B89E8C68 /* Karla_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A26C351F0C64123B49F310E /* Karla_bold.ttf */; };
 		58E184012C7543BEA39A054A /* Karla_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F2D9228FE5244C109ACB4015 /* Karla_italic.ttf */; };
 		341F9F16327F4E898A18E54C /* Karla.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 12F1A6CE611049B0B6153771 /* Karla.ttf */; };
+		AB0E17381CF34B9B94ABBEF7 /* PT_Sans_bold_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E6928251EEF3466BBA0D7C74 /* PT_Sans_bold_italic.ttf */; };
+		961EF662DDC144FBA38E0E2C /* PT_Sans_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 190CB3785286449391EB80F6 /* PT_Sans_bold.ttf */; };
+		A8870A6852DD4913BEAB08A8 /* PT_Sans_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1CE0F2A4C8E4439090BA72F2 /* PT_Sans_italic.ttf */; };
+		2341B894515F4D8397EFE2AE /* PT_Sans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F11DA0AFC3364ABF858F4C2F /* PT_Sans.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -423,6 +427,10 @@
 		9A26C351F0C64123B49F310E /* Karla_bold.ttf */ = {isa = PBXFileReference; name = "Karla_bold.ttf"; path = "../assets/fonts/Karla_bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		F2D9228FE5244C109ACB4015 /* Karla_italic.ttf */ = {isa = PBXFileReference; name = "Karla_italic.ttf"; path = "../assets/fonts/Karla_italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		12F1A6CE611049B0B6153771 /* Karla.ttf */ = {isa = PBXFileReference; name = "Karla.ttf"; path = "../assets/fonts/Karla.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E6928251EEF3466BBA0D7C74 /* PT_Sans_bold_italic.ttf */ = {isa = PBXFileReference; name = "PT_Sans_bold_italic.ttf"; path = "../assets/fonts/PT_Sans_bold_italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		190CB3785286449391EB80F6 /* PT_Sans_bold.ttf */ = {isa = PBXFileReference; name = "PT_Sans_bold.ttf"; path = "../assets/fonts/PT_Sans_bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1CE0F2A4C8E4439090BA72F2 /* PT_Sans_italic.ttf */ = {isa = PBXFileReference; name = "PT_Sans_italic.ttf"; path = "../assets/fonts/PT_Sans_italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F11DA0AFC3364ABF858F4C2F /* PT_Sans.ttf */ = {isa = PBXFileReference; name = "PT_Sans.ttf"; path = "../assets/fonts/PT_Sans.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -729,6 +737,10 @@
 				9A26C351F0C64123B49F310E /* Karla_bold.ttf */,
 				F2D9228FE5244C109ACB4015 /* Karla_italic.ttf */,
 				12F1A6CE611049B0B6153771 /* Karla.ttf */,
+				E6928251EEF3466BBA0D7C74 /* PT_Sans_bold_italic.ttf */,
+				190CB3785286449391EB80F6 /* PT_Sans_bold.ttf */,
+				1CE0F2A4C8E4439090BA72F2 /* PT_Sans_italic.ttf */,
+				F11DA0AFC3364ABF858F4C2F /* PT_Sans.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1219,6 +1231,10 @@
 				019F04E6DEF342A9B89E8C68 /* Karla_bold.ttf in Resources */,
 				58E184012C7543BEA39A054A /* Karla_italic.ttf in Resources */,
 				341F9F16327F4E898A18E54C /* Karla.ttf in Resources */,
+				AB0E17381CF34B9B94ABBEF7 /* PT_Sans_bold_italic.ttf in Resources */,
+				961EF662DDC144FBA38E0E2C /* PT_Sans_bold.ttf in Resources */,
+				A8870A6852DD4913BEAB08A8 /* PT_Sans_italic.ttf in Resources */,
+				2341B894515F4D8397EFE2AE /* PT_Sans.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
