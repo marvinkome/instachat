@@ -14,6 +14,9 @@ import { Profile } from './home/profile';
 // chat screen
 import Chat from './chat';
 
+// login screen
+import Login from './login';
+
 const HomeTabNavigator = createMaterialTopTabNavigator(
     {
         Contacts,
@@ -41,10 +44,11 @@ const RootStackNavigator = createStackNavigator(
                 headerTitleStyle: stackStyles.title
             }
         },
-        Chat
+        Chat,
+        Login
     },
     {
-        initialRouteName: 'Chat'
+        initialRouteName: 'Login'
     }
 );
 

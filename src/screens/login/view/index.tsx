@@ -1,12 +1,46 @@
 import * as React from 'react';
-import { Content, Text } from 'native-base';
+import { View, Text } from 'react-native';
+import LoginForm from './loginForm';
+import SignUpForm from './signupForm';
+import { viewStyles as styles } from './styles';
 
-export default class View extends React.Component {
+type IState = {
+    signUpView: boolean;
+};
+
+export default class PageView extends React.Component<{}, IState> {
+    state = {
+        signUpView: true
+    };
+    toggleView = () => {
+        this.setState({
+            signUpView: !this.state.signUpView
+        });
+    };
     render() {
+        let logoText = 'Welcome to instaChat';
+        let formComp = <SignUpForm />;
+        let bottomText = 'Have an account?';
+        let bottomCta = 'Login';
+
+        if (!this.state.signUpView) {
+            logoText = 'Login to instaChat';
+            formComp = <LoginForm />;
+            bottomText = "Don't Have an account?";
+            bottomCta = 'Sign up';
+        }
+
         return (
-            <Content>
-                <Text>Hello World</Text>
-            </Content>
+            <View style={styles.container}>
+                <Text style={styles.logoText}>{logoText}</Text>
+                {formComp}
+                <Text style={styles.bottomText}>
+                    {bottomText}{' '}
+                    <Text onPress={this.toggleView} style={styles.bottomCta}>
+                        {bottomCta}
+                    </Text>
+                </Text>
+            </View>
         );
     }
 }
