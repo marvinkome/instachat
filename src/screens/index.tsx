@@ -1,55 +1,30 @@
-import {
-    createMaterialTopTabNavigator,
-    createStackNavigator
-} from 'react-navigation';
+import * as React from 'react';
+import { AsyncStorage } from 'react-native';
+import rootNavigator from './routes';
 
-import color from '../lib/colors';
-import { stackStyles, tabStyles } from '../styles';
+type IState = {
+    isLoaded: boolean;
+    isLoggedIn: boolean;
+};
 
-// home tabs
-import { Chats } from './home/chats';
-import { Contacts } from './home/contacts';
-import { Profile } from './home/profile';
+export default class App extends React.Component<{}, IState> {
+    state = {
+        isLoaded: false,
+        isLoggedIn: false
+    };
 
-// chat screen
-import Chat from './chat';
-
-// login screen
-import Login from './login';
-
-const HomeTabNavigator = createMaterialTopTabNavigator(
-    {
-        Contacts,
-        Chats,
-        Profile
-    },
-    {
-        tabBarOptions: {
-            style: tabStyles.background,
-            labelStyle: tabStyles.label,
-            indicatorStyle: tabStyles.indicator,
-            activeTintColor: color.primary,
-            inactiveTintColor: color.text_title
-        }
+    async componentDidMount() {
+        const token = await AsyncStorage.getItem('client_id');
+        this.setState({
+            isLoaded: true,
+            isLoggedIn: token !== null
+        });
     }
-);
 
-const RootStackNavigator = createStackNavigator(
-    {
-        Home: {
-            screen: HomeTabNavigator,
-            navigationOptions: {
-                title: 'Chat App'.toUpperCase(),
-                headerStyle: stackStyles.header,
-                headerTitleStyle: stackStyles.title
-            }
-        },
-        Chat,
-        Login
-    },
-    {
-        initialRouteName: 'Login'
+    render() {
+        const Navigator = this.state.isLoggedIn
+            ? rootNavigator('Home')
+            : rootNavigator('Login');
+        return this.state.isLoaded ? <Navigator /> : null;
     }
-);
-
-export default RootStackNavigator;
+}

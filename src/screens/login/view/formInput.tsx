@@ -3,9 +3,14 @@ import { View } from 'react-native';
 import { FormInput, Icon } from 'react-native-elements';
 import { formStyles as styles } from './styles';
 
-type IProps = { placholder: string; icon: string; secure?: boolean };
+type IProps = {
+    placeholder: string;
+    icon: string;
+    secure?: boolean;
+    onChange: (field: string, text: string) => void;
+};
 
-export const Form = ({ placholder, icon, secure }: IProps) => {
+export const Form = ({ placeholder, icon, secure, onChange }: IProps) => {
     return (
         <View style={styles.formCont}>
             <Icon
@@ -15,9 +20,10 @@ export const Form = ({ placholder, icon, secure }: IProps) => {
                 iconStyle={styles.icon}
             />
             <FormInput
-                placeholder={placholder}
+                placeholder={placeholder}
                 underlineColorAndroid="transparent"
                 secureTextEntry={secure}
+                onChangeText={(text) => onChange(placeholder, text)}
             />
         </View>
     );

@@ -1,0 +1,358 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Authenitcation screen renders homepage correctly <snapshot> 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#42ED86",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "alignSelf": "center",
+        "color": "#fff",
+        "fontFamily": "Karla",
+        "fontSize": 17,
+        "fontWeight": "bold",
+        "marginBottom": 25,
+      }
+    }
+  >
+    Login to instaChat
+  </Text>
+  <View
+    style={
+      Object {
+        "marginLeft": 15,
+        "marginRight": 15,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#fff",
+          "borderRadius": 4,
+          "flexDirection": "row",
+          "margin": 10,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            false,
+            false,
+            false,
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "justifyContent": "center",
+            },
+            Object {
+              "padding": 5,
+            },
+          ]
+        }
+        underlayColor="white"
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={false}
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {
+                "color": "black",
+                "fontSize": 24,
+              },
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                },
+                Object {
+                  "color": "hsl(0, 0%, 45%)",
+                },
+              ],
+              Object {
+                "fontFamily": "EvilIcons",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+        >
+          
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "borderBottomColor": "#bdc6cf",
+            "borderBottomWidth": 1,
+            "marginLeft": 20,
+            "marginRight": 20,
+            "transform": Array [
+              Object {
+                "translateX": 0,
+              },
+            ],
+          }
+        }
+      >
+        <TextInput
+          allowFontScaling={true}
+          onChangeText={[Function]}
+          placeholder="email"
+          style={
+            Array [
+              Object {
+                "color": "#86939e",
+                "minHeight": 36,
+                "width": 750,
+              },
+              Object {
+                "fontSize": 17.5,
+              },
+              undefined,
+            ]
+          }
+          underlineColorAndroid="transparent"
+        />
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "backgroundColor": "#fff",
+          "borderRadius": 4,
+          "flexDirection": "row",
+          "margin": 10,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            false,
+            false,
+            false,
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "justifyContent": "center",
+            },
+            Object {
+              "padding": 5,
+            },
+          ]
+        }
+        underlayColor="white"
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={false}
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {
+                "color": "black",
+                "fontSize": 24,
+              },
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                },
+                Object {
+                  "color": "hsl(0, 0%, 45%)",
+                },
+              ],
+              Object {
+                "fontFamily": "EvilIcons",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+        >
+          
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "borderBottomColor": "#bdc6cf",
+            "borderBottomWidth": 1,
+            "marginLeft": 20,
+            "marginRight": 20,
+            "transform": Array [
+              Object {
+                "translateX": 0,
+              },
+            ],
+          }
+        }
+      >
+        <TextInput
+          allowFontScaling={true}
+          onChangeText={[Function]}
+          placeholder="password"
+          secureTextEntry={true}
+          style={
+            Array [
+              Object {
+                "color": "#86939e",
+                "minHeight": 36,
+                "width": 750,
+              },
+              Object {
+                "fontSize": 17.5,
+              },
+              undefined,
+            ]
+          }
+          underlineColorAndroid="transparent"
+        />
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "marginLeft": 15,
+          "marginRight": 15,
+        },
+        undefined,
+        Object {
+          "elevation": 5,
+          "marginLeft": 25,
+          "marginRight": 25,
+        },
+        undefined,
+      ]
+    }
+  >
+    <View
+      accessible={true}
+      isTVSelectable={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={null}
+    >
+      <View
+        pointerEvents="box-only"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#9E9E9E",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "padding": 19,
+            },
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            Object {
+              "padding": 12,
+            },
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {},
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              Array [
+                Object {
+                  "color": "white",
+                  "fontSize": 20,
+                },
+                undefined,
+                Object {
+                  "fontSize": 17.5,
+                },
+                undefined,
+                Object {},
+                undefined,
+                undefined,
+                undefined,
+              ],
+            ]
+          }
+        >
+          LOGIN
+        </Text>
+      </View>
+    </View>
+  </View>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "alignSelf": "center",
+        "color": "hsl(0, 0%, 90%)",
+        "fontFamily": "PT_Sans",
+        "fontSize": 15,
+        "marginTop": 10,
+      }
+    }
+  >
+    Don't Have an account?
+     
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      data-testid="change-view"
+      ellipsizeMode="tail"
+      onPress={[Function]}
+      style={
+        Object {
+          "color": "hsl(0, 0%, 20%)",
+          "textDecorationLine": "underline",
+        }
+      }
+    >
+      Sign up
+    </Text>
+  </Text>
+</View>
+`;
