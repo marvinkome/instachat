@@ -1,5 +1,7 @@
 import * as React from 'react';
+import { ApolloProvider } from 'react-apollo';
 import { AsyncStorage } from 'react-native';
+import client from '../lib/apollo';
 import rootNavigator from './routes';
 
 type IState = {
@@ -25,6 +27,10 @@ export default class App extends React.Component<{}, IState> {
         const Navigator = this.state.isLoggedIn
             ? rootNavigator('Home')
             : rootNavigator('Login');
-        return this.state.isLoaded ? <Navigator /> : null;
+        return this.state.isLoaded ? (
+            <ApolloProvider client={client()}>
+                <Navigator />
+            </ApolloProvider>
+        ) : null;
     }
 }

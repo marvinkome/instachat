@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { View, AsyncStorage } from 'react-native';
+import { View, AsyncStorage, ToastAndroid, Alert } from 'react-native';
 import { Button } from 'react-native-elements';
+import { withNavigation, NavigationInjectedProps } from 'react-navigation';
 import { auth } from '../../../lib/auth';
 import FormInput from './formInput';
 import { formStyles as styles } from './styles';
@@ -10,7 +11,7 @@ type IState = {
     password: string;
 };
 
-export default class SignUpForm extends React.Component<{}, IState> {
+class SignUpForm extends React.Component<NavigationInjectedProps, IState> {
     state = {
         email: '',
         password: ''
@@ -27,18 +28,22 @@ export default class SignUpForm extends React.Component<{}, IState> {
             return;
         }
 
-        const data = await auth('login', this.state);
-
-        if (data.error) {
-            // TODO set error message
-            return;
-        }
-
-        // save token to storage
         try {
-            // AsyncStorage.setItem('client_id', data.payload);
+            const data = await auth('login', this.state);
+            if (data.error) {
+                // TODO set error message
+                Alert.alert('Error', data.error);
+                return;
+            }
+
+            // save token to storage
+            await AsyncStorage.setItem('client_id', data.payload);
+            this.props.navigation.navigate('Home');
         } catch {
-            // TODO set error saving data
+            return ToastAndroid.show(
+                'Error when trying to log in please try again',
+                ToastAndroid.LONG
+            );
         }
     };
 
@@ -68,3 +73,5 @@ export default class SignUpForm extends React.Component<{}, IState> {
         );
     }
 }
+
+export default withNavigation(SignUpForm);

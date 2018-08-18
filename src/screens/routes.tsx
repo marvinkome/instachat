@@ -42,7 +42,8 @@ const RootStackNavigator = (initialRouteName: string) => {
                 navigationOptions: {
                     title: 'Chat App'.toUpperCase(),
                     headerStyle: stackStyles.header,
-                    headerTitleStyle: stackStyles.title
+                    headerTitleStyle: stackStyles.title,
+                    headerLeft: null
                 }
             },
             Chat,
