@@ -15,11 +15,8 @@ async function customFetch(uri: string, options: any) {
         try {
             const data = await auth('', { client_token: token });
             const accessToken = data.payload;
-            options = {
-                header: {
-                    authorization: `Bearer ${accessToken}`
-                }
-            };
+
+            options.headers.Authorization = `Bearer ${accessToken}`;
         } catch {
             // what do we do?
             // log him out? yeah

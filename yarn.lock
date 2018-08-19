@@ -2736,7 +2736,7 @@ graphql-anywhere@^4.1.0-alpha.0, graphql-anywhere@^4.1.17:
   dependencies:
     apollo-utilities "^1.0.19"
 
-graphql-tag@^2.4.2:
+graphql-tag@^2.4.2, graphql-tag@^2.9.2:
   version "2.9.2"
   resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.9.2.tgz#2f60a5a981375f430bf1e6e95992427dc18af686"
 
@@ -5012,6 +5012,10 @@ react-is@^16.4.2:
 react-lifecycles-compat@^3, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
+
+react-native-contacts@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/react-native-contacts/-/react-native-contacts-2.2.2.tgz#8bfec0a82bce3c24847ed69419ebc0ba8d7defee"
 
 react-native-dismiss-keyboard@1.0.0:
   version "1.0.0"
