@@ -651,6 +651,10 @@ apollo-cache-inmemory@^1.2.8:
     apollo-utilities "^1.0.19"
     graphql-anywhere "^4.1.17"
 
+apollo-cache-persist@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/apollo-cache-persist/-/apollo-cache-persist-0.1.1.tgz#e6cfe1983b998982a679aaf05241d3ed395edb1e"
+
 apollo-cache@^1.1.15:
   version "1.1.15"
   resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.1.15.tgz#48d3a366047fc4b876c2036a79b0e070dee74cc1"
@@ -5013,10 +5017,6 @@ react-lifecycles-compat@^3, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
-react-native-contacts@^2.2.2:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/react-native-contacts/-/react-native-contacts-2.2.2.tgz#8bfec0a82bce3c24847ed69419ebc0ba8d7defee"
-
 react-native-dismiss-keyboard@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-native-dismiss-keyboard/-/react-native-dismiss-keyboard-1.0.0.tgz#32886242b3f2317e121f3aeb9b0a585e2b879b49"
@@ -5053,6 +5053,10 @@ react-native-safe-area-view@^0.8.0:
   resolved "https://registry.yarnpkg.com/react-native-safe-area-view/-/react-native-safe-area-view-0.8.0.tgz#22d78cb8e8658d04a10cd53c1546e0bc86cb7aea"
   dependencies:
     hoist-non-react-statics "^2.3.1"
+
+react-native-simple-contacts@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-simple-contacts/-/react-native-simple-contacts-1.0.2.tgz#7ba4a052d2e8f10f73234bd890a7f8c51cb9c591"
 
 react-native-tab-view@^0.0.77:
   version "0.0.77"

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import { Query } from 'react-apollo';
 
 import { UserData } from './user-data';
@@ -19,7 +19,16 @@ export default class PageView extends React.Component {
     render() {
         return (
             <Query query={query}>
-                {({ data, loading }) => !loading && this.viewFunc(data)}
+                {({ data, loading, error, ...rest }) => {
+                    if (error) {
+                        return <Text>{JSON.stringify(error)} </Text>;
+                    }
+                    if (!loading) {
+                        return this.viewFunc(data);
+                    }
+
+                    return <Text>Loading </Text>;
+                }}
             </Query>
         );
     }
