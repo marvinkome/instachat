@@ -5,7 +5,7 @@ import { UserDataStyles as styles } from './styles';
 
 type IProps = {
     data: {
-        fullname: string;
+        username: string;
         about: string;
     };
 };
@@ -21,7 +21,8 @@ export const UserData = (props: IProps) => {
                 />
             </View>
             <View style={[{ flex: 2 }, styles.innerContainer]}>
-                <Text style={styles.name}>{props.data.fullname}</Text>
+                <Text style={styles.name}>{props.data.username}</Text>
+
                 <Text style={styles.about} numberOfLines={1}>
                     {props.data.about || "Hey there, I'm on instaChat"}
                 </Text>

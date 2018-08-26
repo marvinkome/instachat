@@ -19,7 +19,7 @@ export default class PageView extends React.Component {
     render() {
         return (
             <Query query={query}>
-                {({ data, loading, error, ...rest }) => {
+                {({ data, loading, error }) => {
                     if (error) {
                         return <Text>{JSON.stringify(error)} </Text>;
                     }
@@ -27,7 +27,7 @@ export default class PageView extends React.Component {
                         return this.viewFunc(data);
                     }
 
-                    return <Text>Loading </Text>;
+                    return <Text>Loading...</Text>;
                 }}
             </Query>
         );
