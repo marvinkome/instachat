@@ -7,6 +7,8 @@ export default gql`
             groups {
                 edges {
                     node {
+                        id
+                        uuid
                         name
                         topic
                     }

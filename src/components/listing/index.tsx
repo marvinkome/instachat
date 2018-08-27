@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { View, Text } from 'react-native';
-import { ListItem, Badge, Avatar } from 'react-native-elements';
+import { ListItem, Badge, Avatar, ListItemProps } from 'react-native-elements';
 import { ViewStyles as styles } from './styles';
 
 type IProps = {
-    avatar: any;
+    avatarImg: any;
     title: string;
     subtitle: string;
     subtitleStyle?: any;
@@ -13,26 +13,29 @@ type IProps = {
     badgeValue?: number;
 };
 
-const MainListItem = (props: IProps) => {
+const MainListItem = ({
+    subtitleStyle,
+    avatarImg,
+    showBadge,
+    badgeText,
+    badgeValue,
+    ...props
+}: IProps & ListItemProps) => {
     return (
         <ListItem
             containerStyle={styles.listItemContainer}
-            avatar={<Avatar small rounded source={props.avatar} />}
-            title={props.title}
+            subtitleStyle={[subtitleStyle, styles.message]}
             titleStyle={styles.name}
-            subtitle={props.subtitle}
-            subtitleStyle={[props.subtitleStyle, styles.message]}
+            avatar={<Avatar small rounded source={avatarImg} />}
             hideChevron
             badge={
-                props.showBadge
+                showBadge
                     ? {
                           element: (
                               <View style={styles.rightContainer}>
-                                  <Text style={styles.time}>
-                                      {props.badgeText}
-                                  </Text>
+                                  <Text style={styles.time}>{badgeText}</Text>
                                   <Badge
-                                      value={props.badgeValue}
+                                      value={badgeValue}
                                       containerStyle={styles.badgeContainer}
                                       textStyle={styles.badgeText}
                                   />
@@ -41,6 +44,7 @@ const MainListItem = (props: IProps) => {
                       }
                     : undefined
             }
+            {...props}
         />
     );
 };

@@ -16,7 +16,7 @@ const Listing = ({ listItem, typing }: Props) => {
     const subtitleStyle = typing ? { color: color.primary } : {};
     return (
         <List
-            avatar={listItem.image}
+            avatarImg={listItem.image}
             title={listItem.name}
             subtitle={typing ? 'typing...' : listItem.text}
             subtitleStyle={subtitleStyle}

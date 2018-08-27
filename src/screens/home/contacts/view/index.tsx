@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { withNavigation, NavigationInjectedProps } from 'react-navigation';
 import { View, Text } from 'react-native';
 import { Query } from 'react-apollo';
 import { List } from 'react-native-elements';
@@ -7,13 +8,15 @@ import Listing from './listing';
 import { ViewStyles as styles } from './styles';
 import query from './gql';
 
-export default class ScreenView extends React.Component {
+class ScreenView extends React.Component<NavigationInjectedProps> {
     parseGroupsObject = (groups: any[]) => {
         const parsedGroups = groups.reduce((total: any[], item) => {
             total.push({
+                ...item.node,
                 name: item.node.name,
                 about: item.node.topic,
-                image: require('../../../../../static/yuna.jpg')
+                image: require('../../../../../static/yuna.jpg'),
+                onPress: () => this.props.navigation.navigate('Chat')
             });
 
             return total;
@@ -26,8 +29,8 @@ export default class ScreenView extends React.Component {
         return (
             <View style={styles.container}>
                 <List containerStyle={styles.listContainer}>
-                    {lists.map((item: any, index: number) => (
-                        <Listing key={index} listItem={item} />
+                    {lists.map((item: any) => (
+                        <Listing key={item.id} listItem={item} />
                     ))}
                 </List>
             </View>
@@ -51,3 +54,5 @@ export default class ScreenView extends React.Component {
         );
     }
 }
+
+export default withNavigation(ScreenView);

@@ -3,6 +3,7 @@ import List from '../../../../components/listing';
 
 type Props = {
     listItem: {
+        onPress: () => void;
         name: string;
         about: string;
         image: any;
@@ -12,9 +13,10 @@ type Props = {
 const Listing = ({ listItem }: Props) => {
     return (
         <List
-            avatar={listItem.image}
+            avatarImg={listItem.image}
             title={listItem.name}
             subtitle={listItem.about}
+            onPress={listItem.onPress}
         />
     );
 };
