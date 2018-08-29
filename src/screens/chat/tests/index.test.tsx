@@ -5,6 +5,8 @@ import { ChatBody } from '../view/chatBody';
 import { ChatForm } from '../view/chatForm';
 import { create } from 'react-test-renderer';
 
+jest.mock('socket.io-client');
+
 describe('chat screen', () => {
     it('renders correctly', () => {
         const comp = create(<Chats />);
@@ -35,12 +37,12 @@ describe('chat screen', () => {
                 {
                     name: 'jamesbond',
                     text: 'Lorem ipsum dolor sit amet consectetur',
-                    time: '9 Aug 2018 23:00'
+                    time: Date.now()
                 },
                 {
                     name: 'you',
                     text: 'Doing?',
-                    time: 'Today at 13:45'
+                    time: Date.now()
                 }
             ];
             it('renders 4 chats', () => {
@@ -55,7 +57,7 @@ describe('chat screen', () => {
 
         describe('chat form', () => {
             it('should render correctly', () => {
-                const comp = create(<ChatForm />);
+                const comp = create(<ChatForm sendMessage={jest.fn()} />);
                 expect(comp).toMatchSnapshot();
             });
         });

@@ -1,37 +1,66 @@
 import * as React from 'react';
-import { shallow } from 'enzyme';
+import { create } from 'react-test-renderer';
+import { MockedProvider } from 'react-apollo/test-utils';
+import wait from 'waait';
 import { Contacts } from '../index';
 import View from '../view';
-import Listing from '../view/listing';
+import query from '../view/gql';
+
+const mocks = [
+    {
+        request: {
+            query
+        },
+        result: {
+            data: {
+                user: {
+                    id: '1',
+                    groups: {
+                        edges: [
+                            {
+                                node: {
+                                    id: '12',
+                                    uuid: '1',
+                                    name: 'Test group',
+                                    topic: null
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+];
 
 describe('<Contacts/> listing tab', () => {
-    const lists = [
-        {
-            name: 'Larry John',
-            about: 'I am mocked person :)',
-            image: ''
-        }
-    ];
-
     // snapshot
-    it('renders correctly', () => {
-        const app = shallow(<Contacts />);
+    // it('renders correctly', () => {
+    //     const app = create(
+    //         <MockedProvider mocks={mocks} addTypename={false}>
+    //             <Contacts />
+    //         </MockedProvider>
+    //     );
 
-        expect(app).toMatchSnapshot();
-    });
+    //     expect(app).toMatchSnapshot();
+    // });
 
     // list all chats
-    it('should list all chats', () => {
-        const wrapper = shallow(<View />);
-        const list = wrapper.find('List');
+    it('should list all chats', async () => {
+        const comp = create(
+            <MockedProvider mocks={mocks} addTypename={false}>
+                //@ts-ignore
+                <View />
+            </MockedProvider>
+        );
+        await wait(0);
 
-        expect(list).toMatchSnapshot();
-        expect(list.props().children).toHaveLength(2);
-    });
+        const wrapper = comp.root;
+        const list = wrapper.findByProps({ 'data-testId': 'list' });
+        // expect(list).toMatchSnapshot();
+        expect(list.children).toHaveLength(1);
 
-    // listing snapshot
-    it('renders a contact', () => {
-        const wrapper = shallow(<Listing listItem={lists[0]} />);
-        expect(wrapper).toMatchSnapshot();
+        // const listing = list.children[0];
+        // expect(listing).toMatchSnapshot();
     });
 });

@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Avatar } from 'react-native-elements';
 import { View, Text, ScrollView } from 'react-native';
+
+import { formatDate } from '../../../lib/helpers';
 import {
     chatBodyStyles as styles,
     chatBodyExtra as extraStyles
@@ -12,7 +14,7 @@ type Props = {
     items: Array<{
         name: string;
         text: string;
-        time: string;
+        time: any;
     }>;
 };
 
@@ -48,9 +50,17 @@ export class ChatBody extends React.Component<Props> {
                 )}
 
                 <View style={chatItemStyle}>
+                    <Text style={styles.name}>{item.name}</Text>
                     <Text style={styles.text}>{item.text}</Text>
-                    <Text style={styles.time}>{item.time}</Text>
+                    <Text style={styles.time}>{formatDate(item.time)}</Text>
                 </View>
+            </View>
+        );
+    };
+    newMessageIndicator = () => {
+        return (
+            <View style={styles.newMsg}>
+                <Text style={styles.newMsgText}>New Message</Text>
             </View>
         );
     };
@@ -63,14 +73,6 @@ export class ChatBody extends React.Component<Props> {
                     this.scrollView.scrollToEnd({ animated: false });
                 }}
             >
-                {this.props.items.map((item, index, array) =>
-                    this.renderChatItem(item, index, array[index + 1])
-                )}
-
-                <View style={styles.newMsg}>
-                    <Text style={styles.newMsgText}>New Message</Text>
-                </View>
-
                 {this.props.items.map((item, index, array) =>
                     this.renderChatItem(item, index, array[index + 1])
                 )}

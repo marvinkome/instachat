@@ -38,16 +38,12 @@ export const chatBodyStyles = StyleSheet.create({
     },
     chatContainer: {
         marginBottom: 15,
-        width: '75%'
+        width: '80%'
     },
     item: {
         backgroundColor: colors.primary,
         borderRadius: 10,
         padding: 10
-    },
-    header: {
-        flexDirection: 'row',
-        marginBottom: 5
     },
     sender: {
         color: '#fff',
@@ -55,11 +51,20 @@ export const chatBodyStyles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '600'
     },
+    footer: {
+        marginTop: 5
+    },
+    name: {
+        color: '#fff',
+        fontSize: 12,
+        opacity: 0.8,
+        marginBottom: 7
+    },
     time: {
         color: '#fff',
         fontSize: 12,
         opacity: 0.8,
-        alignSelf: 'flex-end'
+        marginTop: 7
     },
     text: {
         color: '#fff',

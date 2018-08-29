@@ -1,42 +1,49 @@
 import * as React from 'react';
 import { View } from 'react-native';
+
+import Socket from '../../../lib/socket';
 import { ChatHeader } from './chatHeader';
 import { ChatBody } from './chatBody';
 import { ChatForm } from './chatForm';
 import { viewStyles as styles } from './styles';
 
-const ChatView = () => {
-    const listItems = [
-        {
-            name: 'jamesbond',
-            text:
-                'Lorem ipsum dolor sit amet consectetur,  adipisicing elit. Facere, ad minima voluptas.',
-            time: '9 Aug 2018 23:00'
-        },
-        {
-            name: 'jamesbond',
-            text: 'Lorem ipsum dolor sit amet consectetur',
-            time: '9 Aug 2018 23:00'
-        },
-        {
-            name: 'you',
-            text: 'Doing?',
-            time: 'Today at 13:45'
-        },
-        {
-            name: 'you',
-            text: 'Lorem ipsum dolor sit amet consectetur',
-            time: 'Today at 13:45'
-        }
-    ];
-
-    return (
-        <View style={styles.container}>
-            <ChatHeader data-testId="chat-header" />
-            <ChatBody data-testId="chat-body" items={listItems} />
-            <ChatForm />
-        </View>
-    );
+type IState = {
+    messages: Array<{
+        name: string;
+        text: string;
+        time: any;
+    }>;
 };
+
+class ChatView extends React.Component<{}, IState> {
+    socket: SocketIOClient.Socket;
+    state = {
+        messages: []
+    };
+
+    componentDidMount() {
+        this.socket = Socket();
+
+        this.socket.on('message response', (data: any) => {
+            this.setState({
+                messages: this.state.messages.concat(data)
+            });
+        });
+    }
+
+    sendMessage = (message: string) => {
+        this.socket.emit('send message', message);
+    };
+
+    render() {
+        return (
+            <View style={styles.container}>
+                <ChatHeader data-testId="chat-header" />
+                <ChatBody data-testId="chat-body" items={this.state.messages} />
+                <ChatForm sendMessage={this.sendMessage} />
+            </View>
+        );
+    }
+}
 
 export default ChatView;

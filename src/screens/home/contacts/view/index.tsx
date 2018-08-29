@@ -28,7 +28,7 @@ class ScreenView extends React.Component<NavigationInjectedProps> {
         const lists = this.parseGroupsObject(groups);
         return (
             <View style={styles.container}>
-                <List containerStyle={styles.listContainer}>
+                <List data-testId="list" containerStyle={styles.listContainer}>
                     {lists.map((item: any) => (
                         <Listing key={item.id} listItem={item} />
                     ))}

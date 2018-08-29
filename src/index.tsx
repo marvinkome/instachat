@@ -7,6 +7,8 @@ YellowBox.ignoreWarnings([
     'Module RCTImageLoader'
 ]);
 
+console.ignoredYellowBox = ['Setting a timer'];
+
 export default class App extends React.Component {
     render() {
         return <Screen />;

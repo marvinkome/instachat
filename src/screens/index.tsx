@@ -20,7 +20,7 @@ export default class App extends React.Component<{}, IState> {
 
     async componentDidMount() {
         const token = await AsyncStorage.getItem('client_id');
-        const { cache, client } = apolloClient();
+        const { client } = apolloClient();
         // await persistCache({ cache, storage: AsyncStorage });
         const isLoggedIn = token !== null;
 
@@ -34,7 +34,7 @@ export default class App extends React.Component<{}, IState> {
     render() {
         const { client, isLoaded, isLoggedIn } = this.state;
         const Navigator = isLoggedIn
-            ? rootNavigator('Home')
+            ? rootNavigator('Chat')
             : rootNavigator('Login');
 
         if (isLoaded && client) {

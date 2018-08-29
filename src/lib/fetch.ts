@@ -1,9 +1,14 @@
 import { AsyncStorage } from 'react-native';
 import { auth } from './auth';
 
-const clientId = async () => {
+export const clientId = async () => {
     const token = await AsyncStorage.getItem('client_id');
     return token;
+};
+
+export const getAccessToken = async (token: any) => {
+    const data = await auth('', { client_token: token });
+    return data.payload;
 };
 
 async function customFetch(uri: string, options: any) {
@@ -13,15 +18,16 @@ async function customFetch(uri: string, options: any) {
     if (token) {
         // authenticate and get an access token
         try {
-            const data = await auth('', { client_token: token });
-            const accessToken = data.payload;
-
+            const accessToken = await getAccessToken(token);
             options.headers.Authorization = `Bearer ${accessToken}`;
         } catch {
+            console.warn('Error connecting with server');
             // what do we do?
             // log him out? yeah
             // logout
         }
+    } else {
+        console.warn('Not authenticated');
     }
 
     return fetch(uri, options);
