@@ -11,7 +11,7 @@ type IState = {
     message: string;
 };
 
-export class ChatForm extends React.Component<IProps, IState> {
+export default class ChatForm extends React.Component<IProps, IState> {
     state = {
         message: ''
     };
@@ -24,6 +24,9 @@ export class ChatForm extends React.Component<IProps, IState> {
 
     sendMessage = () => {
         this.props.sendMessage(this.state.message);
+        this.setState({
+            message: ''
+        });
     };
 
     render() {
@@ -35,6 +38,7 @@ export class ChatForm extends React.Component<IProps, IState> {
                         underlineColorAndroid="transparent"
                         inputStyle={styles.input}
                         onChangeText={this.onMessageChange}
+                        value={this.state.message}
                         multiline
                     />
                 </View>

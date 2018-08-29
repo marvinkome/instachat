@@ -120,10 +120,13 @@ export const chatFormStyles = StyleSheet.create({
     },
     formContainer: {
         flex: 4,
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
+        padding: 0,
+        margin: 0
     },
     input: {
-        height: 65
+        height: 65,
+        width: '100%'
     },
     btnCont: {
         flex: 1

@@ -1,11 +1,18 @@
 import * as React from 'react';
-import { Text } from 'react-native';
+import { Text, TouchableNativeFeedback } from 'react-native';
+import { withNavigation, NavigationInjectedProps } from 'react-navigation';
 import { Header, Icon } from 'react-native-elements';
 import { chatHeaderStyles as styles } from './styles';
 
-const LeftIcon = () => (
-    <Icon name="ios-arrow-round-back" type="ionicon" iconStyle={styles.icon} />
-);
+const LeftIcon = withNavigation((props: NavigationInjectedProps) => (
+    <TouchableNativeFeedback onPress={() => props.navigation.goBack()}>
+        <Icon
+            name="ios-arrow-round-back"
+            type="ionicon"
+            iconStyle={styles.icon}
+        />
+    </TouchableNativeFeedback>
+));
 
 const CenterComponent = () => (
     <React.Fragment>
@@ -27,3 +34,5 @@ export const ChatHeader = () => {
         />
     );
 };
+
+export default ChatHeader;

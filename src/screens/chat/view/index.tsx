@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { View } from 'react-native';
+import { View, ToastAndroid } from 'react-native';
 
 import Socket from '../../../lib/socket';
-import { ChatHeader } from './chatHeader';
-import { ChatBody } from './chatBody';
-import { ChatForm } from './chatForm';
+import ChatHeader from './chatHeader';
+import ChatBody from './chatBody';
+import ChatForm from './chatForm';
 import { viewStyles as styles } from './styles';
 
 type IState = {
@@ -21,18 +21,29 @@ class ChatView extends React.Component<{}, IState> {
         messages: []
     };
 
-    componentDidMount() {
-        this.socket = Socket();
+    async componentDidMount() {
+        this.socket = await Socket();
 
-        this.socket.on('message response', (data: any) => {
-            this.setState({
-                messages: this.state.messages.concat(data)
-            });
+        // join a room
+        this.socket.emit('join_room', 'Test Room');
+
+        // listen for messages
+        this.socket.on('message', (msg: any) => {
+            // check if message is not from bot
+            if (msg.data) {
+                // listen for messages from users
+                this.setState({
+                    messages: this.state.messages.concat(msg.data)
+                });
+            } else {
+                // listen for changes then alert
+                ToastAndroid.show(msg, ToastAndroid.LONG);
+            }
         });
     }
 
     sendMessage = (message: string) => {
-        this.socket.emit('send message', message);
+        this.socket.send(message, 'Test Room');
     };
 
     render() {

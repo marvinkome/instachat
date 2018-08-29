@@ -2,15 +2,16 @@ import * as React from 'react';
 import { Avatar } from 'react-native-elements';
 import { View, Text, ScrollView } from 'react-native';
 
-import { formatDate } from '../../../lib/helpers';
+import { formatDate } from '../../../../lib/helpers';
 import {
     chatBodyStyles as styles,
     chatBodyExtra as extraStyles
-} from './styles';
+} from '../styles';
 
-const img = require('../../../../static/pp.jpg');
+const img = require('../../../../../static/pp.jpg');
 
 type Props = {
+    loggedUser: string;
     items: Array<{
         name: string;
         text: string;
@@ -18,13 +19,13 @@ type Props = {
     }>;
 };
 
-export class ChatBody extends React.Component<Props> {
+export default class ChatBody extends React.Component<Props> {
     scrollView: any;
     renderChatItem = (item: any, index: number, nextItem: any) => {
         const chatContainerStyle = [styles.chatContainer];
         const chatItemStyle = [styles.item];
 
-        if (item.name === 'you') {
+        if (item.name === this.props.loggedUser) {
             chatContainerStyle.push(extraStyles.chatContainerMe);
             chatItemStyle.push(extraStyles.itemMe);
         } else {
@@ -35,7 +36,7 @@ export class ChatBody extends React.Component<Props> {
         // check if next message is from the same person
         if (nextItem && nextItem.name === item.name) {
             // join the chats
-            if (nextItem.name === 'you') {
+            if (nextItem.name === this.props.loggedUser) {
                 chatItemStyle.push(extraStyles.withNextItemMe);
             } else {
                 chatItemStyle.push(extraStyles.withNextItemElse);
@@ -45,12 +46,14 @@ export class ChatBody extends React.Component<Props> {
 
         return (
             <View style={chatContainerStyle} key={index}>
-                {item.name !== 'you' && (
+                {item.name !== this.props.loggedUser && (
                     <Avatar data-testId="avatar" rounded small source={img} />
                 )}
 
                 <View style={chatItemStyle}>
-                    <Text style={styles.name}>{item.name}</Text>
+                    {item.name !== this.props.loggedUser && (
+                        <Text style={styles.name}>{item.name}</Text>
+                    )}
                     <Text style={styles.text}>{item.text}</Text>
                     <Text style={styles.time}>{formatDate(item.time)}</Text>
                 </View>

@@ -34,7 +34,7 @@ export default class App extends React.Component<{}, IState> {
     render() {
         const { client, isLoaded, isLoggedIn } = this.state;
         const Navigator = isLoggedIn
-            ? rootNavigator('Chat')
+            ? rootNavigator('Home')
             : rootNavigator('Login');
 
         if (isLoaded && client) {
