@@ -6,6 +6,7 @@ import ChatHeader from './chatHeader';
 import ChatBody from './chatBody';
 import ChatForm from './chatForm';
 import { viewStyles as styles } from './styles';
+import { RxFromIo } from './subject';
 
 type IState = {
     messages: Array<{
@@ -27,19 +28,25 @@ class ChatView extends React.Component<{}, IState> {
         // join a room
         this.socket.emit('join_room', 'Test Room');
 
+        // get all messages in that room
+        // save the messages to state
+
         // listen for messages
-        this.socket.on('message', (msg: any) => {
-            // check if message is not from bot
-            if (msg.data) {
-                // listen for messages from users
-                this.setState({
-                    messages: this.state.messages.concat(msg.data)
-                });
-            } else {
-                // listen for changes then alert
-                ToastAndroid.show(msg, ToastAndroid.LONG);
-            }
-        });
+        const messages = RxFromIo(this.socket, 'message');
+        messages.forEach((value) => console.warn(value));
+
+        // this.socket.on('message', (msg: any) => {
+        //     // check if message is not from bot
+        //     if (msg.data) {
+        //         // listen for messages from users
+        //         this.setState({
+        //             messages: this.state.messages.concat(msg.data)
+        //         });
+        //     } else {
+        //         // listen for changes then alert
+        //         ToastAndroid.show(msg, ToastAndroid.LONG);
+        //     }
+        // });
     }
 
     sendMessage = (message: string) => {
