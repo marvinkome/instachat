@@ -9,6 +9,7 @@ type Props = {
         text: string;
         image: any;
         timestamp: string;
+        unread: number;
     };
 };
 
@@ -21,7 +22,7 @@ const Listing = ({ listItem, typing }: Props) => {
             subtitle={typing ? 'typing...' : listItem.text}
             subtitleStyle={subtitleStyle}
             badgeText={listItem.timestamp}
-            badgeValue={3}
+            badgeValue={listItem.unread}
             showBadge
         />
     );

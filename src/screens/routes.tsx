@@ -1,11 +1,6 @@
-import {
-    createMaterialTopTabNavigator,
-    createStackNavigator
-} from 'react-navigation';
-
+import { createMaterialTopTabNavigator, createStackNavigator} from 'react-navigation';
 import color from '../lib/colors';
 import { stackStyles, tabStyles } from '../styles';
-
 // home tabs
 import { Chats } from './home/chats';
 import { Contacts } from './home/contacts';

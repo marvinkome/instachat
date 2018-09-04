@@ -1,39 +1,49 @@
 import * as React from 'react';
-import { View } from 'react-native';
-import { List } from 'react-native-elements';
-import { ViewStyles as styles } from './styles';
-import ListItem from './listing';
+import { Text } from 'react-native';
+import { Query } from 'react-apollo';
+import { formatDate } from '../../../../lib/helpers';
+import View from './view';
+import query from './gql';
 
-type Props = {
-    lists: Array<{
-        name: string;
-        text: string;
-        image: any;
-        timestamp: string;
-    }>;
-};
+function parseData(data: any) {
+    if (data) {
+        const userGroups: any[] = data.user.userGroups;
+        return userGroups.reduce((total: any[], curr) => {
+            total.push({
+                name: curr.group.name,
+                text: 'Fake text',
+                image: require('../../../../../static/pp.jpg'),
+                timestamp: formatDate(new Date()),
+                unread: 4
+            });
 
-type State = {
-    typing: boolean;
-};
+            return total;
+        }, []);
+    }
 
-export default class MainView extends React.Component<Props, State> {
+    return null;
+}
+
+export default class MainView extends React.Component {
     state = {
         typing: false
     };
     render() {
         return (
-            <View style={styles.container}>
-                <List containerStyle={styles.listContainer}>
-                    {this.props.lists.map((item, index) => (
-                        <ListItem
-                            key={index}
-                            listItem={item}
-                            typing={this.state.typing}
-                        />
-                    ))}
-                </List>
-            </View>
+            <Query query={query}>
+                {({ data, loading, error }) => {
+                    if (error) {
+                        return <Text>{error.message}</Text>;
+                    }
+
+                    if (!loading) {
+                        const userData = parseData(data);
+                        return userData ? <View lists={userData} /> : null;
+                    }
+
+                    return null;
+                }}
+            </Query>
         );
     }
 }
