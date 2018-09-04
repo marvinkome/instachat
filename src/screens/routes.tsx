@@ -20,7 +20,7 @@ import Login from './login';
 const HomeTabNavigator = createMaterialTopTabNavigator(
     {
         Chats,
-        Contacts,
+        // Contacts,
         Profile
     },
     {

@@ -10,6 +10,8 @@
         "@types/graphql": "^0.13.4",
         "apollo-boost": "^0.1.14",
         "apollo-cache-persist": "^0.1.1",
+        "apollo-link-context": "^1.0.8",
+        "apollo-link-http": "^1.5.4",
         "graphql": "^0.13.2",
         "graphql-tag": "^2.9.2",
         "isomorphic-fetch": "^2.2.1",

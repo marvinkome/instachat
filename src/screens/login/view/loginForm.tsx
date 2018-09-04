@@ -18,6 +18,7 @@ class SignUpForm extends React.Component<NavigationInjectedProps, IState> {
     };
 
     onTextChange = (field: any, value: string) => {
+        // @ts-ignore
         this.setState({
             [field]: value
         });
@@ -37,7 +38,7 @@ class SignUpForm extends React.Component<NavigationInjectedProps, IState> {
             }
 
             // save token to storage
-            await AsyncStorage.setItem('client_id', data.payload);
+            await AsyncStorage.setItem('client_id', data.token);
             this.props.navigation.navigate('Home');
         } catch {
             return ToastAndroid.show(

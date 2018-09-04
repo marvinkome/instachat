@@ -18,8 +18,8 @@ async function customFetch(uri: string, options: any) {
     if (token) {
         // authenticate and get an access token
         try {
-            const accessToken = await getAccessToken(token);
-            options.headers.Authorization = `Bearer ${accessToken}`;
+            // const accessToken = await getAccessToken(token);
+            options.headers.Authorization = `Bearer ${token}`;
         } catch {
             console.warn('Error connecting with server');
             // what do we do?
