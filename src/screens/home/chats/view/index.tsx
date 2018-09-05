@@ -1,20 +1,26 @@
 import * as React from 'react';
 import { Text } from 'react-native';
+import { withNavigation, NavigationInjectedProps } from 'react-navigation';
 import { Query } from 'react-apollo';
 import { formatDate } from '../../../../lib/helpers';
 import View from './view';
 import query from './gql';
 
-function parseData(data: any) {
+function parseData(data: any, navigate: (args: any) => void) {
     if (data) {
         const userGroups: any[] = data.user.userGroups;
         return userGroups.reduce((total: any[], curr) => {
+            const name = curr.group.name;
+            const text = curr.group.messages[0].message;
+            const timestamp = Number(curr.group.messages[0].timestamp);
+
             total.push({
-                name: curr.group.name,
-                text: 'Fake text',
+                name,
+                text,
+                unread: 4,
                 image: require('../../../../../static/pp.jpg'),
-                timestamp: formatDate(new Date()),
-                unread: 4
+                timestamp: formatDate(timestamp),
+                onPress: () => navigate('Chat')
             });
 
             return total;
@@ -24,7 +30,10 @@ function parseData(data: any) {
     return null;
 }
 
-export default class MainView extends React.Component {
+class MainView extends React.Component<
+    NavigationInjectedProps,
+    { typing: boolean }
+> {
     state = {
         typing: false
     };
@@ -37,7 +46,10 @@ export default class MainView extends React.Component {
                     }
 
                     if (!loading) {
-                        const userData = parseData(data);
+                        const userData = parseData(
+                            data,
+                            this.props.navigation.navigate
+                        );
                         return userData ? <View lists={userData} /> : null;
                     }
 
@@ -47,3 +59,5 @@ export default class MainView extends React.Component {
         );
     }
 }
+
+export default withNavigation(MainView);

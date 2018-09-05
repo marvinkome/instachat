@@ -8,6 +8,11 @@ export default gql`
                 group {
                     id
                     name
+                    messages {
+                        id
+                        message
+                        timestamp
+                    }
                 }
             }
         }

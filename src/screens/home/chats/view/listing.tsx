@@ -10,6 +10,7 @@ type Props = {
         image: any;
         timestamp: string;
         unread: number;
+        onPress: () => void;
     };
 };
 
@@ -23,6 +24,7 @@ const Listing = ({ listItem, typing }: Props) => {
             subtitleStyle={subtitleStyle}
             badgeText={listItem.timestamp}
             badgeValue={listItem.unread}
+            onPress={listItem.onPress}
             showBadge
         />
     );
