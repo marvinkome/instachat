@@ -4,13 +4,17 @@ import * as React from 'react';
 import View from './view';
 // import query from './gql';
 
-type Props = {
+interface Props {
     items: Array<{
-        name: string;
-        text: string;
-        time: any;
+        id: string;
+        from: {
+            id: string;
+            username: string;
+        };
+        message: string;
+        timestamp: any;
     }>;
-};
+}
 
 export default class ChatBody extends React.Component<Props> {
     render() {

@@ -1,65 +1,40 @@
 import * as React from 'react';
-import { View, ToastAndroid } from 'react-native';
+import { View, Text } from 'react-native';
+import { Query, QueryResult } from 'react-apollo';
 
-import Socket from '../../../lib/socket';
 import ChatHeader from './chatHeader';
 import ChatBody from './chatBody';
 import ChatForm from './chatForm';
 import { viewStyles as styles } from './styles';
-import { RxFromIo } from './subject';
+import query from './gql';
 
-type IState = {
-    messages: Array<{
-        name: string;
-        text: string;
-        time: any;
-    }>;
-};
-
-class ChatView extends React.Component<{}, IState> {
-    socket: SocketIOClient.Socket;
-    state = {
-        messages: []
+class ChatView extends React.Component {
+    sendMessage = (message: string) => {
+        // this.socket.send(message, 'Test Room');
     };
 
-    async componentDidMount() {
-        this.socket = await Socket();
-
-        // join a room
-        this.socket.emit('join_room', 'Test Room');
-
-        // get all messages in that room
-        // save the messages to state
-
-        // listen for messages
-        const messages = RxFromIo(this.socket, 'message');
-        messages.forEach((value) => console.warn(value));
-
-        // this.socket.on('message', (msg: any) => {
-        //     // check if message is not from bot
-        //     if (msg.data) {
-        //         // listen for messages from users
-        //         this.setState({
-        //             messages: this.state.messages.concat(msg.data)
-        //         });
-        //     } else {
-        //         // listen for changes then alert
-        //         ToastAndroid.show(msg, ToastAndroid.LONG);
-        //     }
-        // });
-    }
-
-    sendMessage = (message: string) => {
-        this.socket.send(message, 'Test Room');
+    renderView = ({ data, loading, error }: QueryResult<any, any>) => {
+        return (
+            <View style={styles.container}>
+                <ChatHeader data-testId="chat-header" />
+                {error && <Text>{error.message}</Text>}
+                {!error &&
+                    !loading && (
+                        <ChatBody
+                            data-testId="chat-body"
+                            items={data.group.messages}
+                        />
+                    )}
+                <ChatForm sendMessage={this.sendMessage} />
+            </View>
+        );
     };
 
     render() {
         return (
-            <View style={styles.container}>
-                <ChatHeader data-testId="chat-header" />
-                <ChatBody data-testId="chat-body" items={this.state.messages} />
-                <ChatForm sendMessage={this.sendMessage} />
-            </View>
+            <Query query={query} variables={{ id: '5b8d9f2f53f8f92191b8a32b' }}>
+                {(data) => this.renderView(data)}
+            </Query>
         );
     }
 }
