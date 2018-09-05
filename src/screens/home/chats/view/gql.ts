@@ -8,7 +8,7 @@ export default gql`
                 group {
                     id
                     name
-                    messages {
+                    messages(first: 1, sort: true) {
                         id
                         message
                         timestamp

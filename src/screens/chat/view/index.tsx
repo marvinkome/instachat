@@ -1,19 +1,22 @@
 import * as React from 'react';
 import { View, Text } from 'react-native';
-import { Query, QueryResult } from 'react-apollo';
+import { withNavigation, NavigationInjectedProps } from 'react-navigation';
+import { Query, QueryResult, Mutation, MutationFn } from 'react-apollo';
 
 import ChatHeader from './chatHeader';
 import ChatBody from './chatBody';
 import ChatForm from './chatForm';
 import { viewStyles as styles } from './styles';
-import query from './gql';
+import query, { sendMsg } from './gql';
 
-class ChatView extends React.Component {
-    sendMessage = (message: string) => {
-        // this.socket.send(message, 'Test Room');
-    };
+class ChatView extends React.Component<NavigationInjectedProps> {
+    id = this.props.navigation.getParam('groupId');
 
-    renderView = ({ data, loading, error }: QueryResult<any, any>) => {
+    renderView = (
+        { data, loading, error }: QueryResult<any, any>,
+        sendMessage: MutationFn
+    ) => {
+        const id = this.props.navigation.getParam('groupId');
         return (
             <View style={styles.container}>
                 <ChatHeader data-testId="chat-header" />
@@ -25,18 +28,28 @@ class ChatView extends React.Component {
                             items={data.group.messages}
                         />
                     )}
-                <ChatForm sendMessage={this.sendMessage} />
+                <ChatForm
+                    sendMessage={(msg) =>
+                        sendMessage({ variables: { groupId: this.id, msg } })
+                    }
+                />
             </View>
         );
     };
 
     render() {
         return (
-            <Query query={query} variables={{ id: '5b8d9f2f53f8f92191b8a32b' }}>
-                {(data) => this.renderView(data)}
+            <Query query={query} variables={{ id: this.id }}>
+                {(queryData) => (
+                    <Mutation mutation={sendMsg}>
+                        {(sendMessage) =>
+                            this.renderView(queryData, sendMessage)
+                        }
+                    </Mutation>
+                )}
             </Query>
         );
     }
 }
 
-export default ChatView;
+export default withNavigation(ChatView);
