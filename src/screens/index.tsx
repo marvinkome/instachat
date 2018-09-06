@@ -20,7 +20,7 @@ export default class App extends React.Component<{}, IState> {
 
     async componentDidMount() {
         const token = await AsyncStorage.getItem('client_id');
-        const { client } = apolloClient();
+        const { client } = await apolloClient();
         // await persistCache({ cache, storage: AsyncStorage });
         const isLoggedIn = token !== null;
 

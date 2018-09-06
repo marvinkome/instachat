@@ -14,9 +14,13 @@ interface Props {
         message: string;
         timestamp: any;
     }>;
+    subscribe: () => void;
 }
 
 export default class ChatBody extends React.Component<Props> {
+    componentDidMount() {
+        this.props.subscribe();
+    }
     render() {
         return (
             <View loggedUser={'johndoe'} {...this.props} />
