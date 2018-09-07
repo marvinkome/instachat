@@ -5,7 +5,7 @@ import { createHttpLink } from 'apollo-link-http';
 import { setContext } from 'apollo-link-context';
 import { getMainDefinition } from 'apollo-utilities';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import { clientId } from './fetch';
+import { clientId } from './helpers';
 
 export default async () => {
     const token = await clientId();

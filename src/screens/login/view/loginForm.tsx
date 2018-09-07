@@ -11,7 +11,7 @@ type IState = {
     password: string;
 };
 
-class SignUpForm extends React.Component<NavigationInjectedProps, IState> {
+class LoginForm extends React.Component<NavigationInjectedProps, IState> {
     state = {
         email: '',
         password: ''
@@ -75,4 +75,4 @@ class SignUpForm extends React.Component<NavigationInjectedProps, IState> {
     }
 }
 
-export default withNavigation(SignUpForm);
+export default withNavigation(LoginForm);

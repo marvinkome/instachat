@@ -6,6 +6,7 @@ export default class Main extends React.Component {
         header: null
     };
     render() {
+        // @ts-ignore
         return <View />;
     }
 }

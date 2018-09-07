@@ -8,6 +8,7 @@ export class Chats extends React.Component {
     };
 
     render() {
+        // @ts-ignore
         return <View />;
     }
 }
