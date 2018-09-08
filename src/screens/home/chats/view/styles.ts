@@ -8,5 +8,13 @@ export const ViewStyles = StyleSheet.create({
     listContainer: {
         marginTop: 13,
         borderTopWidth: 0
+    },
+    emptyView: {
+        flex: 1,
+        paddingTop: '15%',
+        alignItems: 'center'
+    },
+    emptyText: {
+        fontFamily: 'PT_Sans'
     }
 });

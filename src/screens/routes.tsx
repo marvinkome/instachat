@@ -9,12 +9,16 @@ import Chat from './chat';
 // login screen
 import Login from './login';
 
+// create group screen
+import NewGroup from './newGroup';
+
 const RootStackNavigator = (initialRouteName: string) => {
     return createStackNavigator(
         {
             Home,
             Chat,
-            Login
+            Login,
+            NewGroup
         },
         {
             initialRouteName
