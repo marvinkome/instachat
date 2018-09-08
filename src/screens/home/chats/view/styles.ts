@@ -15,6 +15,8 @@ export const ViewStyles = StyleSheet.create({
         alignItems: 'center'
     },
     emptyText: {
-        fontFamily: 'PT_Sans'
+        fontFamily: 'PT_Sans',
+        textAlign: 'center',
+        margin: 15
     }
 });

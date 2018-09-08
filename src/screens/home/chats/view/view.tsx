@@ -26,13 +26,24 @@ function renderEmptyGroupList(fn: (args: any) => boolean) {
     return (
         <View style={styles.emptyView}>
             <Text style={styles.emptyText}>
-                Click the button below to start a group chat
+                No chats available. Click the button below to start a group chat
             </Text>
-            <Fab
-                buttonColor={color.primary}
-                onPress={() => fn('NewGroup')}
-                renderIcon={(_) => <Icon name="group" color="#fff" />}
-            />
+            <Fab buttonColor={color.primary}>
+                <Fab.Item
+                    buttonColor={color.primary}
+                    title="Create Group"
+                    onPress={() => fn('NewGroup')}
+                >
+                    <Icon name="group" color="#fff" />
+                </Fab.Item>
+                <Fab.Item
+                    buttonColor={color.primary}
+                    title="Join Group"
+                    onPress={() => fn('JoinGroup')}
+                >
+                    <Icon name="group-add" color="#fff" />
+                </Fab.Item>
+            </Fab>
         </View>
     );
 }
