@@ -28,7 +28,7 @@ export default class App extends React.Component<{}, IState> {
 
         if (isLoaded) {
             const Navigator = isLoggedIn
-                ? rootNavigator('Home')
+                ? rootNavigator('Main')
                 : rootNavigator('Login');
 
             return <Navigator />;

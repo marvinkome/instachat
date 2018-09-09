@@ -1,9 +1,46 @@
 import * as React from 'react';
-import { View } from 'react-native';
+import { View, ToastAndroid } from 'react-native';
 import { FormLabel, FormInput, Button } from 'react-native-elements';
 import { groupForm as styles } from './styles';
 
-export class GroupForm extends React.Component {
+interface IState {
+    name: string;
+    topic: string;
+}
+
+interface IProps {
+    createGroup: (data: { name: string; topic?: string }) => void;
+}
+
+export class GroupForm extends React.Component<IProps, IState> {
+    state = {
+        name: '',
+        topic: ''
+    };
+
+    onTextChange = (text: string, field: string) => {
+        // @ts-ignore
+        this.setState({
+            [field]: text
+        });
+    };
+
+    onCreateGroup = () => {
+        const { name, topic } = this.state;
+
+        // check if name is empty
+        if (!name.length) {
+            return ToastAndroid.show(
+                'Group name is required.',
+                ToastAndroid.LONG
+            );
+        }
+
+        topic.length
+            ? this.props.createGroup({ name, topic })
+            : this.props.createGroup({ name });
+    };
+
     render() {
         return (
             <React.Fragment>
@@ -12,11 +49,24 @@ export class GroupForm extends React.Component {
                     <FormInput
                         placeholder="eg. Thinkers lodge"
                         inputStyle={styles.input}
+                        onChangeText={(text) => this.onTextChange(text, 'name')}
+                        value={this.state.name}
+                    />
+                </View>
+                <View>
+                    <FormLabel labelStyle={styles.label}>
+                        Group Topic (optional)
+                    </FormLabel>
+                    <FormInput
+                        inputStyle={styles.input}
+                        onChangeText={(text) =>
+                            this.onTextChange(text, 'topic')
+                        }
                     />
                 </View>
                 <Button
                     title={'Create'.toUpperCase()}
-                    onPress={() => null}
+                    onPress={this.onCreateGroup}
                     containerViewStyle={styles.buttonCont}
                     buttonStyle={styles.button}
                 />

@@ -10,19 +10,6 @@ export const viewStyle = StyleSheet.create({
     }
 });
 
-export const imgForm = StyleSheet.create({
-    container: {
-        alignItems: 'center'
-    },
-    text: {
-        fontFamily: 'PT_Sans',
-        fontSize: 16,
-        fontWeight: 'bold',
-        marginBottom: 10,
-        color: color.text_light
-    }
-});
-
 export const groupForm = StyleSheet.create({
     label: {
         fontFamily: 'PT_Sans',

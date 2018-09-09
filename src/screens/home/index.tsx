@@ -1,10 +1,8 @@
 import * as React from 'react';
 import {
     createMaterialTopTabNavigator,
-    NavigationScreenProps
+    NavigationScreenProps as NP
 } from 'react-navigation';
-import { ApolloProvider } from 'react-apollo';
-import apolloClient from '../../lib/apollo';
 
 // styles
 import color from '../../lib/colors';
@@ -30,15 +28,7 @@ const HomeTabNavigator = createMaterialTopTabNavigator(
     }
 );
 
-interface IState {
-    isLoaded: boolean;
-    client: any;
-}
-
-export default class Main extends React.Component<
-    NavigationScreenProps,
-    IState
-> {
+export default class Main extends React.Component<NP> {
     static navigationOptions = {
         title: 'Chat App'.toUpperCase(),
         headerStyle: stackStyles.header,
@@ -47,30 +37,7 @@ export default class Main extends React.Component<
     };
     static router = HomeTabNavigator.router;
 
-    state = {
-        isLoaded: false,
-        client: null
-    };
-
-    async componentDidMount() {
-        // setup apollo
-        const { client } = await apolloClient();
-        this.setState({
-            client,
-            isLoaded: true
-        });
-    }
-
     render() {
-        const { isLoaded, client } = this.state;
-        if (client && isLoaded) {
-            return (
-                <ApolloProvider client={client}>
-                    <HomeTabNavigator navigation={this.props.navigation} />
-                </ApolloProvider>
-            );
-        }
-
-        return null;
+        return <HomeTabNavigator navigation={this.props.navigation} />;
     }
 }
