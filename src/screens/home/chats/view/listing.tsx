@@ -25,7 +25,7 @@ const Listing = ({ listItem, typing }: Props) => {
             badgeText={listItem.timestamp}
             badgeValue={listItem.unread}
             onPress={listItem.onPress}
-            showBadge
+            showBadge={listItem.unread !== null}
         />
     );
 };

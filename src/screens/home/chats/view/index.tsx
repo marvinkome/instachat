@@ -17,21 +17,23 @@ function reduceFunc(total: any[], curr: any, navigate: any) {
 
     const groupId = curr.group.id;
     const name = curr.group.name;
-    let text = 'curr.group.messages.message';
-    let timestamp = 0;
+    let text = 'No messages';
+    let timestamp = null;
+    let unread = null;
 
     // check if it has a last message
     if (curr.group.messages.length) {
         text = curr.group.messages[0].message;
-        timestamp = Number(curr.group.messages[0].timestamp);
+        timestamp = formatDate(Number(curr.group.messages[0].timestamp));
+        unread = 0;
     }
 
     total.push({
         name,
         text,
-        unread: 4,
+        unread,
+        timestamp,
         image: require('../../../../../static/pp.jpg'),
-        timestamp: formatDate(timestamp),
         onPress: () => navigate('Chat', { groupId })
     });
 
