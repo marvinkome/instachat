@@ -1,4 +1,7 @@
 import * as React from 'react';
+import { Mutation } from 'react-apollo';
+
+import { joinGroup } from './gql';
 import { stackStyles } from './style';
 import View from './view';
 
@@ -10,6 +13,10 @@ export default class JoinGroup extends React.Component {
         headerTintColor: '#fff'
     };
     render() {
-        return <View />;
+        return (
+            <Mutation mutation={joinGroup}>
+                {(fn) => <View joinGroup={fn} />}
+            </Mutation>
+        );
     }
 }

@@ -3,12 +3,13 @@ import Modal from 'react-native-modal';
 import { MutationFn } from 'react-apollo';
 import { withNavigation, NavigationInjectedProps as N } from 'react-navigation';
 import { View, Text, Clipboard, ToastAndroid } from 'react-native';
-import { FormInput, Button } from 'react-native-elements';
+import { Button } from 'react-native-elements';
 import { modalView as styles } from './styles';
 
 interface IProps {
     createInvite: MutationFn;
     groupId: string;
+    enableGroupLink?: boolean;
 }
 interface IState {
     showModal: boolean;
@@ -26,7 +27,6 @@ class InviteModal extends React.Component<IProps & N, IState> {
         if (!res) {
             return;
         }
-
         const invite = res.data.createInvite;
         this.setState({ invite, showModal: true });
     }
@@ -75,9 +75,12 @@ class InviteModal extends React.Component<IProps & N, IState> {
                             onPress={this.copyLink}
                             buttonStyle={styles.button}
                         />
-                        <Text style={styles.cta} onPress={this.goToGroup}>
-                            Go to group
-                        </Text>
+
+                        {this.props.enableGroupLink && (
+                            <Text style={styles.cta} onPress={this.goToGroup}>
+                                Go to group
+                            </Text>
+                        )}
                     </View>
                 </Modal>
             </View>

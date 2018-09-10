@@ -1,80 +1,101 @@
 import * as React from 'react';
-import { Text } from 'react-native';
-import {
-    withNavigation,
-    NavigationInjectedProps as NIP
-} from 'react-navigation';
-import { Query } from 'react-apollo';
+import { withNavigation, NavigationInjectedProps as N } from 'react-navigation';
+
+import { View } from 'react-native';
+import { List } from 'react-native-elements';
+
 import { formatDate } from '../../../../lib/helpers';
-import View from './view';
-import query from './gql';
+import ListItem from './listing';
+import { GroupFab } from './components/fab';
+import { EmptyList } from './components/emptyMsg';
+import { ViewStyles as styles } from './styles';
 
-function reduceFunc(total: any[], curr: any, navigate: any) {
-    // check if group is null
-    if (!curr.group) {
-        return total;
-    }
+const image = require('../../../../../static/pp.jpg');
 
-    const groupId = curr.group.id;
-    const name = curr.group.name;
-    let text = 'No messages';
-    let timestamp = null;
-    let unread = null;
-
-    // check if it has a last message
-    if (curr.group.messages.length) {
-        text = curr.group.messages[0].message;
-        timestamp = formatDate(Number(curr.group.messages[0].timestamp));
-        unread = 0;
-    }
-
-    total.push({
-        name,
-        text,
-        unread,
-        timestamp,
-        image: require('../../../../../static/pp.jpg'),
-        onPress: () => navigate('Chat', { groupId })
-    });
-
-    return total;
+interface ListingType {
+    id: string;
+    name: string;
+    text: string;
+    timestamp: string;
+    unread: number;
+    image: null;
+    onPress: () => void;
 }
 
-function parseData(data: any, navigate: (args: any, params?: any) => void) {
-    if (data) {
-        const userGroups: any[] = data.user.userGroups;
-        return userGroups.reduce(
-            (total: any[], curr: any) => reduceFunc(total, curr, navigate),
-            []
-        );
-    }
-
-    return null;
+interface IProps {
+    data: {
+        user: {
+            id: string;
+            userGroups: Array<{
+                group: {
+                    id: string;
+                    name: string;
+                    messages: Array<{
+                        id: string;
+                        message: string;
+                        timestamp: string;
+                    }>;
+                };
+            }>;
+        };
+    };
 }
 
-class MainView extends React.Component<NIP, { typing: boolean }> {
-    state = {
-        typing: false
+class MainView extends React.Component<N & IProps> {
+    formatItem = () => {
+        const groups = this.props.data.user.userGroups;
+        const formattedGroups = groups.reduce((total: ListingType[], curr) => {
+            // reduce item to match list props
+            let item = {
+                id: curr.group.id,
+                name: curr.group.name,
+                text: 'No message',
+                timestamp: '',
+                unread: 0,
+                image,
+                onPress: () => null
+            };
+
+            // check if last message is available
+            if (curr.group.messages.length) {
+                item = {
+                    ...item,
+                    text: curr.group.messages[0].message,
+                    timestamp: formatDate(
+                        Number(curr.group.messages[0].timestamp)
+                    )
+                };
+            }
+
+            total.push(item);
+            return total;
+        }, []);
+
+        return formattedGroups;
     };
     render() {
+        const lists = this.formatItem();
+
         return (
-            <Query query={query}>
-                {({ data, loading, error }) => {
-                    if (error) {
-                        return <Text>{error.message}</Text>;
-                    }
+            <View style={styles.container}>
+                {/* check length of groups */}
+                {this.props.data.user.userGroups.length ? (
+                    <List containerStyle={styles.listContainer}>
+                        {lists.map((item, index) => (
+                            <ListItem
+                                key={item.id}
+                                typing={false}
+                                listItem={item}
+                            />
+                        ))}
+                    </List>
+                ) : (
+                    <EmptyList />
+                )}
 
-                    if (!loading) {
-                        const userData = parseData(
-                            data,
-                            this.props.navigation.navigate
-                        );
-                        return userData ? <View lists={userData} /> : null;
-                    }
-
-                    return null;
-                }}
-            </Query>
+                {/* Fab to join and create group */}
+                <GroupFab navigate={this.props.navigation.navigate} />
+            </View>
         );
     }
 }

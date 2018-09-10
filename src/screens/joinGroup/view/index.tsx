@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { View } from 'react-native';
-import fetch from '../../../lib/fetch';
+import { MutationFn } from 'react-apollo';
 import { viewStyle as styles } from './styles';
 import { LinkForm } from './form';
 
-export default class PageView extends React.Component {
-    joinLink = async (link: string) => {
-        try {
-            const resp = await (await fetch(link, {})).json();
-            console.warn(resp);
-        } catch (e) {
-            console.warn(e.message);
-        }
+interface IProps {
+    joinGroup: MutationFn;
+}
+export default class PageView extends React.Component<IProps> {
+    joinLink = async (fullLink: string) => {
+        const link = fullLink.split('/');
+        const invite = link[link.length - 1];
+        this.props.joinGroup({ variables: { invite } });
     };
     render() {
         return (
