@@ -30,7 +30,7 @@ export default class ChatBody extends React.Component<Props> {
             <ScrollView
                 style={styles.container}
                 ref={(ref: any) => (this.scrollView = ref)}
-                onContentSizeChange={(contentWidth, contentHeight) => {
+                onContentSizeChange={() => {
                     this.scrollView.scrollToEnd({ animated: false });
                 }}
             >

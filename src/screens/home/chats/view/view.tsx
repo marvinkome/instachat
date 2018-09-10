@@ -22,28 +22,12 @@ type State = {
     typing: boolean;
 };
 
-function renderEmptyGroupList(fn: (args: any) => boolean) {
+function renderEmptyGroupList() {
     return (
         <View style={styles.emptyView}>
             <Text style={styles.emptyText}>
                 No chats available. Click the button below to start a group chat
             </Text>
-            <Fab buttonColor={color.primary}>
-                <Fab.Item
-                    buttonColor={color.primary}
-                    title="Create Group"
-                    onPress={() => fn('NewGroup')}
-                >
-                    <Icon name="group" color="#fff" />
-                </Fab.Item>
-                <Fab.Item
-                    buttonColor={color.primary}
-                    title="Join Group"
-                    onPress={() => fn('JoinGroup')}
-                >
-                    <Icon name="group-add" color="#fff" />
-                </Fab.Item>
-            </Fab>
         </View>
     );
 }
@@ -66,8 +50,28 @@ class MainView extends React.Component<Props & NavigationInjectedProps, State> {
                         ))}
                     </List>
                 ) : (
-                    renderEmptyGroupList(this.props.navigation.navigate)
+                    renderEmptyGroupList()
                 )}
+                <Fab buttonColor={color.primary}>
+                    <Fab.Item
+                        buttonColor={color.primary}
+                        title="Create Group"
+                        onPress={() =>
+                            this.props.navigation.navigate('NewGroup')
+                        }
+                    >
+                        <Icon name="group" color="#fff" />
+                    </Fab.Item>
+                    <Fab.Item
+                        buttonColor={color.primary}
+                        title="Join Group"
+                        onPress={() =>
+                            this.props.navigation.navigate('JoinGroup')
+                        }
+                    >
+                        <Icon name="group-add" color="#fff" />
+                    </Fab.Item>
+                </Fab>
             </View>
         );
     }

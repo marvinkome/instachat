@@ -45,23 +45,29 @@ function renderView(
 
     return (
         <View style={styles.container}>
-            <ChatHeader data-testId="chat-header" />
             {error && <Text>{error.message}</Text>}
             {!error &&
                 !loading && (
-                    <ChatBody
-                        data-testId="chat-body"
-                        items={data.group.messages}
-                        subscribe={() =>
-                            subscribeToMessages(subscribeToMore, id)
-                        }
-                    />
+                    <React.Fragment>
+                        <ChatHeader
+                            data-testId="chat-header"
+                            name={data.group.name}
+                            groupId={id}
+                        />
+                        <ChatBody
+                            data-testId="chat-body"
+                            items={data.group.messages}
+                            subscribe={() =>
+                                subscribeToMessages(subscribeToMore, id)
+                            }
+                        />
+                        <ChatForm
+                            sendMessage={(msg) =>
+                                sendMessage({ variables: { groupId: id, msg } })
+                            }
+                        />
+                    </React.Fragment>
                 )}
-            <ChatForm
-                sendMessage={(msg) =>
-                    sendMessage({ variables: { groupId: id, msg } })
-                }
-            />
         </View>
     );
 }

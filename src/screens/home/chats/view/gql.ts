@@ -14,6 +14,9 @@ export default gql`
                         timestamp
                     }
                 }
+                role {
+                    name
+                }
             }
         }
     }

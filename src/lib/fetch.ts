@@ -13,13 +13,20 @@ export const getAccessToken = async (token: any) => {
 
 async function customFetch(uri: string, options: any) {
     const token = await clientId();
+    let newOptions = options;
 
     // if there's token continue
     if (token) {
         // authenticate and get an access token
         try {
             // const accessToken = await getAccessToken(token);
-            options.headers.Authorization = `Bearer ${token}`;
+            newOptions = {
+                ...newOptions,
+                headers: {
+                    ...newOptions.headers,
+                    Authorization: `Bearer ${token}`
+                }
+            };
         } catch {
             console.warn('Error connecting with server');
             // what do we do?
@@ -30,7 +37,7 @@ async function customFetch(uri: string, options: any) {
         console.warn('Not authenticated');
     }
 
-    return fetch(uri, options);
+    return fetch(uri, newOptions);
 }
 
 export default customFetch;

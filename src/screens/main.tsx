@@ -4,6 +4,7 @@ import {
     NavigationScreenProps as NP
 } from 'react-navigation';
 import { ApolloProvider } from 'react-apollo';
+import { MenuProvider } from 'react-native-popup-menu';
 
 // lib
 import apolloClient from '../lib/apollo';
@@ -56,7 +57,9 @@ export default class MainRoute extends React.Component<NP, IState> {
         if (client && isLoaded) {
             return (
                 <ApolloProvider client={client}>
-                    <MainNavigator navigation={this.props.navigation} />
+                    <MenuProvider>
+                        <MainNavigator navigation={this.props.navigation} />
+                    </MenuProvider>
                 </ApolloProvider>
             );
         }
