@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Mutation, FetchResult } from 'react-apollo';
+import { DataProxy } from 'apollo-cache';
 
 import query from '../home/chats/gql';
 import { stackStyles } from './style';
 import { createGroup } from './gql';
 import View from './view';
-import { DataProxy } from 'apollo-cache';
 
 export default class NewGroup extends React.Component {
     static navigationOptions = {
