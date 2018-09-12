@@ -53,7 +53,10 @@ class MainView extends React.Component<N & IProps> {
                 timestamp: '',
                 unread: 0,
                 image,
-                onPress: () => null
+                onPress: () =>
+                    this.props.navigation.navigate('Chat', {
+                        groupId: curr.group.id
+                    })
             };
 
             // check if last message is available
@@ -81,7 +84,7 @@ class MainView extends React.Component<N & IProps> {
                 {/* check length of groups */}
                 {this.props.data.user.userGroups.length ? (
                     <List containerStyle={styles.listContainer}>
-                        {lists.map((item, index) => (
+                        {lists.map((item) => (
                             <ListItem
                                 key={item.id}
                                 typing={false}

@@ -19,14 +19,14 @@ export const chatHeaderStyles = StyleSheet.create({
         borderRadius: 50
     },
     rightIcon: {
-        fontSize: 16,
+        fontSize: 17,
         color: colors.primary,
         paddingBottom: 15
     },
     title: {
         fontSize: 19,
-        fontFamily: 'Karla',
-        textAlign: 'center',
+        fontFamily: 'PT_Sans',
+        paddingBottom: 14,
         color: colors.text_title,
         fontWeight: 'bold'
     },
@@ -35,6 +35,16 @@ export const chatHeaderStyles = StyleSheet.create({
         fontFamily: 'Karla',
         textAlign: 'center',
         color: colors.text_light
+    },
+    menuOptions: {
+        paddingTop: 5,
+        paddingBottom: 5
+    },
+    menuText: {
+        fontFamily: 'PT_Sans',
+        fontSize: 15,
+        padding: 7,
+        color: colors.text_title
     }
 });
 

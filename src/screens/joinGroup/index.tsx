@@ -8,8 +8,6 @@ import { joinGroup } from './gql';
 import { stackStyles } from './style';
 import View from './view';
 
-// http://localhost:3000/invite/Ik6rPwjcI
-
 export default class JoinGroup extends React.Component<NSP> {
     static navigationOptions = {
         title: 'Join a group',
@@ -24,7 +22,7 @@ export default class JoinGroup extends React.Component<NSP> {
         }
 
         const groupId = data.joinGroup.group.id;
-        return this.props.navigation.navigate('Chats', { groupId });
+        return this.props.navigation.navigate('Chat', { groupId });
     };
     updateCache = (cache: DataProxy, { data }: FetchResult) => {
         const cacheRes = cache.readQuery({ query });

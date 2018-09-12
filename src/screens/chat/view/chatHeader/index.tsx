@@ -2,11 +2,11 @@ import * as React from 'react';
 import { Text, TouchableNativeFeedback } from 'react-native';
 import { withNavigation, NavigationInjectedProps } from 'react-navigation';
 import { Header, Icon } from 'react-native-elements';
-import { Query } from 'react-apollo';
-import { chatHeaderStyles as styles } from '../styles';
-import { RightIcon } from './rightIcon';
-import query from './gql';
 
+import RightComponent from './rightIcon';
+import { chatHeaderStyles as styles } from '../styles';
+
+// TODO: add wave effect
 const LeftIcon = withNavigation((props: NavigationInjectedProps) => (
     <TouchableNativeFeedback onPress={() => props.navigation.goBack()}>
         <Icon
@@ -18,43 +18,27 @@ const LeftIcon = withNavigation((props: NavigationInjectedProps) => (
 ));
 
 const CenterComponent = ({ name }: { name: string }) => (
-    <React.Fragment>
-        <Text data-testID="username" style={styles.title}>
-            {name}
-        </Text>
-        <Text data-testID="last-seen" style={styles.subtitle}>
-            Last seen: 12/12/17
-        </Text>
-    </React.Fragment>
+    <Text data-testID="username" style={styles.title}>
+        {name}
+    </Text>
 );
 
-export const ChatHeader = ({
-    name,
-    groupId
-}: {
+interface Props {
     name: string;
+    role: string;
     groupId: string;
-}) => {
+}
+export const ChatHeader = (props: Props) => {
     return (
-        <Query query={query} variables={{ groupId }}>
-            {({ data, loading }) => {
-                if (loading) {
-                    return null;
-                }
-                const role = data.user.userGroup.role.name;
-                return (
-                    <Header
-                        outerContainerStyles={styles.container}
-                        // @ts-ignore
-                        leftComponent={<LeftIcon />}
-                        centerComponent={<CenterComponent name={name} />}
-                        rightComponent={
-                            role && <RightIcon role={role} groupId={groupId} />
-                        }
-                    />
-                );
-            }}
-        </Query>
+        <Header
+            outerContainerStyles={styles.container}
+            // @ts-ignore
+            leftComponent={<LeftIcon />}
+            centerComponent={<CenterComponent name={props.name} />}
+            rightComponent={
+                <RightComponent role={props.role} groupId={props.groupId} />
+            }
+        />
     );
 };
 

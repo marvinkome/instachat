@@ -30,6 +30,8 @@
         "react-native-simple-contacts": "^1.0.2",
         "react-native-vector-icons": "^5.0.0",
         "react-navigation": "^2.5.5",
+        "recompose": "^0.30.0",
+        "refract-rxjs": "^1.0.0",
         "rxjs": "^6.3.0",
         "socket.io-client": "^2.1.1",
         "subscriptions-transport-ws": "^0.9.14"
@@ -44,6 +46,7 @@
         "@types/react-native-elements": "^0.18.0",
         "@types/react-navigation": "^2.0.8",
         "@types/react-test-renderer": "^16.0.1",
+        "@types/recompose": "^0.26.5",
         "@types/socket.io-client": "^1.4.32",
         "babel-jest": "23.2.0",
         "babel-preset-react-native": "4.0.0",

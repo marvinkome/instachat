@@ -25,16 +25,24 @@ export const querySubscription = gql`
 
 export default gql`
     query GroupMessages($id: String!) {
-        group(id: $id) {
+        user {
             id
-            name
-            messages {
-                id
-                message
-                timestamp
-                from {
+            userGroup(groupId: $id) {
+                group {
                     id
-                    username
+                    name
+                    messages {
+                        id
+                        message
+                        timestamp
+                        from {
+                            id
+                            username
+                        }
+                    }
+                }
+                role {
+                    name
                 }
             }
         }
