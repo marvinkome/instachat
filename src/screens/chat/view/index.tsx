@@ -18,6 +18,7 @@ interface IProps {
 export const PageView = ({ data, sendMsg, groupId, moreMessages }: IProps) => {
     const group = data.user.userGroup.group;
     const role = data.user.userGroup.role;
+    const username = data.user.username;
     return (
         <View style={styles.container}>
             <ChatHeader
@@ -28,6 +29,7 @@ export const PageView = ({ data, sendMsg, groupId, moreMessages }: IProps) => {
             />
             <ChatBody
                 data-testId="chat-body"
+                loggedUser={username}
                 items={group.messages}
                 subscribe={moreMessages}
             />

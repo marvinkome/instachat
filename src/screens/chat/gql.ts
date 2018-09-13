@@ -27,6 +27,7 @@ export default gql`
     query GroupMessages($id: String!) {
         user {
             id
+            username
             userGroup(groupId: $id) {
                 group {
                     id
