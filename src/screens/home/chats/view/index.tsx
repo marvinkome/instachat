@@ -1,7 +1,13 @@
 import * as React from 'react';
+import {
+    compose,
+    withState,
+    withHandlers,
+    ComponentEnhancer as CE
+} from 'recompose';
 import { withNavigation, NavigationInjectedProps as N } from 'react-navigation';
 
-import { View } from 'react-native';
+import { View, FlatList } from 'react-native';
 import { List } from 'react-native-elements';
 
 import { formatDate } from '../../../../lib/helpers';
@@ -23,6 +29,11 @@ interface ListingType {
 }
 
 interface IProps {
+    refresing: boolean;
+    onRefresh: () => void;
+}
+
+interface OProps {
     data: {
         user: {
             id: string;
@@ -39,68 +50,84 @@ interface IProps {
             }>;
         };
     };
+
+    refetch: () => void;
 }
 
-class MainView extends React.Component<N & IProps> {
-    formatItem = () => {
-        const groups = this.props.data.user.userGroups;
-        const formattedGroups = groups.reduce((total: ListingType[], curr) => {
-            // reduce item to match list props
-            let item = {
-                id: curr.group.id,
-                name: curr.group.name,
-                text: 'No message',
-                timestamp: '',
-                unread: 0,
-                image,
-                onPress: () =>
-                    this.props.navigation.navigate('Chat', {
-                        groupId: curr.group.id
-                    })
+function formatItem({ data, navigation }: N & OProps) {
+    const groups = data.user.userGroups;
+    const formattedGroups = groups.reduce((total: ListingType[], curr) => {
+        // reduce item to match list props
+        let item = {
+            id: curr.group.id,
+            name: curr.group.name,
+            text: 'No message',
+            timestamp: '',
+            unread: 0,
+            image,
+            onPress: () =>
+                navigation.navigate('Chat', {
+                    groupId: curr.group.id
+                })
+        };
+
+        // check if last message is available
+        if (curr.group.messages.length) {
+            item = {
+                ...item,
+                text: curr.group.messages[0].message,
+                timestamp: formatDate(Number(curr.group.messages[0].timestamp))
             };
+        }
 
-            // check if last message is available
-            if (curr.group.messages.length) {
-                item = {
-                    ...item,
-                    text: curr.group.messages[0].message,
-                    timestamp: formatDate(
-                        Number(curr.group.messages[0].timestamp)
-                    )
-                };
-            }
+        total.push(item);
+        return total;
+    }, []);
 
-            total.push(item);
-            return total;
-        }, []);
-
-        return formattedGroups;
-    };
-    render() {
-        const lists = this.formatItem();
-
-        return (
-            <View style={styles.container}>
-                {/* check length of groups */}
-                {this.props.data.user.userGroups.length ? (
-                    <List containerStyle={styles.listContainer}>
-                        {lists.map((item) => (
-                            <ListItem
-                                key={item.id}
-                                typing={false}
-                                listItem={item}
-                            />
-                        ))}
-                    </List>
-                ) : (
-                    <EmptyList />
-                )}
-
-                {/* Fab to join and create group */}
-                <GroupFab navigate={this.props.navigation.navigate} />
-            </View>
-        );
-    }
+    return formattedGroups;
 }
 
-export default withNavigation(MainView);
+function MainView(props: N & OProps & IProps) {
+    const lists = formatItem(props);
+
+    return (
+        <View style={styles.container}>
+            {/* check length of groups */}
+            {props.data.user.userGroups.length ? (
+                <List containerStyle={styles.listContainer}>
+                    <FlatList
+                        data={lists}
+                        keyExtractor={(item) => item.id}
+                        refreshing={props.refresing}
+                        onRefresh={props.onRefresh}
+                        renderItem={({ item }) => (
+                            <ListItem listItem={item} typing={false} />
+                        )}
+                    />
+                </List>
+            ) : (
+                <EmptyList />
+            )}
+
+            {/* Fab to join and create group */}
+            <GroupFab navigate={props.navigation.navigate} />
+        </View>
+    );
+}
+
+const enhance: CE<IProps, OProps> = compose(
+    withNavigation,
+    withState('refresing', 'toggleRefresh', false),
+    withHandlers({
+        onRefresh: (props) => async () => {
+            // @ts-ignore
+            const { toggleRefresh, refetch } = props;
+            toggleRefresh(true);
+
+            await refetch();
+            await toggleRefresh(false);
+        }
+    })
+);
+
+export default enhance(MainView);

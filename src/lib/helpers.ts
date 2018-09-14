@@ -1,5 +1,6 @@
 import moment from 'moment';
 import { AsyncStorage } from 'react-native';
+import { MessageBarManager } from 'react-native-message-bar';
 
 export function formatDate(date: any, relative?: boolean) {
     const momentDate = moment(date);
@@ -18,7 +19,27 @@ export function formatDate(date: any, relative?: boolean) {
     }
 }
 
-export const clientId = async () => {
+export async function clientId() {
     const token = await AsyncStorage.getItem('client_id');
     return token;
-};
+}
+
+export function showAlert(msg: string, type?: string) {
+    MessageBarManager.showAlert({
+        message: msg,
+        shouldHideAfterDelay: false,
+        alertType: type || 'warning',
+        messageNumberOfLines: 1,
+        durationToShow: 0,
+        durationToHide: 0,
+        messageStyle: {
+            fontFamily: 'PT_Sans',
+            textAlign: 'center',
+            fontSize: 14
+        }
+    });
+}
+
+export function hideAlert() {
+    MessageBarManager.hideAlert();
+}

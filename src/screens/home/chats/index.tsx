@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Query } from 'react-apollo';
 import { NavigationTabScreenOptions } from 'react-navigation';
+
+import { showAlert, hideAlert } from '../../../lib/helpers';
 import View from './view';
 import query from './gql';
 
@@ -10,22 +12,23 @@ export class Chats extends React.Component {
     };
 
     render() {
-        // run query here view shouldn't contain any data fetching
         return (
             <Query query={query}>
-                {({ error, loading, data }) => {
+                {({ error, loading, data, refetch }) => {
                     if (error) {
-                        // TODO: Use arror component
-                        console.warn(error);
+                        showAlert(error.message, 'error');
                         return null;
                     }
 
                     if (loading) {
-                        // TODO: Use loader component
+                        showAlert('loading groups', 'success');
                         return null;
                     }
 
-                    return data.user ? <View data={data} /> : null;
+                    hideAlert();
+                    return data.user ? (
+                        <View data={data} refetch={refetch} />
+                    ) : null;
                 }}
             </Query>
         );

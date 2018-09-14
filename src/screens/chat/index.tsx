@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { NavigationScreenProps as NSP } from 'react-navigation';
-import { Query, Mutation } from 'react-apollo';
+import { Query, Mutation, FetchResult } from 'react-apollo';
 import { SubscribeToMoreOptions as STMO } from 'apollo-client';
 
 import View from './view';
 import query, { sendMsg, querySubscription } from './gql';
+import { DataProxy } from 'apollo-cache';
 
 export default class Main extends React.Component<NSP> {
     static navigationOptions = {
@@ -12,6 +13,7 @@ export default class Main extends React.Component<NSP> {
     };
 
     id = this.props.navigation.getParam('groupId');
+
     subscribeToMessages = (fn: (options: STMO<any, any>) => void) => {
         fn({
             document: querySubscription,
@@ -41,6 +43,21 @@ export default class Main extends React.Component<NSP> {
             }
         });
     };
+
+    update = (cache: DataProxy, { data }: FetchResult) => {
+        const cacheRes = cache.readQuery({ query });
+        if (!data || !cacheRes) {
+            return;
+        }
+
+        // @ts-ignore
+        const user = cacheRes.user.userGroups.group.messages.push(
+            data.sendMessage
+        );
+
+        cache.writeQuery({ query, data: user });
+    };
+
     render() {
         return (
             <Query query={query} variables={{ id: this.id }}>
@@ -64,7 +81,7 @@ export default class Main extends React.Component<NSP> {
                     };
 
                     return (
-                        <Mutation mutation={sendMsg}>
+                        <Mutation mutation={sendMsg} update={this.update}>
                             {(fn) => {
                                 const viewProps = {
                                     ...props,
