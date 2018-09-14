@@ -3,14 +3,12 @@ import gql from 'graphql-tag';
 export const createGroup = gql`
     mutation CreateGroup($name: String!, $topic: String) {
         createGroup(name: $name, topic: $topic) {
-            group {
+            id
+            name
+            messages(first: 1, sort: true) {
                 id
-                name
-                messages(first: 1, sort: true) {
-                    id
-                    message
-                    timestamp
-                }
+                message
+                timestamp
             }
             role {
                 name

@@ -47,7 +47,14 @@ export default async () => {
         authLink
     );
 
-    const cache = new InMemoryCache();
+    const cache = new InMemoryCache({
+        cacheRedirects: {
+            User: {
+                group: (_, args, { getCacheKey }) =>
+                    getCacheKey({ __typename: 'Group', id: args.groupId })
+            }
+        }
+    });
 
     const client = new ApolloClient({
         link,

@@ -1,18 +1,17 @@
 import gql from 'graphql-tag';
 
 export default gql`
-    {
+    query ChatsQuery {
         user {
             id
-            userGroups {
-                group {
+            groups {
+                id
+                name
+                messages(first: 1, sort: true)
+                    @connection(key: "messages", filter: ["sort"]) {
                     id
-                    name
-                    messages(first: 1, sort: true) {
-                        id
-                        message
-                        timestamp
-                    }
+                    message
+                    timestamp
                 }
                 role {
                     name

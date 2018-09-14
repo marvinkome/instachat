@@ -16,8 +16,8 @@ interface IProps {
 }
 
 export const PageView = ({ data, sendMsg, groupId, moreMessages }: IProps) => {
-    const group = data.user.userGroup.group;
-    const role = data.user.userGroup.role;
+    const group = data.user.group;
+    const role = data.user.group.role;
     const username = data.user.username;
     return (
         <View style={styles.container}>

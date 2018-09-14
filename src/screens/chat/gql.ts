@@ -5,6 +5,11 @@ export const sendMsg = gql`
         sendMessage(groupId: $groupId, message: $msg) {
             id
             message
+            timestamp
+            from {
+                id
+                username
+            }
         }
     }
 `;
@@ -28,18 +33,16 @@ export default gql`
         user {
             id
             username
-            userGroup(groupId: $id) {
-                group {
+            group(groupId: $id) {
+                id
+                name
+                messages(sort: true, first: 15) {
                     id
-                    name
-                    messages {
+                    message
+                    timestamp
+                    from {
                         id
-                        message
-                        timestamp
-                        from {
-                            id
-                            username
-                        }
+                        username
                     }
                 }
                 role {

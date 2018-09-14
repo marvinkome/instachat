@@ -3,14 +3,12 @@ import gql from 'graphql-tag';
 export const joinGroup = gql`
     mutation joinGroup($invite: String!) {
         joinGroup(inviteId: $invite) {
-            group {
+            id
+            name
+            messages(first: 1, sort: true) {
                 id
-                name
-                messages(first: 1, sort: true) {
-                    id
-                    message
-                    timestamp
-                }
+                message
+                timestamp
             }
             role {
                 name

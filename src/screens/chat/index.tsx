@@ -4,6 +4,7 @@ import { Query, Mutation, FetchResult } from 'react-apollo';
 import { SubscribeToMoreOptions as STMO } from 'apollo-client';
 
 import View from './view';
+import q from '../home/chats/gql';
 import query, { sendMsg, querySubscription } from './gql';
 import { DataProxy } from 'apollo-cache';
 
@@ -24,8 +25,14 @@ export default class Main extends React.Component<NSP> {
                 }
 
                 const newMsg = subscriptionData.data.messageSent;
+
+                // if it's same user dont
+                if (prev.user.username === newMsg.from.username) {
+                    return prev;
+                }
+
                 const prevGroup = prev.user.userGroup.group;
-                const msgList = [...prevGroup.messages, newMsg];
+                const msgList = [newMsg, ...prevGroup.messages];
 
                 return {
                     ...prev,
@@ -45,17 +52,16 @@ export default class Main extends React.Component<NSP> {
     };
 
     update = (cache: DataProxy, { data }: FetchResult) => {
-        const cacheRes = cache.readQuery({ query });
-        if (!data || !cacheRes) {
+        const prev = cache.readQuery({ query, variables: { id: this.id } });
+        if (!data || !prev) {
             return;
         }
 
         // @ts-ignore
-        const user = cacheRes.user.userGroups.group.messages.push(
-            data.sendMessage
-        );
+        const { user } = prev;
+        user.group.messages.unshift(data.sendMessage);
 
-        cache.writeQuery({ query, data: user });
+        cache.writeQuery({ query, data: { user } });
     };
 
     render() {

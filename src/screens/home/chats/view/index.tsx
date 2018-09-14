@@ -37,16 +37,14 @@ interface OProps {
     data: {
         user: {
             id: string;
-            userGroups: Array<{
-                group: {
+            groups: Array<{
+                id: string;
+                name: string;
+                messages: Array<{
                     id: string;
-                    name: string;
-                    messages: Array<{
-                        id: string;
-                        message: string;
-                        timestamp: string;
-                    }>;
-                };
+                    message: string;
+                    timestamp: string;
+                }>;
             }>;
         };
     };
@@ -55,28 +53,29 @@ interface OProps {
 }
 
 function formatItem({ data, navigation }: N & OProps) {
-    const groups = data.user.userGroups;
+    const groups = data.user.groups;
     const formattedGroups = groups.reduce((total: ListingType[], curr) => {
         // reduce item to match list props
+        const unread = curr.messages.length;
         let item = {
-            id: curr.group.id,
-            name: curr.group.name,
+            id: curr.id,
+            name: curr.name,
             text: 'No message',
             timestamp: '',
-            unread: 0,
+            unread,
             image,
             onPress: () =>
                 navigation.navigate('Chat', {
-                    groupId: curr.group.id
+                    groupId: curr.id
                 })
         };
 
         // check if last message is available
-        if (curr.group.messages.length) {
+        if (unread) {
             item = {
                 ...item,
-                text: curr.group.messages[0].message,
-                timestamp: formatDate(Number(curr.group.messages[0].timestamp))
+                text: curr.messages[0].message,
+                timestamp: formatDate(Number(curr.messages[0].timestamp))
             };
         }
 
@@ -93,7 +92,7 @@ function MainView(props: N & OProps & IProps) {
     return (
         <View style={styles.container}>
             {/* check length of groups */}
-            {props.data.user.userGroups.length ? (
+            {props.data.user.groups.length ? (
                 <List containerStyle={styles.listContainer}>
                     <FlatList
                         data={lists}

@@ -21,7 +21,7 @@ export default class JoinGroup extends React.Component<NSP> {
             return this.props.navigation.navigate('Home');
         }
 
-        const groupId = data.joinGroup.group.id;
+        const groupId = data.joinGroup.id;
         return this.props.navigation.navigate('Chat', { groupId });
     };
     updateCache = (cache: DataProxy, { data }: FetchResult) => {
@@ -32,7 +32,7 @@ export default class JoinGroup extends React.Component<NSP> {
 
         const newGroup = data.joinGroup;
         // @ts-ignore
-        cacheRes.user.userGroups.push(newGroup);
+        cacheRes.user.groups.push(newGroup);
 
         cache.writeQuery({ query, data: cacheRes });
     };
