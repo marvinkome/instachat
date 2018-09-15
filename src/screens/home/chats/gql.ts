@@ -7,8 +7,7 @@ export default gql`
             groups {
                 id
                 name
-                messages(first: 1, sort: true)
-                    @connection(key: "messages", filter: ["sort"]) {
+                messages(first: 1, sort: true) @connection(key: "messages") {
                     id
                     message
                     timestamp

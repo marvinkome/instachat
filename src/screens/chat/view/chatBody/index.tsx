@@ -2,11 +2,12 @@ import * as React from 'react';
 import { lifecycle, compose, ComponentEnhancer as CE } from 'recompose';
 
 // UI Elements
-import { ScrollView } from 'react-native';
-import ChatItem from './chatItem';
+import { FlatList } from 'react-native';
+import { List } from 'react-native-elements';
+import { ChatMsg } from './listItem';
 
 // styles
-import { chatBodyStyles as styles } from '../styles';
+import { chatMsg as style } from './styles';
 
 interface Props {
     loggedUser: string;
@@ -23,24 +24,15 @@ interface Props {
 }
 
 export function ChatBody(props: Props) {
-    let scrollRef: ScrollView;
     return (
-        <ScrollView
-            style={styles.container}
-            ref={(ref: any) => (scrollRef = ref)}
-            onContentSizeChange={() => {
-                scrollRef.scrollToEnd({ animated: false });
-            }}
-        >
-            {props.items.map((item, index, array) => (
-                <ChatItem
-                    item={item}
-                    nextItem={array[index + 1]}
-                    currentUser={props.loggedUser}
-                    key={item.id}
-                />
-            ))}
-        </ScrollView>
+        <List containerStyle={style.listContainer}>
+            <FlatList
+                data={props.items}
+                renderItem={({ item }) => <ChatMsg {...item} />}
+                keyExtractor={(item) => item.id}
+                inverted
+            />
+        </List>
     );
 }
 

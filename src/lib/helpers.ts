@@ -2,20 +2,24 @@ import moment from 'moment';
 import { AsyncStorage } from 'react-native';
 import { MessageBarManager } from 'react-native-message-bar';
 
-export function formatDate(date: any, relative?: boolean) {
+export function formatDate(date: any, full?: boolean) {
     const momentDate = moment(date);
     const now = moment();
     const diff = now.diff(momentDate, 'days');
 
     if (diff <= 0) {
         // if it's today show the hour and minute
-        return momentDate.format('h:mm A');
+        return full
+            ? momentDate.format('[Today at] LT')
+            : momentDate.format('h:mm A');
     } else if (diff === 1) {
         // if it's yesterday show yesterday
-        return 'yesterday';
+        return full ? momentDate.format('[Yesterday at] LT') : 'Yesterday';
     } else {
         // if it isn't both return the date in d/m/yy
-        return momentDate.format('D[/]M[/]YY');
+        return full
+            ? momentDate.format('D MMM YYYY LT')
+            : momentDate.format('D[/]M[/]YY');
     }
 }
 
