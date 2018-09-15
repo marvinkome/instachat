@@ -15,6 +15,20 @@ interface IProps {
     moreMessages: () => void;
 }
 
+const optimisticResp = (message: string, username: string) => ({
+    sendMessage: {
+        id: String(Math.round(Math.random() * -1000000)),
+        message,
+        timestamp: Date.now(),
+        from: {
+            id: String(Math.round(Math.random() * -1000000)),
+            username,
+            __typename: 'User'
+        },
+        __typename: 'Message'
+    }
+});
+
 export const PageView = ({ data, sendMsg, groupId, moreMessages }: IProps) => {
     const group = data.user.group;
     const role = data.user.group.role;
@@ -34,7 +48,12 @@ export const PageView = ({ data, sendMsg, groupId, moreMessages }: IProps) => {
                 subscribe={moreMessages}
             />
             <ChatForm
-                sendMessage={(msg) => sendMsg({ variables: { groupId, msg } })}
+                sendMessage={(msg) =>
+                    sendMsg({
+                        variables: { groupId, msg },
+                        optimisticResponse: optimisticResp(msg, username)
+                    })
+                }
             />
         </View>
     );

@@ -7,6 +7,7 @@ import { formatDate } from '../../../../lib/helpers';
 const avatarImg = require('../../../../../static/yuna.jpg');
 
 interface Props {
+    id: string;
     from: {
         id: string;
         username: string;
@@ -16,6 +17,7 @@ interface Props {
 }
 
 export function ChatMsg(props: Props) {
+    const optimistic = Number(props.id) < 0;
     const subtitle = <Text style={styles.message}>{props.message}</Text>;
     const title = (
         <Text style={styles.titleStyle}>
@@ -25,6 +27,11 @@ export function ChatMsg(props: Props) {
             </Text>
         </Text>
     );
+    const optimisticStyle = optimistic
+        ? {
+              backgroundColor: 'hsl(0,0%,96%)'
+          }
+        : {};
 
     return (
         <ListItem
@@ -33,7 +40,7 @@ export function ChatMsg(props: Props) {
             hideChevron
             roundAvatar
             avatar={avatarImg}
-            containerStyle={styles.itemContainer}
+            containerStyle={[styles.itemContainer, optimisticStyle]}
             wrapperStyle={styles.container}
             titleStyle={styles.titleStyle}
         />

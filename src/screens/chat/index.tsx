@@ -4,7 +4,6 @@ import { Query, Mutation, FetchResult } from 'react-apollo';
 import { SubscribeToMoreOptions as STMO } from 'apollo-client';
 
 import View from './view';
-import q from '../home/chats/gql';
 import query, { sendMsg, querySubscription } from './gql';
 import { DataProxy } from 'apollo-cache';
 

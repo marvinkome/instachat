@@ -28,11 +28,6 @@ interface ListingType {
     onPress: () => void;
 }
 
-interface IProps {
-    refresing: boolean;
-    onRefresh: () => void;
-}
-
 interface OProps {
     data: {
         user: {
@@ -48,8 +43,6 @@ interface OProps {
             }>;
         };
     };
-
-    refetch: () => void;
 }
 
 function formatItem({ data, navigation }: N & OProps) {
@@ -86,7 +79,7 @@ function formatItem({ data, navigation }: N & OProps) {
     return formattedGroups;
 }
 
-function MainView(props: N & OProps & IProps) {
+function MainView(props: N & OProps & {}) {
     const lists = formatItem(props);
 
     return (
@@ -97,8 +90,6 @@ function MainView(props: N & OProps & IProps) {
                     <FlatList
                         data={lists}
                         keyExtractor={(item) => item.id}
-                        refreshing={props.refresing}
-                        onRefresh={props.onRefresh}
                         renderItem={({ item }) => (
                             <ListItem listItem={item} typing={false} />
                         )}
@@ -114,19 +105,6 @@ function MainView(props: N & OProps & IProps) {
     );
 }
 
-const enhance: CE<IProps, OProps> = compose(
-    withNavigation,
-    withState('refresing', 'toggleRefresh', false),
-    withHandlers({
-        onRefresh: (props) => async () => {
-            // @ts-ignore
-            const { toggleRefresh, refetch } = props;
-            toggleRefresh(true);
-
-            await refetch();
-            await toggleRefresh(false);
-        }
-    })
-);
+const enhance: CE<{}, OProps> = compose(withNavigation);
 
 export default enhance(MainView);

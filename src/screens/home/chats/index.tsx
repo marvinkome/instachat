@@ -26,9 +26,7 @@ export class Chats extends React.Component {
                     }
 
                     hideAlert();
-                    return data.user ? (
-                        <View data={data} refetch={refetch} />
-                    ) : null;
+                    return data.user ? <View data={data} /> : null;
                 }}
             </Query>
         );

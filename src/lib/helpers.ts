@@ -1,26 +1,33 @@
-import moment from 'moment';
+import moment, { Moment } from 'moment';
 import { AsyncStorage } from 'react-native';
 import { MessageBarManager } from 'react-native-message-bar';
 
 export function formatDate(date: any, full?: boolean) {
-    const momentDate = moment(date);
-    const now = moment();
-    const diff = now.diff(momentDate, 'days');
+    const currDate = moment();
+    const myDate = moment(date);
+    const today = currDate.clone().startOf('day');
+    const yday = currDate
+        .clone()
+        .subtract(1, 'days')
+        .startOf('day');
 
-    if (diff <= 0) {
-        // if it's today show the hour and minute
-        return full
-            ? momentDate.format('[Today at] LT')
-            : momentDate.format('h:mm A');
-    } else if (diff === 1) {
-        // if it's yesterday show yesterday
-        return full ? momentDate.format('[Yesterday at] LT') : 'Yesterday';
-    } else {
-        // if it isn't both return the date in d/m/yy
-        return full
-            ? momentDate.format('D MMM YYYY LT')
-            : momentDate.format('D[/]M[/]YY');
+    function isToday(mdate: Moment) {
+        return mdate.isSame(today, 'd');
     }
+
+    function isYesterday(mdate: Moment) {
+        return mdate.isSame(yday, 'd');
+    }
+
+    if (isToday(myDate)) {
+        return full ? myDate.format('[Today at] LT') : myDate.format('h:mm A');
+    }
+
+    if (isYesterday(myDate)) {
+        return full ? myDate.format('[Yesterday at] LT') : 'Yesterday';
+    }
+
+    return full ? myDate.format('D MMM YYYY LT') : myDate.format('D[/]M[/]YY');
 }
 
 export async function clientId() {
