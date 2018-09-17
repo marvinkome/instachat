@@ -3,6 +3,9 @@ import {
     createStackNavigator,
     NavigationScreenProps as NP
 } from 'react-navigation';
+import { NetInfo } from 'react-native';
+
+// context providers
 import { ApolloProvider } from 'react-apollo';
 import { MenuProvider } from 'react-native-popup-menu';
 
@@ -45,7 +48,17 @@ export default class MainRoute extends React.Component<NP, IState> {
 
     async componentDidMount() {
         // setup apollo
-        const { client } = await apolloClient();
+        const { client, persistor } = await apolloClient();
+
+        // check if user is online
+        const online = await NetInfo.isConnected.fetch();
+
+        // if user is not online restore from cache
+        if (!online) {
+            await persistor.restore();
+            console.warn('data from cache');
+        }
+
         this.setState({
             client,
             isLoaded: true
