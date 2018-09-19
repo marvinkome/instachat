@@ -1,4 +1,3 @@
-import * as React from 'react';
 import moment, { Moment } from 'moment';
 import { AsyncStorage } from 'react-native';
 import { MessageBarManager } from 'react-native-message-bar';
@@ -60,7 +59,7 @@ export function hideAlert() {
 export function networkErrHandler(
     client: any,
     query: any,
-    Comp: React.ComponentClass
+    Comp: (data: any) => JSX.Element
 ) {
     // get data from the cache
     const cache = client.readQuery({ query });
@@ -72,5 +71,5 @@ export function networkErrHandler(
     });
 
     // @ts-ignore
-    return cache.user ? <Comp data={cache} /> : null;
+    return cache.user ? Comp(cache) : null;
 }
