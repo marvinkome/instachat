@@ -8,14 +8,31 @@ import { getMainDefinition } from 'apollo-utilities';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { CachePersistor } from 'apollo-cache-persist';
 import { clientId } from './helpers';
+import { DefaultOptions } from 'apollo-client/ApolloClient';
 
-export default async () => {
+const defaultOptions: DefaultOptions = {
+    watchQuery: {
+        fetchPolicy: 'cache-and-network',
+        errorPolicy: 'all'
+    },
+    query: {
+        fetchPolicy: 'cache-and-network',
+        errorPolicy: 'all'
+    },
+    mutate: {
+        errorPolicy: 'all'
+    }
+};
+
+async function Link() {
     const token = await clientId();
 
     // http link
     const httpLink = createHttpLink({
         uri: 'http://localhost:3000/graphql'
     });
+
+    // auth link
     const authLink = setContext((_, { headers }) => {
         return {
             headers: {
@@ -49,6 +66,10 @@ export default async () => {
         authLink
     );
 
+    return link;
+}
+
+export default async () => {
     const cache = new InMemoryCache({
         cacheRedirects: {
             User: {
@@ -58,14 +79,17 @@ export default async () => {
         }
     });
 
-    const client = new ApolloClient({
-        link,
-        cache
-    });
-
     const persistor = new CachePersistor({
         cache,
         storage: AsyncStorage
+    });
+
+    const link = await Link();
+
+    const client = new ApolloClient({
+        link,
+        cache,
+        defaultOptions
     });
 
     return {

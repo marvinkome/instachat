@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Query } from 'react-apollo';
 import { NavigationTabScreenOptions } from 'react-navigation';
 
-import { showAlert, hideAlert } from '../../../lib/helpers';
+import { showAlert, hideAlert, networkErrHandler } from '../../../lib/helpers';
 import View from './view';
 import query from './gql';
 
@@ -14,8 +14,13 @@ export class Chats extends React.Component {
     render() {
         return (
             <Query query={query}>
-                {({ error, loading, data, refetch }) => {
+                {({ error, loading, data, client }) => {
                     if (error) {
+                        // check if it's a network error
+                        if (error.message.match(/network/i)) {
+                            return networkErrHandler(client, query, View);
+                        }
+
                         showAlert(error.message, 'error');
                         return null;
                     }

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import moment, { Moment } from 'moment';
 import { AsyncStorage } from 'react-native';
 import { MessageBarManager } from 'react-native-message-bar';
@@ -35,8 +36,9 @@ export async function clientId() {
     return token;
 }
 
-export function showAlert(msg: string, type?: string) {
+export function showAlert(msg: string, type?: string, options?: any) {
     MessageBarManager.showAlert({
+        ...options,
         message: msg,
         shouldHideAfterDelay: false,
         alertType: type || 'warning',
@@ -53,4 +55,22 @@ export function showAlert(msg: string, type?: string) {
 
 export function hideAlert() {
     MessageBarManager.hideAlert();
+}
+
+export function networkErrHandler(
+    client: any,
+    query: any,
+    Comp: React.ComponentClass
+) {
+    // get data from the cache
+    const cache = client.readQuery({ query });
+
+    // show error
+    // TODO: Change error message
+    showAlert("You're offline", 'error', {
+        shouldHideOnTap: false
+    });
+
+    // @ts-ignore
+    return cache.user ? <Comp data={cache} /> : null;
 }
