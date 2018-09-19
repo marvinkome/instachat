@@ -59,10 +59,11 @@ export function hideAlert() {
 export function networkErrHandler(
     client: any,
     query: any,
-    Comp: (data: any) => JSX.Element
+    Comp: (data: any) => JSX.Element,
+    variables?: any
 ) {
     // get data from the cache
-    const cache = client.readQuery({ query });
+    const cache = client.readQuery({ query, variables });
 
     // show error
     // TODO: Change error message

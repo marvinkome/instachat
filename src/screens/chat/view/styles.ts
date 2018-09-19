@@ -75,5 +75,12 @@ export const chatFormStyles = StyleSheet.create({
     },
     btnText: {
         display: 'none'
+    },
+    offlineBtn: {
+        opacity: 0.5
+    },
+    offlineInput: {
+        color: 'yellow',
+        opacity: 0.5
     }
 });

@@ -3,6 +3,7 @@ import { NavigationScreenProps as NSP } from 'react-navigation';
 import { Query, Mutation, FetchResult } from 'react-apollo';
 import { SubscribeToMoreOptions as STMO } from 'apollo-client';
 
+import { networkErrHandler } from '../../lib/helpers';
 import View from './view';
 import query, { sendMsg, querySubscription } from './gql';
 import { DataProxy } from 'apollo-cache';
@@ -66,10 +67,23 @@ export default class Main extends React.Component<NSP> {
     render() {
         return (
             <Query query={query} variables={{ id: this.id }}>
-                {({ error, loading, data, subscribeToMore }) => {
+                {({ error, loading, data, subscribeToMore, client }) => {
                     if (error) {
                         // TODO: Use error component
-                        console.warn(error);
+                        if (error.message.match(/network/i)) {
+                            return networkErrHandler(
+                                client,
+                                query,
+                                (cache) => (
+                                    <View
+                                        data={cache}
+                                        groupId={this.id}
+                                        offline
+                                    />
+                                ),
+                                { id: this.id }
+                            );
+                        }
                         return null;
                     }
 

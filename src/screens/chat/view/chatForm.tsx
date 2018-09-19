@@ -5,6 +5,7 @@ import { chatFormStyles as styles } from './styles';
 
 type IProps = {
     sendMessage: (data: string) => void;
+    offline: boolean;
 };
 
 type IState = {
@@ -30,15 +31,22 @@ export default class ChatForm extends React.Component<IProps, IState> {
     };
 
     render() {
+        const placeholder = this.props.offline
+            ? "Can't send messages offline"
+            : 'Write a message...';
+        const offlineForm = this.props.offline ? styles.offlineInput : {};
+        const offlineBtn = this.props.offline ? styles.offlineBtn : {};
+
         return (
             <View style={styles.container}>
                 <View style={styles.formContainer}>
                     <FormInput
-                        placeholder="Write a message..."
+                        placeholder={placeholder}
                         underlineColorAndroid="transparent"
-                        inputStyle={styles.input}
+                        inputStyle={[styles.input, styles.offlineInput]}
                         onChangeText={this.onMessageChange}
                         value={this.state.message}
+                        editable={false}
                         multiline
                     />
                 </View>
@@ -50,6 +58,8 @@ export default class ChatForm extends React.Component<IProps, IState> {
                         containerViewStyle={styles.btn}
                         buttonStyle={styles.btnStyle}
                         textStyle={styles.btnText}
+                        disabled
+                        disabledStyle={[styles.btnStyle, offlineBtn]}
                         large
                     />
                 </View>
