@@ -18,7 +18,9 @@ export class Chats extends React.Component {
                     if (error) {
                         // check if it's a network error
                         if (error.message.match(/network/i)) {
-                            return networkErrHandler(client, query, (cache) => <View data={cache} />);
+                            return networkErrHandler(client, query, (cache) => (
+                                <View data={cache} />
+                            ));
                         }
 
                         showAlert(error.message, 'error');

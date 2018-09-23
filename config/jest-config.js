@@ -12,3 +12,8 @@ Enzyme.configure({ adapter: new Adapter() });
 
 // fetch mock
 global.fetch = require('jest-fetch-mock');
+
+// mock react native
+jest.mock('react-native', () => require('react-native-mock-render'), {
+    virtual: true
+});

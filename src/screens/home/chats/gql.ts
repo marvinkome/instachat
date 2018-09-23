@@ -1,13 +1,14 @@
 import gql from 'graphql-tag';
 
+// TODO: fix connection directive bug in tests
 export default gql`
-    query {
+    query ChatsQuery {
         user {
             id
             groups {
                 id
                 name
-                messages(first: 1, sort: true) @connection(key: "messages") {
+                messages(first: 1, sort: true) {
                     id
                     message
                     timestamp

@@ -4,7 +4,7 @@ import App from '../index';
 import { flushPromises } from '../../lib/tests';
 
 jest.unmock('react-navigation');
-describe('screen tests', () => {
+describe.skip('screen tests', () => {
     const comp = create(<App />);
     flushPromises();
 

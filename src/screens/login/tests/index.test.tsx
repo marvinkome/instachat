@@ -10,7 +10,7 @@ describe('Authenitcation screen', () => {
         fetch.resetMocks();
     });
 
-    it('renders homepage correctly <snapshot>', () => {
+    it('renders login page correctly <snapshot>', () => {
         const comp = create(<Index />);
         expect(comp).toMatchSnapshot();
     });

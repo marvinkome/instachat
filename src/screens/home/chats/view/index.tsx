@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-    compose,
-    withState,
-    withHandlers,
-    ComponentEnhancer as CE
-} from 'recompose';
+import { compose, ComponentEnhancer as CE } from 'recompose';
 import { withNavigation, NavigationInjectedProps as N } from 'react-navigation';
 
 import { View, FlatList } from 'react-native';
@@ -90,6 +85,7 @@ function MainView(props: N & OProps & {}) {
                     <FlatList
                         data={lists}
                         keyExtractor={(item) => item.id}
+                        data-testid="chat-list"
                         renderItem={({ item }) => (
                             <ListItem listItem={item} typing={false} />
                         )}
