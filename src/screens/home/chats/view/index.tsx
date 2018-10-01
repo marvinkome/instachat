@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { compose, ComponentEnhancer as CE } from 'recompose';
+import orderBy from 'lodash/orderBy';
 import { withNavigation, NavigationInjectedProps as N } from 'react-navigation';
 
 import { View, FlatList } from 'react-native';
@@ -42,6 +43,7 @@ interface OProps {
 
 function formatItem({ data, navigation }: N & OProps) {
     const groups = data.user.groups;
+
     const formattedGroups = groups.reduce((total: ListingType[], curr) => {
         // reduce item to match list props
         const unread = curr.messages.length;
@@ -71,7 +73,7 @@ function formatItem({ data, navigation }: N & OProps) {
         return total;
     }, []);
 
-    return formattedGroups;
+    return orderBy(formattedGroups, 'timestamp', 'desc');
 }
 
 function MainView(props: N & OProps & {}) {

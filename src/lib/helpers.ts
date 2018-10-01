@@ -56,6 +56,31 @@ export function hideAlert() {
     MessageBarManager.hideAlert();
 }
 
+export const createOptimisticResp = (
+    message: string,
+    username: string,
+    optimistic: boolean
+) => {
+    const id = optimistic
+        ? Math.floor(Math.random() * (0 - -100) + -100)
+        : Math.floor(Math.random() * (-101 - -200) + -200);
+    const userId = Math.round(Math.random() * -1000000);
+
+    return {
+        sendMessage: {
+            id: String(id),
+            message,
+            timestamp: Date.now(),
+            from: {
+                id: String(userId),
+                username,
+                __typename: 'User'
+            },
+            __typename: 'Message'
+        }
+    };
+};
+
 export function networkErrHandler(
     client: any,
     query: any,

@@ -16,9 +16,40 @@ interface Props {
     timestamp: string;
 }
 
+const isError = (id: number) => -100 > id && id > -200;
+const isOptimistic = (id: number) => 0 > id && id > -100;
+
 export function ChatMsg(props: Props) {
-    const optimistic = Number(props.id) < 0;
-    const subtitle = <Text style={styles.message}>{props.message}</Text>;
+    const optimisticStyle = isOptimistic(Number(props.id))
+        ? {
+              backgroundColor: 'hsl(0,0%,96%)'
+          }
+        : {};
+
+    const errorStyle = isError(Number(props.id))
+        ? {
+              color: 'red'
+          }
+        : {};
+
+    const subtitle = (
+        <React.Fragment>
+            <Text style={[styles.message, errorStyle]}>{props.message}</Text>
+            {isError(Number(props.id)) && (
+                <Text
+                    style={[
+                        styles.message,
+                        errorStyle,
+                        {
+                            fontSize: 12
+                        }
+                    ]}
+                >
+                    Failed to send message
+                </Text>
+            )}
+        </React.Fragment>
+    );
     const title = (
         <Text style={styles.titleStyle}>
             {props.from.username}{' '}
@@ -27,11 +58,6 @@ export function ChatMsg(props: Props) {
             </Text>
         </Text>
     );
-    const optimisticStyle = optimistic
-        ? {
-              backgroundColor: 'hsl(0,0%,96%)'
-          }
-        : {};
 
     return (
         <ListItem

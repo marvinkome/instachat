@@ -10,33 +10,12 @@ import { viewStyles as styles } from './styles';
 
 interface IProps {
     data: any;
-    sendMsg?: MutationFn;
+    sendMsg: (obj: { groupId: string; msg: string; username: string }) => void;
     groupId: string;
     moreMessages?: () => void;
-    offline?: boolean;
 }
 
-const optimisticResp = (message: string, username: string) => ({
-    sendMessage: {
-        id: String(Math.round(Math.random() * -1000000)),
-        message,
-        timestamp: Date.now(),
-        from: {
-            id: String(Math.round(Math.random() * -1000000)),
-            username,
-            __typename: 'User'
-        },
-        __typename: 'Message'
-    }
-});
-
-export const PageView = ({
-    data,
-    sendMsg,
-    groupId,
-    moreMessages,
-    offline
-}: IProps) => {
+export const PageView = ({ data, sendMsg, groupId, moreMessages }: IProps) => {
     const group = data.user.group;
     const role = data.user.group.role;
     const username = data.user.username;
@@ -54,15 +33,7 @@ export const PageView = ({
                 subscribe={moreMessages || (() => null)}
             />
             <ChatForm
-                offline={offline}
-                sendMessage={(msg) =>
-                    sendMsg
-                        ? sendMsg({
-                              variables: { groupId, msg },
-                              optimisticResponse: optimisticResp(msg, username)
-                          })
-                        : null
-                }
+                sendMessage={(msg) => sendMsg({ groupId, msg, username })}
             />
         </View>
     );
