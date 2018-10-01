@@ -26,6 +26,7 @@ const resolvers = {
 
             const msg = createOptimisticResp(
                 variables.msg,
+                variables.userId,
                 variables.user,
                 false
             );
@@ -38,7 +39,7 @@ const resolvers = {
             const data = { group };
             ctx.cache.writeData({ data });
 
-            return { data };
+            return group;
         }
     }
 };

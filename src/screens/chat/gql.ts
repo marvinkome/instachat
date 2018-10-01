@@ -1,8 +1,18 @@
 import gql from 'graphql-tag';
 
 export const addError = gql`
-    mutation AddErrorMessage($groupId: String!, $msg: String!, $user: String!) {
-        addErrorMessage(groupId: $groupId, msg: $msg, user: $user) @client
+    mutation AddErrorMessage(
+        $groupId: String!
+        $msg: String!
+        $user: String!
+        $userId: String!
+    ) {
+        addErrorMessage(
+            groupId: $groupId
+            msg: $msg
+            user: $user
+            userId: $userId
+        ) @client
     }
 `;
 

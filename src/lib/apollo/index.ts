@@ -1,6 +1,7 @@
 import ApolloClient from 'apollo-client';
 import { DefaultOptions } from 'apollo-client/ApolloClient';
 import { AsyncStorage, NetInfo } from 'react-native';
+// @ts-ignore
 import introspectionQueryResultData from './fragmentTypes.json';
 
 // links
@@ -52,7 +53,7 @@ export default async () => {
         trigger: 'write'
     });
 
-    const { link, queueLink, mutationLink } = Link(token, cache);
+    const { link, messageQueue } = Link(token, cache);
 
     const client = new ApolloClient({
         link,
@@ -61,22 +62,25 @@ export default async () => {
     });
 
     // add listeners to queue operations
-    // const isOnline = (e: any) => e !== 'none' && e !== 'unknown';
-    // NetInfo.addEventListener('connectionChange', (e) => {
-    //     // @ts-ignore
-    //     if (isOnline(e.type)) {
-    //         mutationLink.open(client);
-    //         queueLink.open();
-    //     } else {
-    //         mutationLink.close();
-    //         queueLink.close();
-    //     }
-    // });
+    NetInfo.isConnected.addEventListener(
+        'connectionChange',
+        async (isConnected) => {
+            if (isConnected) {
+                await messageQueue.resync(client);
+            }
+        }
+    );
 
-    // const syncMutation = new SyncOfflineMutation(client, AsyncStorage);
-    // await syncMutation.init();
-    // await syncMutation.sync();
-    // await syncMutation.clearOfflineData();
+    // try resyncing on app load
+    NetInfo.isConnected.fetch().then(async (isConnected) => {
+        if (isConnected) {
+            await messageQueue.resync(client);
+        }
+    });
+
+    // DEV only!!
+    // messageQueue.clearQueue();
+    // persistor.purge();
 
     return {
         cache,

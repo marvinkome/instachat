@@ -1,5 +1,8 @@
 // link
 import { AsyncStorage } from 'react-native';
+import { getMainDefinition } from 'apollo-utilities';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+
 import { split, from, ApolloLink } from 'apollo-link';
 import QueueLink from 'apollo-link-queue';
 import { onError } from 'apollo-link-error';
@@ -7,31 +10,26 @@ import { WebSocketLink } from 'apollo-link-ws';
 import { createHttpLink } from 'apollo-link-http';
 import { setContext } from 'apollo-link-context';
 import { RetryLink } from 'apollo-link-retry';
-import { QueueMutationLink } from './queueLink';
+import { MessageQueue } from './messageQueue';
 import withLinkState from './linkState';
-import { getMainDefinition } from 'apollo-utilities';
-import { InMemoryCache } from 'apollo-cache-inmemory';
 
 export default function Link(token: string, cache: InMemoryCache) {
-    // logger link
-    const logger = new ApolloLink((ops, forward) => {
-        if (!forward) {
-            return null;
-        }
-        console.log(ops.operationName);
-        return forward(ops);
-    });
-
     // queue links
-    const mutationLink = new QueueMutationLink(AsyncStorage);
-    const queueLink = new QueueLink();
+    const messageQueue = new MessageQueue(AsyncStorage);
+    // const queueLink = new QueueLink();
 
     // error link
     const errorLink = onError(({ networkError, operation, forward }) => {
         if (networkError) {
-            // mutationLink.close();
-            // queueLink.close();
-            console.log('network error');
+            if (operation.operationName === 'SendMessage') {
+                console.log('add operation to queue');
+                messageQueue
+                    .enqueue(
+                        // @ts-ignore
+                        operation
+                    )
+                    .then(() => null);
+            }
             forward(operation);
         }
     });
@@ -57,12 +55,12 @@ export default function Link(token: string, cache: InMemoryCache) {
     // http link
     // @ts-ignore
     const httpLink = from([
-        // errorLink,
+        errorLink,
         retryLink,
         // mutationLink,
         // queueLink,
         // logger,
-        // withLinkState(cache),
+        withLinkState(cache),
         authLink,
         networkLink
     ]);
@@ -93,7 +91,7 @@ export default function Link(token: string, cache: InMemoryCache) {
 
     return {
         link,
-        queueLink,
-        mutationLink
+        messageQueue
+        // mutationLink
     };
 }

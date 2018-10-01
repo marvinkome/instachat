@@ -61,7 +61,6 @@ export default class Main extends React.Component<NSP> {
     };
 
     sendMessage(fn: MutationFn, { msg, groupId, ...args }: SendMessageArgs) {
-        console.log('sending msg');
         // create optimistic resp
         const optimisticResp = createOptimisticResp(
             msg,
@@ -82,8 +81,6 @@ export default class Main extends React.Component<NSP> {
             return;
         }
 
-        console.log('update called', data.sendMessage);
-
         // @ts-ignore
         const { user } = prev;
         user.group.messages.unshift(data.sendMessage);
@@ -93,36 +90,36 @@ export default class Main extends React.Component<NSP> {
 
     onError = () => {
         console.log('mutation failed');
-        // this.mutationClient.mutate({
-        //     mutation: addError,
-        //     variables: {
-        //         groupId: this.id,
-        //         msg: this.optimisticResp.sendMessage.message,
-        //         user: this.optimisticResp.sendMessage.from.username
-        //     },
-        //     update: (cache, { data }) => {
-        //         const prev = cache.readQuery({
-        //             query,
-        //             variables: { id: this.id }
-        //         });
+        this.mutationClient.mutate({
+            mutation: addError,
+            variables: {
+                groupId: this.id,
+                msg: this.optimisticResp.sendMessage.message,
+                user: this.optimisticResp.sendMessage.from.username,
+                userId: this.optimisticResp.sendMessage.from.id
+            },
+            update: (cache, { data }) => {
+                const prev = cache.readQuery({
+                    query,
+                    variables: { id: this.id }
+                });
 
-        //         if (!data || !prev) {
-        //             return;
-        //         }
+                if (!data || !prev) {
+                    return;
+                }
 
-        //         console.log('update called');
+                // @ts-ignore
+                const { user } = prev;
+                user.group = {
+                    ...user.group,
+                    messages: data.addErrorMessage.messages
+                };
 
-        //         // @ts-ignore
-        //         const { user } = prev;
-        //         user.group = {
-        //             ...user.group,
-        //             messages: data.addErrorMessage.data.group.messages
-        //         };
-
-        //         cache.writeQuery({ query, data: { user } });
-        //         // cache.readQuery({ query, variables: { id: this.id } });
-        //     }
-        // });
+                // console.log('error update');
+                cache.writeQuery({ query, data: { user } });
+                // cache.readQuery({ query, variables: { id: this.id } });
+            }
+        });
         return null;
     };
 
