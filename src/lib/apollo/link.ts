@@ -37,11 +37,7 @@ export default function Link(token: string, cache: InMemoryCache) {
     });
 
     // retry link
-    const retryLink = new RetryLink({
-        attempts: {
-            max: 2
-        }
-    });
+    const retryLink = new RetryLink();
 
     // auth link
     const authLink = setContext((_, { headers }) => {
@@ -61,12 +57,12 @@ export default function Link(token: string, cache: InMemoryCache) {
     // http link
     // @ts-ignore
     const httpLink = from([
-        errorLink,
-        // retryLink,
+        // errorLink,
+        retryLink,
         // mutationLink,
         // queueLink,
         // logger,
-        withLinkState(cache),
+        // withLinkState(cache),
         authLink,
         networkLink
     ]);

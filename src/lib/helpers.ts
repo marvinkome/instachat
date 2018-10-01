@@ -58,14 +58,13 @@ export function hideAlert() {
 
 export const createOptimisticResp = (
     message: string,
+    userId: string,
     username: string,
     optimistic: boolean
 ) => {
     const id = optimistic
         ? Math.floor(Math.random() * (0 - -100) + -100)
         : Math.floor(Math.random() * (-101 - -200) + -200);
-    const userId = Math.round(Math.random() * -1000000);
-
     return {
         sendMessage: {
             id: String(id),

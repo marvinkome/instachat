@@ -10,7 +10,7 @@ import { viewStyles as styles } from './styles';
 
 interface IProps {
     data: any;
-    sendMsg: (obj: { groupId: string; msg: string; username: string }) => void;
+    sendMsg: (obj: { groupId: string; msg: string; username: string, userId: string }) => void;
     groupId: string;
     moreMessages?: () => void;
 }
@@ -19,6 +19,7 @@ export const PageView = ({ data, sendMsg, groupId, moreMessages }: IProps) => {
     const group = data.user.group;
     const role = data.user.group.role;
     const username = data.user.username;
+    const userId = data.user.id;
     return (
         <View style={styles.container}>
             <ChatHeader
@@ -33,7 +34,7 @@ export const PageView = ({ data, sendMsg, groupId, moreMessages }: IProps) => {
                 subscribe={moreMessages || (() => null)}
             />
             <ChatForm
-                sendMessage={(msg) => sendMsg({ groupId, msg, username })}
+                sendMessage={(msg) => sendMsg({ groupId, msg, username, userId })}
             />
         </View>
     );

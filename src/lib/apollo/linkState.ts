@@ -35,12 +35,8 @@ const resolvers = {
                 ...msg.sendMessage
             });
 
-            console.log('fragment', group);
             const data = { group };
-
-            console.log('writing local cache');
             ctx.cache.writeData({ data });
-            console.log('after write');
 
             return { data };
         }
