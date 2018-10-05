@@ -7,8 +7,6 @@ import introspectionQueryResultData from './fragmentTypes.json';
 // links
 import Link from './link';
 
-import { SyncOfflineMutation } from './syncMutation';
-
 import {
     InMemoryCache,
     IntrospectionFragmentMatcher
@@ -49,8 +47,7 @@ export default async () => {
 
     const persistor = new CachePersistor({
         cache,
-        storage: AsyncStorage,
-        trigger: 'write'
+        storage: AsyncStorage
     });
 
     const { link, messageQueue } = Link(token, cache);

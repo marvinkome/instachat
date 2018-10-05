@@ -1,135 +1,62 @@
 import * as React from 'react';
 import { NavigationScreenProps as NSP } from 'react-navigation';
-import { Query, Mutation, FetchResult, MutationFn } from 'react-apollo';
-import { SubscribeToMoreOptions as STMO, ApolloClient } from 'apollo-client';
 
-import { showAlert, createOptimisticResp } from '../../lib/helpers';
+// graphql
+import { Query, Mutation, MutationFn } from 'react-apollo';
+import { ApolloClient } from 'apollo-client';
+import query, { sendMsg } from './gql';
+
+// UI
 import View from './view';
-import query, { sendMsg, querySubscription, addError } from './gql';
-import { DataProxy } from 'apollo-cache';
 
-interface SendMessageArgs {
-    groupId: string;
-    msg: string;
-    username: string;
-    userId: string;
-}
+// utils
+import { showAlert } from '../../lib/helpers';
+import {
+    subscribeToMessages,
+    sendMessage,
+    update,
+    onError,
+    SendMessageArgs
+} from './utils';
+
 export default class Main extends React.Component<NSP> {
     static navigationOptions = {
         header: null
     };
 
-    optimisticResp: any;
-    mutationClient: ApolloClient<object>;
     id = this.props.navigation.getParam('groupId');
 
-    subscribeToMessages = (fn: (options: STMO<any, any>) => void) => {
-        fn({
-            document: querySubscription,
-            variables: { groupId: this.id },
-            updateQuery: (prev, { subscriptionData }) => {
-                if (!subscriptionData) {
-                    return prev;
-                }
+    optimisticResp: any;
+    errorId: number;
+    mutationClient: ApolloClient<object>;
 
-                const newMsg = subscriptionData.data.messageSent;
-
-                // if it's same user dont
-                if (prev.user.username === newMsg.from.username) {
-                    return prev;
-                }
-
-                const prevGroup = prev.user.userGroup.group;
-                const msgList = [newMsg, ...prevGroup.messages];
-
-                return {
-                    ...prev,
-                    user: {
-                        ...prev.user,
-                        userGroup: {
-                            ...prev.user.userGroup,
-                            group: {
-                                ...prev.user.userGroup.group,
-                                messages: msgList
-                            }
-                        }
-                    }
-                };
-            }
-            // onError: (err) => console.log(err)
-        });
-    };
-
-    sendMessage(fn: MutationFn, { msg, groupId, ...args }: SendMessageArgs) {
-        // create optimistic resp
-        const optimisticResp = createOptimisticResp(
-            msg,
-            args.userId,
-            args.username,
-            true
-        );
+    sendMessage = (fn: MutationFn, args: SendMessageArgs) => {
+        const { optimisticResp, errorId } = sendMessage(fn, args);
         this.optimisticResp = optimisticResp;
-        fn({
-            variables: { groupId, msg },
-            optimisticResponse: optimisticResp
-        });
-    }
-
-    update = (cache: any, { data }: FetchResult) => {
-        const prev = cache.readQuery({ query, variables: { id: this.id } });
-        if (!data || !prev) {
-            return;
-        }
-
-        // @ts-ignore
-        const { user } = prev;
-        user.group.messages.unshift(data.sendMessage);
-
-        cache.writeQuery({ query, data: { user } });
+        this.errorId = errorId;
     };
 
     onError = () => {
-        console.log('mutation failed');
-        this.mutationClient.mutate({
-            mutation: addError,
-            variables: {
-                groupId: this.id,
-                msg: this.optimisticResp.sendMessage.message,
-                user: this.optimisticResp.sendMessage.from.username,
-                userId: this.optimisticResp.sendMessage.from.id
-            },
-            update: (cache, { data }) => {
-                const prev = cache.readQuery({
-                    query,
-                    variables: { id: this.id }
-                });
+        const variables = {
+            errorId: this.errorId,
+            groupId: this.id,
+            msg: this.optimisticResp.sendMessage.message,
+            user: this.optimisticResp.sendMessage.from.username,
+            userId: this.optimisticResp.sendMessage.from.id
+        };
 
-                if (!data || !prev) {
-                    return;
-                }
-
-                // @ts-ignore
-                const { user } = prev;
-                user.group = {
-                    ...user.group,
-                    messages: data.addErrorMessage.messages
-                };
-
-                // console.log('error update');
-                cache.writeQuery({ query, data: { user } });
-                // cache.readQuery({ query, variables: { id: this.id } });
-            }
-        });
-        return null;
+        onError(this.mutationClient, variables);
     };
 
     renderMutation(props: any) {
+        const mutationProps = {
+            mutation: sendMsg,
+            update: (cache: any, res: any) => update(cache, res, this.id),
+            onError: this.onError
+        };
+
         return (
-            <Mutation
-                mutation={sendMsg}
-                update={this.update}
-                onError={this.onError}
-            >
+            <Mutation {...mutationProps}>
                 {(fn, { error, client }) => {
                     this.mutationClient = client;
                     props.sendMsg = (obj: SendMessageArgs) =>
@@ -140,6 +67,7 @@ export default class Main extends React.Component<NSP> {
             </Mutation>
         );
     }
+
     render() {
         return (
             <Query query={query} variables={{ id: this.id }}>
@@ -157,7 +85,7 @@ export default class Main extends React.Component<NSP> {
                         };
 
                         props.moreMessages = () =>
-                            this.subscribeToMessages(subscribeToMore);
+                            subscribeToMessages(this.id, subscribeToMore);
 
                         return this.renderMutation(props);
                     }

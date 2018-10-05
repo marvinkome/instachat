@@ -1,4 +1,4 @@
-import { Observable, Operation } from 'apollo-link';
+import { Observable, Operation, DocumentNode } from 'apollo-link';
 import { ApolloClient } from 'apollo-client';
 import { AsyncStorageStatic } from 'react-native';
 import { SyncOfflineMutation } from './syncMutation';
@@ -19,8 +19,9 @@ export class MessageQueue {
      */
     public async enqueue(operation: Operation) {
         const { query, variables } = operation;
-        let definitions: any[] = [];
+        let definitions: DocumentNode['definitions'] = [];
 
+        console.log('enqueue vars', variables);
         if (query && query.definitions) {
             definitions = query.definitions.filter(
                 // @ts-ignore

@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 import { withClientState } from 'apollo-link-state';
-import { createOptimisticResp } from '../helpers';
+import { createFakeResp } from '../helpers';
 
 const resolvers = {
     Mutation: {
@@ -24,12 +24,13 @@ const resolvers = {
                 }
             `;
 
-            const msg = createOptimisticResp(
-                variables.msg,
-                variables.userId,
-                variables.user,
-                false
-            );
+            console.log('error vars', variables);
+            const msg = createFakeResp({
+                id: variables.errorId,
+                message: variables.msg,
+                userId: variables.userId,
+                username: variables.user
+            });
 
             const group = ctx.cache.readFragment({ fragment, id });
             group.messages.unshift({
@@ -37,7 +38,7 @@ const resolvers = {
             });
 
             const data = { group };
-            ctx.cache.writeData({ data });
+            // ctx.cache.writeData({ data });
 
             return group;
         }

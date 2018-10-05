@@ -56,15 +56,19 @@ export function hideAlert() {
     MessageBarManager.hideAlert();
 }
 
-export const createOptimisticResp = (
-    message: string,
-    userId: string,
-    username: string,
-    optimistic: boolean
-) => {
-    const id = optimistic
-        ? Math.floor(Math.random() * (0 - -100) + -100)
+export function generateErrorId(args?: { optimistic?: boolean }) {
+    return args && args.optimistic
+        ? Math.floor(Math.random() * (-0 - -100) + -100)
         : Math.floor(Math.random() * (-101 - -200) + -200);
+}
+
+type respArgs = {
+    message: string;
+    userId: string;
+    username: string;
+    id: number;
+};
+export function createFakeResp({ id, message, userId, username }: respArgs) {
     return {
         sendMessage: {
             id: String(id),
@@ -78,7 +82,7 @@ export const createOptimisticResp = (
             __typename: 'Message'
         }
     };
-};
+}
 
 export function networkErrHandler(
     client: any,
