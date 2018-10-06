@@ -70,7 +70,7 @@ export default class Main extends React.Component<NSP> {
 
     render() {
         return (
-            <Query query={query} variables={{ id: this.id }}>
+            <Query query={query} variables={{ id: this.id }} fetchPolicy="cache-and-network">
                 {({ error, data, subscribeToMore }) => {
                     if (error && !data) {
                         console.error(error);

@@ -14,9 +14,15 @@ import { MessageQueue } from './messageQueue';
 import withLinkState from './linkState';
 
 export default function Link(token: string, cache: InMemoryCache) {
+    // logger
+    const logger = new ApolloLink((ops, forward) => {
+        console.log(ops.operationName);
+        // @ts-ignore
+        return forward(ops);
+    });
+
     // queue links
     const messageQueue = new MessageQueue(AsyncStorage);
-    // const queueLink = new QueueLink();
 
     // error link
     const errorLink = onError(({ networkError, operation, forward }) => {
@@ -59,7 +65,7 @@ export default function Link(token: string, cache: InMemoryCache) {
         retryLink,
         // mutationLink,
         // queueLink,
-        // logger,
+        logger,
         withLinkState(cache),
         authLink,
         networkLink
