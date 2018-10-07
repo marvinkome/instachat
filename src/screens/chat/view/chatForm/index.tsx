@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Keyboard } from 'react-native';
+import { View } from 'react-native';
 import { FormInput, Button } from 'react-native-elements';
 import { withApollo, WithApolloClient } from 'react-apollo';
 import { chatFormStyles as styles } from '../styles';
@@ -16,53 +16,65 @@ type IState = {
 };
 
 class ChatForm extends React.Component<IProps, IState> {
-    keyboardDidShowListener: any;
-    keyboardDidHideListener: any;
+    stopTypingTimeout: NodeJS.Timer | undefined = undefined;
+    isTyping: boolean = false;
 
     state = {
         message: ''
     };
 
-    componentDidMount() {
-        this.keyboardDidShowListener = Keyboard.addListener(
-            'keyboardDidShow',
-            this.triggerUserTyping
-        );
-        this.keyboardDidHideListener = Keyboard.addListener(
-            'keyboardDidHide',
-            this.triggerUserNotTyping
-        );
-    }
-
-    componentWillUnmount() {
-        this.keyboardDidHideListener.remove();
-        this.keyboardDidShowListener.remove();
-    }
-
-    triggerUserTyping = () => {
+    setTypingState = (state: boolean) => {
         this.props.client.mutate({
             mutation: setTypingState,
             variables: {
                 groupId: this.props.groupId,
-                state: true
+                state
             }
         });
     };
 
-    triggerUserNotTyping = () => {
-        this.props.client.mutate({
-            mutation: setTypingState,
-            variables: {
-                groupId: this.props.groupId,
-                state: false
-            }
-        });
+    resetStopTypingTimeout = () => {
+        if (this.stopTypingTimeout) {
+            clearTimeout(this.stopTypingTimeout);
+        }
+
+        this.stopTypingTimeout = setTimeout(() => {
+            this.isTyping = false;
+            this.setTypingState(this.isTyping);
+            this.stopTypingTimeout = undefined;
+        }, 3000);
     };
 
     onMessageChange = (message: string) => {
-        this.setState({
-            message
-        });
+        const stateCb = () => {
+            const isMsgEmpty = this.state.message.length === 0;
+            if (isMsgEmpty === false) {
+                if (this.isTyping === false) {
+                    this.isTyping = true;
+                    this.setTypingState(true);
+                    this.resetStopTypingTimeout();
+                } else {
+                    this.resetStopTypingTimeout();
+                }
+            } else {
+                if (this.isTyping === true) {
+                    this.isTyping = false;
+                    this.setTypingState(this.isTyping);
+
+                    if (this.stopTypingTimeout) {
+                        clearTimeout(this.stopTypingTimeout);
+                        this.stopTypingTimeout = undefined;
+                    }
+                }
+            }
+        };
+
+        this.setState(
+            {
+                message
+            },
+            stateCb
+        );
     };
 
     sendMessage = () => {

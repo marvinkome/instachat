@@ -37,5 +37,11 @@ export const chatMsg = StyleSheet.create({
         marginLeft: 10,
         fontWeight: 'normal',
         fontFamily: 'PT_Sans'
+    },
+    typingIndicator: {
+        fontFamily: 'PT_Sans',
+        color: colors.text_light,
+        marginLeft: 20,
+        fontSize: 12
     }
 });

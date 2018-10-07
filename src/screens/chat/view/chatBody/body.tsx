@@ -3,7 +3,7 @@ import _ from 'lodash';
 import moment from 'moment';
 
 // UI Elements
-import { FlatList } from 'react-native';
+import { FlatList, Text } from 'react-native';
 import { List } from 'react-native-elements';
 import Hr from '../../../../components/Hr';
 import { ChatMsg } from './listItem';
@@ -100,9 +100,31 @@ export class ChatBody extends React.Component<ChatBodyProps, ChatBodyState> {
         ));
     }
 
-    render() {
-        console.log('users typing', this.state.usersTyping);
+    renderTypingUsers() {
+        const users = this.state.usersTyping;
+        const length = users.length;
 
+        if (!length) {
+            return null;
+        }
+
+        const text = length === 1 ? 'is' : 'are';
+        const punc = length === 1 ? '' : ',';
+        const multiple = length > 3;
+
+        return (
+            <Text style={style.typingIndicator}>
+                {multiple
+                    ? 'multiple people'
+                    : users
+                          .join(`${punc} `)
+                          .replace(/,([^,]*)$/, ' and$1')}{' '}
+                {text} typing...
+            </Text>
+        );
+    }
+
+    render() {
         const data = _.chain(this.props.items)
             .groupBy((item) => new Date(Number(item.timestamp)).toDateString())
             .map((messages, timestamp) => ({ messages, timestamp }))
@@ -124,6 +146,8 @@ export class ChatBody extends React.Component<ChatBodyProps, ChatBodyState> {
                     keyExtractor={(item) => item.timestamp}
                     inverted
                 />
+
+                {this.renderTypingUsers()}
             </List>
         );
     }
