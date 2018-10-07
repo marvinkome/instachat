@@ -1,20 +1,53 @@
 import * as React from 'react';
-import { View } from 'react-native';
+import { View, Keyboard } from 'react-native';
 import { FormInput, Button } from 'react-native-elements';
-import { chatFormStyles as styles } from './styles';
+import { withApollo, WithApolloClient } from 'react-apollo';
+import { chatFormStyles as styles } from '../styles';
 
-type IProps = {
+import { userTyping } from './gql';
+
+type IProps = WithApolloClient<{
     sendMessage: (data: string) => void;
-};
+    groupId: string;
+}>;
 
 type IState = {
     message: string;
 };
 
-export default class ChatForm extends React.Component<IProps, IState> {
+class ChatForm extends React.Component<IProps, IState> {
+    keyboardDidShowListener: any;
+    keyboardDidHideListener: any;
+
     state = {
         message: ''
     };
+
+    componentDidMount() {
+        this.keyboardDidShowListener = Keyboard.addListener(
+            'keyboardDidShow',
+            this.triggerUserTyping
+        );
+        this.keyboardDidHideListener = Keyboard.addListener(
+            'keyboardDidHide',
+            this.triggerUserNotTyping
+        );
+    }
+
+    componentWillUnmount() {
+        this.keyboardDidHideListener.remove();
+        this.keyboardDidShowListener.remove();
+    }
+
+    triggerUserTyping = () => {
+        this.props.client.mutate({
+            mutation: userTyping,
+            variables: {
+                groupId: this.props.groupId
+            }
+        });
+    };
+    triggerUserNotTyping = () => null;
 
     onMessageChange = (message: string) => {
         this.setState({
@@ -57,3 +90,5 @@ export default class ChatForm extends React.Component<IProps, IState> {
         );
     }
 }
+
+export default withApollo(ChatForm);

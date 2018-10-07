@@ -25,7 +25,6 @@ export default class Main extends React.Component<NSP> {
     };
 
     id = this.props.navigation.getParam('groupId');
-
     optimisticResp: any;
     errorId: number;
     mutationClient: ApolloClient<object>;
@@ -57,8 +56,9 @@ export default class Main extends React.Component<NSP> {
 
         return (
             <Mutation {...mutationProps}>
-                {(fn, { error, client }) => {
+                {(fn, { client }) => {
                     this.mutationClient = client;
+
                     props.sendMsg = (obj: SendMessageArgs) =>
                         this.sendMessage(fn, obj);
 
@@ -69,8 +69,14 @@ export default class Main extends React.Component<NSP> {
     }
 
     render() {
+        const queryProps = {
+            query,
+            variables: { id: this.id },
+            fetchPolicy: 'cache-and-network'
+        };
         return (
-            <Query query={query} variables={{ id: this.id }} fetchPolicy="cache-and-network">
+            // @ts-ignore
+            <Query {...queryProps}>
                 {({ error, data, subscribeToMore }) => {
                     if (error && !data) {
                         console.error(error);

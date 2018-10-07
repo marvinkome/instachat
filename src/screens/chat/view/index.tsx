@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { View } from 'react-native';
-import { MutationFn } from 'react-apollo';
 
 import ChatHeader from './chatHeader';
 import ChatBody from './chatBody';
@@ -10,7 +9,9 @@ import { viewStyles as styles } from './styles';
 
 interface IProps {
     data: any;
-    sendMsg: (obj: { groupId: string; msg: string; username: string, userId: string }) => void;
+    sendMsg: (
+        obj: { groupId: string; msg: string; username: string; userId: string }
+    ) => void;
     groupId: string;
     moreMessages?: () => void;
 }
@@ -34,7 +35,10 @@ export const PageView = ({ data, sendMsg, groupId, moreMessages }: IProps) => {
                 subscribe={moreMessages || (() => null)}
             />
             <ChatForm
-                sendMessage={(msg) => sendMsg({ groupId, msg, username, userId })}
+                groupId={groupId}
+                sendMessage={(msg) =>
+                    sendMsg({ groupId, msg, username, userId })
+                }
             />
         </View>
     );
