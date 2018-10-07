@@ -4,7 +4,7 @@ import { FormInput, Button } from 'react-native-elements';
 import { withApollo, WithApolloClient } from 'react-apollo';
 import { chatFormStyles as styles } from '../styles';
 
-import { userTyping } from './gql';
+import { setTypingState } from './gql';
 
 type IProps = WithApolloClient<{
     sendMessage: (data: string) => void;
@@ -41,13 +41,23 @@ class ChatForm extends React.Component<IProps, IState> {
 
     triggerUserTyping = () => {
         this.props.client.mutate({
-            mutation: userTyping,
+            mutation: setTypingState,
             variables: {
-                groupId: this.props.groupId
+                groupId: this.props.groupId,
+                state: true
             }
         });
     };
-    triggerUserNotTyping = () => null;
+
+    triggerUserNotTyping = () => {
+        this.props.client.mutate({
+            mutation: setTypingState,
+            variables: {
+                groupId: this.props.groupId,
+                state: false
+            }
+        });
+    };
 
     onMessageChange = (message: string) => {
         this.setState({

@@ -1,9 +1,7 @@
 import gql from 'graphql-tag';
 
-export const userTyping = gql`
-    mutation UserTyping($groupId: String!) {
-        userTyping(groupId: $groupId) {
-            username
-        }
+export const setTypingState = gql`
+    mutation setTypingState($groupId: String!, $state: Boolean!) {
+        setTypingState(groupId: $groupId, state: $state)
     }
 `;

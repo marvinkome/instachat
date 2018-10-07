@@ -32,6 +32,7 @@ export const PageView = ({ data, sendMsg, groupId, moreMessages }: IProps) => {
             <ChatBody
                 data-testId="chat-body"
                 items={group.messages}
+                groupId={groupId}
                 subscribe={moreMessages || (() => null)}
             />
             <ChatForm
