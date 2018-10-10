@@ -24,7 +24,6 @@ const resolvers = {
                 }
             `;
 
-            console.log('error vars', variables);
             const msg = createFakeResp({
                 id: variables.errorId,
                 message: variables.msg,

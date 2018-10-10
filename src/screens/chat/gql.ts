@@ -54,7 +54,7 @@ export default gql`
             group(groupId: $id) {
                 id
                 name
-                messages(sort: true, first: 15) @connection(key: "messages") {
+                messages(sort: true, first: 15) {
                     id
                     message
                     timestamp

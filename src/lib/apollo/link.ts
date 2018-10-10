@@ -28,7 +28,6 @@ export default function Link(token: string, cache: InMemoryCache) {
     const errorLink = onError(({ networkError, operation, forward }) => {
         if (networkError) {
             if (operation.operationName === 'SendMessage') {
-                console.log('add operation to queue');
                 messageQueue
                     .enqueue(
                         // @ts-ignore

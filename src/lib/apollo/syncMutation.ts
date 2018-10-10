@@ -18,12 +18,6 @@ export class SyncOfflineMutation {
         // first get all messages
         await this.getOfflineMessages();
 
-        console.log(
-            `resyncing ${
-                this.offlineData ? this.offlineData.length : 0
-            } messages`
-        );
-
         // if there is no offline data then just exit
         if (!this.hasOfflineMessages()) {
             return;
@@ -35,7 +29,6 @@ export class SyncOfflineMutation {
             this.offlineData.map(async (item) => {
                 try {
                     const res = await apolloClient.mutate(item);
-                    console.log('sync successful');
                     this.replaceErrorMessage({
                         groupId: item.variables.groupId,
                         errorId: item.variables.errorId,
@@ -62,7 +55,6 @@ export class SyncOfflineMutation {
         response: any;
         apolloClient: ApolloClient<any>;
     }) {
-        console.log('remove error mutation');
         const { apolloClient, errorId, groupId, response } = args;
 
         const fragment = gql`
@@ -102,8 +94,6 @@ export class SyncOfflineMutation {
             fragment,
             id: `Group:${groupId}`
         });
-
-        console.log('new group', newgroup);
     }
 
     private hasOfflineMessages() {

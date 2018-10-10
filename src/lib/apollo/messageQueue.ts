@@ -21,7 +21,6 @@ export class MessageQueue {
         const { query, variables } = operation;
         let definitions: DocumentNode['definitions'] = [];
 
-        console.log('enqueue vars', variables);
         if (query && query.definitions) {
             definitions = query.definitions.filter(
                 // @ts-ignore
@@ -34,7 +33,6 @@ export class MessageQueue {
             query.definitions = definitions;
             this.queue.push({ mutation: query, variables });
 
-            console.log(`adding ${operation.operationName} to storage`);
             // update the value of local storage
             await this.storage.setItem(
                 this.storeKey,

@@ -131,7 +131,6 @@ function updateMutation(cache: any, { data }: any, id: string) {
         messages: data.addErrorMessage.messages
     };
 
-    // console.log('error update');
     cache.writeQuery({ query, data: { user } });
     // cache.readQuery({ query, variables: { id: this.id } });
 }
@@ -142,7 +141,6 @@ function updateMutation(cache: any, { data }: any, id: string) {
  * @param variables
  */
 export function onError(client: ApolloClient<any>, variables: any) {
-    console.log('mutation failed');
     client.mutate({
         mutation: addError,
         variables,

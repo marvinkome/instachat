@@ -54,10 +54,7 @@ function formatItem({ data, navigation }: N & OProps) {
             timestamp: '',
             unread,
             image,
-            onPress: () =>
-                navigation.navigate('Chat', {
-                    groupId: curr.id
-                })
+            onPress: () => false
         };
 
         // check if last message is available
@@ -65,7 +62,12 @@ function formatItem({ data, navigation }: N & OProps) {
             item = {
                 ...item,
                 text: curr.messages[0].message,
-                timestamp: formatDate(Number(curr.messages[0].timestamp))
+                timestamp: formatDate(Number(curr.messages[0].timestamp)),
+                onPress: () =>
+                    navigation.navigate('Chat', {
+                        groupId: curr.id,
+                        lastMessageId: curr.messages[0].id
+                    })
             };
         }
 

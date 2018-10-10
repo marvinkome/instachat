@@ -25,6 +25,8 @@ export default class Main extends React.Component<NSP> {
     };
 
     id = this.props.navigation.getParam('groupId');
+    lastMessage = this.props.navigation.getParam('lastMessageId');
+
     optimisticResp: any;
     errorId: number;
     mutationClient: ApolloClient<object>;
@@ -74,6 +76,9 @@ export default class Main extends React.Component<NSP> {
             variables: { id: this.id },
             fetchPolicy: 'cache-and-network'
         };
+
+        console.log(this.lastMessage);
+
         return (
             // @ts-ignore
             <Query {...queryProps}>

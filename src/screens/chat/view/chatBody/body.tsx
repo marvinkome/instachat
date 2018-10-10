@@ -1,5 +1,6 @@
 import * as React from 'react';
 import _ from 'lodash';
+import partition from 'lodash/partition';
 import moment from 'moment';
 
 // UI Elements
@@ -37,13 +38,11 @@ export class ChatBody extends React.Component<ChatBodyProps, ChatBodyState> {
     componentDidUpdate(prevProps: ChatBodyProps) {
         // if no new data
         if (!this.props.typingData) {
-            console.log('no new data');
             return;
         }
 
         // if prev props is falsy then return new state
         if (!prevProps.typingData) {
-            console.log('prev props is falsy');
             const ut = this.updateTypingUsers(this.props.typingData);
             return this.setState({
                 usersTyping: ut
@@ -58,12 +57,10 @@ export class ChatBody extends React.Component<ChatBodyProps, ChatBodyState> {
             oldData.isTyping === newData.isTyping &&
             oldData.user.username === newData.user.username
         ) {
-            console.log('props didnt change');
             return;
         }
 
         // when theres no problem
-        console.log('no problem state should be changed');
         const usersTyping = this.updateTypingUsers(this.props.typingData);
         return this.setState({
             usersTyping
@@ -129,6 +126,7 @@ export class ChatBody extends React.Component<ChatBodyProps, ChatBodyState> {
             .groupBy((item) => new Date(Number(item.timestamp)).toDateString())
             .map((messages, timestamp) => ({ messages, timestamp }))
             .value();
+
 
         return (
             <List containerStyle={style.listContainer}>
