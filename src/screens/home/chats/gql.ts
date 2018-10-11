@@ -12,9 +12,6 @@ export default gql`
                 message
                 timestamp
             }
-            role {
-                name
-            }
         }
     }
 `;

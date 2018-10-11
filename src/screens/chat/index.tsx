@@ -1,38 +1,34 @@
 import * as React from 'react';
-import { NavigationScreenProps as NSP } from 'react-navigation';
 
-// graphql
-import { Query, Mutation, MutationFn } from 'react-apollo';
+// Apollo
 import { ApolloClient } from 'apollo-client';
-import query, { sendMsg } from './gql';
+import { Query, Mutation, MutationFn } from 'react-apollo';
+import { ALL_MESSAGES, SEND_MESSAGE } from './gql';
+
+// types
+import { NavigationScreenProps } from 'react-navigation';
+import { ViewProps, messageParam } from './types';
+
+// helpers
+import { showAlert } from '../../lib/helpers';
+import * as utils from './utils';
 
 // UI
 import View from './view';
 
-// utils
-import { showAlert } from '../../lib/helpers';
-import {
-    subscribeToMessages,
-    sendMessage,
-    update,
-    onError,
-    SendMessageArgs
-} from './utils';
-
-export default class Main extends React.Component<NSP> {
+class ChatScreen extends React.Component<NavigationScreenProps> {
     static navigationOptions = {
         header: null
     };
 
-    id = this.props.navigation.getParam('groupId');
-    lastMessage = this.props.navigation.getParam('lastMessageId');
-
+    // params from router
+    groupId = this.props.navigation.getParam('groupId');
+    client: ApolloClient<object>;
     optimisticResp: any;
     errorId: number;
-    mutationClient: ApolloClient<object>;
 
-    sendMessage = (fn: MutationFn, args: SendMessageArgs) => {
-        const { optimisticResp, errorId } = sendMessage(fn, args);
+    sendMessage = (fn: MutationFn, args: messageParam) => {
+        const { optimisticResp, errorId } = utils.sendMessage(fn, args);
         this.optimisticResp = optimisticResp;
         this.errorId = errorId;
     };
@@ -40,28 +36,29 @@ export default class Main extends React.Component<NSP> {
     onError = () => {
         const variables = {
             errorId: this.errorId,
-            groupId: this.id,
+            groupId: this.groupId,
             msg: this.optimisticResp.sendMessage.message,
             user: this.optimisticResp.sendMessage.from.username,
             userId: this.optimisticResp.sendMessage.from.id
         };
 
-        onError(this.mutationClient, variables);
+        utils.onError(this.client, variables);
     };
 
-    renderMutation(props: any) {
+    renderMutation(props: ViewProps) {
         const mutationProps = {
-            mutation: sendMsg,
-            update: (cache: any, res: any) => update(cache, res, this.id),
+            mutation: SEND_MESSAGE,
+            update: (cache: any, res: any) =>
+                utils.update(cache, res, this.groupId),
             onError: this.onError
         };
 
         return (
             <Mutation {...mutationProps}>
                 {(fn, { client }) => {
-                    this.mutationClient = client;
+                    this.client = client;
 
-                    props.sendMsg = (obj: SendMessageArgs) =>
+                    props.sendMsg = (obj: messageParam) =>
                         this.sendMessage(fn, obj);
 
                     return <View {...props} />;
@@ -69,36 +66,33 @@ export default class Main extends React.Component<NSP> {
             </Mutation>
         );
     }
-
     render() {
-        const queryProps = {
-            query,
-            variables: { id: this.id },
-            fetchPolicy: 'cache-and-network'
+        // @ts-ignore
+        const viewProps: ViewProps = {};
+        const queryProps: any = {
+            query: ALL_MESSAGES,
+            variables: { groupID: this.groupId }
+            // fetchPolicy: 'cache-and-network'
         };
 
-        console.log(this.lastMessage);
-
         return (
-            // @ts-ignore
             <Query {...queryProps}>
-                {({ error, data, subscribeToMore }) => {
+                {({ error, data, ...rest }) => {
                     if (error && !data) {
-                        console.error(error);
                         showAlert('Something is wrong', 'error');
                         return null;
                     }
 
-                    if (data && data.user) {
-                        const props: any = {
-                            data,
-                            groupId: this.id
-                        };
+                    if (data && data.user && data.group) {
+                        viewProps.user = data.user;
+                        viewProps.group = data.group;
+                        viewProps.subscribe = () =>
+                            utils.subscribeToMessages(
+                                this.groupId,
+                                rest.subscribeToMore
+                            );
 
-                        props.moreMessages = () =>
-                            subscribeToMessages(this.id, subscribeToMore);
-
-                        return this.renderMutation(props);
+                        return this.renderMutation(viewProps);
                     }
 
                     return null;
@@ -107,3 +101,5 @@ export default class Main extends React.Component<NSP> {
         );
     }
 }
+
+export default ChatScreen;

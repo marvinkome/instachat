@@ -23,14 +23,18 @@ class ChatForm extends React.Component<IProps, IState> {
         message: ''
     };
 
-    setTypingState = (state: boolean) => {
-        this.props.client.mutate({
-            mutation: setTypingState,
-            variables: {
-                groupId: this.props.groupId,
-                state
-            }
-        });
+    setTypingState = async (state: boolean) => {
+        try {
+            await this.props.client.mutate({
+                mutation: setTypingState,
+                variables: {
+                    groupId: this.props.groupId,
+                    state
+                },
+            });
+        } catch (e) {
+            return;
+        }
     };
 
     resetStopTypingTimeout = () => {

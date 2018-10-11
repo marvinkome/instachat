@@ -127,7 +127,6 @@ export class ChatBody extends React.Component<ChatBodyProps, ChatBodyState> {
             .map((messages, timestamp) => ({ messages, timestamp }))
             .value();
 
-
         return (
             <List containerStyle={style.listContainer}>
                 <FlatList

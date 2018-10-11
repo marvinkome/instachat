@@ -37,7 +37,7 @@ export default async () => {
 
     const cache = new InMemoryCache({
         cacheRedirects: {
-            User: {
+            Query: {
                 group: (_, args, { getCacheKey }) =>
                     getCacheKey({ __typename: 'Group', id: args.groupId })
             }

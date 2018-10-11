@@ -4,7 +4,6 @@ import { getMainDefinition } from 'apollo-utilities';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import { split, from, ApolloLink } from 'apollo-link';
-import QueueLink from 'apollo-link-queue';
 import { onError } from 'apollo-link-error';
 import { WebSocketLink } from 'apollo-link-ws';
 import { createHttpLink } from 'apollo-link-http';
@@ -27,7 +26,7 @@ export default function Link(token: string, cache: InMemoryCache) {
     // error link
     const errorLink = onError(({ networkError, operation, forward }) => {
         if (networkError) {
-            if (operation.operationName === 'SendMessage') {
+            if (operation.operationName === 'sendMessage') {
                 messageQueue
                     .enqueue(
                         // @ts-ignore
@@ -35,12 +34,23 @@ export default function Link(token: string, cache: InMemoryCache) {
                     )
                     .then(() => null);
             }
+
+            if (operation.operationName !== 'setTypingState') {
+                return console.log(networkError);
+            }
+
             forward(operation);
         }
     });
 
     // retry link
-    const retryLink = new RetryLink();
+    const retryLink = new RetryLink({
+        attempts: {
+            retryIf(err, ops) {
+                return ops.operationName !== 'setTypingState' && !!err;
+            }
+        }
+    });
 
     // auth link
     const authLink = setContext((_, { headers }) => {

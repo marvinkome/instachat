@@ -6,39 +6,36 @@ import ChatBody from './chatBody';
 import ChatForm from './chatForm';
 
 import { viewStyles as styles } from './styles';
+import { ViewProps } from '../types';
 
-interface IProps {
-    data: any;
-    sendMsg: (
-        obj: { groupId: string; msg: string; username: string; userId: string }
-    ) => void;
-    groupId: string;
-    moreMessages?: () => void;
-}
+export const PageView = (props: ViewProps) => {
+    const role = props.group.role;
+    const username = props.user.username;
+    const userId = props.user.id;
 
-export const PageView = ({ data, sendMsg, groupId, moreMessages }: IProps) => {
-    const group = data.user.group;
-    const role = data.user.group.role;
-    const username = data.user.username;
-    const userId = data.user.id;
     return (
         <View style={styles.container}>
             <ChatHeader
                 data-testId="chat-header"
-                name={group.name}
+                name={props.group.name}
                 role={role.name}
-                groupId={groupId}
+                groupId={props.group.id}
             />
             <ChatBody
                 data-testId="chat-body"
-                items={group.messages}
-                groupId={groupId}
-                subscribe={moreMessages || (() => null)}
+                items={props.group.messages}
+                groupId={props.group.Id}
+                subscribe={props.subscribe || (() => null)}
             />
             <ChatForm
-                groupId={groupId}
+                groupId={props.group.id}
                 sendMessage={(msg) =>
-                    sendMsg({ groupId, msg, username, userId })
+                    props.sendMsg({
+                        groupId: props.group.id,
+                        msg,
+                        userId,
+                        username
+                    })
                 }
             />
         </View>

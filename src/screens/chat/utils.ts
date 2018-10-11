@@ -2,7 +2,8 @@ import { SubscribeToMoreOptions as STMO, ApolloClient } from 'apollo-client';
 import { MutationFn, FetchResult } from 'react-apollo';
 
 import { createFakeResp, generateErrorId } from '../../lib/helpers';
-import query, { querySubscription, addError } from './gql';
+import { MESSAGE_SUBSCRIPTION, ADD_ERROR, ALL_MESSAGES } from './gql';
+import { messageParam } from './types';
 
 const updateQuery = (prev: any, { subscriptionData }: any) => {
     if (!subscriptionData) {
@@ -16,20 +17,14 @@ const updateQuery = (prev: any, { subscriptionData }: any) => {
         return prev;
     }
 
-    const prevGroup = prev.user.userGroup.group;
+    const prevGroup = prev.group;
     const msgList = [newMsg, ...prevGroup.messages];
 
     return {
         ...prev,
-        user: {
-            ...prev.user,
-            userGroup: {
-                ...prev.user.userGroup,
-                group: {
-                    ...prev.user.userGroup.group,
-                    messages: msgList
-                }
-            }
+        group: {
+            ...prev.group,
+            messages: msgList
         }
     };
 };
@@ -45,17 +40,10 @@ export function subscribeToMessages(
     subscribeFn: (options: STMO<any, any>) => void
 ) {
     subscribeFn({
-        document: querySubscription,
+        document: MESSAGE_SUBSCRIPTION,
         variables: { groupId },
         updateQuery: (prev, result) => updateQuery(prev, result)
     });
-}
-
-export interface SendMessageArgs {
-    groupId: string;
-    msg: string;
-    username: string;
-    userId: string;
 }
 
 /**
@@ -64,10 +52,7 @@ export interface SendMessageArgs {
  * @param messageArgs
  * @returns optimistic response
  */
-export function sendMessage(
-    mutationFn: MutationFn,
-    messageArgs: SendMessageArgs
-) {
+export function sendMessage(mutationFn: MutationFn, messageArgs: messageParam) {
     const id = generateErrorId({
         optimistic: true
     });
@@ -96,43 +81,25 @@ export function sendMessage(
 }
 
 /**
- * Update function called after successfull mutation to update cache
+ * Update function called after successful mutation to update cache
  * @param cache
  * @param fetchResult
  * @param id
  */
 export function update(cache: any, { data }: FetchResult, id: string) {
-    const prev = cache.readQuery({ query, variables: { id } });
-    if (!data || !prev) {
-        return;
-    }
-
-    // @ts-ignore
-    const { user } = prev;
-    user.group.messages.unshift(data.sendMessage);
-
-    cache.writeQuery({ query, data: { user } });
-}
-
-function updateMutation(cache: any, { data }: any, id: string) {
     const prev = cache.readQuery({
-        query,
-        variables: { id }
+        query: ALL_MESSAGES,
+        variables: { groupID: id }
     });
-
     if (!data || !prev) {
         return;
     }
 
     // @ts-ignore
-    const { user } = prev;
-    user.group = {
-        ...user.group,
-        messages: data.addErrorMessage.messages
-    };
+    const { group } = prev;
+    group.messages.unshift(data.sendMessage);
 
-    cache.writeQuery({ query, data: { user } });
-    // cache.readQuery({ query, variables: { id: this.id } });
+    cache.writeQuery({ query: ALL_MESSAGES, data: { group, ...prev } });
 }
 
 /**
@@ -142,8 +109,25 @@ function updateMutation(cache: any, { data }: any, id: string) {
  */
 export function onError(client: ApolloClient<any>, variables: any) {
     client.mutate({
-        mutation: addError,
+        mutation: ADD_ERROR,
         variables,
         update: (cache, res) => updateMutation(cache, res, variables.groupId)
     });
+}
+
+function updateMutation(cache: any, { data }: any, id: string) {
+    const prev = cache.readQuery({
+        query: ALL_MESSAGES,
+        variables: { groupID: id }
+    });
+
+    if (!data || !prev) {
+        return;
+    }
+
+    // @ts-ignore
+    const { group } = prev;
+    group.messages = data.addErrorMessage.messages;
+
+    cache.writeQuery({ query: ALL_MESSAGES, data: { group, ...prev } });
 }
