@@ -12,7 +12,12 @@ const resolvers = {
 
             const fragment = gql`
                 fragment group on Group {
-                    messages {
+                    lastMessage {
+                        id
+                        message
+                        timestamp
+                    }
+                    messages(sort: true) {
                         id
                         message
                         timestamp
@@ -36,8 +41,12 @@ const resolvers = {
                 ...msg.sendMessage
             });
 
-            const data = { group };
-            // ctx.cache.writeData({ data });
+            const data = {
+                ...group,
+                lastMessage: msg.sendMessage
+            };
+
+            ctx.cache.writeFragment({ data, fragment, id });
 
             return group;
         }

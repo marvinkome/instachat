@@ -71,8 +71,8 @@ class ChatScreen extends React.Component<NavigationScreenProps> {
         const viewProps: ViewProps = {};
         const queryProps: any = {
             query: ALL_MESSAGES,
-            variables: { groupID: this.groupId }
-            // fetchPolicy: 'cache-and-network'
+            variables: { groupID: this.groupId },
+            fetchPolicy: 'cache-and-network'
         };
 
         return (

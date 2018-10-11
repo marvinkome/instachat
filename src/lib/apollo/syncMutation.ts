@@ -1,5 +1,4 @@
 import { ApolloClient } from 'apollo-client';
-import gql from 'graphql-tag';
 import { AsyncStorageStatic } from 'react-native';
 
 export class SyncOfflineMutation {
@@ -28,13 +27,7 @@ export class SyncOfflineMutation {
         await Promise.all(
             this.offlineData.map(async (item) => {
                 try {
-                    const res = await apolloClient.mutate(item);
-                    this.replaceErrorMessage({
-                        groupId: item.variables.groupId,
-                        errorId: item.variables.errorId,
-                        response: res.data,
-                        apolloClient
-                    });
+                    await apolloClient.mutate(item);
                 } catch (e) {
                     // set the errored mutation to the stash
                     uncommittedOfflineMutation.push(item);
@@ -47,53 +40,6 @@ export class SyncOfflineMutation {
 
         // then add again the uncommited storage
         this.addOfflineMessage(uncommittedOfflineMutation);
-    }
-
-    private replaceErrorMessage(args: {
-        groupId: any;
-        errorId: any;
-        response: any;
-        apolloClient: ApolloClient<any>;
-    }) {
-        const { apolloClient, errorId, groupId, response } = args;
-
-        const fragment = gql`
-            fragment group on Group {
-                messages {
-                    id
-                    message
-                    timestamp
-                    from {
-                        id
-                        username
-                    }
-                }
-            }
-        `;
-
-        const group: any = apolloClient.readFragment({
-            fragment,
-            id: `Group:${groupId}`
-        });
-
-        // remove message from cache
-        group.messages = group.messages.filter(
-            (msg: any) => String(msg.id) !== String(errorId)
-        );
-
-        // add new data
-        group.messages.unshift(response.sendMessage);
-
-        // add new message to cache
-        apolloClient.writeFragment({
-            fragment,
-            data: group,
-            id: `Group:${groupId}`
-        });
-        const newgroup: any = apolloClient.readFragment({
-            fragment,
-            id: `Group:${groupId}`
-        });
     }
 
     private hasOfflineMessages() {

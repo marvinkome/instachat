@@ -110,24 +110,6 @@ export function update(cache: any, { data }: FetchResult, id: string) {
 export function onError(client: ApolloClient<any>, variables: any) {
     client.mutate({
         mutation: ADD_ERROR,
-        variables,
-        update: (cache, res) => updateMutation(cache, res, variables.groupId)
+        variables
     });
-}
-
-function updateMutation(cache: any, { data }: any, id: string) {
-    const prev = cache.readQuery({
-        query: ALL_MESSAGES,
-        variables: { groupID: id }
-    });
-
-    if (!data || !prev) {
-        return;
-    }
-
-    // @ts-ignore
-    const { group } = prev;
-    group.messages = data.addErrorMessage.messages;
-
-    cache.writeQuery({ query: ALL_MESSAGES, data: { group, ...prev } });
 }

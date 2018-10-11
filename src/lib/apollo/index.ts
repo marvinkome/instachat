@@ -14,20 +14,6 @@ import {
 import { CachePersistor } from 'apollo-cache-persist';
 import { clientId } from '../helpers';
 
-const defaultOptions: DefaultOptions = {
-    watchQuery: {
-        fetchPolicy: 'cache-first',
-        errorPolicy: 'all'
-    },
-    query: {
-        fetchPolicy: 'cache-first',
-        errorPolicy: 'all'
-    },
-    mutate: {
-        errorPolicy: 'all'
-    }
-};
-
 export default async () => {
     const token = await clientId();
 
@@ -54,8 +40,7 @@ export default async () => {
 
     const client = new ApolloClient({
         link,
-        cache,
-        defaultOptions
+        cache
     });
 
     // add listeners to queue operations

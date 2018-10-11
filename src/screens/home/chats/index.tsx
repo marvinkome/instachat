@@ -19,7 +19,11 @@ export class Chats extends React.Component {
             lastMessageTimestamp: '0'
         };
         return (
-            <Query query={query} variables={variables}>
+            <Query
+                query={query}
+                variables={variables}
+                fetchPolicy="cache-and-network"
+            >
                 {({ error, loading, data }) => {
                     // if there's no data and there's error
                     if ((error && !data) || !data.groups) {
