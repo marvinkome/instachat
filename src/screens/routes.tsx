@@ -1,7 +1,7 @@
 import { createStackNavigator } from 'react-navigation';
-import Main from './main';
 
-// login screen
+// screens
+import Main from './main';
 import Login from './login';
 
 const RootStackNavigator = (initialRouteName: string) => {

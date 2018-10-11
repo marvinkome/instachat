@@ -2,20 +2,18 @@ import gql from 'graphql-tag';
 
 // TODO: fix connection directive bug in tests
 export default gql`
-    query ChatsQuery {
-        user {
+    query groups($lastMessageTimestamp: String!) {
+        groups {
             id
-            groups {
+            name
+            numberOfNewMessages(messageTimestamp: $lastMessageTimestamp)
+            lastMessage {
                 id
+                message
+                timestamp
+            }
+            role {
                 name
-                messages(first: 1, sort: true) {
-                    id
-                    message
-                    timestamp
-                }
-                role {
-                    name
-                }
             }
         }
     }

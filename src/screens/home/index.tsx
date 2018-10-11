@@ -30,7 +30,7 @@ const HomeTabNavigator = createMaterialTopTabNavigator(
 
 export default class Main extends React.Component<NP> {
     static navigationOptions = {
-        title: 'Chat App'.toUpperCase(),
+        title: 'InstaChat'.toUpperCase(),
         headerStyle: stackStyles.header,
         headerTitleStyle: stackStyles.title,
         headerLeft: null

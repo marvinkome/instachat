@@ -1,17 +1,17 @@
 import * as React from 'react';
+
+// components
 import List from '../../../../components/listing';
+
+// lib
 import color from '../../../../lib/colors';
+
+// types
+import { ListingType } from '../types';
 
 type Props = {
     typing: boolean;
-    listItem: {
-        name: string;
-        text: string;
-        image: any;
-        timestamp: string;
-        unread: number;
-        onPress: () => void;
-    };
+    listItem: ListingType;
 };
 
 const Listing = ({ listItem, typing }: Props) => {
@@ -25,7 +25,7 @@ const Listing = ({ listItem, typing }: Props) => {
             badgeText={listItem.timestamp}
             badgeValue={listItem.unread}
             onPress={listItem.onPress}
-            showBadge={listItem.unread !== null}
+            showBadge={listItem.unread !== null && listItem.unread > 0}
         />
     );
 };

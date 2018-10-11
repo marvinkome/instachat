@@ -1,55 +1,38 @@
 import * as React from 'react';
+
+// main imports
 import { compose, ComponentEnhancer as CE } from 'recompose';
 import orderBy from 'lodash/orderBy';
 import { withNavigation, NavigationInjectedProps as N } from 'react-navigation';
 
+// UI
 import { View, FlatList } from 'react-native';
 import { List } from 'react-native-elements';
 
-import { formatDate } from '../../../../lib/helpers';
+// components
 import ListItem from './listing';
 import { GroupFab } from './components/fab';
 import { EmptyList } from './components/emptyMsg';
+
+// styles
 import { ViewStyles as styles } from './styles';
 
+// types
+import { ListingType, ViewProps } from '../types';
+
+// helpers
+import { formatDate } from '../../../../lib/helpers';
 const image = require('../../../../../static/pp.jpg');
 
-interface ListingType {
-    id: string;
-    name: string;
-    text: string;
-    timestamp: string;
-    unread: number;
-    image: null;
-    onPress: () => void;
-}
+function formatItem({ data, navigation }: N & ViewProps) {
+    const groups = data.groups;
 
-interface OProps {
-    data: {
-        user: {
-            id: string;
-            groups: Array<{
-                id: string;
-                name: string;
-                messages: Array<{
-                    id: string;
-                    message: string;
-                    timestamp: string;
-                }>;
-            }>;
-        };
-    };
-}
-
-function formatItem({ data, navigation }: N & OProps) {
-    const groups = data.user.groups;
-
-    const formattedGroups = groups.reduce((total: ListingType[], curr) => {
+    const formattedGroups = groups.reduce((reduced: ListingType[], group) => {
         // reduce item to match list props
-        const unread = curr.messages.length;
+        const unread = group.numberOfNewMessages;
         let item = {
-            id: curr.id,
-            name: curr.name,
+            id: group.id,
+            name: group.name,
             text: 'No message',
             timestamp: '',
             unread,
@@ -58,33 +41,33 @@ function formatItem({ data, navigation }: N & OProps) {
         };
 
         // check if last message is available
-        if (unread) {
+        if (group.lastMessage) {
             item = {
                 ...item,
-                text: curr.messages[0].message,
-                timestamp: formatDate(Number(curr.messages[0].timestamp)),
+                text: group.lastMessage.message,
+                timestamp: formatDate(Number(group.lastMessage.timestamp)),
                 onPress: () =>
                     navigation.navigate('Chat', {
-                        groupId: curr.id,
-                        lastMessageId: curr.messages[0].id
+                        groupId: group.id,
+                        lastMessageId: group.lastMessage.timestamp
                     })
             };
         }
 
-        total.push(item);
-        return total;
+        reduced.push(item);
+        return reduced;
     }, []);
 
     return orderBy(formattedGroups, 'timestamp', 'desc');
 }
 
-function MainView(props: N & OProps & {}) {
+function MainView(props: N & ViewProps & {}) {
     const lists = formatItem(props);
 
     return (
         <View style={styles.container}>
             {/* check length of groups */}
-            {props.data.user.groups.length ? (
+            {props.data.groups.length ? (
                 <List containerStyle={styles.listContainer}>
                     <FlatList
                         data={lists}
@@ -105,6 +88,6 @@ function MainView(props: N & OProps & {}) {
     );
 }
 
-const enhance: CE<{}, OProps> = compose(withNavigation);
+const enhance: CE<{}, ViewProps> = compose(withNavigation);
 
 export default enhance(MainView);
