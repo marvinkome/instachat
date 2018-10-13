@@ -70,3 +70,9 @@ export const ADD_ERROR = gql`
         ) @client
     }
 `;
+
+export const TOGGLE_VIEW_STATE = gql`
+    mutation toggleViewStatus($groupId: String!, $viewing: Boolean!) {
+        viewingStatus(groupId: $groupId, viewing: $viewing)
+    }
+`;

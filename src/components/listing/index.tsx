@@ -28,22 +28,20 @@ const MainListItem = ({
             titleStyle={styles.name}
             avatar={<Avatar small rounded source={avatarImg} />}
             hideChevron
-            badge={
-                showBadge
-                    ? {
-                          element: (
-                              <View style={styles.rightContainer}>
-                                  <Text style={styles.time}>{badgeText}</Text>
-                                  <Badge
-                                      value={badgeValue}
-                                      containerStyle={styles.badgeContainer}
-                                      textStyle={styles.badgeText}
-                                  />
-                              </View>
-                          )
-                      }
-                    : undefined
-            }
+            badge={{
+                element: (
+                    <View style={styles.rightContainer}>
+                        <Text style={styles.time}>{badgeText}</Text>
+                        {showBadge && (
+                            <Badge
+                                value={badgeValue}
+                                containerStyle={styles.badgeContainer}
+                                textStyle={styles.badgeText}
+                            />
+                        )}
+                    </View>
+                )
+            }}
             {...props}
         />
     );

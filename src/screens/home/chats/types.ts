@@ -13,7 +13,7 @@ export interface ViewProps {
         groups: Array<{
             id: string;
             name: string;
-            numberOfNewMessages: number;
+            unreadCount: number;
             lastMessage: {
                 id: string;
                 message: string;

@@ -29,7 +29,7 @@ function formatItem({ data, navigation }: N & ViewProps) {
 
     const formattedGroups = groups.reduce((reduced: ListingType[], group) => {
         // reduce item to match list props
-        const unread = group.numberOfNewMessages;
+        const unread = group.unreadCount;
         let item = {
             id: group.id,
             name: group.name,
@@ -73,9 +73,7 @@ function MainView(props: N & ViewProps & {}) {
                         data={lists}
                         keyExtractor={(item) => item.id}
                         data-testid="chat-list"
-                        renderItem={({ item }) => (
-                            <ListItem listItem={item} typing={false} />
-                        )}
+                        renderItem={({ item }) => <ListItem listItem={item} typing={false} />}
                     />
                 </List>
             ) : (

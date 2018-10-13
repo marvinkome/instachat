@@ -14,16 +14,12 @@ export class Chats extends React.Component {
         tabBarLabel: 'Chats'
     };
 
+    componentDidMount() {
+        console.warn('groups loaded');
+    }
     render() {
-        const variables = {
-            lastMessageTimestamp: '0'
-        };
         return (
-            <Query
-                query={query}
-                variables={variables}
-                fetchPolicy="cache-and-network"
-            >
+            <Query query={query} fetchPolicy="cache-and-network">
                 {({ error, loading, data }) => {
                     // if there's no data and there's error
                     if ((error && !data) || !data.groups) {

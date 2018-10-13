@@ -12,11 +12,6 @@ const updateQuery = (prev: any, { subscriptionData }: any) => {
 
     const newMsg = subscriptionData.data.messageSent;
 
-    // if it's same user dont
-    if (prev.user.username === newMsg.from.username) {
-        return prev;
-    }
-
     const prevGroup = prev.group;
     const msgList = [newMsg, ...prevGroup.messages];
 

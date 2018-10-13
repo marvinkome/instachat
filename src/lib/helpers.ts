@@ -84,21 +84,43 @@ export function createFakeResp({ id, message, userId, username }: respArgs) {
     };
 }
 
-export function networkErrHandler(
-    client: any,
-    query: any,
-    Comp: (data: any) => JSX.Element,
-    variables?: any
-) {
-    // get data from the cache
-    const cache = client.readQuery({ query, variables });
+// export async function saveLastMessageTimestamp(timestamp: string) {
+//     // first get the timestamps array
+//     const timestamps: any[] = await AsyncStorage.getItem('groupLastMessage').then((res) =>
+//         JSON.parse(res)
+//     );
 
-    // show error
-    // TODO: Change error message
-    showAlert("You're offline", 'error', {
-        shouldHideOnTap: false
-    });
+//     // check for the group ex-value
+//     const groupIndex = timestamps.findIndex((item) => item.groupId === groupId);
 
-    // @ts-ignore
-    return cache.user ? Comp(cache) : null;
-}
+//     // if does not exist
+//     if (groupIndex === -1) {
+//         // add new item
+//         timestamps.push({
+//             groupId,
+//             timestamp
+//         });
+
+//         // write data back to storage
+//         return await AsyncStorage.setItem('groupLastMessage', JSON.stringify(timestamps));
+//     }
+
+//     // update item
+//     timestamps[groupIndex] = {
+//         groupId,
+//         timestamp
+//     };
+
+//     return await AsyncStorage.setItem('groupLastMessage', JSON.stringify(timestamps));
+// }
+
+// export async function getLastMessageTimestamp(groupId: string) {
+//     const timestamps: any[] = await AsyncStorage.getItem('groupLastMessage').then((res) =>
+//         JSON.parse(res)
+//     );
+
+//     // check for the group ex-value
+//     const group = timestamps.find((item) => item.groupId === groupId);
+
+//     return group;
+// }

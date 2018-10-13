@@ -1,12 +1,13 @@
 import * as React from 'react';
+import { AppState } from 'react-native';
 
 // Apollo
 import { ApolloClient } from 'apollo-client';
-import { Query, Mutation, MutationFn } from 'react-apollo';
-import { ALL_MESSAGES, SEND_MESSAGE } from './gql';
+import { Query, Mutation, MutationFn, WithApolloClient, withApollo } from 'react-apollo';
+import { ALL_MESSAGES, SEND_MESSAGE, TOGGLE_VIEW_STATE } from './gql';
 
 // types
-import { NavigationScreenProps } from 'react-navigation';
+import { NavigationScreenProps, NavigationEventSubscription } from 'react-navigation';
 import { ViewProps, messageParam } from './types';
 
 // helpers
@@ -16,16 +17,56 @@ import * as utils from './utils';
 // UI
 import View from './view';
 
-class ChatScreen extends React.Component<NavigationScreenProps> {
+class ChatScreen extends React.Component<WithApolloClient<NavigationScreenProps>> {
     static navigationOptions = {
         header: null
     };
 
     // params from router
     groupId = this.props.navigation.getParam('groupId');
-    client: ApolloClient<object>;
     optimisticResp: any;
     errorId: number;
+    pageFocusListener: NavigationEventSubscription;
+    pageBlurListener: NavigationEventSubscription;
+
+    componentDidMount() {
+        AppState.addEventListener('change', this.handleViewChange);
+        this.pageFocusListener = this.props.navigation.addListener('didFocus', () =>
+            this.handleViewChange('active')
+        );
+
+        this.pageBlurListener = this.props.navigation.addListener('willBlur', () =>
+            this.handleViewChange('inactive')
+        );
+    }
+
+    setViewState = async (viewing: boolean) => {
+        try {
+            await this.props.client.mutate({
+                mutation: TOGGLE_VIEW_STATE,
+                variables: {
+                    groupId: this.groupId,
+                    viewing
+                }
+            });
+        } catch (e) {
+            return;
+        }
+    };
+
+    handleViewChange = (view: any) => {
+        if (view === 'active') {
+            this.setViewState(true);
+        } else {
+            this.setViewState(false);
+        }
+    };
+
+    componentWillUnmount() {
+        AppState.removeEventListener('change', this.handleViewChange);
+        this.pageFocusListener.remove();
+        this.pageBlurListener.remove();
+    }
 
     sendMessage = (fn: MutationFn, args: messageParam) => {
         const { optimisticResp, errorId } = utils.sendMessage(fn, args);
@@ -42,25 +83,20 @@ class ChatScreen extends React.Component<NavigationScreenProps> {
             userId: this.optimisticResp.sendMessage.from.id
         };
 
-        utils.onError(this.client, variables);
+        utils.onError(this.props.client, variables);
     };
 
     renderMutation(props: ViewProps) {
         const mutationProps = {
             mutation: SEND_MESSAGE,
-            update: (cache: any, res: any) =>
-                utils.update(cache, res, this.groupId),
+            update: (cache: any, res: any) => utils.update(cache, res, this.groupId),
             onError: this.onError
         };
 
         return (
             <Mutation {...mutationProps}>
-                {(fn, { client }) => {
-                    this.client = client;
-
-                    props.sendMsg = (obj: messageParam) =>
-                        this.sendMessage(fn, obj);
-
+                {(fn) => {
+                    props.sendMsg = (obj: messageParam) => this.sendMessage(fn, obj);
                     return <View {...props} />;
                 }}
             </Mutation>
@@ -87,10 +123,7 @@ class ChatScreen extends React.Component<NavigationScreenProps> {
                         viewProps.user = data.user;
                         viewProps.group = data.group;
                         viewProps.subscribe = () =>
-                            utils.subscribeToMessages(
-                                this.groupId,
-                                rest.subscribeToMore
-                            );
+                            utils.subscribeToMessages(this.groupId, rest.subscribeToMore);
 
                         return this.renderMutation(viewProps);
                     }
@@ -102,4 +135,4 @@ class ChatScreen extends React.Component<NavigationScreenProps> {
     }
 }
 
-export default ChatScreen;
+export default withApollo(ChatScreen);
