@@ -1,6 +1,10 @@
 import * as React from 'react';
-import { Query } from 'react-apollo';
-import { NavigationTabScreenOptions } from 'react-navigation';
+import { graphql, DataProps } from 'react-apollo';
+import {
+    NavigationTabScreenOptions,
+    NavigationScreenProps,
+    NavigationEventSubscription
+} from 'react-navigation';
 
 import { showAlert, hideAlert } from '../../../lib/helpers';
 import View from './view';
@@ -9,32 +13,40 @@ import query from './gql';
 /**
  * Init chat page
  */
-export class Chats extends React.Component {
+class Chats extends React.Component<NavigationScreenProps & DataProps<{ groups: any }, {}>> {
     static navigationOptions: NavigationTabScreenOptions = {
         tabBarLabel: 'Chats'
     };
 
+    pageFocusListener: NavigationEventSubscription;
+
     componentDidMount() {
-        console.warn('groups loaded');
-    }
-    render() {
-        return (
-            <Query query={query} fetchPolicy="cache-and-network">
-                {({ error, loading, data }) => {
-                    // if there's no data and there's error
-                    if ((error && !data) || !data.groups) {
-                        showAlert('Something is wrong', 'error');
-                        return null;
-                    }
-
-                    if (data.groups) {
-                        hideAlert();
-                        return <View data={data} />;
-                    }
-
-                    return null;
-                }}
-            </Query>
+        this.pageFocusListener = this.props.navigation.addListener('willFocus', () =>
+            this.props.data.refetch()
         );
     }
+
+    componentWillUnmount() {
+        this.pageFocusListener.remove();
+    }
+
+    render() {
+        const { error, groups } = this.props.data;
+
+        // if there's no data and there's error
+        if (error || !groups) {
+            showAlert('Something is wrong', 'error');
+            return null;
+        }
+
+        if (groups) {
+            hideAlert();
+            return <View data={{ groups }} />;
+        }
+
+        return null;
+    }
 }
+
+const enhancer = graphql(query, { options: { fetchPolicy: 'cache-and-network' } });
+export default enhancer(Chats);

@@ -1,15 +1,12 @@
 import * as React from 'react';
-import {
-    createMaterialTopTabNavigator,
-    NavigationScreenProps as NP
-} from 'react-navigation';
+import { createMaterialTopTabNavigator, NavigationScreenProps as NP } from 'react-navigation';
 
 // styles
 import color from '../../lib/colors';
 import { tabStyles, stackStyles } from '../../styles';
 
 // home tabs
-import { Chats } from './chats';
+import Chats from './chats';
 import { Profile } from './profile';
 
 const HomeTabNavigator = createMaterialTopTabNavigator(
