@@ -14,13 +14,13 @@ type Props = {
     listItem: ListingType;
 };
 
-const Listing = ({ listItem, typing }: Props) => {
-    const subtitleStyle = typing ? { color: color.primary } : {};
+const Listing = ({ listItem }: Props) => {
+    const subtitleStyle = listItem.typing ? { color: color.primary } : {};
     return (
         <List
             avatarImg={listItem.image}
             title={listItem.name}
-            subtitle={typing ? 'typing...' : listItem.text}
+            subtitle={listItem.text}
             subtitleStyle={subtitleStyle}
             badgeText={listItem.timestamp}
             badgeValue={listItem.unread}

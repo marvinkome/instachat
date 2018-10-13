@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { graphql, DataProps } from 'react-apollo';
+import { graphql, DataProps, Subscription } from 'react-apollo';
 import {
     NavigationTabScreenOptions,
     NavigationScreenProps,
@@ -8,7 +8,7 @@ import {
 
 import { showAlert, hideAlert } from '../../../lib/helpers';
 import View from './view';
-import query from './gql';
+import query, { TYPING_SUBSCRIPTION } from './gql';
 
 type Props = NavigationScreenProps & DataProps<{ groups: any }, {}>;
 
@@ -40,7 +40,11 @@ class Chats extends React.Component<Props> {
 
         if (groups) {
             hideAlert();
-            return <View data={{ groups }} />;
+            return (
+                <Subscription subscription={TYPING_SUBSCRIPTION}>
+                    {({ data }) => <View typingData={data} data={{ groups }} />}
+                </Subscription>
+            );
         }
 
         return null;

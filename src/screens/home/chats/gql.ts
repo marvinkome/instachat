@@ -1,6 +1,20 @@
 import gql from 'graphql-tag';
 
-// TODO: fix connection directive bug in tests
+export const TYPING_SUBSCRIPTION = gql`
+    subscription {
+        userGroupTyping {
+            user {
+                username
+            }
+            group {
+                id
+                name
+            }
+            isTyping
+        }
+    }
+`;
+
 export default gql`
     query groups {
         groups {
