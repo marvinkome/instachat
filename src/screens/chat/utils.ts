@@ -45,9 +45,14 @@ export function subscribeToMessages(
  * Sends message with optimistic response
  * @param mutationFn
  * @param messageArgs
+ * @param client
  * @returns optimistic response
  */
-export function sendMessage(mutationFn: MutationFn, messageArgs: messageParam) {
+export async function sendMessage(
+    mutationFn: MutationFn,
+    messageArgs: messageParam,
+    client: ApolloClient<any>
+) {
     const id = generateErrorId({
         optimistic: true
     });
@@ -63,16 +68,26 @@ export function sendMessage(mutationFn: MutationFn, messageArgs: messageParam) {
     });
 
     // call function
-    mutationFn({
-        variables: {
+    try {
+        await mutationFn({
+            variables: {
+                groupId: messageArgs.groupId,
+                msg: messageArgs.msg,
+                errorId
+            },
+            optimisticResponse: optimisticResp
+        });
+    } catch (e) {
+        const variables = {
+            errorId,
             groupId: messageArgs.groupId,
-            msg: messageArgs.msg,
-            errorId
-        },
-        optimisticResponse: optimisticResp
-    });
+            msg: optimisticResp.sendMessage.message,
+            user: optimisticResp.sendMessage.from.username,
+            userId: optimisticResp.sendMessage.from.id
+        };
 
-    return { optimisticResp, errorId };
+        onError(client, variables);
+    }
 }
 
 /**

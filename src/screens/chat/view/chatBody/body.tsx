@@ -1,6 +1,5 @@
 import * as React from 'react';
 import _ from 'lodash';
-import partition from 'lodash/partition';
 import moment from 'moment';
 
 // UI Elements
@@ -92,9 +91,7 @@ export class ChatBody extends React.Component<ChatBodyProps, ChatBodyState> {
     };
 
     renderItem(props: any) {
-        return props.item.messages.map((item: any) => (
-            <ChatMsg key={item.id} {...item} />
-        ));
+        return props.item.messages.map((item: any) => <ChatMsg key={item.id} {...item} />);
     }
 
     renderTypingUsers() {
@@ -113,9 +110,7 @@ export class ChatBody extends React.Component<ChatBodyProps, ChatBodyState> {
             <Text style={style.typingIndicator}>
                 {multiple
                     ? 'multiple people'
-                    : users
-                          .join(`${punc} `)
-                          .replace(/,([^,]*)$/, ' and$1')}{' '}
+                    : users.join(`${punc} `).replace(/,([^,]*)$/, ' and$1')}{' '}
                 {text} typing...
             </Text>
         );
@@ -134,10 +129,9 @@ export class ChatBody extends React.Component<ChatBodyProps, ChatBodyState> {
                     renderItem={this.renderItem}
                     ItemSeparatorComponent={({ leadingItem }) => (
                         <Hr
-                            text={moment(
-                                leadingItem.timestamp,
-                                'ddd MMM DD YYYY'
-                            ).format('D MMM Y')}
+                            text={moment(leadingItem.timestamp, 'ddd MMM DD YYYY').format(
+                                'D MMM Y'
+                            )}
                         />
                     )}
                     keyExtractor={(item) => item.timestamp}

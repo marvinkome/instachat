@@ -2,13 +2,20 @@ import * as React from 'react';
 import { AppState } from 'react-native';
 
 // Apollo
-import { ApolloClient } from 'apollo-client';
-import { Query, Mutation, MutationFn, WithApolloClient, withApollo } from 'react-apollo';
+import {
+    MutationFn,
+    WithApolloClient,
+    withApollo,
+    graphql,
+    compose,
+    DataValue,
+    MutationFunc
+} from 'react-apollo';
 import { ALL_MESSAGES, SEND_MESSAGE, TOGGLE_VIEW_STATE } from './gql';
 
 // types
 import { NavigationScreenProps, NavigationEventSubscription } from 'react-navigation';
-import { ViewProps, messageParam } from './types';
+import { messageParam } from './types';
 
 // helpers
 import { showAlert } from '../../lib/helpers';
@@ -17,15 +24,20 @@ import * as utils from './utils';
 // UI
 import View from './view';
 
-class ChatScreen extends React.Component<WithApolloClient<NavigationScreenProps>> {
+type Props = WithApolloClient<
+    NavigationScreenProps & {
+        allMessages: DataValue<{ user: any; group: any }, {}>;
+        sendMessage: MutationFunc<{}>;
+    }
+>;
+
+class ChatScreen extends React.Component<Props> {
     static navigationOptions = {
         header: null
     };
 
     // params from router
     groupId = this.props.navigation.getParam('groupId');
-    optimisticResp: any;
-    errorId: number;
     pageFocusListener: NavigationEventSubscription;
     pageBlurListener: NavigationEventSubscription;
 
@@ -69,70 +81,51 @@ class ChatScreen extends React.Component<WithApolloClient<NavigationScreenProps>
     }
 
     sendMessage = (fn: MutationFn, args: messageParam) => {
-        const { optimisticResp, errorId } = utils.sendMessage(fn, args);
-        this.optimisticResp = optimisticResp;
-        this.errorId = errorId;
+        utils.sendMessage(fn, args, this.props.client);
     };
 
-    onError = () => {
-        const variables = {
-            errorId: this.errorId,
-            groupId: this.groupId,
-            msg: this.optimisticResp.sendMessage.message,
-            user: this.optimisticResp.sendMessage.from.username,
-            userId: this.optimisticResp.sendMessage.from.id
-        };
-
-        utils.onError(this.props.client, variables);
-    };
-
-    renderMutation(props: ViewProps) {
-        const mutationProps = {
-            mutation: SEND_MESSAGE,
-            update: (cache: any, res: any) => utils.update(cache, res, this.groupId),
-            onError: this.onError
-        };
-
-        return (
-            <Mutation {...mutationProps}>
-                {(fn) => {
-                    props.sendMsg = (obj: messageParam) => this.sendMessage(fn, obj);
-                    return <View {...props} />;
-                }}
-            </Mutation>
-        );
-    }
     render() {
-        // @ts-ignore
-        const viewProps: ViewProps = {};
-        const queryProps: any = {
-            query: ALL_MESSAGES,
-            variables: { groupID: this.groupId },
-            fetchPolicy: 'cache-and-network'
-        };
+        const queryData = this.props.allMessages;
+        const mutate = this.props.sendMessage;
 
-        return (
-            <Query {...queryProps}>
-                {({ error, data, ...rest }) => {
-                    if (error && !data) {
-                        showAlert('Something is wrong', 'error');
-                        return null;
-                    }
+        if (queryData.error && (!queryData.user || !queryData.group)) {
+            showAlert('Something is wrong', 'error');
+            return null;
+        }
 
-                    if (data && data.user && data.group) {
-                        viewProps.user = data.user;
-                        viewProps.group = data.group;
-                        viewProps.subscribe = () =>
-                            utils.subscribeToMessages(this.groupId, rest.subscribeToMore);
+        if (queryData.user && queryData.group) {
+            const props = {
+                user: queryData.user,
+                group: queryData.group,
+                subscribe: () => utils.subscribeToMessages(this.groupId, queryData.subscribeToMore),
+                sendMsg: (obj: messageParam) => this.sendMessage(mutate, obj)
+            };
 
-                        return this.renderMutation(viewProps);
-                    }
+            return <View {...props} />;
+        }
 
-                    return null;
-                }}
-            </Query>
-        );
+        return null;
     }
 }
 
-export default withApollo(ChatScreen);
+const queryEnhancer = graphql(ALL_MESSAGES, {
+    name: 'allMessages',
+    options: (props: NavigationScreenProps) => ({
+        variables: { groupID: props.navigation.getParam('groupId') },
+        fetchPolicy: 'cache-and-network'
+    })
+});
+const mutationEnhancer = graphql(SEND_MESSAGE, {
+    name: 'sendMessage',
+    options: (props: NavigationScreenProps) => ({
+        update: (cache: any, res: any) =>
+            utils.update(cache, res, props.navigation.getParam('groupId'))
+    })
+});
+const enhancer = compose(
+    withApollo,
+    queryEnhancer,
+    mutationEnhancer
+);
+
+export default enhancer(ChatScreen);

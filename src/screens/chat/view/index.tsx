@@ -24,7 +24,7 @@ export const PageView = (props: ViewProps) => {
             <ChatBody
                 data-testId="chat-body"
                 items={props.group.messages}
-                groupId={props.group.Id}
+                groupId={props.group.id}
                 subscribe={props.subscribe || (() => null)}
             />
             <ChatForm

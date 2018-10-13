@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Subscription, SubscriptionResult } from 'react-apollo';
+import { Subscription } from 'react-apollo';
 
 // UI Element
 import { ChatBody } from './body';
@@ -30,8 +30,7 @@ export default class MainChatBody extends React.Component<Props> {
     render() {
         const subscriptionProps = {
             subscription: userTypingEvent,
-            variables: { groupId: this.props.groupId },
-            fetchPolicy: 'network-only'
+            variables: { groupId: this.props.groupId }
         };
 
         return (

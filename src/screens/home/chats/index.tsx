@@ -10,10 +10,9 @@ import { showAlert, hideAlert } from '../../../lib/helpers';
 import View from './view';
 import query from './gql';
 
-/**
- * Init chat page
- */
-class Chats extends React.Component<NavigationScreenProps & DataProps<{ groups: any }, {}>> {
+type Props = NavigationScreenProps & DataProps<{ groups: any }, {}>;
+
+class Chats extends React.Component<Props> {
     static navigationOptions: NavigationTabScreenOptions = {
         tabBarLabel: 'Chats'
     };
