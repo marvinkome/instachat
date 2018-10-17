@@ -33,7 +33,7 @@ class Chats extends React.Component<Props> {
         const { error, groups } = this.props.data;
 
         // if there's no data and there's error
-        if (error || !groups) {
+        if (error && !groups) {
             showAlert('Something is wrong', 'error');
             return null;
         }
@@ -51,5 +51,7 @@ class Chats extends React.Component<Props> {
     }
 }
 
-const enhancer = graphql(query, { options: { fetchPolicy: 'cache-and-network' } });
+const enhancer = graphql(query, {
+    options: { fetchPolicy: 'cache-and-network', errorPolicy: 'all' }
+});
 export default enhancer(Chats);

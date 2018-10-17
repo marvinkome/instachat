@@ -2,26 +2,21 @@ import * as React from 'react';
 import { Subscription } from 'react-apollo';
 
 // UI Element
-import { ChatBody } from './body';
+import ChatBody from './body';
 
 // graphql documents
 import { userTypingEvent } from './gql';
 
+import { contextConnect } from '../../../../lib/context';
+import context from '../../context';
+import { ViewProps } from '../../types';
+
 export interface Props {
-    items: Array<{
-        id: string;
-        from: {
-            id: string;
-            username: string;
-        };
-        message: string;
-        timestamp: any;
-    }>;
     groupId: string;
     subscribe: () => void;
 }
 
-export default class MainChatBody extends React.Component<Props> {
+class MainChatBody extends React.Component<Props> {
     componentDidMount() {
         // subscribe to more messages
         this.props.subscribe();
@@ -42,3 +37,8 @@ export default class MainChatBody extends React.Component<Props> {
         );
     }
 }
+
+export default contextConnect(context, (store: ViewProps) => ({
+    groupId: store.group.id,
+    subscribe: store.subscribe
+}))(MainChatBody);

@@ -14,7 +14,20 @@ import { chatMsg as style } from './styles';
 // types
 import { Props } from './index';
 
+import { contextConnect } from '../../../../lib/context';
+import context from '../../context';
+import { ViewProps } from '../../types';
+
 type ChatBodyProps = Props & {
+    items: Array<{
+        id: string;
+        from: {
+            id: string;
+            username: string;
+        };
+        message: string;
+        timestamp: any;
+    }>;
     typingData?: {
         userTyping: {
             user: {
@@ -23,6 +36,8 @@ type ChatBodyProps = Props & {
             isTyping: boolean;
         };
     };
+    unreadCount: number;
+    lastViewedMessage: string;
 };
 
 type ChatBodyState = {
@@ -90,9 +105,25 @@ export class ChatBody extends React.Component<ChatBodyProps, ChatBodyState> {
         }
     };
 
-    renderItem(props: any) {
-        return props.item.messages.map((item: any) => <ChatMsg key={item.id} {...item} />);
-    }
+    renderItem = (props: any) => {
+        const newMessageId = this.props.lastViewedMessage;
+
+        return props.item.messages.map((item: any) => {
+            return (
+                <React.Fragment key={item.id}>
+                    <ChatMsg {...item} />
+                    {newMessageId &&
+                        item.id === newMessageId && (
+                            <Hr
+                                lineStyle={{ backgroundColor: 'red' }}
+                                textStyle={{ color: 'red' }}
+                                text="New Message"
+                            />
+                        )}
+                </React.Fragment>
+            );
+        });
+    };
 
     renderTypingUsers() {
         const users = this.state.usersTyping;
@@ -143,3 +174,12 @@ export class ChatBody extends React.Component<ChatBodyProps, ChatBodyState> {
         );
     }
 }
+
+const mapper = ({ group }: ViewProps) => ({
+    items: group.messages,
+    groupId: group.id,
+    unreadCount: group.unreadCount,
+    lastViewedMessage: group.lastViewedMessage
+});
+
+export default contextConnect(context, mapper)(ChatBody);

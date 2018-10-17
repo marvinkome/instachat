@@ -9,7 +9,8 @@ export const ALL_MESSAGES = gql`
         group(id: $groupID) {
             id
             name
-            lastViewed
+            unreadCount
+            lastViewedMessage
             messages(sort: true) {
                 id
                 message

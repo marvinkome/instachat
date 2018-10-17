@@ -5,9 +5,12 @@ import { withApollo, WithApolloClient } from 'react-apollo';
 import { chatFormStyles as styles } from '../styles';
 
 import { setTypingState } from './gql';
+import { contextConnect } from '../../../../lib/context';
+import context from '../../context';
+import { ViewProps } from '../../types';
 
 type IProps = WithApolloClient<{
-    sendMessage: (data: string) => void;
+    sendMsg: (data: string) => void;
     groupId: string;
 }>;
 
@@ -30,7 +33,7 @@ class ChatForm extends React.Component<IProps, IState> {
                 variables: {
                     groupId: this.props.groupId,
                     state
-                },
+                }
             });
         } catch (e) {
             return;
@@ -82,7 +85,7 @@ class ChatForm extends React.Component<IProps, IState> {
     };
 
     sendMessage = () => {
-        this.props.sendMessage(this.state.message);
+        this.props.sendMsg(this.state.message);
         this.setState({
             message: ''
         });
@@ -117,4 +120,10 @@ class ChatForm extends React.Component<IProps, IState> {
     }
 }
 
-export default withApollo(ChatForm);
+const mapper = ({ group, user, sendMsg }: ViewProps) => ({
+    groupId: group.id,
+    sendMsg: (msg: any) =>
+        sendMsg({ msg, groupId: group.id, userId: user.id, username: user.username })
+});
+
+export default withApollo(contextConnect(context, mapper)(ChatForm));

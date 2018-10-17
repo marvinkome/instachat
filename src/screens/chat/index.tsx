@@ -2,19 +2,11 @@ import * as React from 'react';
 import { AppState } from 'react-native';
 
 // Apollo
-import {
-    MutationFn,
-    WithApolloClient,
-    withApollo,
-    graphql,
-    compose,
-    DataValue,
-    MutationFunc
-} from 'react-apollo';
-import { ALL_MESSAGES, SEND_MESSAGE, TOGGLE_VIEW_STATE } from './gql';
+import * as Apollo from 'react-apollo';
+import * as Gql from './gql';
 
 // types
-import { NavigationScreenProps, NavigationEventSubscription } from 'react-navigation';
+import * as Navigation from 'react-navigation';
 import { messageParam } from './types';
 
 // helpers
@@ -24,10 +16,13 @@ import * as utils from './utils';
 // UI
 import View from './view';
 
-type Props = WithApolloClient<
-    NavigationScreenProps & {
-        allMessages: DataValue<{ user: any; group: any }, {}>;
-        sendMessage: MutationFunc<{}>;
+// context
+import ChatContext from './context';
+
+type Props = Apollo.WithApolloClient<
+    Navigation.NavigationScreenProps & {
+        allMessages: Apollo.DataValue<{ user: any; group: any }, {}>;
+        sendMessage: Apollo.MutationFunc<{}>;
     }
 >;
 
@@ -38,8 +33,8 @@ class ChatScreen extends React.Component<Props> {
 
     // params from router
     groupId = this.props.navigation.getParam('groupId');
-    pageFocusListener: NavigationEventSubscription;
-    pageBlurListener: NavigationEventSubscription;
+    pageFocusListener: Navigation.NavigationEventSubscription;
+    pageBlurListener: Navigation.NavigationEventSubscription;
 
     componentDidMount() {
         AppState.addEventListener('change', this.handleViewChange);
@@ -55,7 +50,7 @@ class ChatScreen extends React.Component<Props> {
     setViewState = async (viewing: boolean) => {
         try {
             await this.props.client.mutate({
-                mutation: TOGGLE_VIEW_STATE,
+                mutation: Gql.TOGGLE_VIEW_STATE,
                 variables: {
                     groupId: this.groupId,
                     viewing
@@ -80,7 +75,7 @@ class ChatScreen extends React.Component<Props> {
         this.pageBlurListener.remove();
     }
 
-    sendMessage = (fn: MutationFn, args: messageParam) => {
+    sendMessage = (fn: Apollo.MutationFn, args: messageParam) => {
         utils.sendMessage(fn, args, this.props.client);
     };
 
@@ -101,29 +96,33 @@ class ChatScreen extends React.Component<Props> {
                 sendMsg: (obj: messageParam) => this.sendMessage(mutate, obj)
             };
 
-            return <View {...props} />;
+            return (
+                <ChatContext.Provider value={props}>
+                    <View />
+                </ChatContext.Provider>
+            );
         }
 
         return null;
     }
 }
 
-const queryEnhancer = graphql(ALL_MESSAGES, {
+const queryEnhancer = Apollo.graphql(Gql.ALL_MESSAGES, {
     name: 'allMessages',
-    options: (props: NavigationScreenProps) => ({
+    options: (props: Navigation.NavigationScreenProps) => ({
         variables: { groupID: props.navigation.getParam('groupId') },
         fetchPolicy: 'cache-and-network'
     })
 });
-const mutationEnhancer = graphql(SEND_MESSAGE, {
+const mutationEnhancer = Apollo.graphql(Gql.SEND_MESSAGE, {
     name: 'sendMessage',
-    options: (props: NavigationScreenProps) => ({
+    options: (props: Navigation.NavigationScreenProps) => ({
         update: (cache: any, res: any) =>
             utils.update(cache, res, props.navigation.getParam('groupId'))
     })
 });
-const enhancer = compose(
-    withApollo,
+const enhancer = Apollo.compose(
+    Apollo.withApollo,
     queryEnhancer,
     mutationEnhancer
 );

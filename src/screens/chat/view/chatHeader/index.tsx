@@ -6,14 +6,14 @@ import { Header, Icon } from 'react-native-elements';
 import RightComponent from './rightIcon';
 import { chatHeaderStyles as styles } from '../styles';
 
+import { contextConnect } from '../../../../lib/context';
+import context from '../../context';
+import { ViewProps } from '../../types';
+
 // TODO: add wave effect
 const LeftIcon = withNavigation((props: NavigationInjectedProps) => (
     <TouchableNativeFeedback onPress={() => props.navigation.goBack()}>
-        <Icon
-            name="ios-arrow-round-back"
-            type="ionicon"
-            iconStyle={styles.icon}
-        />
+        <Icon name="ios-arrow-round-back" type="ionicon" iconStyle={styles.icon} />
     </TouchableNativeFeedback>
 ));
 
@@ -35,11 +35,17 @@ export const ChatHeader = (props: Props) => {
             // @ts-ignore
             leftComponent={<LeftIcon />}
             centerComponent={<CenterComponent name={props.name} />}
-            rightComponent={
-                <RightComponent role={props.role} groupId={props.groupId} />
-            }
+            rightComponent={<RightComponent role={props.role} groupId={props.groupId} />}
         />
     );
 };
 
-export default ChatHeader;
+function mapContextToProps(store: ViewProps) {
+    return {
+        name: store.group.name,
+        role: store.group.role.name,
+        groupId: store.group.id
+    };
+}
+
+export default contextConnect(context, mapContextToProps)(ChatHeader);
