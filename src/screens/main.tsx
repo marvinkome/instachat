@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-    createStackNavigator,
-    NavigationScreenProps as NP
-} from 'react-navigation';
+import { createStackNavigator, NavigationScreenProps as NP } from 'react-navigation';
 
 // context providers
 import { ApolloProvider } from 'react-apollo';
@@ -16,13 +13,15 @@ import Home from './home';
 import Chat from './chat';
 import NewGroup from './newGroup';
 import JoinGroup from './joinGroup';
+import EditProfile from './editProfile';
 
 export const MainNavigator = createStackNavigator(
     {
         Home,
         Chat,
         NewGroup,
-        JoinGroup
+        JoinGroup,
+        EditProfile
     },
     {
         initialRouteName: 'Home'

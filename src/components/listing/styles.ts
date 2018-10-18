@@ -5,7 +5,8 @@ export const ViewStyles = StyleSheet.create({
     listItemContainer: {
         borderBottomWidth: 0,
         paddingLeft: 5,
-        paddingBottom: 30
+        paddingBottom: 15,
+        paddingTop: 15
     },
     name: {
         fontFamily: 'Karla',

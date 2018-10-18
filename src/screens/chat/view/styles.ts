@@ -16,7 +16,7 @@ export const chatHeaderStyles = StyleSheet.create({
         fontSize: 37,
         color: colors.primary,
         padding: 10,
-        borderRadius: 50
+        borderRadius: 5
     },
     rightIcon: {
         fontSize: 17,

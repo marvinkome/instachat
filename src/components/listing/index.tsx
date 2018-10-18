@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableNativeFeedback } from 'react-native';
 import { ListItem, Badge, Avatar, ListItemProps } from 'react-native-elements';
 import { ViewStyles as styles } from './styles';
 
@@ -13,6 +13,16 @@ type IProps = {
     badgeValue?: number;
 };
 
+class Component extends React.Component {
+    render() {
+        return (
+            <TouchableNativeFeedback {...this.props}>
+                <View {...this.props}>{this.props.children}</View>
+            </TouchableNativeFeedback>
+        );
+    }
+}
+
 const MainListItem = ({
     subtitleStyle,
     avatarImg,
@@ -23,6 +33,7 @@ const MainListItem = ({
 }: IProps & ListItemProps) => {
     return (
         <ListItem
+            component={Component}
             containerStyle={styles.listItemContainer}
             subtitleStyle={[subtitleStyle, styles.message]}
             titleStyle={styles.name}

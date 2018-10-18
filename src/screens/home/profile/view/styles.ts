@@ -15,8 +15,8 @@ export const ViewStyles = StyleSheet.create({
 export const UserDataStyles = StyleSheet.create({
     container: {
         backgroundColor: 'hsl(0, 0%, 99%)',
-        paddingTop: 17,
-        paddingBottom: 17,
+        paddingTop: 15,
+        paddingBottom: 15,
         padding: 20,
         flexDirection: 'row'
     },
@@ -31,7 +31,8 @@ export const UserDataStyles = StyleSheet.create({
     },
     about: {
         fontFamily: 'Karla',
-        fontSize: 14
+        fontSize: 14,
+        paddingTop: 7
     }
 });
 
