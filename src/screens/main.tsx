@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { createStackNavigator, NavigationScreenProps as NP } from 'react-navigation';
+import notifications, { localNotification } from '../lib/notifications';
 
 // context providers
 import { ApolloProvider } from 'react-apollo';
@@ -28,6 +29,8 @@ export const MainNavigator = createStackNavigator(
     }
 );
 
+notifications();
+
 interface IState {
     isLoaded: boolean;
     client: any;
@@ -52,6 +55,7 @@ export default class MainRoute extends React.Component<NP, IState> {
         await persistor.restore();
         await persistor.getLogs(true);
 
+        localNotification();
         this.setState({
             client,
             isLoaded: true

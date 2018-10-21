@@ -4,6 +4,7 @@ import * as React from 'react';
 import { compose, ComponentEnhancer as CE } from 'recompose';
 import orderBy from 'lodash/orderBy';
 import { withNavigation, NavigationInjectedProps as N } from 'react-navigation';
+import { subscribeToGroup } from '../../../../lib/notifications';
 
 // UI
 import { View, FlatList } from 'react-native';
@@ -33,6 +34,9 @@ class MainView extends React.Component<N & ViewProps & {}, ViewState> {
         usersTyping: {}
     };
 
+    componentDidMount() {
+        this.subscribeToGroup();
+    }
     componentDidUpdate(prevProps: ViewProps) {
         // if no new data
         if (!this.props.typingData) {
@@ -128,6 +132,12 @@ class MainView extends React.Component<N & ViewProps & {}, ViewState> {
             : users.join(`${punc} `).replace(/,([^,]*)$/, ' and$1');
 
         return `${typingUsers} ${text} typing...`;
+    }
+
+    subscribeToGroup() {
+        this.props.data.groups.forEach((group) => {
+            subscribeToGroup(group.id);
+        });
     }
 
     formatItem = () => {

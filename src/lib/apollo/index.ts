@@ -1,5 +1,4 @@
 import ApolloClient from 'apollo-client';
-import { DefaultOptions } from 'apollo-client/ApolloClient';
 import { AsyncStorage, NetInfo } from 'react-native';
 // @ts-ignore
 import introspectionQueryResultData from './fragmentTypes.json';
@@ -7,10 +6,7 @@ import introspectionQueryResultData from './fragmentTypes.json';
 // links
 import Link from './link';
 
-import {
-    InMemoryCache,
-    IntrospectionFragmentMatcher
-} from 'apollo-cache-inmemory';
+import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
 import { CachePersistor } from 'apollo-cache-persist';
 import { clientId } from '../helpers';
 
@@ -44,14 +40,11 @@ export default async () => {
     });
 
     // add listeners to queue operations
-    NetInfo.isConnected.addEventListener(
-        'connectionChange',
-        async (isConnected) => {
-            if (isConnected) {
-                await messageQueue.resync(client);
-            }
+    NetInfo.isConnected.addEventListener('connectionChange', async (isConnected) => {
+        if (isConnected) {
+            await messageQueue.resync(client);
         }
-    );
+    });
 
     // try resyncing on app load
     NetInfo.isConnected.fetch().then(async (isConnected) => {
