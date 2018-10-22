@@ -19,7 +19,7 @@ export function localNotification() {
 }
 
 export function subscribeToGroup(groupId: string) {
-    PushNotifications.subscribeToTopic(groupId);
+    // PushNotifications.subscribeToTopic(groupId);
 }
 
 export default function configure() {
