@@ -1,35 +1,43 @@
-import PushNotifications from 'react-native-push-notification';
+import PushNotifications, { PushNotification } from 'react-native-push-notification';
 
-export function localNotification() {
+export function localNotification(notification: PushNotification) {
+    // @ts-ignore
     PushNotifications.localNotification({
-        autoCancel: true,
-        largeIcon: 'ic_launcher',
-        smallIcon: 'ic_notification',
-        bigText: 'My big text that will be shown when notification is expanded',
-        subText: 'This is a subText',
-        color: 'green',
-        vibrate: true,
-        vibration: 300,
-        title: 'Notification Title',
-        message: 'Notification Message',
-        playSound: true,
-        soundName: 'default',
-        actions: '["Accept", "Reject"]'
+        group: 'Fakers',
+        priority: 'high',
+        visibility: 'private',
+        importance: 'high',
+
+        // @ts-ignore
+        message: notification.msg,
+        ...notification
     });
 }
 
 export function subscribeToGroup(groupId: string) {
-    // PushNotifications.subscribeToTopic(groupId);
+    // @ts-ignore
+    PushNotifications.subscribeToTopic(groupId);
 }
 
-export default function configure() {
+export default function configure(
+    onRegister: (token: any) => Promise<any>,
+    onNotification?: (notification: any) => void
+) {
     PushNotifications.configure({
         onRegister: (token) => {
-            console.warn(token);
+            onRegister(token).catch((e) => null);
+            console.log(token);
         },
 
         onNotification: (notification) => {
-            console.warn('notifications');
+            if (!notification.foreground) {
+                // @ts-ignore
+                localNotification(notification);
+            }
+            if (onNotification) {
+                onNotification(notification);
+            }
+            console.log('notifications', notification);
         },
 
         senderID: '64393229649'

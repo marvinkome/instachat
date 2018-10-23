@@ -1,35 +1,15 @@
 import * as React from 'react';
-import { createStackNavigator, NavigationScreenProps as NP } from 'react-navigation';
-import notifications, { localNotification } from '../lib/notifications';
+import { NavigationScreenProps as NP } from 'react-navigation';
 
 // context providers
 import { ApolloProvider } from 'react-apollo';
 import { MenuProvider } from 'react-native-popup-menu';
 
 // lib
-import apolloClient from '../lib/apollo';
+import apolloClient from '../../lib/apollo';
 
-// routes
-import Home from './home';
-import Chat from './chat';
-import NewGroup from './newGroup';
-import JoinGroup from './joinGroup';
-import EditProfile from './editProfile';
-
-export const MainNavigator = createStackNavigator(
-    {
-        Home,
-        Chat,
-        NewGroup,
-        JoinGroup,
-        EditProfile
-    },
-    {
-        initialRouteName: 'Home'
-    }
-);
-
-notifications();
+// navigator
+import MainNavigator from './navigator';
 
 interface IState {
     isLoaded: boolean;
@@ -37,9 +17,7 @@ interface IState {
 }
 
 export default class MainRoute extends React.Component<NP, IState> {
-    static navigationOptions = {
-        header: null
-    };
+    static navigationOptions = { header: null };
     static router = MainNavigator.router;
 
     state = {
@@ -47,7 +25,7 @@ export default class MainRoute extends React.Component<NP, IState> {
         client: null
     };
 
-    async componentDidMount() {
+    async setupApollo() {
         // setup apollo
         const { client, persistor } = await apolloClient();
 
@@ -55,11 +33,15 @@ export default class MainRoute extends React.Component<NP, IState> {
         await persistor.restore();
         await persistor.getLogs(true);
 
-        localNotification();
         this.setState({
             client,
             isLoaded: true
         });
+    }
+
+    async componentDidMount() {
+        // setup apollo
+        await this.setupApollo();
     }
 
     render() {
