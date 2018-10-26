@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { auth } from '../../../../lib/auth';
-import { clientId } from '../../../../lib/helpers';
-import apollo from '../../../../lib/apollo';
+import { auth } from '../../../../../lib/auth';
+import { clientId } from '../../../../../lib/helpers';
+import apollo from '../../../../../lib/apollo';
 import { withApollo, compose, WithApolloClient } from 'react-apollo';
 import { withNavigation, NavigationInjectedProps } from 'react-navigation';
 import { AsyncStorage, ToastAndroid } from 'react-native';

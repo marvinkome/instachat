@@ -2,7 +2,7 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { Query } from 'react-apollo';
 
-import { showAlert, hideAlert } from '../../../../lib/helpers';
+import { showAlert, hideAlert } from '../../../../../lib/helpers';
 import { UserData } from './user-data';
 import { UserSettings } from './user-settings';
 import { ViewStyles as styles } from './styles';

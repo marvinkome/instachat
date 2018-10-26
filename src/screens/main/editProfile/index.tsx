@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ToastAndroid } from 'react-native';
 import { graphql, DataValue, compose, MutationFunc } from 'react-apollo';
 
-import { showAlert } from '../../lib/helpers';
+import { showAlert } from '../../../lib/helpers';
 import { USER_INFO, UPDATE_INFO } from './gql';
 import { stackStyles } from './style';
 import View from './view';

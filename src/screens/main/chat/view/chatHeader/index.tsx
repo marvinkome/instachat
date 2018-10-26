@@ -6,7 +6,7 @@ import { Header, Icon } from 'react-native-elements';
 import RightComponent from './rightIcon';
 import { chatHeaderStyles as styles } from '../styles';
 
-import { contextConnect } from '../../../../lib/context';
+import { contextConnect } from '../../../../../lib/context';
 import context from '../../context';
 import { ViewProps } from '../../types';
 

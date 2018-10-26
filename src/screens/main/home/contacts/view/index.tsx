@@ -15,7 +15,7 @@ class ScreenView extends React.Component<NavigationInjectedProps> {
                 ...item.node,
                 name: item.node.name,
                 about: item.node.topic,
-                image: require('../../../../../static/yuna.jpg'),
+                image: require('../../../../../../static/yuna.jpg'),
                 onPress: () => this.props.navigation.navigate('Chat')
             });
 

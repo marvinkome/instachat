@@ -1,4 +1,5 @@
 import * as React from 'react';
+import firebase from 'react-native-firebase';
 import { NavigationScreenProps as NP } from 'react-navigation';
 
 // context providers
@@ -19,6 +20,7 @@ interface IState {
 export default class MainRoute extends React.Component<NP, IState> {
     static navigationOptions = { header: null };
     static router = MainNavigator.router;
+    notificationOpened: any;
 
     state = {
         isLoaded: false,
@@ -39,9 +41,37 @@ export default class MainRoute extends React.Component<NP, IState> {
         });
     }
 
+    async setupNotifications() {
+        const messaging = firebase.messaging();
+        const enabled = await messaging.hasPermission();
+        if (!enabled) {
+            try {
+                await messaging.requestPermission();
+            } catch (e) {
+                return;
+            }
+        }
+
+        // when app is opened by a notification
+        const notifOpened = await firebase.notifications().getInitialNotification();
+        if (notifOpened) {
+            // process notification
+        }
+        this.notificationOpened = firebase.notifications().onNotificationOpened((notif) => {
+            // process notification
+        });
+    }
+
     async componentDidMount() {
         // setup apollo
         await this.setupApollo();
+
+        // setup notifications
+        await this.setupNotifications();
+    }
+
+    componentWillUnmount() {
+        this.notificationOpened();
     }
 
     render() {

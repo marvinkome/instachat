@@ -1,23 +1,19 @@
 import * as React from 'react';
 import { graphql, DataProps, Subscription } from 'react-apollo';
-import {
-    NavigationTabScreenOptions,
-    NavigationScreenProps,
-    NavigationEventSubscription
-} from 'react-navigation';
+import * as Navigation from 'react-navigation';
 
-import { showAlert, hideAlert } from '../../../lib/helpers';
+import { showAlert, hideAlert } from '../../../../lib/helpers';
 import View from './view';
 import query, { TYPING_SUBSCRIPTION } from './gql';
 
-type Props = NavigationScreenProps & DataProps<{ groups: any }, {}>;
+type Props = Navigation.NavigationScreenProps & DataProps<{ groups: any }, {}>;
 
 class Chats extends React.Component<Props> {
-    static navigationOptions: NavigationTabScreenOptions = {
+    static navigationOptions: Navigation.NavigationTabScreenOptions = {
         tabBarLabel: 'Chats'
     };
 
-    pageFocusListener: NavigationEventSubscription;
+    pageFocusListener: Navigation.NavigationEventSubscription;
 
     componentDidMount() {
         this.pageFocusListener = this.props.navigation.addListener('willFocus', () =>

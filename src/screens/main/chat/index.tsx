@@ -10,7 +10,7 @@ import * as Navigation from 'react-navigation';
 import { messageParam } from './types';
 
 // helpers
-import { showAlert } from '../../lib/helpers';
+import { showAlert } from '../../../lib/helpers';
 import * as utils from './utils';
 
 // UI

@@ -5,7 +5,7 @@ import { withApollo, WithApolloClient } from 'react-apollo';
 import { chatFormStyles as styles } from '../styles';
 
 import { setTypingState } from './gql';
-import { contextConnect } from '../../../../lib/context';
+import { contextConnect } from '../../../../../lib/context';
 import context from '../../context';
 import { ViewProps } from '../../types';
 

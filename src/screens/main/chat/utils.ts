@@ -1,7 +1,7 @@
 import { SubscribeToMoreOptions as STMO, ApolloClient } from 'apollo-client';
 import { MutationFn, FetchResult } from 'react-apollo';
 
-import { createFakeResp, generateErrorId } from '../../lib/helpers';
+import { createFakeResp, generateErrorId } from '../../../lib/helpers';
 import { MESSAGE_SUBSCRIPTION, ADD_ERROR, ALL_MESSAGES } from './gql';
 import { messageParam } from './types';
 

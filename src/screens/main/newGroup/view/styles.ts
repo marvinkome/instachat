@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import color from '../../../lib/colors';
+import color from '../../../../lib/colors';
 
 export const viewStyle = StyleSheet.create({
     container: {

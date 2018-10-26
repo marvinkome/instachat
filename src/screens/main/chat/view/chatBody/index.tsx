@@ -7,7 +7,7 @@ import ChatBody from './body';
 // graphql documents
 import { userTypingEvent } from './gql';
 
-import { contextConnect } from '../../../../lib/context';
+import { contextConnect } from '../../../../../lib/context';
 import context from '../../context';
 import { ViewProps } from '../../types';
 

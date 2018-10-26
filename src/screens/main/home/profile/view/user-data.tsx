@@ -19,7 +19,7 @@ export const UserData = withNavigation((props: IProps & NIP) => {
                     <Avatar
                         rounded={true}
                         large={true}
-                        source={require('../../../../../static/pp.jpg')}
+                        source={require('../../../../../../static/pp.jpg')}
                     />
                 </View>
                 <View style={[{ flex: 2 }, styles.innerContainer]}>

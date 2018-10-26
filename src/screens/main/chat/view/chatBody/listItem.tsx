@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Text } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import { chatMsg as styles } from './styles';
-import { formatDate } from '../../../../lib/helpers';
+import { formatDate } from '../../../../../lib/helpers';
 
-const avatarImg = require('../../../../../static/yuna.jpg');
+const avatarImg = require('../../../../../../static/yuna.jpg');
 
 interface Props {
     id: string;
@@ -53,9 +53,7 @@ export function ChatMsg(props: Props) {
     const title = (
         <Text style={styles.titleStyle}>
             {props.from.username}{' '}
-            <Text style={styles.timestamp}>
-                {formatDate(Number(props.timestamp), true)}
-            </Text>
+            <Text style={styles.timestamp}>{formatDate(Number(props.timestamp), true)}</Text>
         </Text>
     );
 

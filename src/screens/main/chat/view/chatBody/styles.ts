@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import colors from '../../../../lib/colors';
+import colors from '../../../../../lib/colors';
 
 export const chatMsg = StyleSheet.create({
     listContainer: {

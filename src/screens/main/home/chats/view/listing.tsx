@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 // components
-import List from '../../../../components/listing';
+import List from '../../../../../components/listing';
 
 // lib
-import color from '../../../../lib/colors';
+import color from '../../../../../lib/colors';
 
 // types
 import { ListingType } from '../types';

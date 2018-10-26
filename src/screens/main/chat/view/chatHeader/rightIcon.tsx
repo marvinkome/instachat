@@ -2,14 +2,9 @@ import * as React from 'react';
 import { compose, withState, ComponentEnhancer as CE } from 'recompose';
 
 // UI elements
-import {
-    Menu,
-    MenuTrigger,
-    MenuOption,
-    MenuOptions
-} from 'react-native-popup-menu';
+import { Menu, MenuTrigger, MenuOption, MenuOptions } from 'react-native-popup-menu';
 import { Icon } from 'react-native-elements';
-import InviteLink from '../../../../components/inviteLink';
+import InviteLink from '../../../../../components/inviteLink';
 
 // styles
 import { chatHeaderStyles as styles } from '../styles';
@@ -31,11 +26,7 @@ function RightComponent(props: IProps & OProps) {
     return (
         <Menu>
             <MenuTrigger>
-                <Icon
-                    name="dots-three-vertical"
-                    type="entypo"
-                    iconStyle={styles.rightIcon}
-                />
+                <Icon name="dots-three-vertical" type="entypo" iconStyle={styles.rightIcon} />
             </MenuTrigger>
             <MenuOptions customStyles={menuStyle}>
                 {props.role === 'administrator' && (
@@ -52,7 +43,5 @@ function RightComponent(props: IProps & OProps) {
     );
 }
 
-const enhance: CE<IProps, OProps> = compose(
-    withState('showInvite', 'toggleInvite', false)
-);
+const enhance: CE<IProps, OProps> = compose(withState('showInvite', 'toggleInvite', false));
 export default enhance(RightComponent);

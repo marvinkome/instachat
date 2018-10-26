@@ -21,7 +21,7 @@ export default class PageView extends React.Component<IProps> {
                     <Avatar
                         rounded={true}
                         large={true}
-                        source={require('../../../../static/pp.jpg')}
+                        source={require('../../../../../static/pp.jpg')}
                     />
                 </View>
                 <LinkForm user={this.props.user} updateUser={this.props.updateUser} />

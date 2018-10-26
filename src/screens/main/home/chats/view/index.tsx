@@ -4,7 +4,7 @@ import * as React from 'react';
 import { compose, ComponentEnhancer as CE } from 'recompose';
 import orderBy from 'lodash/orderBy';
 import { withNavigation, NavigationInjectedProps as N } from 'react-navigation';
-import { subscribeToGroup } from '../../../../lib/notifications';
+// import { subscribeToGroup } from '../../../../lib/notifications';
 
 // UI
 import { View, FlatList } from 'react-native';
@@ -22,8 +22,8 @@ import { ViewStyles as styles } from './styles';
 import { ListingType, ViewProps } from '../types';
 
 // helpers
-import { formatDate } from '../../../../lib/helpers';
-const image = require('../../../../../static/pp.jpg');
+import { formatDate } from '../../../../../lib/helpers';
+const image = require('../../../../../../static/pp.jpg');
 
 type ViewState = {
     usersTyping: object;
@@ -136,7 +136,7 @@ class MainView extends React.Component<N & ViewProps & {}, ViewState> {
 
     subscribeToGroup() {
         this.props.data.groups.forEach((group) => {
-            subscribeToGroup(group.id);
+            // subscribeToGroup(group.id);
         });
     }
 

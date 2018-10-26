@@ -1,5 +1,5 @@
 import * as React from 'react';
-import List from '../../../../components/listing';
+import List from '../../../../../components/listing';
 
 type Props = {
     listItem: {

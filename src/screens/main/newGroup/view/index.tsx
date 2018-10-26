@@ -3,7 +3,7 @@ import { MutationFn } from 'react-apollo';
 import { withNavigation, NavigationInjectedProps } from 'react-navigation';
 
 import { View } from 'react-native';
-import InviteLink from '../../../components/inviteLink';
+import InviteLink from '../../../../components/inviteLink';
 import { GroupForm } from './form';
 
 import { viewStyle as styles } from './styles';

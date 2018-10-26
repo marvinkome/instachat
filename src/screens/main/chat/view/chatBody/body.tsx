@@ -5,7 +5,7 @@ import moment from 'moment';
 // UI Elements
 import { FlatList, Text } from 'react-native';
 import { List } from 'react-native-elements';
-import Hr from '../../../../components/Hr';
+import Hr from '../../../../../components/Hr';
 import { ChatMsg } from './listItem';
 
 // styles
@@ -14,7 +14,7 @@ import { chatMsg as style } from './styles';
 // types
 import { Props } from './index';
 
-import { contextConnect } from '../../../../lib/context';
+import { contextConnect } from '../../../../../lib/context';
 import context from '../../context';
 import { ViewProps } from '../../types';
 
