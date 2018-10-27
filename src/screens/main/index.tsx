@@ -1,5 +1,5 @@
 import * as React from 'react';
-import firebase from 'react-native-firebase';
+import firebase, { RNFirebase } from 'react-native-firebase';
 import { NavigationScreenProps as NP } from 'react-navigation';
 
 // context providers
@@ -55,11 +55,20 @@ export default class MainRoute extends React.Component<NP, IState> {
         // when app is opened by a notification
         const notifOpened = await firebase.notifications().getInitialNotification();
         if (notifOpened) {
+            // initial open
             // process notification
+            this.processNotification(notifOpened.notification);
         }
         this.notificationOpened = firebase.notifications().onNotificationOpened((notif) => {
+            // background/foreground
             // process notification
+            this.processNotification(notif.notification);
         });
+    }
+
+    async processNotification(notif: RNFirebase.notifications.Notification) {
+        const groupId = notif.data.group;
+        this.props.navigation.navigate('Chat', { groupId });
     }
 
     async componentDidMount() {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AppState } from 'react-native';
+import { AppState, Text } from 'react-native';
 
 // Apollo
 import * as Apollo from 'react-apollo';
