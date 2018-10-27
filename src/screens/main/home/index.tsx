@@ -21,7 +21,8 @@ const HomeTabNavigator = createMaterialTopTabNavigator(
             indicatorStyle: tabStyles.indicator,
             activeTintColor: color.primary,
             inactiveTintColor: color.text_title
-        }
+        },
+        backBehavior: 'none'
     }
 );
 

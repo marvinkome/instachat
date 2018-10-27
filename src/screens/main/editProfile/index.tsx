@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ToastAndroid } from 'react-native';
+import { ToastAndroid, View as RNView, ActivityIndicator } from 'react-native';
 import { graphql, DataValue, compose, MutationFunc } from 'react-apollo';
 
 import { showAlert } from '../../../lib/helpers';
@@ -52,7 +52,11 @@ class EditProfile extends React.Component<Props> {
             return <View user={profile.user} updateUser={this.updateUser} />;
         }
 
-        return null;
+        return (
+            <RNView style={{ flex: 1, justifyContent: 'center' }}>
+                <ActivityIndicator />
+            </RNView>
+        );
     }
 }
 

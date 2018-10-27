@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AppState, Text } from 'react-native';
+import { AppState, View as RNView, ActivityIndicator } from 'react-native';
 
 // Apollo
 import * as Apollo from 'react-apollo';
@@ -103,7 +103,11 @@ class ChatScreen extends React.Component<Props> {
             );
         }
 
-        return null;
+        return (
+            <RNView style={{ flex: 1, justifyContent: 'center' }}>
+                <ActivityIndicator />
+            </RNView>
+        );
     }
 }
 

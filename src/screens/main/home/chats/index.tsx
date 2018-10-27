@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ActivityIndicator, View as RNView } from 'react-native';
 import { graphql, DataProps, Subscription } from 'react-apollo';
 import * as Navigation from 'react-navigation';
 
@@ -43,7 +44,11 @@ class Chats extends React.Component<Props> {
             );
         }
 
-        return null;
+        return (
+            <RNView style={{ flex: 1, justifyContent: 'center' }}>
+                <ActivityIndicator />
+            </RNView>
+        );
     }
 }
 
