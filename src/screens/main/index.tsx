@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ActivityIndicator, View } from 'react-native';
 import firebase, { RNFirebase } from 'react-native-firebase';
 import { NavigationScreenProps as NP } from 'react-navigation';
 
@@ -95,6 +96,16 @@ export default class MainRoute extends React.Component<NP, IState> {
             );
         }
 
-        return null;
+        return (
+            <View
+                style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignContent: 'center'
+                }}
+            >
+                <ActivityIndicator size="large" color="#0000ff" />
+            </View>
+        );
     }
 }

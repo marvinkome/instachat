@@ -1,11 +1,15 @@
-import { createStackNavigator } from 'react-navigation';
+import { createSwitchNavigator } from 'react-navigation';
 
 // screens
 import Main from './main';
 import Login from './login';
+import AuthLoader from './authLoader';
 
-const RootStackNavigator = (initialRouteName: string) => {
-    return createStackNavigator({ Main, Login }, { initialRouteName });
-};
-
-export default RootStackNavigator;
+export default createSwitchNavigator(
+    {
+        AuthLoader,
+        Main,
+        Login
+    },
+    { initialRouteName: 'AuthLoader' }
+);
