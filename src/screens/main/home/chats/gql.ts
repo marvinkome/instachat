@@ -21,6 +21,7 @@ export default gql`
             id
             name
             unreadCount
+            image
             lastMessage {
                 id
                 message

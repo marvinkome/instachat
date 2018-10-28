@@ -16,14 +16,18 @@ interface IProps {
     data: any;
 }
 class PageView extends React.Component<NavigationInjectedProps & IProps> {
-    showPicker = async () => {
-        const data = showImagePicker('Select group icon');
-        if (!data) {
-            return;
-        }
+    state = { imageUrl: '' };
 
-        const imageUrl = await uploadImage(data.path, data.name);
-        if (!imageUrl) {
+    showPicker = async () => {
+        try {
+            const data = await showImagePicker('Select group icon');
+            const imageUrl = await uploadImage(data.path, data.name);
+            if (!imageUrl) {
+                return;
+            }
+
+            this.setState({ imageUrl });
+        } catch (e) {
             return;
         }
     };
@@ -36,15 +40,14 @@ class PageView extends React.Component<NavigationInjectedProps & IProps> {
             groupId = group.id;
         }
 
+        const avatar = this.state.imageUrl.length
+            ? { source: { uri: this.state.imageUrl } }
+            : { name: 'group', type: 'material-icons' };
+
         return (
             <ScrollView style={styles.container}>
                 <View style={styles.avatar}>
-                    <Avatar
-                        rounded={true}
-                        large={true}
-                        onPress={this.showPicker}
-                        icon={{ name: 'group', type: 'material-icons' }}
-                    />
+                    <Avatar rounded={true} large={true} onPress={this.showPicker} {...avatar} />
                 </View>
                 <GroupForm createGroup={(variables) => this.props.createGroup({ variables })} />
 
