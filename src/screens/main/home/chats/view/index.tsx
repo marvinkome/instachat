@@ -4,7 +4,7 @@ import * as React from 'react';
 import { compose, ComponentEnhancer as CE } from 'recompose';
 import orderBy from 'lodash/orderBy';
 import { withNavigation, NavigationInjectedProps as N } from 'react-navigation';
-// import { subscribeToGroup } from '../../../../lib/notifications';
+import firebase from 'react-native-firebase';
 
 // UI
 import { View, FlatList } from 'react-native';
@@ -136,7 +136,7 @@ class MainView extends React.Component<N & ViewProps & {}, ViewState> {
 
     subscribeToGroup() {
         this.props.data.groups.forEach((group) => {
-            // subscribeToGroup(group.id);
+            firebase.messaging().subscribeToTopic(group.id);
         });
     }
 
