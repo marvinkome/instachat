@@ -23,6 +23,7 @@ export class LinkForm extends React.Component<IProps, IState> {
                     <FormInput
                         onChangeText={(link) => this.setState({ link })}
                         inputStyle={styles.input}
+                        underlineColorAndroid="hsl(0, 0%, 70%)"
                         placeholder="http://testlink.com/linkid"
                     />
                 </View>

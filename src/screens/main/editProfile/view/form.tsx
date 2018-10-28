@@ -46,6 +46,7 @@ export class LinkForm extends React.Component<IProps, IState> {
                     onChangeText={(username) => this.setState({ username })}
                     inputStyle={styles.input}
                     value={this.state.username}
+                    underlineColorAndroid="hsl(0, 0%, 70%)"
                     placeholder="Username"
                     maxLength={24}
                 />
@@ -53,6 +54,7 @@ export class LinkForm extends React.Component<IProps, IState> {
                     onChangeText={(about) => this.setState({ about })}
                     inputStyle={styles.input}
                     value={this.state.about}
+                    underlineColorAndroid="hsl(0, 0%, 70%)"
                     placeholder="Write something about yourself"
                     maxLength={128}
                     multiline
@@ -63,6 +65,7 @@ export class LinkForm extends React.Component<IProps, IState> {
                     onChangeText={(email) => this.setState({ email })}
                     inputStyle={styles.input}
                     value={this.state.email}
+                    underlineColorAndroid="hsl(0, 0%, 70%)"
                     keyboardType="email-address"
                     maxLength={64}
                     placeholder="Email"

@@ -30,15 +30,10 @@ export class GroupForm extends React.Component<IProps, IState> {
 
         // check if name is empty
         if (!name.length) {
-            return ToastAndroid.show(
-                'Group name is required.',
-                ToastAndroid.LONG
-            );
+            return ToastAndroid.show('Group name is required.', ToastAndroid.LONG);
         }
 
-        topic.length
-            ? this.props.createGroup({ name, topic })
-            : this.props.createGroup({ name });
+        topic.length ? this.props.createGroup({ name, topic }) : this.props.createGroup({ name });
     };
 
     render() {
@@ -50,18 +45,16 @@ export class GroupForm extends React.Component<IProps, IState> {
                         placeholder="eg. Thinkers lodge"
                         inputStyle={styles.input}
                         onChangeText={(text) => this.onTextChange(text, 'name')}
+                        underlineColorAndroid="hsl(0, 0%, 70%)"
                         value={this.state.name}
                     />
                 </View>
                 <View>
-                    <FormLabel labelStyle={styles.label}>
-                        Group Topic (optional)
-                    </FormLabel>
+                    <FormLabel labelStyle={styles.label}>Group Description (optional)</FormLabel>
                     <FormInput
                         inputStyle={styles.input}
-                        onChangeText={(text) =>
-                            this.onTextChange(text, 'topic')
-                        }
+                        underlineColorAndroid="hsl(0, 0%, 70%)"
+                        onChangeText={(text) => this.onTextChange(text, 'topic')}
                     />
                 </View>
                 <Button
