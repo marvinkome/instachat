@@ -1,4 +1,6 @@
 import moment, { Moment } from 'moment';
+import ImagePicker from 'react-native-image-picker';
+import firebase from 'react-native-firebase';
 import { AsyncStorage } from 'react-native';
 import { MessageBarManager } from 'react-native-message-bar';
 
@@ -84,43 +86,41 @@ export function createFakeResp({ id, message, userId, username }: respArgs) {
     };
 }
 
-// export async function saveLastMessageTimestamp(timestamp: string) {
-//     // first get the timestamps array
-//     const timestamps: any[] = await AsyncStorage.getItem('groupLastMessage').then((res) =>
-//         JSON.parse(res)
-//     );
+export function uploadImage(uri: string, name: string) {
+    return firebase
+        .storage()
+        .ref(`images/${name}`)
+        .putFile(uri)
+        .then((file) => {
+            return file.downloadURL;
+        })
+        .catch((e) => showAlert('Error uploading image', 'error', { shouldHideAfterDelay: true }));
+}
 
-//     // check for the group ex-value
-//     const groupIndex = timestamps.findIndex((item) => item.groupId === groupId);
+export function showImagePicker(title: string) {
+    return new Promise((resolve: (value: { path: string; name: string }) => void, reject) => {
+        ImagePicker.showImagePicker(
+            {
+                title,
+                takePhotoButtonTitle: 'Take photo',
+                chooseFromLibraryButtonTitle: 'Choose photo from gallery',
+                mediaType: 'photo'
+            },
+            (response) => {
+                if (response.didCancel) {
+                    reject('User cancelled image picker');
+                    return;
+                }
 
-//     // if does not exist
-//     if (groupIndex === -1) {
-//         // add new item
-//         timestamps.push({
-//             groupId,
-//             timestamp
-//         });
+                if (response.error) {
+                    reject(response.error);
+                    return;
+                }
 
-//         // write data back to storage
-//         return await AsyncStorage.setItem('groupLastMessage', JSON.stringify(timestamps));
-//     }
-
-//     // update item
-//     timestamps[groupIndex] = {
-//         groupId,
-//         timestamp
-//     };
-
-//     return await AsyncStorage.setItem('groupLastMessage', JSON.stringify(timestamps));
-// }
-
-// export async function getLastMessageTimestamp(groupId: string) {
-//     const timestamps: any[] = await AsyncStorage.getItem('groupLastMessage').then((res) =>
-//         JSON.parse(res)
-//     );
-
-//     // check for the group ex-value
-//     const group = timestamps.find((item) => item.groupId === groupId);
-
-//     return group;
-// }
+                if (response.path && response.fileName) {
+                    resolve({ path: response.path, name: response.fileName });
+                }
+            }
+        );
+    });
+}

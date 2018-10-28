@@ -5,6 +5,7 @@ export default gql`
         user {
             id
             username
+            profilePic
             about
         }
     }

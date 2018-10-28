@@ -5764,6 +5764,10 @@ react-native-firebase@^5.0.0:
     opencollective-postinstall "^2.0.0"
     prop-types "^15.6.2"
 
+react-native-image-picker@^0.27.1:
+  version "0.27.1"
+  resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-0.27.1.tgz#32877c667e8c2713466fe178a6c7dd648e6cb5d3"
+
 react-native-message-bar@^2.0.10:
   version "2.0.10"
   resolved "https://registry.yarnpkg.com/react-native-message-bar/-/react-native-message-bar-2.0.10.tgz#34632bdf2cbfe0f51ae4f1e9a91c42b4394a11c2"

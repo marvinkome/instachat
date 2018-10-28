@@ -3,7 +3,8 @@ import color from '../lib/colors';
 
 export const stackStyles = StyleSheet.create({
     header: {
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
+        elevation: 0
     },
     title: {
         flex: 1,

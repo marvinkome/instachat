@@ -7,6 +7,10 @@ export const viewStyle = StyleSheet.create({
         flex: 1,
         paddingTop: 20,
         paddingBottom: 15
+    },
+    avatar: {
+        alignItems: 'center',
+        paddingBottom: 25
     }
 });
 
