@@ -37,7 +37,7 @@ const MainListItem = ({
             containerStyle={styles.listItemContainer}
             subtitleStyle={[subtitleStyle, styles.message]}
             titleStyle={styles.name}
-            avatar={<Avatar small rounded source={avatarImg} />}
+            avatar={avatarImg}
             hideChevron
             badge={{
                 element: (

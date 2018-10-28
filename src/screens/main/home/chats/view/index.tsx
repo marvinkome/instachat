@@ -144,6 +144,11 @@ class MainView extends React.Component<N & ViewProps & {}, ViewState> {
         const groups = this.props.data.groups;
 
         const formattedGroups = groups.reduce((reduced: ListingType[], group) => {
+            // get icon
+            const groupImage = group.image
+                ? { source: { uri: group.image } }
+                : { icon: { name: 'group', type: 'material-icons' } };
+
             // reduce item to match list props
             const unread = group.unreadCount;
             let item = {
@@ -152,7 +157,7 @@ class MainView extends React.Component<N & ViewProps & {}, ViewState> {
                 text: 'No message',
                 timestamp: '',
                 unread,
-                image,
+                image: groupImage,
                 onPress: () => false,
                 typing: false
             };

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Avatar } from 'react-native-elements';
 
 // components
 import List from '../../../../../components/listing';
@@ -18,7 +19,7 @@ const Listing = ({ listItem }: Props) => {
     const subtitleStyle = listItem.typing ? { color: color.primary } : {};
     return (
         <List
-            avatarImg={listItem.image}
+            avatarImg={<Avatar small rounded {...listItem.image} />}
             title={listItem.name}
             subtitle={listItem.text}
             subtitleStyle={subtitleStyle}

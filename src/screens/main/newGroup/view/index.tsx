@@ -42,7 +42,7 @@ class PageView extends React.Component<NavigationInjectedProps & IProps> {
 
         const avatar = this.state.imageUrl.length
             ? { source: { uri: this.state.imageUrl } }
-            : { name: 'group', type: 'material-icons' };
+            : { icon: { name: 'group', type: 'material-icons' } };
 
         return (
             <ScrollView style={styles.container}>

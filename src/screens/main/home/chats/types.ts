@@ -4,7 +4,7 @@ export interface ListingType {
     text: string;
     timestamp: string;
     unread: number;
-    image: null;
+    image: any;
     onPress: () => void;
     typing?: boolean;
 }
@@ -26,6 +26,7 @@ export interface ViewProps {
             id: string;
             name: string;
             unreadCount: number;
+            image: string;
             lastMessage: {
                 id: string;
                 message: string;

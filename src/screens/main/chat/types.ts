@@ -6,7 +6,7 @@ export type messageParam = {
 };
 
 export interface ViewProps {
-    user: { username: string; id: string };
+    user: { username: string; id: string; profilePic: string };
     group: any;
     sendMsg: (obj: messageParam) => void;
     subscribe?: () => void;

@@ -18,6 +18,7 @@ export const ALL_MESSAGES = gql`
                 from {
                     id
                     username
+                    profilePic
                 }
             }
             role {
