@@ -55,8 +55,14 @@ class EditProfile extends React.Component<Props> {
         }
 
         return (
-            <RNView style={{ flex: 1, justifyContent: 'center' }}>
-                <ActivityIndicator />
+            <RNView
+                style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    backgroundColor: theme.primary.regular
+                }}
+            >
+                <ActivityIndicator size="large" color={theme.secondary.regular} />
             </RNView>
         );
     }

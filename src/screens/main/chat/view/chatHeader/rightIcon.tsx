@@ -23,24 +23,21 @@ interface OProps {
 }
 
 function RightComponent(props: IProps & OProps) {
-    return (
+    return props.role === 'administrator' ? (
         <Menu>
             <MenuTrigger>
                 <Icon name="dots-three-vertical" type="entypo" iconStyle={styles.rightIcon} />
             </MenuTrigger>
             <MenuOptions customStyles={menuStyle}>
-                {props.role === 'administrator' && (
-                    <MenuOption
-                        text="Create Invite Link"
-                        onSelect={() => props.toggleInvite((si) => !si)}
-                    />
-                )}
-                <MenuOption text="Fake Item" />
+                <MenuOption
+                    text="Create Invite Link"
+                    onSelect={() => props.toggleInvite((si) => !si)}
+                />
             </MenuOptions>
 
             {props.showInvite && <InviteLink groupId={props.groupId} />}
         </Menu>
-    );
+    ) : null;
 }
 
 const enhance: CE<IProps, OProps> = compose(withState('showInvite', 'toggleInvite', false));
