@@ -1,4 +1,5 @@
 import { createStackNavigator } from 'react-navigation';
+import theme from '../../lib/colors';
 
 // routes
 import Home from './home';
@@ -16,6 +17,7 @@ export default createStackNavigator(
         EditProfile
     },
     {
-        initialRouteName: 'Home'
+        initialRouteName: 'Home',
+        cardStyle: { backgroundColor: theme.primary.regular }
     }
 );

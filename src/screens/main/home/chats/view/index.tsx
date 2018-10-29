@@ -23,7 +23,6 @@ import { ListingType, ViewProps } from '../types';
 
 // helpers
 import { formatDate } from '../../../../../lib/helpers';
-const image = require('../../../../../../static/pp.jpg');
 
 type ViewState = {
     usersTyping: object;

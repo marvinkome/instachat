@@ -15,7 +15,7 @@ export const Form = ({ placeholder, icon, secure, onChange }: IProps) => {
         <View style={styles.formCont}>
             <Icon
                 name={icon}
-                type="evilicon"
+                type="feather"
                 containerStyle={styles.iconCont}
                 iconStyle={styles.icon}
             />
@@ -23,7 +23,8 @@ export const Form = ({ placeholder, icon, secure, onChange }: IProps) => {
                 placeholder={placeholder}
                 underlineColorAndroid="transparent"
                 secureTextEntry={secure}
-                onChangeText={(text) => onChange(placeholder, text)}
+                inputStyle={styles.input}
+                onChangeText={(text) => onChange(placeholder.toLowerCase(), text)}
             />
         </View>
     );

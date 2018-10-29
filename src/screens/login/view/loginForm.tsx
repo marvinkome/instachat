@@ -52,13 +52,9 @@ class LoginForm extends React.Component<NavigationInjectedProps, IState> {
         return (
             <React.Fragment>
                 <View style={styles.container}>
+                    <FormInput placeholder="Email" icon="mail" onChange={this.onTextChange} />
                     <FormInput
-                        placeholder="email"
-                        icon="user"
-                        onChange={this.onTextChange}
-                    />
-                    <FormInput
-                        placeholder="password"
+                        placeholder="Password"
                         icon="lock"
                         onChange={this.onTextChange}
                         secure
@@ -67,6 +63,7 @@ class LoginForm extends React.Component<NavigationInjectedProps, IState> {
                 <Button
                     containerViewStyle={styles.btnCont}
                     textStyle={styles.btnText}
+                    buttonStyle={styles.btn}
                     title="LOGIN"
                     onPress={this.onSubmit}
                 />

@@ -114,6 +114,8 @@ class ChatForm extends React.Component<IProps, IState> {
                         containerViewStyle={styles.btn}
                         buttonStyle={styles.btnStyle}
                         textStyle={styles.btnText}
+                        disabled={this.state.message.length <= 0}
+                        disabledStyle={styles.btnDisabled}
                         large
                     />
                 </View>

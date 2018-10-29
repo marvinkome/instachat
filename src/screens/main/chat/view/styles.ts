@@ -78,6 +78,9 @@ export const chatFormStyles = StyleSheet.create({
         paddingLeft: 7,
         backgroundColor: theme.primary.regular
     },
+    btnDisabled: {
+        backgroundColor: theme.primary.regular
+    },
     btnText: {
         display: 'none'
     },

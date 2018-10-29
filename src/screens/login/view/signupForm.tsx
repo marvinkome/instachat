@@ -46,10 +46,7 @@ export default class SignUpForm extends React.Component<IProps, IState> {
             Alert.alert('', 'Account has been created. Now you can login');
             this.props.toggleView();
         } catch (e) {
-            return Alert.alert(
-                'Error',
-                'Problem when trying to create account'
-            );
+            return Alert.alert('Error', 'Problem when trying to create account');
         }
     };
 
@@ -57,18 +54,14 @@ export default class SignUpForm extends React.Component<IProps, IState> {
         return (
             <React.Fragment>
                 <View style={styles.container}>
+                    <FormInput placeholder="Username" icon="user" onChange={this.onTextChange} />
                     <FormInput
-                        placeholder="username"
-                        icon="user"
+                        placeholder="Email"
+                        icon="mail"
                         onChange={this.onTextChange}
                     />
                     <FormInput
-                        placeholder="email"
-                        icon="user"
-                        onChange={this.onTextChange}
-                    />
-                    <FormInput
-                        placeholder="password"
+                        placeholder="Password"
                         icon="lock"
                         onChange={this.onTextChange}
                         secure
@@ -77,6 +70,7 @@ export default class SignUpForm extends React.Component<IProps, IState> {
                 <Button
                     containerViewStyle={styles.btnCont}
                     textStyle={styles.btnText}
+                    buttonStyle={styles.btn}
                     title="SIGNUP"
                     onPress={this.onSubmit}
                 />

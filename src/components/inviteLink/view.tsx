@@ -59,7 +59,7 @@ class InviteModal extends React.Component<IProps & N, IState> {
                 >
                     <View style={styles.container}>
                         <Text style={styles.text}>
-                            Use Invite link to add users to your group
+                            use Invite link to add users to your group
                         </Text>
                         <View>
                             <Text

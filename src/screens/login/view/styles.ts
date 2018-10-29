@@ -1,30 +1,30 @@
 import { StyleSheet } from 'react-native';
-import colors from '../../../lib/colors';
+import theme from '../../../lib/colors';
 
 export const viewStyles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: colors.primary.regular
+        backgroundColor: theme.primary.regular
     },
     logoText: {
-        fontFamily: 'Karla',
-        fontSize: 17,
-        color: '#fff',
+        fontFamily: theme.fontRegular,
+        fontSize: 19,
+        color: theme.primary.typo.main,
         fontWeight: 'bold',
         marginBottom: 25,
         alignSelf: 'center'
     },
     bottomText: {
-        fontFamily: 'PT_Sans',
-        color: 'hsl(0, 0%, 90%)',
+        fontFamily: theme.fontRegular,
+        color: theme.primary.typo.sub,
         fontSize: 15,
         alignSelf: 'center',
         marginTop: 10
     },
     bottomCta: {
         textDecorationLine: 'underline',
-        color: 'hsl(0, 0%, 20%)'
+        color: theme.secondary.light
     }
 });
 
@@ -40,15 +40,27 @@ export const formStyles = StyleSheet.create({
         borderRadius: 4
     },
     iconCont: {
-        padding: 5
+        padding: 5,
+        paddingLeft: 7
     },
     icon: {
-        color: colors.text_light
+        fontSize: 20,
+        color: theme.primary.dark
+    },
+    input: {
+        fontWeight: 'normal',
+        fontFamily: theme.fontRegular,
+        color: theme.primary.light
     },
     btnCont: {
         marginLeft: 25,
-        marginRight: 25,
-        elevation: 5
+        marginRight: 25
     },
-    btnText: {}
+    btn: {
+        elevation: 5,
+        backgroundColor: theme.secondary.regular
+    },
+    btnText: {
+        color: theme.secondary.typo.main
+    }
 });

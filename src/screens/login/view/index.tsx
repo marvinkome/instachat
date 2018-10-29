@@ -10,7 +10,7 @@ type IState = {
 
 export default class PageView extends React.Component<{}, IState> {
     state = {
-        signUpView: false
+        signUpView: true
     };
     toggleView = () => {
         this.setState({
@@ -18,15 +18,13 @@ export default class PageView extends React.Component<{}, IState> {
         });
     };
     render() {
-        let logoText = 'Welcome to instaChat';
-        let formComp = (
-            <SignUpForm toggleView={this.toggleView} data-testid="signUpForm" />
-        );
+        let logoText = 'Welcome to Instachat';
+        let formComp = <SignUpForm toggleView={this.toggleView} data-testid="signUpForm" />;
         let bottomText = 'Have an account?';
         let bottomCta = 'Login';
 
         if (!this.state.signUpView) {
-            logoText = 'Login to instaChat';
+            logoText = 'Login to Instachat';
             // @ts-ignore
             formComp = <LoginForm data-testid="loginForm" />;
             bottomText = "Don't Have an account?";
