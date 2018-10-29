@@ -5,6 +5,7 @@ import { withApollo, WithApolloClient } from 'react-apollo';
 import { chatFormStyles as styles } from '../styles';
 
 import { setTypingState } from './gql';
+import theme from '../../../../../lib/colors';
 import { contextConnect } from '../../../../../lib/context';
 import context from '../../context';
 import { ViewProps } from '../../types';
@@ -98,6 +99,7 @@ class ChatForm extends React.Component<IProps, IState> {
                     <FormInput
                         placeholder="Write a message..."
                         underlineColorAndroid="transparent"
+                        placeholderTextColor={theme.primary.typo.text}
                         inputStyle={styles.input}
                         onChangeText={this.onMessageChange}
                         value={this.state.message}

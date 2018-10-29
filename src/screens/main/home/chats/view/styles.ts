@@ -1,13 +1,15 @@
 import { StyleSheet } from 'react-native';
+import theme from '../../../../../lib/colors';
 
 export const ViewStyles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff'
+        backgroundColor: theme.primary.regular
     },
     listContainer: {
         marginTop: 13,
-        borderTopWidth: 0
+        borderTopWidth: 0,
+        backgroundColor: 'transparent'
     },
     emptyView: {
         flex: 1,
@@ -15,7 +17,7 @@ export const ViewStyles = StyleSheet.create({
         alignItems: 'center'
     },
     emptyText: {
-        fontFamily: 'PT_Sans',
+        fontFamily: theme.fontRegular,
         textAlign: 'center',
         margin: 15
     }

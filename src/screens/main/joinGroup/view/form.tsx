@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { FormLabel, FormInput, Button } from 'react-native-elements';
+import theme from '../../../../lib/colors';
 import { linkForm as styles } from './styles';
 
 interface IProps {
@@ -23,6 +24,7 @@ export class LinkForm extends React.Component<IProps, IState> {
                     <FormInput
                         onChangeText={(link) => this.setState({ link })}
                         inputStyle={styles.input}
+                        placeholderTextColor={theme.primary.typo.text}
                         underlineColorAndroid="hsl(0, 0%, 70%)"
                         placeholder="http://testlink.com/linkid"
                     />

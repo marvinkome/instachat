@@ -29,7 +29,7 @@ export const modalView = StyleSheet.create({
         padding: 10
     },
     button: {
-        backgroundColor: color.primary
+        backgroundColor: color.primary.regular
     },
     cta: {
         marginTop: 10,

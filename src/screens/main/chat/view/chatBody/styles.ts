@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import colors from '../../../../../lib/colors';
+import theme from '../../../../../lib/colors';
 
 export const chatMsg = StyleSheet.create({
     listContainer: {
@@ -7,7 +7,7 @@ export const chatMsg = StyleSheet.create({
         backgroundColor: 'transparent',
         borderBottomWidth: 0,
         borderTopWidth: 0,
-        marginTop: 10
+        marginTop: 5
     },
     itemContainer: {
         borderBottomWidth: 0,
@@ -19,16 +19,17 @@ export const chatMsg = StyleSheet.create({
     },
     titleStyle: {
         fontWeight: '500',
-        fontFamily: 'PT_Sans',
+        color: theme.primary.typo.main,
+        fontFamily: theme.fontRegular,
         fontSize: 16,
         marginLeft: 10
     },
     message: {
-        color: colors.text_light,
+        color: theme.primary.typo.sub,
         fontSize: 14,
         marginTop: 2,
         marginLeft: 10,
-        fontFamily: 'PT_Sans'
+        fontFamily: theme.fontRegular
     },
     timestamp: {
         color: '#86939e',
@@ -36,12 +37,15 @@ export const chatMsg = StyleSheet.create({
         marginTop: 1,
         marginLeft: 10,
         fontWeight: 'normal',
-        fontFamily: 'PT_Sans'
+        fontFamily: theme.fontRegular
     },
     typingIndicator: {
-        fontFamily: 'PT_Sans',
-        color: colors.text_light,
+        fontFamily: theme.fontRegular,
+        color: theme.primary.typo.text,
         marginLeft: 20,
         fontSize: 12
+    },
+    dateDivider: {
+        backgroundColor: theme.primary.light
     }
 });

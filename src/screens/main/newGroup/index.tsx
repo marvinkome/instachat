@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Mutation, FetchResult } from 'react-apollo';
 import { DataProxy } from 'apollo-cache';
 
+import theme from '../../../lib/colors';
 import query from '../home/chats/gql';
 import { stackStyles } from './style';
 import { createGroup } from './gql';
@@ -12,7 +13,7 @@ export default class NewGroup extends React.Component {
         title: 'Create a group',
         headerStyle: stackStyles.header,
         headerTitleStyle: stackStyles.title,
-        headerTintColor: '#fff'
+        headerTintColor: theme.primary.typo.main
     };
 
     updateCache = (cache: DataProxy, { data }: FetchResult) => {

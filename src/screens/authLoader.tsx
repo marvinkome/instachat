@@ -1,5 +1,5 @@
 import * as React from 'react';
-import color from '../lib/colors';
+import theme from '../lib/colors';
 import { ActivityIndicator, View, AsyncStorage } from 'react-native';
 import { NavigationScreenProps } from 'react-navigation';
 
@@ -13,12 +13,12 @@ export default class AuthLoader extends React.Component<NavigationScreenProps> {
         return (
             <View
                 style={{
+                    backgroundColor: theme.primary.regular,
                     flex: 1,
-                    justifyContent: 'center',
-                    alignContent: 'center'
+                    justifyContent: 'center'
                 }}
             >
-                <ActivityIndicator size="large" color={color.primary} />
+                <ActivityIndicator size="large" color={theme.secondary.regular} />
             </View>
         );
     }

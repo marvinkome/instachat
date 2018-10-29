@@ -9,16 +9,16 @@ interface IProps {
 
 export function GroupFab(props: IProps) {
     return (
-        <Fab buttonColor={color.primary}>
+        <Fab buttonColor={color.secondary.regular}>
             <Fab.Item
-                buttonColor={color.primary}
+                buttonColor={color.secondary.regular}
                 title="Create Group"
                 onPress={() => props.navigate('NewGroup')}
             >
                 <Icon name="group" color="#fff" />
             </Fab.Item>
             <Fab.Item
-                buttonColor={color.primary}
+                buttonColor={color.secondary.regular}
                 title="Join Group"
                 onPress={() => props.navigate('JoinGroup')}
             >

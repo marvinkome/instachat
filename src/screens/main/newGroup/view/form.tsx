@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { View, ToastAndroid } from 'react-native';
 import { FormLabel, FormInput, Button } from 'react-native-elements';
+import theme from '../../../../lib/colors';
 import { groupForm as styles } from './styles';
 
 interface IState {
@@ -45,6 +46,7 @@ export class GroupForm extends React.Component<IProps, IState> {
                         placeholder="eg. Thinkers lodge"
                         inputStyle={styles.input}
                         onChangeText={(text) => this.onTextChange(text, 'name')}
+                        placeholderTextColor={theme.primary.typo.text}
                         underlineColorAndroid="hsl(0, 0%, 70%)"
                         value={this.state.name}
                     />
@@ -54,6 +56,7 @@ export class GroupForm extends React.Component<IProps, IState> {
                     <FormInput
                         inputStyle={styles.input}
                         underlineColorAndroid="hsl(0, 0%, 70%)"
+                        placeholderTextColor={theme.primary.typo.text}
                         onChangeText={(text) => this.onTextChange(text, 'topic')}
                     />
                 </View>

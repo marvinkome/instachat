@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
-import colors from '../../../../../lib/colors';
+import theme from '../../../../../lib/colors';
 
 export const ViewStyles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff'
+        backgroundColor: theme.primary.regular
     },
     listContainer: {
         marginTop: 13,
@@ -14,7 +14,7 @@ export const ViewStyles = StyleSheet.create({
 
 export const UserDataStyles = StyleSheet.create({
     container: {
-        backgroundColor: 'hsl(0, 0%, 99%)',
+        backgroundColor: theme.primary.dark,
         paddingTop: 15,
         paddingBottom: 15,
         padding: 20,
@@ -24,30 +24,34 @@ export const UserDataStyles = StyleSheet.create({
         justifyContent: 'center'
     },
     name: {
-        fontFamily: 'Karla',
+        fontFamily: theme.fontRegular,
         fontSize: 17,
         fontWeight: 'bold',
-        color: colors.text_title
+        color: theme.primary.typo.main
     },
     about: {
-        fontFamily: 'Karla',
+        fontFamily: theme.fontRegular,
         fontSize: 14,
-        paddingTop: 7
+        paddingTop: 7,
+        color: theme.primary.typo.main
     }
 });
 
 export const UserSettingsStyles = StyleSheet.create({
     list: {
-        borderTopWidth: 0
+        borderTopWidth: 0,
+        backgroundColor: 'transparent'
     },
     listItem: {
-        borderBottomColor: 'hsl(0, 0%, 90%)',
+        borderBottomColor: theme.primary.light,
         paddingTop: 15,
-        paddingBottom: 15
+        paddingBottom: 15,
+        marginLeft: 10,
+        marginRight: 10
     },
     title: {
-        fontFamily: 'Karla',
-        color: colors.text_light,
+        fontFamily: theme.fontRegular,
+        color: theme.primary.typo.sub,
         fontSize: 15
     }
 });

@@ -3,6 +3,7 @@ import { NavigationScreenProps as NSP } from 'react-navigation';
 import { Mutation, FetchResult } from 'react-apollo';
 import { DataProxy } from 'apollo-cache';
 
+import theme from '../../../lib/colors';
 import query from '../home/chats/gql';
 import { joinGroup } from './gql';
 import { stackStyles } from './style';
@@ -13,7 +14,7 @@ export default class JoinGroup extends React.Component<NSP> {
         title: 'Join a group',
         headerStyle: stackStyles.header,
         headerTitleStyle: stackStyles.title,
-        headerTintColor: '#fff'
+        headerTintColor: theme.primary.typo.main
     };
 
     onCompleted = (data: Record<string, any>) => {
@@ -38,11 +39,7 @@ export default class JoinGroup extends React.Component<NSP> {
     };
     render() {
         return (
-            <Mutation
-                mutation={joinGroup}
-                update={this.updateCache}
-                onCompleted={this.onCompleted}
-            >
+            <Mutation mutation={joinGroup} update={this.updateCache} onCompleted={this.onCompleted}>
                 {(fn) => <View joinGroup={fn} />}
             </Mutation>
         );

@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native';
-import color from '../../../../lib/colors';
+import theme from '../../../../lib/colors';
 
 export const viewStyle = StyleSheet.create({
     container: {
-        backgroundColor: '#fff',
+        backgroundColor: theme.primary.regular,
         flex: 1,
         paddingTop: 40,
         paddingBottom: 15
@@ -15,17 +15,19 @@ export const viewStyle = StyleSheet.create({
 
 export const linkForm = StyleSheet.create({
     label: {
-        fontFamily: 'PT_Sans',
+        fontFamily: theme.fontRegular,
+        color: theme.primary.typo.sub,
         fontSize: 16
     },
     input: {
-        fontFamily: 'PT_Sans',
+        color: theme.primary.typo.text,
+        fontFamily: theme.fontRegular,
         fontSize: 16
     },
     buttonCont: {
         margin: 10
     },
     button: {
-        backgroundColor: color.primary
+        backgroundColor: theme.secondary.regular
     }
 });

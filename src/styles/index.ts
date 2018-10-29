@@ -1,29 +1,30 @@
 import { StyleSheet } from 'react-native';
-import color from '../lib/colors';
+import theme from '../lib/colors';
 
 export const stackStyles = StyleSheet.create({
     header: {
-        backgroundColor: '#fff',
+        backgroundColor: theme.primary.regular,
         elevation: 0
     },
     title: {
         flex: 1,
-        textAlign: 'center',
-        color: color.text_title,
+        textAlign: 'left',
+        color: theme.primary.typo.main,
         fontSize: 19,
         fontWeight: 'normal',
-        fontFamily: 'Karla'
+        fontFamily: theme.fontRegular
     }
 });
 
 export const tabStyles = StyleSheet.create({
     background: {
-        backgroundColor: '#fff'
+        backgroundColor: theme.primary.regular
     },
     indicator: {
-        backgroundColor: color.primary
+        backgroundColor: theme.secondary.regular,
+        height: 3
     },
     label: {
-        fontFamily: 'Karla'
+        fontFamily: theme.fontRegular
     }
 });

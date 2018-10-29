@@ -9,6 +9,7 @@ import Hr from '../../../../../components/Hr';
 import { ChatMsg } from './listItem';
 
 // styles
+import theme from '../../../../../lib/colors';
 import { chatMsg as style } from './styles';
 
 // types
@@ -115,8 +116,8 @@ export class ChatBody extends React.Component<ChatBodyProps, ChatBodyState> {
                     {newMessageId &&
                         item.id === newMessageId && (
                             <Hr
-                                lineStyle={{ backgroundColor: 'red' }}
-                                textStyle={{ color: 'red' }}
+                                lineStyle={{ backgroundColor: theme.secondary.regular }}
+                                textStyle={{ color: theme.secondary.typo.sub }}
                                 text="New Message"
                             />
                         )}
@@ -163,6 +164,7 @@ export class ChatBody extends React.Component<ChatBodyProps, ChatBodyState> {
                             text={moment(leadingItem.timestamp, 'ddd MMM DD YYYY').format(
                                 'D MMM Y'
                             )}
+                            lineStyle={style.dateDivider}
                         />
                     )}
                     keyExtractor={(item) => item.timestamp}

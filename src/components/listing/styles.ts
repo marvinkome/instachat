@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import color from '../../lib/colors';
+import theme from '../../lib/colors';
 
 export const ViewStyles = StyleSheet.create({
     listItemContainer: {
@@ -9,12 +9,14 @@ export const ViewStyles = StyleSheet.create({
         paddingTop: 15
     },
     name: {
-        fontFamily: 'Karla',
-        fontSize: 16,
-        fontWeight: '700'
+        color: theme.primary.typo.main,
+        fontFamily: theme.fontRegular,
+        fontSize: 16
     },
     message: {
-        fontFamily: 'Karla',
+        color: theme.primary.typo.sub,
+        fontFamily: theme.fontRegular,
+        fontWeight: 'normal',
         fontSize: 14
     },
     rightContainer: {
@@ -22,22 +24,22 @@ export const ViewStyles = StyleSheet.create({
     },
     time: {
         fontSize: 13,
-        fontFamily: 'Karla',
+        fontFamily: theme.fontRegular,
         alignSelf: 'flex-end',
         marginRight: 10,
         paddingBottom: 4,
-        color: color.text_light
+        color: theme.primary.typo.text
     },
     badgeContainer: {
-        backgroundColor: color.primary,
+        backgroundColor: theme.secondary.regular,
         alignSelf: 'flex-end',
         padding: 7,
         marginRight: 15
     },
     badgeText: {
-        color: '#fff',
+        color: theme.secondary.typo.main,
         fontSize: 13,
-        fontFamily: 'Karla',
+        fontFamily: theme.fontRegular,
         alignSelf: 'center'
     }
 });

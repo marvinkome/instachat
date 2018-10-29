@@ -9,7 +9,7 @@ import { MenuProvider } from 'react-native-popup-menu';
 
 // lib
 import apolloClient from '../../lib/apollo';
-import color from '../../lib/colors';
+import theme from '../../lib/colors';
 
 // navigator
 import MainNavigator from './navigator';
@@ -100,12 +100,12 @@ export default class MainRoute extends React.Component<NP, IState> {
         return (
             <View
                 style={{
+                    backgroundColor: theme.primary.regular,
                     flex: 1,
-                    justifyContent: 'center',
-                    alignContent: 'center'
+                    justifyContent: 'center'
                 }}
             >
-                <ActivityIndicator size="large" color={color.primary} />
+                <ActivityIndicator size="large" color={theme.secondary.regular} />
             </View>
         );
     }

@@ -19,8 +19,8 @@ const HomeTabNavigator = createMaterialTopTabNavigator(
             style: tabStyles.background,
             labelStyle: tabStyles.label,
             indicatorStyle: tabStyles.indicator,
-            activeTintColor: color.primary,
-            inactiveTintColor: color.text_title
+            activeTintColor: color.primary.typo.main,
+            inactiveTintColor: color.primary.typo.main
         },
         backBehavior: 'none'
     }
@@ -28,7 +28,7 @@ const HomeTabNavigator = createMaterialTopTabNavigator(
 
 export default class Main extends React.Component<NP> {
     static navigationOptions = {
-        title: 'InstaChat'.toUpperCase(),
+        title: 'Instachat',
         headerStyle: stackStyles.header,
         headerTitleStyle: stackStyles.title,
         headerLeft: null

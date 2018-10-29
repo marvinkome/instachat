@@ -3,6 +3,7 @@ import { ToastAndroid, View as RNView, ActivityIndicator } from 'react-native';
 import { graphql, DataValue, compose, MutationFunc } from 'react-apollo';
 
 import { showAlert } from '../../../lib/helpers';
+import theme from '../../../lib/colors';
 import { USER_INFO, UPDATE_INFO } from './gql';
 import { stackStyles } from './style';
 import View from './view';
@@ -16,6 +17,7 @@ interface Props {
                 username: string;
                 about: string;
                 email: string;
+                profilePic: string;
             };
         },
         {}
@@ -27,7 +29,7 @@ class EditProfile extends React.Component<Props> {
         title: 'Edit Profile',
         headerStyle: stackStyles.header,
         headerTitleStyle: stackStyles.title,
-        headerTintColor: '#fff'
+        headerTintColor: theme.primary.typo.main
     };
 
     updateUser = async (variables: any) => {

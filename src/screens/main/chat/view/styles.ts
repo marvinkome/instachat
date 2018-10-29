@@ -1,40 +1,42 @@
 import { StyleSheet } from 'react-native';
-import colors from '../../../../lib/colors';
+import theme from '../../../../lib/colors';
 
 export const viewStyles = StyleSheet.create({
     container: {
-        backgroundColor: '#fff',
+        backgroundColor: theme.primary.regular,
         flex: 1
     }
 });
 
 export const chatHeaderStyles = StyleSheet.create({
     container: {
-        backgroundColor: '#fff'
+        backgroundColor: theme.primary.regular,
+        elevation: 4,
+        borderBottomWidth: 0
+    },
+    leftCont: {
+        flexDirection: 'row',
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     icon: {
         fontSize: 37,
-        color: colors.primary,
+        color: theme.primary.typo.main,
         padding: 10,
         borderRadius: 5
     },
     rightIcon: {
         fontSize: 17,
-        color: colors.primary,
+        color: theme.primary.typo.main,
         paddingBottom: 15
     },
     title: {
         fontSize: 19,
-        fontFamily: 'PT_Sans',
+        fontFamily: theme.fontRegular,
         paddingBottom: 14,
-        color: colors.text_title,
-        fontWeight: 'bold'
-    },
-    subtitle: {
-        fontSize: 14,
-        fontFamily: 'Karla',
-        textAlign: 'center',
-        color: colors.text_light
+        paddingLeft: 15,
+        color: theme.primary.typo.main
     },
     menuOptions: {
         paddingTop: 5,
@@ -44,22 +46,24 @@ export const chatHeaderStyles = StyleSheet.create({
         fontFamily: 'PT_Sans',
         fontSize: 15,
         padding: 7,
-        color: colors.text_title
+        color: theme.text_title
     }
 });
 
 export const chatFormStyles = StyleSheet.create({
     container: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        height: 45
     },
     formContainer: {
         flex: 4,
-        backgroundColor: '#fff',
+        backgroundColor: theme.primary.regular,
         padding: 0,
         margin: 0
     },
     input: {
-        height: 65,
+        color: theme.primary.typo.main,
+        height: 45,
         width: '100%'
     },
     btnCont: {
@@ -70,8 +74,9 @@ export const chatFormStyles = StyleSheet.create({
         marginRight: 0
     },
     btnStyle: {
+        padding: 9,
         paddingLeft: 7,
-        backgroundColor: colors.primary
+        backgroundColor: theme.primary.regular
     },
     btnText: {
         display: 'none'

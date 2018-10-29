@@ -5,7 +5,7 @@ export const viewStyles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: colors.primary
+        backgroundColor: colors.primary.regular
     },
     logoText: {
         fontFamily: 'Karla',

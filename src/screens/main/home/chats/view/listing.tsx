@@ -16,7 +16,7 @@ type Props = {
 };
 
 const Listing = ({ listItem }: Props) => {
-    const subtitleStyle = listItem.typing ? { color: color.primary } : {};
+    const subtitleStyle = listItem.typing ? { color: color.secondary.light } : {};
     return (
         <List
             avatarImg={<Avatar small rounded {...listItem.image} />}
