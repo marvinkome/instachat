@@ -10,9 +10,9 @@ export const stackStyles = StyleSheet.create({
         flex: 1,
         textAlign: 'left',
         color: theme.primary.typo.main,
-        fontSize: 19,
+        fontSize: 22,
         fontWeight: 'normal',
-        fontFamily: theme.fontRegular
+        fontFamily: theme.fontCursive
     }
 });
 

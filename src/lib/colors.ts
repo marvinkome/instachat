@@ -1,8 +1,8 @@
 const themeDark = {
     primary: {
-        light: '#4f5b62',
-        regular: '#263238',
-        dark: '#000a12',
+        light: '#626a7d',
+        regular: '#373f51',
+        dark: '#101929',
         typo: {
             main: '#f2f2f2',
             sub: '#cccccc',
@@ -24,6 +24,7 @@ const themeDark = {
 export default {
     text_light: 'hsl(0, 0%, 45%)',
     text_title: 'hsl(0, 0%, 20%)',
-    fontRegular: 'PT_Sans',
+    fontRegular: 'RobotoCondensed',
+    fontCursive: 'LobsterTwo',
     ...themeDark
 };

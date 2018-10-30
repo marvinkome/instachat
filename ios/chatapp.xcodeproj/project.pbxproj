@@ -62,6 +62,28 @@
 		609C848993DD4A4381926677 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 067F7566DC0C403D9401BB1A /* Zocial.ttf */; };
 		B690EDDD6D7D4B89B646FD6D /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C495F866DF6246EC99753562 /* libRNFirebase.a */; };
 		42E3E8054080400BBC354245 /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6142C2C69FA48D3907B8949 /* libRNImagePicker.a */; };
+		76142CD36CD940D584ECB641 /* OleoScript_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4347C40E5B364D6E83D79AC6 /* OleoScript_bold.ttf */; };
+		5C5B5374473B4573BF0A2624 /* OleoScript.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 92FED604A34342CBA1A3F285 /* OleoScript.ttf */; };
+		A167A498A9D54A1FB8615AC4 /* PT_Sans-Narrow_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99374366BA7C4942B9795FEF /* PT_Sans-Narrow_bold.ttf */; };
+		38F6C03AC7D74C32B1B5728B /* PT_Sans-Narrow.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8691272D5C5E4B2898B4DE3A /* PT_Sans-Narrow.ttf */; };
+		A9F8D9DF09F24EF3BE79CDDF /* Ubuntu_bold_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DF23091F8B64B8E83C074EB /* Ubuntu_bold_italic.ttf */; };
+		87473B939C0042BDB96D4314 /* Ubuntu_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A00D7ABF0CD94154A148FF6B /* Ubuntu_bold.ttf */; };
+		0D10F1A2EF914E1A8CE75CE6 /* Ubuntu_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7766541E42F14CE0AC030A85 /* Ubuntu_italic.ttf */; };
+		0A4E7DA9D80541AFA6CCC999 /* Ubuntu_light_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21B38968F8FE434C8FBE049D /* Ubuntu_light_italic.ttf */; };
+		7CABCD250F46412D83C1DCCA /* Ubuntu_light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6FF8246DE754D82A8B0E08E /* Ubuntu_light.ttf */; };
+		C5091C6ABA3C40C895782455 /* Ubuntu_medium_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F51B18A16B34BA3ADC0F700 /* Ubuntu_medium_italic.ttf */; };
+		DC9B4AA1A53540878D478135 /* Ubuntu_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7458927502B44CA5BA7C068B /* Ubuntu_medium.ttf */; };
+		220C5A9B358B4CF38928EA77 /* Ubuntu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DE0F851489546669C5F5D8B /* Ubuntu.ttf */; };
+		167D4E7A06264CCAAFFE5763 /* LobsterTwo_bold_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F94B56320A64444AAF450186 /* LobsterTwo_bold_italic.ttf */; };
+		30F3448BB86F4D128A912ABF /* LobsterTwo_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80A474C1B81D42F6A63F864F /* LobsterTwo_bold.ttf */; };
+		114AEBA9F0734593A344E694 /* LobsterTwo_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0884106DB2194B4098EA31D6 /* LobsterTwo_italic.ttf */; };
+		07BF7AFC63F940A89BBF6C8F /* LobsterTwo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8B5C028F6267495283B2C540 /* LobsterTwo.ttf */; };
+		2A5183BEAA814EF99C0FFBEC /* RobotoCondensed_bold_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3636A1590A2B4BA48FDF6816 /* RobotoCondensed_bold_italic.ttf */; };
+		D2091D4E94A9461FB09CED7F /* RobotoCondensed_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 798B0855ADA04FC5996A23EA /* RobotoCondensed_bold.ttf */; };
+		68115889AF4A4BF4AB4D65CD /* RobotoCondensed_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF8D5E1172BE4C28B08A0D19 /* RobotoCondensed_italic.ttf */; };
+		6BE74B2F238B4A9483E0CB73 /* RobotoCondensed_light_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E6F6F50F6B0423EBAC52121 /* RobotoCondensed_light_italic.ttf */; };
+		79F427ABCF1E47E9B571F51A /* RobotoCondensed_light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8B87429DFB54AAF8941B1B5 /* RobotoCondensed_light.ttf */; };
+		7236EC5B6DAE438582942065 /* RobotoCondensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 329639E3FC3D4CFE94E5B6BA /* RobotoCondensed.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -395,6 +417,28 @@
 		C495F866DF6246EC99753562 /* libRNFirebase.a */ = {isa = PBXFileReference; name = "libRNFirebase.a"; path = "libRNFirebase.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		EE134580C6334F8AB7C07E90 /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; name = "RNImagePicker.xcodeproj"; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		F6142C2C69FA48D3907B8949 /* libRNImagePicker.a */ = {isa = PBXFileReference; name = "libRNImagePicker.a"; path = "libRNImagePicker.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		4347C40E5B364D6E83D79AC6 /* OleoScript_bold.ttf */ = {isa = PBXFileReference; name = "OleoScript_bold.ttf"; path = "../assets/fonts/OleoScript_bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		92FED604A34342CBA1A3F285 /* OleoScript.ttf */ = {isa = PBXFileReference; name = "OleoScript.ttf"; path = "../assets/fonts/OleoScript.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		99374366BA7C4942B9795FEF /* PT_Sans-Narrow_bold.ttf */ = {isa = PBXFileReference; name = "PT_Sans-Narrow_bold.ttf"; path = "../assets/fonts/PT_Sans-Narrow_bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8691272D5C5E4B2898B4DE3A /* PT_Sans-Narrow.ttf */ = {isa = PBXFileReference; name = "PT_Sans-Narrow.ttf"; path = "../assets/fonts/PT_Sans-Narrow.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3DF23091F8B64B8E83C074EB /* Ubuntu_bold_italic.ttf */ = {isa = PBXFileReference; name = "Ubuntu_bold_italic.ttf"; path = "../assets/fonts/Ubuntu_bold_italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A00D7ABF0CD94154A148FF6B /* Ubuntu_bold.ttf */ = {isa = PBXFileReference; name = "Ubuntu_bold.ttf"; path = "../assets/fonts/Ubuntu_bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7766541E42F14CE0AC030A85 /* Ubuntu_italic.ttf */ = {isa = PBXFileReference; name = "Ubuntu_italic.ttf"; path = "../assets/fonts/Ubuntu_italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		21B38968F8FE434C8FBE049D /* Ubuntu_light_italic.ttf */ = {isa = PBXFileReference; name = "Ubuntu_light_italic.ttf"; path = "../assets/fonts/Ubuntu_light_italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F6FF8246DE754D82A8B0E08E /* Ubuntu_light.ttf */ = {isa = PBXFileReference; name = "Ubuntu_light.ttf"; path = "../assets/fonts/Ubuntu_light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3F51B18A16B34BA3ADC0F700 /* Ubuntu_medium_italic.ttf */ = {isa = PBXFileReference; name = "Ubuntu_medium_italic.ttf"; path = "../assets/fonts/Ubuntu_medium_italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7458927502B44CA5BA7C068B /* Ubuntu_medium.ttf */ = {isa = PBXFileReference; name = "Ubuntu_medium.ttf"; path = "../assets/fonts/Ubuntu_medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5DE0F851489546669C5F5D8B /* Ubuntu.ttf */ = {isa = PBXFileReference; name = "Ubuntu.ttf"; path = "../assets/fonts/Ubuntu.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F94B56320A64444AAF450186 /* LobsterTwo_bold_italic.ttf */ = {isa = PBXFileReference; name = "LobsterTwo_bold_italic.ttf"; path = "../assets/fonts/LobsterTwo_bold_italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		80A474C1B81D42F6A63F864F /* LobsterTwo_bold.ttf */ = {isa = PBXFileReference; name = "LobsterTwo_bold.ttf"; path = "../assets/fonts/LobsterTwo_bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0884106DB2194B4098EA31D6 /* LobsterTwo_italic.ttf */ = {isa = PBXFileReference; name = "LobsterTwo_italic.ttf"; path = "../assets/fonts/LobsterTwo_italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8B5C028F6267495283B2C540 /* LobsterTwo.ttf */ = {isa = PBXFileReference; name = "LobsterTwo.ttf"; path = "../assets/fonts/LobsterTwo.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3636A1590A2B4BA48FDF6816 /* RobotoCondensed_bold_italic.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed_bold_italic.ttf"; path = "../assets/fonts/RobotoCondensed_bold_italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		798B0855ADA04FC5996A23EA /* RobotoCondensed_bold.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed_bold.ttf"; path = "../assets/fonts/RobotoCondensed_bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FF8D5E1172BE4C28B08A0D19 /* RobotoCondensed_italic.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed_italic.ttf"; path = "../assets/fonts/RobotoCondensed_italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5E6F6F50F6B0423EBAC52121 /* RobotoCondensed_light_italic.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed_light_italic.ttf"; path = "../assets/fonts/RobotoCondensed_light_italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E8B87429DFB54AAF8941B1B5 /* RobotoCondensed_light.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed_light.ttf"; path = "../assets/fonts/RobotoCondensed_light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		329639E3FC3D4CFE94E5B6BA /* RobotoCondensed.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed.ttf"; path = "../assets/fonts/RobotoCondensed.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -687,6 +731,28 @@
 				C702460F4BAE4F51910B6022 /* Octicons.ttf */,
 				8DD32735AC0F4194941EB688 /* SimpleLineIcons.ttf */,
 				067F7566DC0C403D9401BB1A /* Zocial.ttf */,
+				4347C40E5B364D6E83D79AC6 /* OleoScript_bold.ttf */,
+				92FED604A34342CBA1A3F285 /* OleoScript.ttf */,
+				99374366BA7C4942B9795FEF /* PT_Sans-Narrow_bold.ttf */,
+				8691272D5C5E4B2898B4DE3A /* PT_Sans-Narrow.ttf */,
+				3DF23091F8B64B8E83C074EB /* Ubuntu_bold_italic.ttf */,
+				A00D7ABF0CD94154A148FF6B /* Ubuntu_bold.ttf */,
+				7766541E42F14CE0AC030A85 /* Ubuntu_italic.ttf */,
+				21B38968F8FE434C8FBE049D /* Ubuntu_light_italic.ttf */,
+				F6FF8246DE754D82A8B0E08E /* Ubuntu_light.ttf */,
+				3F51B18A16B34BA3ADC0F700 /* Ubuntu_medium_italic.ttf */,
+				7458927502B44CA5BA7C068B /* Ubuntu_medium.ttf */,
+				5DE0F851489546669C5F5D8B /* Ubuntu.ttf */,
+				F94B56320A64444AAF450186 /* LobsterTwo_bold_italic.ttf */,
+				80A474C1B81D42F6A63F864F /* LobsterTwo_bold.ttf */,
+				0884106DB2194B4098EA31D6 /* LobsterTwo_italic.ttf */,
+				8B5C028F6267495283B2C540 /* LobsterTwo.ttf */,
+				3636A1590A2B4BA48FDF6816 /* RobotoCondensed_bold_italic.ttf */,
+				798B0855ADA04FC5996A23EA /* RobotoCondensed_bold.ttf */,
+				FF8D5E1172BE4C28B08A0D19 /* RobotoCondensed_italic.ttf */,
+				5E6F6F50F6B0423EBAC52121 /* RobotoCondensed_light_italic.ttf */,
+				E8B87429DFB54AAF8941B1B5 /* RobotoCondensed_light.ttf */,
+				329639E3FC3D4CFE94E5B6BA /* RobotoCondensed.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1160,6 +1226,28 @@
 				7B502EF991964B05B5D52605 /* Octicons.ttf in Resources */,
 				1E319D64D8EC402FA3769A15 /* SimpleLineIcons.ttf in Resources */,
 				609C848993DD4A4381926677 /* Zocial.ttf in Resources */,
+				76142CD36CD940D584ECB641 /* OleoScript_bold.ttf in Resources */,
+				5C5B5374473B4573BF0A2624 /* OleoScript.ttf in Resources */,
+				A167A498A9D54A1FB8615AC4 /* PT_Sans-Narrow_bold.ttf in Resources */,
+				38F6C03AC7D74C32B1B5728B /* PT_Sans-Narrow.ttf in Resources */,
+				A9F8D9DF09F24EF3BE79CDDF /* Ubuntu_bold_italic.ttf in Resources */,
+				87473B939C0042BDB96D4314 /* Ubuntu_bold.ttf in Resources */,
+				0D10F1A2EF914E1A8CE75CE6 /* Ubuntu_italic.ttf in Resources */,
+				0A4E7DA9D80541AFA6CCC999 /* Ubuntu_light_italic.ttf in Resources */,
+				7CABCD250F46412D83C1DCCA /* Ubuntu_light.ttf in Resources */,
+				C5091C6ABA3C40C895782455 /* Ubuntu_medium_italic.ttf in Resources */,
+				DC9B4AA1A53540878D478135 /* Ubuntu_medium.ttf in Resources */,
+				220C5A9B358B4CF38928EA77 /* Ubuntu.ttf in Resources */,
+				167D4E7A06264CCAAFFE5763 /* LobsterTwo_bold_italic.ttf in Resources */,
+				30F3448BB86F4D128A912ABF /* LobsterTwo_bold.ttf in Resources */,
+				114AEBA9F0734593A344E694 /* LobsterTwo_italic.ttf in Resources */,
+				07BF7AFC63F940A89BBF6C8F /* LobsterTwo.ttf in Resources */,
+				2A5183BEAA814EF99C0FFBEC /* RobotoCondensed_bold_italic.ttf in Resources */,
+				D2091D4E94A9461FB09CED7F /* RobotoCondensed_bold.ttf in Resources */,
+				68115889AF4A4BF4AB4D65CD /* RobotoCondensed_italic.ttf in Resources */,
+				6BE74B2F238B4A9483E0CB73 /* RobotoCondensed_light_italic.ttf in Resources */,
+				79F427ABCF1E47E9B571F51A /* RobotoCondensed_light.ttf in Resources */,
+				7236EC5B6DAE438582942065 /* RobotoCondensed.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1294,9 +1382,6 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/chatapp.app/chatapp";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1324,9 +1409,6 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/chatapp.app/chatapp";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1411,9 +1493,6 @@
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1449,9 +1528,6 @@
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1486,9 +1562,6 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1523,9 +1596,6 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

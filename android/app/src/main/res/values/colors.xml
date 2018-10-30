@@ -1,4 +1,7 @@
 <resources>
     <color name="white">#FFF</color>
-    <color name="primary">#42ED86</color>
+    <color name="primary">#373f51</color>
+    <color name="primaryLight">#626a7d</color>
+    <color name="primaryDark">#101929</color>
+    <color name="secondary">#4527a0</color>
 </resources>

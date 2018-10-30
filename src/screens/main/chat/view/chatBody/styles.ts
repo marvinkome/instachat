@@ -18,10 +18,9 @@ export const chatMsg = StyleSheet.create({
         alignItems: 'flex-start'
     },
     titleStyle: {
-        fontWeight: '500',
         color: theme.primary.typo.main,
         fontFamily: theme.fontRegular,
-        fontSize: 16,
+        fontSize: 15,
         marginLeft: 10
     },
     message: {

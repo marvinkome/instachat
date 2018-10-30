@@ -77,6 +77,28 @@
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
+		<string>OleoScript_bold.ttf</string>
+		<string>OleoScript.ttf</string>
+		<string>PT_Sans-Narrow_bold.ttf</string>
+		<string>PT_Sans-Narrow.ttf</string>
+		<string>Ubuntu_bold_italic.ttf</string>
+		<string>Ubuntu_bold.ttf</string>
+		<string>Ubuntu_italic.ttf</string>
+		<string>Ubuntu_light_italic.ttf</string>
+		<string>Ubuntu_light.ttf</string>
+		<string>Ubuntu_medium_italic.ttf</string>
+		<string>Ubuntu_medium.ttf</string>
+		<string>Ubuntu.ttf</string>
+		<string>LobsterTwo_bold_italic.ttf</string>
+		<string>LobsterTwo_bold.ttf</string>
+		<string>LobsterTwo_italic.ttf</string>
+		<string>LobsterTwo.ttf</string>
+		<string>RobotoCondensed_bold_italic.ttf</string>
+		<string>RobotoCondensed_bold.ttf</string>
+		<string>RobotoCondensed_italic.ttf</string>
+		<string>RobotoCondensed_light_italic.ttf</string>
+		<string>RobotoCondensed_light.ttf</string>
+		<string>RobotoCondensed.ttf</string>
 	</array>
 </dict>
 </plist>

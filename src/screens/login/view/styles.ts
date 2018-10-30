@@ -8,7 +8,7 @@ export const viewStyles = StyleSheet.create({
         backgroundColor: theme.primary.regular
     },
     logoText: {
-        fontFamily: theme.fontRegular,
+        fontFamily: theme.fontCursive,
         fontSize: 19,
         color: theme.primary.typo.main,
         fontWeight: 'bold',
