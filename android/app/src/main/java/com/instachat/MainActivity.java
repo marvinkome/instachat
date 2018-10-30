@@ -1,4 +1,4 @@
-package com.chatapp;
+package com.instachat;
 
 import com.facebook.react.ReactActivity;
 

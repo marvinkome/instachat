@@ -1,4 +1,4 @@
-package com.chatapp;
+package com.instachat;
 
 import android.app.Application;
 
