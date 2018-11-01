@@ -40,7 +40,7 @@ class LoginForm extends React.Component<NavigationInjectedProps, IState> {
             // save token to storage
             await AsyncStorage.setItem('client_id', data.token);
             this.props.navigation.navigate('Home');
-        } catch {
+        } catch (e) {
             return ToastAndroid.show(
                 'Error when trying to log in please try again',
                 ToastAndroid.LONG

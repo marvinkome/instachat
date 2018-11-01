@@ -5,6 +5,33 @@ import { createFakeResp, generateErrorId } from '../../../lib/helpers';
 import { MESSAGE_SUBSCRIPTION, ADD_ERROR, ALL_MESSAGES } from './gql';
 import { messageParam } from './types';
 
+export function updateFetchMore(prev: any, { fetchMoreResult, variables }: any) {
+    if (!fetchMoreResult) {
+        return prev;
+    }
+
+    const newMsg = fetchMoreResult.group.messages;
+    const prevGroup = prev.group;
+
+    if (newMsg.length === 0) {
+        return prev;
+    }
+
+    console.log('responses', variables);
+
+    const msgList = [...prevGroup.messages, ...newMsg];
+
+    const res = {
+        ...prev,
+        group: {
+            ...prev.group,
+            messages: msgList
+        }
+    };
+
+    return res;
+}
+
 const updateQuery = (prev: any, { subscriptionData }: any) => {
     if (!subscriptionData) {
         return prev;

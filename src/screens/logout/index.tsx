@@ -10,7 +10,7 @@ import {
 import { NavigationScreenProps } from 'react-navigation';
 import firebase from 'react-native-firebase';
 
-import { clientId } from '../../lib/helpers';
+import { clientId, showAlert } from '../../lib/helpers';
 import { auth } from '../../lib/auth';
 import apollo from '../../lib/apollo';
 import theme from '../../lib/colors';
@@ -38,35 +38,46 @@ export default class Logout extends React.Component<NavigationScreenProps> {
 
         const groups = res.data.groups;
 
-        groups.forEach((group: any) => {
-            firebase.messaging().unsubscribeFromTopic(group.id);
-        });
+        return new Promise((resolv, e) =>
+            groups.forEach((group: any, index: any, array: any[]) => {
+                firebase.messaging().unsubscribeFromTopic(group.id);
+                console.log('unsubscribed from', group.id);
+                if (index === array.length - 1) {
+                    resolv(undefined);
+                }
+            })
+        );
     }
 
     private processLogout = async () => {
-        // token
-        const token = await clientId();
-
-        // logout in server
-        await auth('logout', {}, { headers: { authorization: token } });
-
         // init apollo
         const { persistor, client } = await apollo();
 
         // get all groups id and unsubscribe from each
-        const groups = await client.query({query: GROUP_ID}).catch((e) => null);
+        const groups = await client.query({ query: GROUP_ID }).catch((e) => console.warn(e));
         await this.unsubscribeFromGroups(groups);
+
+        // token
+        const token = await clientId();
+
+        // logout in server
+        try {
+            await auth('logout', {}, { headers: { authorization: token } });
+        } catch (e) {
+            showAlert('There was an error when trying to logout');
+            return this.props.navigation.navigate('Main');
+        }
 
         // reset apollo and purge cache
         client.resetStore();
         persistor.purge();
 
         // remove local token
-        await AsyncStorage.clear();
+        await AsyncStorage.removeItem('client_id');
 
         // navigate to login page
         ToastAndroid.show('logged out successfully', ToastAndroid.LONG);
-        this.props.navigation.navigate('Login');
+        return this.props.navigation.navigate('Login');
     };
 }
 

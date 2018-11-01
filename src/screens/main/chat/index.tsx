@@ -7,7 +7,7 @@ import * as Gql from './gql';
 
 // types
 import * as Navigation from 'react-navigation';
-import { messageParam } from './types';
+import { messageParam, Props } from './types';
 
 // helpers
 import theme from '../../../lib/colors';
@@ -20,18 +20,12 @@ import View from './view';
 // context
 import ChatContext from './context';
 
-type Props = Apollo.WithApolloClient<
-    Navigation.NavigationScreenProps & {
-        allMessages: Apollo.DataValue<{ user: any; group: any }, {}>;
-        sendMessage: Apollo.MutationFunc<{}>;
-    }
->;
-
 class ChatScreen extends React.Component<Props> {
     static navigationOptions = {
         header: null
     };
 
+    state = { refreshing: false };
     // params from router
     groupId = this.props.navigation.getParam('groupId');
     pageFocusListener: Navigation.NavigationEventSubscription;
@@ -70,6 +64,22 @@ class ChatScreen extends React.Component<Props> {
         }
     };
 
+    fetchMore = () => {
+        if (this.state.refreshing) {
+            return;
+        }
+
+        this.setState({ refreshing: true }, async () => {
+            const messageCount = this.props.allMessages.group.messages.length;
+            console.log(messageCount);
+            await this.props.allMessages.fetchMore({
+                variables: { after: messageCount },
+                updateQuery: utils.updateFetchMore
+            });
+            this.setState({ refreshing: false });
+        });
+    };
+
     componentWillUnmount() {
         AppState.removeEventListener('change', this.handleViewChange);
         this.pageFocusListener.remove();
@@ -85,7 +95,7 @@ class ChatScreen extends React.Component<Props> {
         const mutate = this.props.sendMessage;
 
         if (queryData.error && (!queryData.user || !queryData.group)) {
-            showAlert('Something is wrong', 'error');
+            showAlert('Something went wrong', 'error');
             return null;
         }
 
@@ -94,7 +104,9 @@ class ChatScreen extends React.Component<Props> {
                 user: queryData.user,
                 group: queryData.group,
                 subscribe: () => utils.subscribeToMessages(this.groupId, queryData.subscribeToMore),
-                sendMsg: (obj: messageParam) => this.sendMessage(mutate, obj)
+                sendMsg: (obj: messageParam) => this.sendMessage(mutate, obj),
+                fetchMore: this.fetchMore,
+                refreshing: this.state.refreshing
             };
 
             return (
@@ -121,7 +133,7 @@ class ChatScreen extends React.Component<Props> {
 const queryEnhancer = Apollo.graphql(Gql.ALL_MESSAGES, {
     name: 'allMessages',
     options: (props: Navigation.NavigationScreenProps) => ({
-        variables: { groupID: props.navigation.getParam('groupId') },
+        variables: { groupID: props.navigation.getParam('groupId'), first: 15 },
         fetchPolicy: 'cache-and-network'
     })
 });

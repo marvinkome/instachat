@@ -19,6 +19,9 @@ import { contextConnect } from '../../../../../lib/context';
 import context from '../../context';
 import { ViewProps } from '../../types';
 
+const ITEM_HEIGHT = 72.667;
+const THRESHOLD = 1;
+
 type ChatBodyProps = Props & {
     items: Array<{
         id: string;
@@ -39,6 +42,8 @@ type ChatBodyProps = Props & {
     };
     unreadCount: number;
     lastViewedMessage: string;
+    fetchMore: () => void;
+    refreshing: boolean;
 };
 
 type ChatBodyState = {
@@ -106,6 +111,17 @@ export class ChatBody extends React.Component<ChatBodyProps, ChatBodyState> {
         }
     };
 
+    checkIfBeginningReached = ({ nativeEvent }: any) => {
+        const { layoutMeasurement, contentOffset } = nativeEvent;
+        const currentPos = layoutMeasurement.height + contentOffset.y;
+        const listLength = ITEM_HEIGHT * this.props.items.length;
+        const reactThreshold = listLength - ITEM_HEIGHT * THRESHOLD;
+
+        if (!this.props.refreshing && currentPos >= reactThreshold) {
+            this.props.fetchMore();
+        }
+    };
+
     renderItem = (props: any) => {
         const newMessageId = this.props.lastViewedMessage;
 
@@ -148,6 +164,13 @@ export class ChatBody extends React.Component<ChatBodyProps, ChatBodyState> {
         );
     }
 
+    itemSeparator = ({ leadingItem }: any) => (
+        <Hr
+            text={moment(leadingItem.timestamp, 'ddd MMM DD YYYY').format('D MMM Y')}
+            lineStyle={style.dateDivider}
+        />
+    );
+
     render() {
         const data = _.chain(this.props.items)
             .groupBy((item) => new Date(Number(item.timestamp)).toDateString())
@@ -159,15 +182,9 @@ export class ChatBody extends React.Component<ChatBodyProps, ChatBodyState> {
                 <FlatList
                     data={data}
                     renderItem={this.renderItem}
-                    ItemSeparatorComponent={({ leadingItem }) => (
-                        <Hr
-                            text={moment(leadingItem.timestamp, 'ddd MMM DD YYYY').format(
-                                'D MMM Y'
-                            )}
-                            lineStyle={style.dateDivider}
-                        />
-                    )}
+                    ItemSeparatorComponent={this.itemSeparator}
                     keyExtractor={(item) => item.timestamp}
+                    onScroll={this.checkIfBeginningReached}
                     inverted
                 />
 
@@ -177,11 +194,13 @@ export class ChatBody extends React.Component<ChatBodyProps, ChatBodyState> {
     }
 }
 
-const mapper = ({ group }: ViewProps) => ({
+const mapper = ({ group, fetchMore, refreshing }: ViewProps) => ({
     items: group.messages,
     groupId: group.id,
     unreadCount: group.unreadCount,
-    lastViewedMessage: group.lastViewedMessage
+    lastViewedMessage: group.lastViewedMessage,
+    fetchMore,
+    refreshing
 });
 
 export default contextConnect(context, mapper)(ChatBody);

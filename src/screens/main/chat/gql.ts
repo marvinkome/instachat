@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 export const ALL_MESSAGES = gql`
-    query allMessages($groupID: String!) {
+    query allMessages($groupID: String!, $first: Int, $after: Int) {
         user {
             id
             username
@@ -11,7 +11,7 @@ export const ALL_MESSAGES = gql`
             name
             unreadCount
             lastViewedMessage
-            messages(sort: true) {
+            messages(sort: true, first: $first, after: $after) {
                 id
                 message
                 timestamp
