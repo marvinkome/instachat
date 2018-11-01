@@ -2,8 +2,10 @@ import * as React from 'react';
 import { NavigationScreenProps as NSP } from 'react-navigation';
 import { Mutation, FetchResult } from 'react-apollo';
 import { DataProxy } from 'apollo-cache';
+import { ApolloError } from 'apollo-client';
 
 import theme from '../../../lib/colors';
+import { showAlert } from '../../../lib/helpers';
 import query from '../home/chats/gql';
 import { joinGroup } from './gql';
 import { stackStyles } from './style';
@@ -17,7 +19,20 @@ export default class JoinGroup extends React.Component<NSP> {
         headerTintColor: theme.primary.typo.main
     };
 
-    onCompleted = (data: Record<string, any>) => {
+    render() {
+        return (
+            <Mutation
+                mutation={joinGroup}
+                onError={this.onError}
+                update={this.updateCache}
+                onCompleted={this.onCompleted}
+            >
+                {(fn) => <View joinGroup={fn} />}
+            </Mutation>
+        );
+    }
+
+    private onCompleted = (data: Record<string, any>) => {
         if (!data) {
             return this.props.navigation.navigate('Home');
         }
@@ -25,7 +40,18 @@ export default class JoinGroup extends React.Component<NSP> {
         const groupId = data.joinGroup.id;
         return this.props.navigation.navigate('Chat', { groupId });
     };
-    updateCache = (cache: DataProxy, { data }: FetchResult) => {
+    private onError = (e: ApolloError) => {
+        if (/invitation link is bad/i.test(e.message)) {
+            return showAlert('Bad invitation link', 'error');
+        }
+
+        if (/already in group/i.test(e.message)) {
+            return showAlert("You're already in this group", 'error');
+        }
+
+        return showAlert('Something went wrong', 'error');
+    };
+    private updateCache = (cache: DataProxy, { data }: FetchResult) => {
         const cacheRes = cache.readQuery({ query });
         if (!cacheRes || !data) {
             return;
@@ -37,11 +63,4 @@ export default class JoinGroup extends React.Component<NSP> {
 
         cache.writeQuery({ query, data: cacheRes });
     };
-    render() {
-        return (
-            <Mutation mutation={joinGroup} update={this.updateCache} onCompleted={this.onCompleted}>
-                {(fn) => <View joinGroup={fn} />}
-            </Mutation>
-        );
-    }
 }
