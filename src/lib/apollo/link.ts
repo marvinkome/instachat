@@ -1,5 +1,7 @@
 // link
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, ToastAndroid } from 'react-native';
+import Navigation from '../navigationService';
+
 import { getMainDefinition } from 'apollo-utilities';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
@@ -24,7 +26,15 @@ export default function Link(token: string, cache: InMemoryCache) {
     const messageQueue = new MessageQueue(AsyncStorage);
 
     // error link
-    const errorLink = onError(({ networkError, operation, forward }) => {
+    const errorLink = onError(({ networkError, operation, forward, graphQLErrors }) => {
+        if (graphQLErrors) {
+            graphQLErrors.map((err) => {
+                if (err.message.match(/can't authenticate/i)) {
+                    ToastAndroid.show('Authentication error', ToastAndroid.SHORT);
+                    Navigation.navigate('Logout');
+                }
+            });
+        }
         if (networkError) {
             if (operation.operationName === 'sendMessage') {
                 messageQueue
@@ -96,9 +106,7 @@ export default function Link(token: string, cache: InMemoryCache) {
         ({ query }) => {
             // @ts-ignore
             const { kind, operation } = getMainDefinition(query);
-            return (
-                kind === 'OperationDefinition' && operation === 'subscription'
-            );
+            return kind === 'OperationDefinition' && operation === 'subscription';
         },
         wsLink,
         httpLink

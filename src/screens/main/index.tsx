@@ -82,7 +82,9 @@ export default class MainRoute extends React.Component<NP, IState> {
     }
 
     componentWillUnmount() {
-        this.notificationOpened();
+        if (this.notificationOpened) {
+            this.notificationOpened();
+        }
     }
 
     render() {
