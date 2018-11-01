@@ -34,6 +34,7 @@
         "react-native-message-bar": "^2.0.10",
         "react-native-modal": "^6.5.0",
         "react-native-popup-menu": "^0.14.0",
+        "react-native-splash-screen": "^3.1.1",
         "react-native-vector-icons": "^5.0.0",
         "react-navigation": "^2.5.5",
         "recompose": "^0.30.0",

@@ -82,6 +82,16 @@
 		<string>PT_Sans_bold.ttf</string>
 		<string>PT_Sans_italic.ttf</string>
 		<string>PT_Sans.ttf</string>
+		<string>LobsterTwo_bold_italic.ttf</string>
+		<string>LobsterTwo_bold.ttf</string>
+		<string>LobsterTwo_italic.ttf</string>
+		<string>LobsterTwo.ttf</string>
+		<string>RobotoCondensed_bold_italic.ttf</string>
+		<string>RobotoCondensed_bold.ttf</string>
+		<string>RobotoCondensed_italic.ttf</string>
+		<string>RobotoCondensed_light_italic.ttf</string>
+		<string>RobotoCondensed_light.ttf</string>
+		<string>RobotoCondensed.ttf</string>
 	</array>
 </dict>
 </plist>

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import firebase, { RNFirebase } from 'react-native-firebase';
 import { NavigationScreenProps as NP } from 'react-navigation';
+import SplashScreen from 'react-native-splash-screen';
 
 // context providers
 import { ApolloProvider } from 'react-apollo';
@@ -79,6 +80,9 @@ export default class MainRoute extends React.Component<NP, IState> {
 
         // setup notifications
         await this.setupNotifications();
+
+        // hide splash
+        SplashScreen.hide();
     }
 
     componentWillUnmount() {
