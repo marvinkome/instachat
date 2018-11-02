@@ -57,6 +57,7 @@ export class GroupForm extends React.Component<IProps, IState> {
                         inputStyle={styles.input}
                         underlineColorAndroid="hsl(0, 0%, 70%)"
                         placeholderTextColor={theme.primary.typo.text}
+                        multiline
                         onChangeText={(text) => this.onTextChange(text, 'topic')}
                     />
                 </View>

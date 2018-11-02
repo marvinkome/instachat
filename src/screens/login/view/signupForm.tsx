@@ -1,11 +1,14 @@
 import * as React from 'react';
 import { View, Alert } from 'react-native';
 import { Button } from 'react-native-elements';
+
+import Loader from '../../../components/loader';
 import FormInput from './formInput';
 import { formStyles as styles } from './styles';
 import { auth } from '../../../lib/auth';
 
 interface IState {
+    loading: boolean;
     username: string;
     email: string;
     password: string;
@@ -17,6 +20,7 @@ interface IProps {
 
 export default class SignUpForm extends React.Component<IProps, IState> {
     state = {
+        loading: false,
         username: '',
         email: '',
         password: ''
@@ -30,23 +34,35 @@ export default class SignUpForm extends React.Component<IProps, IState> {
     };
 
     onSubmit = async () => {
-        const { username, email, password } = this.state;
-        if (!username || !email || !password) {
-            return;
+        const { loading, ...state } = this.state;
+
+        // validate inputs
+        if (!state.username || !state.email || !state.password) {
+            return Alert.alert('', 'Email, Username and Password is required');
         }
 
+        // show loader
+        this.setState({ loading: true });
+
         try {
-            const res = await auth('signup', this.state);
+            const res = await auth('signup', state);
+
+            // show error from server
             if (res.error) {
+                this.setState({ loading: false });
                 return Alert.alert('Error', res.error);
             }
 
-            // signup was successfull
-            // redirect to login
+            // signup was successfull, redirect to login
+            this.setState({ loading: false });
             Alert.alert('', 'Account has been created. Now you can login');
             this.props.toggleView();
         } catch (e) {
-            return Alert.alert('Error', 'Problem when trying to create account');
+            this.setState({ loading: false });
+            return Alert.alert(
+                'Error',
+                'Problem when trying to create account. Check your internet connectiion and try again.'
+            );
         }
     };
 
@@ -55,11 +71,7 @@ export default class SignUpForm extends React.Component<IProps, IState> {
             <React.Fragment>
                 <View style={styles.container}>
                     <FormInput placeholder="Username" icon="user" onChange={this.onTextChange} />
-                    <FormInput
-                        placeholder="Email"
-                        icon="mail"
-                        onChange={this.onTextChange}
-                    />
+                    <FormInput placeholder="Email" icon="mail" onChange={this.onTextChange} />
                     <FormInput
                         placeholder="Password"
                         icon="lock"
@@ -74,6 +86,7 @@ export default class SignUpForm extends React.Component<IProps, IState> {
                     title="SIGNUP"
                     onPress={this.onSubmit}
                 />
+                {this.state.loading && <Loader translucent />}
             </React.Fragment>
         );
     }

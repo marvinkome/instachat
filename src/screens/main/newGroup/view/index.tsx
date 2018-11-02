@@ -32,12 +32,20 @@ class PageView extends React.Component<NavigationInjectedProps & IProps> {
         }
     };
 
+    createGroup = (variables: any) => {
+        this.props.createGroup({
+            variables: {
+                imageUrl: this.state.imageUrl,
+                ...variables
+            }
+        });
+    };
+
     render() {
         let groupId = null;
 
         if (this.props.data && this.props.data.createGroup) {
-            const { group } = this.props.data.createGroup;
-            groupId = group.id;
+            groupId = this.props.data.createGroup.id;
         }
 
         const avatar = this.state.imageUrl.length
@@ -49,7 +57,7 @@ class PageView extends React.Component<NavigationInjectedProps & IProps> {
                 <View style={styles.avatar}>
                     <Avatar rounded={true} large={true} onPress={this.showPicker} {...avatar} />
                 </View>
-                <GroupForm createGroup={(variables) => this.props.createGroup({ variables })} />
+                <GroupForm createGroup={this.createGroup} />
 
                 {/* if data is ready */}
                 {groupId && <InviteLink groupId={groupId} enableGroupLink />}

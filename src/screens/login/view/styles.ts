@@ -20,7 +20,7 @@ export const viewStyles = StyleSheet.create({
         color: theme.primary.typo.sub,
         fontSize: 15,
         alignSelf: 'center',
-        marginTop: 10
+        marginTop: 20
     },
     bottomCta: {
         textDecorationLine: 'underline',

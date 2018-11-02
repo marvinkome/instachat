@@ -19,6 +19,7 @@ export const ViewStyles = StyleSheet.create({
     emptyText: {
         fontFamily: theme.fontRegular,
         textAlign: 'center',
+        color: theme.primary.typo.main,
         margin: 15
     }
 });

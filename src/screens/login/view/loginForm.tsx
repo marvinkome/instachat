@@ -2,17 +2,21 @@ import * as React from 'react';
 import { View, AsyncStorage, ToastAndroid, Alert } from 'react-native';
 import { Button } from 'react-native-elements';
 import { withNavigation, NavigationInjectedProps } from 'react-navigation';
+
+import Loader from '../../../components/loader';
 import { auth } from '../../../lib/auth';
 import FormInput from './formInput';
 import { formStyles as styles } from './styles';
 
 type IState = {
+    loading: boolean;
     email: string;
     password: string;
 };
 
 class LoginForm extends React.Component<NavigationInjectedProps, IState> {
     state = {
+        loading: false,
         email: '',
         password: ''
     };
@@ -25,24 +29,33 @@ class LoginForm extends React.Component<NavigationInjectedProps, IState> {
     };
 
     onSubmit = async () => {
-        if (!this.state.email || !this.state.password) {
-            return;
+        const { loading, ...state } = this.state;
+
+        // validate inputs
+        if (!state.email || !state.password) {
+            return Alert.alert('', 'Email and password is required');
         }
 
+        // show loader
+        this.setState({ loading: true });
+
         try {
-            const data = await auth('login', this.state);
+            const data = await auth('login', state);
+
+            // show error from server
             if (data.error) {
-                // TODO set error message
-                Alert.alert('Error', data.error);
-                return;
+                this.setState({ loading: false });
+                return Alert.alert('Error', data.error);
             }
 
-            // save token to storage
+            // save token to storage, hide loader amd move to home screen
             await AsyncStorage.setItem('client_id', data.token);
-            this.props.navigation.navigate('Home');
+            this.setState({ loading: false });
+            this.props.navigation.navigate('Main');
         } catch (e) {
+            this.setState({ loading: false });
             return ToastAndroid.show(
-                'Error when trying to log in please try again',
+                'Error when trying to log in. Check your internet connectiion and try again.',
                 ToastAndroid.LONG
             );
         }
@@ -67,6 +80,7 @@ class LoginForm extends React.Component<NavigationInjectedProps, IState> {
                     title="LOGIN"
                     onPress={this.onSubmit}
                 />
+                {this.state.loading && <Loader translucent />}
             </React.Fragment>
         );
     }

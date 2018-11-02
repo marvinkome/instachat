@@ -24,7 +24,7 @@ export default class NewGroup extends React.Component {
 
         const newGroup = data.createGroup;
         // @ts-ignore
-        cacheRes.user.groups.push(newGroup);
+        cacheRes.groups.push(newGroup);
 
         cache.writeQuery({ query, data: cacheRes });
     };

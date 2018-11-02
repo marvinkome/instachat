@@ -5,14 +5,12 @@ export const createGroup = gql`
         createGroup(name: $name, topic: $topic, image: $imageUrl) {
             id
             name
+            unreadCount
             image
-            messages(first: 1, sort: true) {
+            lastMessage {
                 id
                 message
                 timestamp
-            }
-            role {
-                name
             }
         }
     }

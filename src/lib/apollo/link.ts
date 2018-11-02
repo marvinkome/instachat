@@ -1,6 +1,7 @@
 // link
 import { AsyncStorage, ToastAndroid } from 'react-native';
 import Navigation from '../navigationService';
+import {API_SERVER} from '../keys';
 
 import { getMainDefinition } from 'apollo-utilities';
 import { InMemoryCache } from 'apollo-cache-inmemory';
@@ -74,7 +75,7 @@ export default function Link(token: string, cache: InMemoryCache) {
 
     // network link
     const networkLink = createHttpLink({
-        uri: 'http://localhost:3000/graphql'
+        uri: API_SERVER.http + '/graphql'
     });
 
     // http link
@@ -92,7 +93,7 @@ export default function Link(token: string, cache: InMemoryCache) {
 
     // ws link
     const wsLink = new WebSocketLink({
-        uri: 'ws://localhost:3000/graphql',
+        uri: API_SERVER.ws + '/graphql',
         options: {
             reconnect: true,
             connectionParams: {

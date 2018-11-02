@@ -6,9 +6,6 @@ import { UserSettingsStyles as styles } from './styles';
 
 function Settings(props: NavigationInjectedProps & WithApolloClient<{}>) {
     const items = [
-        { title: 'Invite Friends' },
-        { title: 'FAQ' },
-        { title: 'Help' },
         { title: 'About' },
         { title: 'Logout', onPress: () => props.navigation.navigate('Logout') }
     ];

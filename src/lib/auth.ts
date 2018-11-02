@@ -1,5 +1,7 @@
+import { API_SERVER } from './keys';
+
 export async function auth(endpoint: string, body: any, options?: any) {
-    const resp = await fetch(`http://localhost:3000/auth/${endpoint}`, {
+    const resp = await fetch(`${API_SERVER.http}/auth/${endpoint}`, {
         ...options,
         method: 'POST',
         body: JSON.stringify(body),
