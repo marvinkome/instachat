@@ -9,6 +9,10 @@ const themeDark = {
             text: '#bfbfbf'
         }
     },
+    error: {
+        bg: '#FF4444',
+        text: '#f2f2f2'
+    },
     secondary: {
         light: '#7953d2',
         regular: '#4527a0',

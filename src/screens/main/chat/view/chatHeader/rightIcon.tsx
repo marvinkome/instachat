@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { compose, withState, ComponentEnhancer as CE } from 'recompose';
 
 // UI elements
 import { Menu, MenuTrigger, MenuOption, MenuOptions } from 'react-native-popup-menu';
 import { Icon } from 'react-native-elements';
+
+import DeleteModal from '../../../../../components/deleteGroup';
 import InviteLink from '../../../../../components/inviteLink';
 
 // styles
@@ -13,32 +14,36 @@ const menuStyle = {
     optionText: styles.menuText
 };
 
-interface IProps {
-    showInvite: boolean;
-    toggleInvite: (fn: (invite: boolean) => boolean) => void;
-}
-interface OProps {
+interface Props {
     role: string;
     groupId: string;
 }
 
-function RightComponent(props: IProps & OProps) {
-    return props.role === 'administrator' ? (
-        <Menu>
-            <MenuTrigger>
-                <Icon name="dots-three-vertical" type="entypo" iconStyle={styles.rightIcon} />
-            </MenuTrigger>
-            <MenuOptions customStyles={menuStyle}>
-                <MenuOption
-                    text="Create Invite Link"
-                    onSelect={() => props.toggleInvite((si) => !si)}
-                />
-            </MenuOptions>
+export default class RightComponent extends React.Component<Props> {
+    state = { showInvite: false, showDelete: false };
+    toggleInvite = () => this.setState({ showInvite: !this.state.showInvite });
+    toggleDelete = () => this.setState({ showDelete: !this.state.showDelete });
 
-            {props.showInvite && <InviteLink groupId={props.groupId} />}
-        </Menu>
-    ) : null;
+    render() {
+        return this.props.role === 'administrator' ? (
+            <Menu>
+                <MenuTrigger>
+                    <Icon name="dots-three-vertical" type="entypo" iconStyle={styles.rightIcon} />
+                </MenuTrigger>
+                <MenuOptions customStyles={menuStyle}>
+                    <MenuOption text="Create Invite Link" onSelect={this.toggleInvite} />
+                    <MenuOption text="Delete Group" onSelect={this.toggleDelete} />
+                </MenuOptions>
+
+                {this.state.showInvite && <InviteLink groupId={this.props.groupId} />}
+                {this.state.showDelete && (
+                    <DeleteModal
+                        groupId={this.props.groupId}
+                        isOpen={this.state.showDelete}
+                        toggle={this.toggleDelete}
+                    />
+                )}
+            </Menu>
+        ) : null;
+    }
 }
-
-const enhance: CE<IProps, OProps> = compose(withState('showInvite', 'toggleInvite', false));
-export default enhance(RightComponent);

@@ -2,7 +2,7 @@ import * as React from 'react';
 import Modal from 'react-native-modal';
 import { MutationFn } from 'react-apollo';
 import { withNavigation, NavigationInjectedProps as N } from 'react-navigation';
-import { View, Text, Clipboard, ToastAndroid } from 'react-native';
+import { View, Text, Clipboard, ToastAndroid, ActivityIndicator } from 'react-native';
 import { Button } from 'react-native-elements';
 import { modalView as styles } from './styles';
 
@@ -14,12 +14,14 @@ interface IProps {
 interface IState {
     showModal: boolean;
     invite: string;
+    loading: boolean;
 }
 
 class InviteModal extends React.Component<IProps & N, IState> {
     state = {
-        showModal: false,
-        invite: ''
+        showModal: true,
+        invite: '',
+        loading: true
     };
 
     async componentDidMount() {
@@ -28,7 +30,7 @@ class InviteModal extends React.Component<IProps & N, IState> {
             return;
         }
         const invite = res.data.createInvite;
-        this.setState({ invite, showModal: true });
+        this.setState({ invite, loading: false });
     }
 
     toggleVisibility = () => {
@@ -50,38 +52,39 @@ class InviteModal extends React.Component<IProps & N, IState> {
     };
 
     render() {
-        const { showModal } = this.state;
+        const { showModal, loading } = this.state;
         return (
             <View style={styles.modalContainer}>
-                <Modal
-                    isVisible={showModal}
-                    onBackdropPress={this.toggleVisibility}
-                >
-                    <View style={styles.container}>
-                        <Text style={styles.text}>
-                            use Invite link to add users to your group
-                        </Text>
-                        <View>
-                            <Text
-                                style={styles.link}
-                                numberOfLines={1}
-                                onLongPress={this.copyLink}
-                            >
-                                {this.state.invite}
+                <Modal isVisible={showModal} onBackdropPress={this.toggleVisibility}>
+                    {loading ? (
+                        <ActivityIndicator />
+                    ) : (
+                        <View style={styles.container}>
+                            <Text style={styles.text}>
+                                Share invite link to users to join your group
                             </Text>
-                        </View>
-                        <Button
-                            title={'copy link'.toUpperCase()}
-                            onPress={this.copyLink}
-                            buttonStyle={styles.button}
-                        />
+                            <View>
+                                <Text
+                                    style={styles.link}
+                                    numberOfLines={1}
+                                    onLongPress={this.copyLink}
+                                >
+                                    {this.state.invite}
+                                </Text>
+                            </View>
+                            <Button
+                                title={'copy link'.toUpperCase()}
+                                onPress={this.copyLink}
+                                buttonStyle={styles.button}
+                            />
 
-                        {this.props.enableGroupLink && (
-                            <Text style={styles.cta} onPress={this.goToGroup}>
-                                Go to group
-                            </Text>
-                        )}
-                    </View>
+                            {this.props.enableGroupLink && (
+                                <Text style={styles.cta} onPress={this.goToGroup}>
+                                    Go to group
+                                </Text>
+                            )}
+                        </View>
+                    )}
                 </Modal>
             </View>
         );

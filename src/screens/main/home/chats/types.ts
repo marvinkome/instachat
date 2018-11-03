@@ -7,6 +7,7 @@ export interface ListingType {
     image: any;
     onPress: () => void;
     typing?: boolean;
+    role: string;
 }
 
 export interface ViewProps {
@@ -31,6 +32,9 @@ export interface ViewProps {
                 id: string;
                 message: string;
                 timestamp: string;
+            };
+            role: {
+                name: string;
             };
         }>;
     };

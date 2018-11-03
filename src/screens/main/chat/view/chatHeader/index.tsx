@@ -12,7 +12,7 @@ import { ViewProps } from '../../types';
 
 const LeftIcon = withNavigation((props: NavigationInjectedProps & { name: string }) => (
     <View style={styles.leftCont}>
-        <TouchableNativeFeedback onPress={() => props.navigation.goBack()}>
+        <TouchableNativeFeedback onPress={() => props.navigation.navigate('Home')}>
             <Icon name="ios-arrow-round-back" type="ionicon" iconStyle={styles.icon} />
         </TouchableNativeFeedback>
         <Text data-testID="username" style={styles.title}>

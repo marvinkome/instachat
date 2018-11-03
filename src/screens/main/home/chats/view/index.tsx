@@ -157,8 +157,9 @@ class MainView extends React.Component<N & ViewProps & {}, ViewState> {
                 timestamp: '',
                 unread,
                 image: groupImage,
-                onPress: () => false,
-                typing: false
+                onPress: () => this.props.navigation.navigate('Chat', { groupId: group.id }),
+                typing: false,
+                role: group.role.name
             };
 
             // check if last message is available
@@ -166,12 +167,7 @@ class MainView extends React.Component<N & ViewProps & {}, ViewState> {
                 item = {
                     ...item,
                     text: group.lastMessage.message,
-                    timestamp: formatDate(Number(group.lastMessage.timestamp)),
-                    onPress: () =>
-                        this.props.navigation.navigate('Chat', {
-                            groupId: group.id,
-                            lastMessageId: group.lastMessage.timestamp
-                        })
+                    timestamp: formatDate(Number(group.lastMessage.timestamp))
                 };
             }
 
