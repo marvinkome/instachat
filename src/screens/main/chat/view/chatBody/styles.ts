@@ -46,5 +46,12 @@ export const chatMsg = StyleSheet.create({
     },
     dateDivider: {
         backgroundColor: theme.primary.light
+    },
+    emptyText: {
+        fontFamily: theme.fontRegular,
+        color: theme.primary.typo.sub,
+        textAlign: 'center',
+        paddingBottom: 35,
+        fontSize: 14
     }
 });

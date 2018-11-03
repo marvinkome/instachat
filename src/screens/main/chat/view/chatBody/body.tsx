@@ -164,6 +164,10 @@ export class ChatBody extends React.Component<ChatBodyProps, ChatBodyState> {
         );
     }
 
+    renderEmptyGroup() {
+        return <Text style={style.emptyText}>Welcome to the beginning of the group</Text>;
+    }
+
     itemSeparator = ({ leadingItem }: any) => (
         <Hr
             text={moment(leadingItem.timestamp, 'ddd MMM DD YYYY').format('D MMM Y')}
@@ -185,9 +189,9 @@ export class ChatBody extends React.Component<ChatBodyProps, ChatBodyState> {
                     ItemSeparatorComponent={this.itemSeparator}
                     keyExtractor={(item) => item.timestamp}
                     onScroll={this.checkIfBeginningReached}
+                    ListEmptyComponent={this.renderEmptyGroup()}
                     inverted
                 />
-
                 {this.renderTypingUsers()}
             </List>
         );

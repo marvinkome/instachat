@@ -27,12 +27,11 @@ export const modalView = StyleSheet.create({
     },
     btnText: {
         fontFamily: theme.fontRegular,
-        color: theme.primary.typo.sub
+        color: theme.primary.typo.main
     },
     btnYes: {
-        borderRadius: 7,
-        borderWidth: 1,
-        borderColor: theme.error.bg
+        borderRadius: 5,
+        backgroundColor: theme.error.bg
     },
     button: {
         backgroundColor: 'transparent'

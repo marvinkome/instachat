@@ -34,18 +34,18 @@ class DeleteModal extends React.Component<IProps & N> {
                 <Modal isVisible={isOpen} onBackdropPress={toggle}>
                     <View style={styles.container}>
                         <Text style={styles.text}>
-                            Are you sure you want to delete this group? There's no turning back
+                            Are you sure you want to delete this group? This action can't be undone.
                         </Text>
                         <View style={styles.btnsCont}>
                             <Button
-                                title="NO"
+                                title="CANCEL"
                                 onPress={toggle}
                                 containerViewStyle={styles.btnCont}
                                 buttonStyle={styles.button}
                                 textStyle={styles.btnText}
                             />
                             <Button
-                                title="YES"
+                                title="DELETE"
                                 onPress={this.deleteGroup}
                                 buttonStyle={[styles.button, styles.btnYes]}
                                 containerViewStyle={styles.btnCont}
