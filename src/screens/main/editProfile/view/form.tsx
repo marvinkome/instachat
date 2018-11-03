@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { FormInput, Button, FormLabel } from 'react-native-elements';
 import { linkForm as styles } from './styles';
+import theme from '../../../../lib/colors';
 
 interface IProps {
     user: {
@@ -48,6 +49,7 @@ export class LinkForm extends React.Component<IProps, IState> {
                     value={this.state.username}
                     underlineColorAndroid="hsl(0, 0%, 70%)"
                     placeholder="Username"
+                    placeholderTextColor={theme.primary.typo.text}
                     maxLength={24}
                 />
                 <FormInput
@@ -56,6 +58,7 @@ export class LinkForm extends React.Component<IProps, IState> {
                     value={this.state.about}
                     underlineColorAndroid="hsl(0, 0%, 70%)"
                     placeholder="Write something about yourself"
+                    placeholderTextColor={theme.primary.typo.text}
                     maxLength={128}
                     multiline
                 />
@@ -66,6 +69,7 @@ export class LinkForm extends React.Component<IProps, IState> {
                     inputStyle={styles.input}
                     value={this.state.email}
                     underlineColorAndroid="hsl(0, 0%, 70%)"
+                    placeholderTextColor={theme.primary.typo.text}
                     keyboardType="email-address"
                     maxLength={64}
                     placeholder="Email"

@@ -16,11 +16,11 @@ export const viewStyle = StyleSheet.create({
 export const linkForm = StyleSheet.create({
     label: {
         fontFamily: theme.fontRegular,
-        color: theme.primary.typo.sub,
+        color: theme.primary.typo.main,
         fontSize: 16
     },
     input: {
-        color: theme.primary.typo.text,
+        color: theme.primary.typo.sub,
         fontFamily: theme.fontRegular,
         fontSize: 16
     },

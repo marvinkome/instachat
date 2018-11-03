@@ -2,7 +2,7 @@ import { SubscribeToMoreOptions as STMO, ApolloClient } from 'apollo-client';
 import { MutationFn, FetchResult } from 'react-apollo';
 
 import { createFakeResp, generateErrorId } from '../../../lib/helpers';
-import { MESSAGE_SUBSCRIPTION, ADD_ERROR, ALL_MESSAGES, GROUP_FRAGMENT } from './gql';
+import { MESSAGE_SUBSCRIPTION, ADD_ERROR, GROUP_FRAGMENT } from './gql';
 import { messageParam } from './types';
 
 export function updateFetchMore(prev: any, { fetchMoreResult, variables }: any) {
