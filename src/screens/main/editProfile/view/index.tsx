@@ -2,6 +2,7 @@ import * as React from 'react';
 import { View, ScrollView } from 'react-native';
 import { Avatar } from 'react-native-elements';
 import { uploadImage, showImagePicker } from '../../../../lib/helpers';
+import Loader from '../../../../components/loader';
 
 import { viewStyle as styles } from './styles';
 import { LinkForm } from './form';
@@ -19,7 +20,8 @@ interface IProps {
 
 export default class PageView extends React.Component<IProps> {
     state = {
-        imageUrl: ''
+        imageUrl: '',
+        loading: false
     };
 
     showPicker = async () => {
@@ -36,8 +38,10 @@ export default class PageView extends React.Component<IProps> {
         }
     };
 
-    updateUser = (user: any) => {
-        this.props.updateUser({ ...user, ...this.state });
+    updateUser = async (user: any) => {
+        this.setState({ loading: true });
+        await this.props.updateUser({ ...user, ...this.state });
+        this.setState({ loading: false });
     };
 
     render() {
@@ -57,6 +61,8 @@ export default class PageView extends React.Component<IProps> {
                     <Avatar rounded large onPress={this.showPicker} {...avatarProps} />
                 </View>
                 <LinkForm user={this.props.user} updateUser={this.updateUser} />
+
+                {this.state.loading && <Loader translucent />}
             </ScrollView>
         );
     }

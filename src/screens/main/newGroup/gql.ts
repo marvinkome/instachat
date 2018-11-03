@@ -12,6 +12,9 @@ export const createGroup = gql`
                 message
                 timestamp
             }
+            role {
+                name
+            }
         }
     }
 `;

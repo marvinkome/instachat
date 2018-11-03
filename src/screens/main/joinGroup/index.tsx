@@ -59,7 +59,7 @@ export default class JoinGroup extends React.Component<NSP> {
 
         const newGroup = data.joinGroup;
         // @ts-ignore
-        cacheRes.user.groups.push(newGroup);
+        cacheRes.groups.push(newGroup);
 
         cache.writeQuery({ query, data: cacheRes });
     };

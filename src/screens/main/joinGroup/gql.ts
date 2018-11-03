@@ -5,7 +5,9 @@ export const joinGroup = gql`
         joinGroup(inviteId: $invite) {
             id
             name
-            messages(first: 1, sort: true) {
+            unreadCount
+            image
+            lastMessage {
                 id
                 message
                 timestamp

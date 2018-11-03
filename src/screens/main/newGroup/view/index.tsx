@@ -7,6 +7,7 @@ import { Avatar } from 'react-native-elements';
 
 import { showImagePicker, uploadImage } from '../../../../lib/helpers';
 import InviteLink from '../../../../components/inviteLink';
+import Loader from '../../../../components/loader';
 
 import { GroupForm } from './form';
 import { viewStyle as styles } from './styles';
@@ -16,7 +17,7 @@ interface IProps {
     data: any;
 }
 class PageView extends React.Component<NavigationInjectedProps & IProps> {
-    state = { imageUrl: '' };
+    state = { imageUrl: '', loading: false };
 
     showPicker = async () => {
         try {
@@ -32,13 +33,15 @@ class PageView extends React.Component<NavigationInjectedProps & IProps> {
         }
     };
 
-    createGroup = (variables: any) => {
-        this.props.createGroup({
+    createGroup = async (variables: any) => {
+        this.setState({ loading: true });
+        await this.props.createGroup({
             variables: {
                 imageUrl: this.state.imageUrl,
                 ...variables
             }
         });
+        this.setState({ loading: false });
     };
 
     render() {
@@ -58,6 +61,8 @@ class PageView extends React.Component<NavigationInjectedProps & IProps> {
                     <Avatar rounded={true} large={true} onPress={this.showPicker} {...avatar} />
                 </View>
                 <GroupForm createGroup={this.createGroup} />
+
+                {this.state.loading && <Loader translucent />}
 
                 {/* if data is ready */}
                 {groupId && <InviteLink groupId={groupId} enableGroupLink />}
