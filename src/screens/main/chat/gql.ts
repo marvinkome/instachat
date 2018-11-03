@@ -1,5 +1,24 @@
 import gql from 'graphql-tag';
 
+export const GROUP_FRAGMENT = gql`
+    fragment updatingGroup on Group {
+        lastMessage {
+            id
+            message
+            timestamp
+        }
+        messages {
+            id
+            message
+            timestamp
+            from {
+                id
+                username
+            }
+        }
+    }
+`;
+
 export const ALL_MESSAGES = gql`
     query allMessages($groupID: String!, $first: Int, $after: Int) {
         user {
@@ -11,7 +30,7 @@ export const ALL_MESSAGES = gql`
             name
             unreadCount
             lastViewedMessage
-            messages(sort: true, first: $first, after: $after) {
+            messages(sort: true, first: $first, after: $after) @connection(key: "messages") {
                 id
                 message
                 timestamp

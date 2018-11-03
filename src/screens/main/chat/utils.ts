@@ -2,7 +2,7 @@ import { SubscribeToMoreOptions as STMO, ApolloClient } from 'apollo-client';
 import { MutationFn, FetchResult } from 'react-apollo';
 
 import { createFakeResp, generateErrorId } from '../../../lib/helpers';
-import { MESSAGE_SUBSCRIPTION, ADD_ERROR, ALL_MESSAGES } from './gql';
+import { MESSAGE_SUBSCRIPTION, ADD_ERROR, ALL_MESSAGES, GROUP_FRAGMENT } from './gql';
 import { messageParam } from './types';
 
 export function updateFetchMore(prev: any, { fetchMoreResult, variables }: any) {
@@ -16,8 +16,6 @@ export function updateFetchMore(prev: any, { fetchMoreResult, variables }: any) 
     if (newMsg.length === 0) {
         return prev;
     }
-
-    console.log('responses', variables);
 
     const msgList = [...prevGroup.messages, ...newMsg];
 
@@ -124,19 +122,18 @@ export async function sendMessage(
  * @param id
  */
 export function update(cache: any, { data }: FetchResult, id: string) {
-    const prev = cache.readQuery({
-        query: ALL_MESSAGES,
-        variables: { groupID: id }
-    });
-    if (!data || !prev) {
+    const group = cache.readFragment({ fragment: GROUP_FRAGMENT, id: `Group:${id}` });
+    if (!data || !group) {
         return;
     }
 
-    // @ts-ignore
-    const { group } = prev;
     group.messages.unshift(data.sendMessage);
 
-    cache.writeQuery({ query: ALL_MESSAGES, data: { group, ...prev } });
+    cache.writeFragment({
+        fragment: GROUP_FRAGMENT,
+        data: { ...group, lastMessage: data.sendMessage },
+        id: `Group:${id}`
+    });
 }
 
 /**

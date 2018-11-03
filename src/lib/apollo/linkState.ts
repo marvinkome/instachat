@@ -17,7 +17,7 @@ const resolvers = {
                         message
                         timestamp
                     }
-                    messages(sort: true) {
+                    messages {
                         id
                         message
                         timestamp
@@ -42,8 +42,7 @@ const resolvers = {
             });
 
             const data = {
-                ...group,
-                lastMessage: msg.sendMessage
+                ...group
             };
 
             ctx.cache.writeFragment({ data, fragment, id });

@@ -62,6 +62,7 @@ export const chatFormStyles = StyleSheet.create({
         margin: 0
     },
     input: {
+        fontFamily: theme.fontRegular,
         color: theme.primary.typo.main,
         height: 45,
         width: '100%'

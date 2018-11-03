@@ -3,6 +3,7 @@ import { Text } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements';
 import { chatMsg as styles } from './styles';
 import { formatDate } from '../../../../../lib/helpers';
+import theme from '../../../../../lib/colors';
 
 interface Props {
     id: string;
@@ -21,13 +22,13 @@ const isOptimistic = (id: number) => 0 > id && id > -100;
 export function ChatMsg(props: Props) {
     const optimisticStyle = isOptimistic(Number(props.id))
         ? {
-              backgroundColor: 'hsl(0,0%,96%)'
+              backgroundColor: theme.primary.light
           }
         : {};
 
     const errorStyle = isError(Number(props.id))
         ? {
-              color: 'red'
+              color: theme.error.bg
           }
         : {};
 
@@ -44,7 +45,7 @@ export function ChatMsg(props: Props) {
                         }
                     ]}
                 >
-                    Failed to send message
+                    Can't send message at ths time
                 </Text>
             )}
         </React.Fragment>

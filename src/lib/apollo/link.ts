@@ -1,7 +1,7 @@
 // link
 import { AsyncStorage, ToastAndroid } from 'react-native';
 import Navigation from '../navigationService';
-import {API_SERVER} from '../keys';
+import { API_SERVER } from '../keys';
 
 import { getMainDefinition } from 'apollo-utilities';
 import { InMemoryCache } from 'apollo-cache-inmemory';
@@ -57,6 +57,7 @@ export default function Link(token: string, cache: InMemoryCache) {
     // retry link
     const retryLink = new RetryLink({
         attempts: {
+            max: 7,
             retryIf(err, ops) {
                 return ops.operationName !== 'setTypingState' && !!err;
             }
