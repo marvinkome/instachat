@@ -10,6 +10,7 @@ import * as Navigation from 'react-navigation';
 import { messageParam, Props } from './types';
 
 // helpers
+import ErrorView from '../../../components/errorView';
 import theme from '../../../lib/colors';
 import { showAlert } from '../../../lib/helpers';
 import * as utils from './utils';
@@ -96,7 +97,7 @@ class ChatScreen extends React.Component<Props> {
 
         if (queryData.error && (!queryData.user || !queryData.group)) {
             showAlert('Something went wrong', 'error');
-            return null;
+            return <ErrorView message="Something went wrong" />;
         }
 
         if (queryData.user && queryData.group) {

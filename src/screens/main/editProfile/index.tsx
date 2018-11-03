@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ToastAndroid, View as RNView, ActivityIndicator } from 'react-native';
 import { graphql, DataValue, compose, MutationFunc } from 'react-apollo';
 
+import ErrorView from '../../../components/errorView';
 import { showAlert } from '../../../lib/helpers';
 import theme from '../../../lib/colors';
 import { USER_INFO, UPDATE_INFO } from './gql';
@@ -47,7 +48,7 @@ class EditProfile extends React.Component<Props> {
         const profile = this.props.profile;
         if (profile.error && !profile.user) {
             showAlert('Something is wrong', 'error');
-            return null;
+            return <ErrorView message="Something went wrong" />;
         }
 
         if (profile.user) {

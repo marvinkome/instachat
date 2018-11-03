@@ -3,6 +3,7 @@ import { ActivityIndicator, View as RNView } from 'react-native';
 import { graphql, DataProps, Subscription } from 'react-apollo';
 import * as Navigation from 'react-navigation';
 
+import ErrorView from '../../../../components/errorView';
 import theme from '../../../../lib/colors';
 import { showAlert, hideAlert } from '../../../../lib/helpers';
 import View from './view';
@@ -33,7 +34,7 @@ class Chats extends React.Component<Props> {
         // if there's no data and there's error
         if (error && !groups) {
             showAlert('Something is wrong', 'error');
-            return null;
+            return <ErrorView message="Something went wrong" />;
         }
 
         if (groups) {
@@ -46,7 +47,13 @@ class Chats extends React.Component<Props> {
         }
 
         return (
-            <RNView style={{ flex: 1, justifyContent: 'center', backgroundColor: theme.primary.regular }}>
+            <RNView
+                style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    backgroundColor: theme.primary.regular
+                }}
+            >
                 <ActivityIndicator size="large" color={theme.secondary.regular} />
             </RNView>
         );
