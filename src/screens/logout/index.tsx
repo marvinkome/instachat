@@ -38,14 +38,18 @@ export default class Logout extends React.Component<NavigationScreenProps> {
 
         const groups = res.data.groups;
 
-        return new Promise((resolv, e) =>
-            groups.forEach((group: any, index: any, array: any[]) => {
-                firebase.messaging().unsubscribeFromTopic(group.id);
-                if (index === array.length - 1) {
-                    resolv(undefined);
-                }
-            })
-        );
+        return new Promise((resolv, e) => {
+            if (groups.length) {
+                groups.forEach((group: any, index: any, array: any[]) => {
+                    firebase.messaging().unsubscribeFromTopic(group.id);
+                    if (index === array.length - 1) {
+                        resolv(undefined);
+                    }
+                });
+            } else {
+                resolv(undefined);
+            }
+        });
     }
 
     private processLogout = async () => {
