@@ -18,7 +18,6 @@ import withLinkState from './linkState';
 export default function Link(token: string, cache: InMemoryCache) {
     // logger
     const logger = new ApolloLink((ops, forward) => {
-        console.log(ops.operationName);
         // @ts-ignore
         return forward(ops);
     });
@@ -47,7 +46,7 @@ export default function Link(token: string, cache: InMemoryCache) {
             }
 
             if (operation.operationName !== 'setTypingState') {
-                return console.log(networkError);
+                return;
             }
 
             forward(operation);

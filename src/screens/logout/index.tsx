@@ -41,7 +41,6 @@ export default class Logout extends React.Component<NavigationScreenProps> {
         return new Promise((resolv, e) =>
             groups.forEach((group: any, index: any, array: any[]) => {
                 firebase.messaging().unsubscribeFromTopic(group.id);
-                console.log('unsubscribed from', group.id);
                 if (index === array.length - 1) {
                     resolv(undefined);
                 }
@@ -54,7 +53,7 @@ export default class Logout extends React.Component<NavigationScreenProps> {
         const { persistor, client } = await apollo();
 
         // get all groups id and unsubscribe from each
-        const groups = await client.query({ query: GROUP_ID }).catch((e) => console.warn(e));
+        const groups = await client.query({ query: GROUP_ID }).catch((e) => null);
         await this.unsubscribeFromGroups(groups);
 
         // token

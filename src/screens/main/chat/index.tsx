@@ -72,7 +72,6 @@ class ChatScreen extends React.Component<Props> {
 
         this.setState({ refreshing: true }, async () => {
             const messageCount = this.props.allMessages.group.messages.length;
-            console.log(messageCount);
             await this.props.allMessages.fetchMore({
                 variables: { after: messageCount },
                 updateQuery: utils.updateFetchMore
