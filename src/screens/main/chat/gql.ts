@@ -14,6 +14,7 @@ export const GROUP_FRAGMENT = gql`
             from {
                 id
                 username
+                profilePic
             }
         }
     }
@@ -56,6 +57,7 @@ export const SEND_MESSAGE = gql`
             from {
                 id
                 username
+                profilePic
             }
         }
     }
@@ -70,6 +72,7 @@ export const MESSAGE_SUBSCRIPTION = gql`
             from {
                 id
                 username
+                profilePic
             }
         }
     }

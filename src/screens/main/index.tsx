@@ -83,6 +83,9 @@ export default class MainRoute extends React.Component<NP, IState> {
 
         // hide splash
         SplashScreen.hide();
+
+        // remove all notifications
+        await firebase.notifications().removeAllDeliveredNotifications();
     }
 
     componentWillUnmount() {
